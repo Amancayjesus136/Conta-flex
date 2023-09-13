@@ -167,7 +167,7 @@
 <!-- ============================================================== -->
 <!-- USUARIOS -->
 <!-- ============================================================== -->
-<!-- @if(auth()->user()->hasRole('superadministrador'))
+ @if(auth()->user()->hasRole('superadministrador'))
 <li class="nav-item">
     <a class="nav-link menu-link" href="#" data-bs-toggle="collapse" data-bs-target="#sidebarSuperadministrador" aria-expanded="false" aria-controls="sidebarSuperadministrador">
         <i class="fas fa-crown"></i> <span data-key="t-Configuración">Super administrador</span>
@@ -192,7 +192,7 @@
         </ul>
     </div>
 </li>
-@endif -->
+@endif 
 
 <!-- ============================================================== -->
 <!-- utilitarios -->
