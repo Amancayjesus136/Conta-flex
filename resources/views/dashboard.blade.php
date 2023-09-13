@@ -21,7 +21,7 @@
                             <div class="card-body py-5 px-4">
                                 <h5>Consulta DNI</h5>
                                 <p class="text-muted pb-1">Por favor, necesito hacer una consulta de DNI para obtener información actualizada.</p>
-                                <a href="{{ route('consultar-documentodni') }}" class="btn btn-soft-info">Consulta ya!</a>
+                                <a href="#" class="btn btn-soft-info">Consulta ya!</a>
                             </div>
                         </div>
                     </div><!-- end col -->
@@ -40,7 +40,7 @@
                             <div class="card-body py-5 px-4">
                                 <h5>Consulta PLACAS</h5>
                                 <p class="text-muted pb-1">Necesito consultar placas vehiculares para obtener información sobre un vehículo.</p>
-                                <a href="{{ route('consulta.index') }}" class="btn btn-soft-info">Consulta ya!</a>
+                                <a href="#" class="btn btn-soft-info">Consulta ya!</a>
                             </div>
                         </div>
                     </div><!-- end col -->

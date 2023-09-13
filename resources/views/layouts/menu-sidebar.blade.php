@@ -180,18 +180,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('historial-actividades') }}" class="nav-link" data-key="t-Suscripción">
-                    <i class="fas fa-archive"></i> Historial de DNI
-                </a>
-            </li>
-            <li class="nav-item">
                 <a href="{{ route('historial.consultas.ruc') }}" class="nav-link" data-key="t-Suscripción">
                     <i class="fas fa-archive"></i> Historial de RUC
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link" data-key="t-Suscripción">
-                    <i class="fas fa-archive"></i> Historial de PLACAS
                 </a>
             </li>
             <li class="nav-item">
@@ -205,29 +195,6 @@
 @endif
 
 <!-- ============================================================== -->
-<!-- entradas y salidas -->
-<!-- ============================================================== -->
-<!-- <li class="nav-item">
-    <a class="nav-link menu-link" href="#" data-bs-toggle="collapse" data-bs-target="#sidebarModuloInstitucional" aria-expanded="false" aria-controls="sidebarModuloInstitucional">
-        <i class="fas fa-history"></i> <span data-key="t-Configuración">Entradas y Salidas</span>
-    </a>
-    <div class="collapse menu-dropdown" id="sidebarModuloInstitucional">
-        <ul class="nav nav-sm flex-column">
-            <li class="nav-item">
-                <a href="{{ route('registrar-vehiculo') }}" class="nav-link" data-key="t-Suscripción">
-                    <i class="fas fa-plus-circle"></i> Registrar Vehículos
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('vehiculos-placas') }}" class="nav-link" data-key="t-Suscripción">
-                    <i class="fas fa-list-ul"></i> Listado
-                </a>
-            </li>
-        </ul>
-    </div>
-</li> -->
-
-<!-- ============================================================== -->
 <!-- Proyectos -->
 <!-- ============================================================== -->
 <li class="nav-item">
@@ -237,84 +204,13 @@
     <div class="collapse menu-dropdown" id="sidebarModuloConsultas">
         <ul class="nav nav-sm flex-column">
             <li class="nav-item">
-                <a href="{{ route('consultar-documentodni') }}" class="nav-link" data-key="t-Suscripción">
-                    <i class="fas fa-id-card"></i> DNI
-                </a>
-            </li>
-            <li class="nav-item">
                 <a href="{{ route('ventas.index') }}" class="nav-link" data-key="t-Suscripción">
                     <i class="fas fa-building"></i> RUC
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="{{ route('consulta.index') }}" class="nav-link" data-key="t-Suscripción">
-                    <i class="fas fa-car"></i> PLACAS
-                </a>
-            </li>
         </ul>
     </div>
 </li>
-
-<!-- ============================================================== -->
-<!-- Listado db -->
-<!-- ============================================================== -->
-<!-- @if(auth()->user()->hasAnyRole(['superadministrador', 'admin', 'jefesucursal']))
-<li class="nav-item">
-    <a class="nav-link menu-link" href="#" data-bs-toggle="collapse" data-bs-target="#sidebarPlacas" aria-expanded="false" aria-controls="sidebarPlacas">
-        <i class="fas fa-road"></i> <span data-key="t-Usuarios">Placas</span>
-    </a>
-    <div class="collapse menu-dropdown" id="sidebarPlacas">
-        <ul class="nav nav-sm flex-column">
-            <li class="nav-item">
-                <a href="{{ route('listado_db.index') }}" class="nav-link" data-key="t-Usuarios">
-                    <i class="fas fa-clipboard-list"></i> Detalles de placas
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('reportesconsu.index') }}" class="nav-link" data-key="t-Usuarios">
-                    <i class="fas fa-file-signature"></i> Reportes de placas
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('listadoreportes.index') }}" class="nav-link" data-key="t-Usuarios">
-                    <i class="fas fa-file-alt"></i> Listado de placas
-                </a>
-            </li>
-        </ul>
-    </div>
-</li>
-@endif -->
-
-<!-- ============================================================== -->
-<!-- Consultas -->
-<!-- ============================================================== -->
-@if(auth()->user()->hasAnyRole(['superadministrador', 'jefesucursal', 'admin']))
-<li class="nav-item">
-    <a class="nav-link menu-link" href="#" data-bs-toggle="collapse" data-bs-target="#sidebarJefeSecursal" aria-expanded="false" aria-controls="sidebarJefeSecursal">
-        <i class="fas fa-user-tie"></i> <span data-key="t-Configuración">Jefe Sucursal</span>
-    </a>
-    <div class="collapse menu-dropdown" id="sidebarJefeSecursal">
-        <ul class="nav nav-sm flex-column">
-            <li class="nav-item">
-                <a href="{{ route('listado') }}" class="nav-link" data-key="t-Suscripción">
-                    <i class="fas fa-building"></i> Listado de sucursales
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('sucursal.listado') }}" class="nav-link" data-key="t-Suscripción">
-                    <i class="fas fa-file-alt"></i> Generar Reporte
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('reportes.index') }}" class="nav-link" data-key="t-Suscripción">
-                    <i class="fas fa-list-ul"></i> Listado de reportes
-                </a>
-            </li>
-        </ul>
-    </div>
-</li>
-@endif
-
                 
         </div>
     </div>
