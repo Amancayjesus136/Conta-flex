@@ -167,7 +167,7 @@
 <!-- ============================================================== -->
 <!-- USUARIOS -->
 <!-- ============================================================== -->
-@if(auth()->user()->hasRole('superadministrador'))
+<!-- @if(auth()->user()->hasRole('superadministrador'))
 <li class="nav-item">
     <a class="nav-link menu-link" href="#" data-bs-toggle="collapse" data-bs-target="#sidebarSuperadministrador" aria-expanded="false" aria-controls="sidebarSuperadministrador">
         <i class="fas fa-crown"></i> <span data-key="t-Configuración">Super administrador</span>
@@ -192,26 +192,62 @@
         </ul>
     </div>
 </li>
-@endif
+@endif -->
+
+<!-- ============================================================== -->
+<!-- utilitarios -->
+<!-- ============================================================== -->
+<li class="nav-item">
+    <a class="nav-link menu-link" href="#" data-bs-toggle="collapse" data-bs-target="#utilitarios" aria-expanded="false" aria-controls="utilitarios">
+        <i class="fas fa-cogs"></i> <span data-key="t-Configuración">utilitarios</span>
+    </a>
+    <div class="collapse menu-dropdown" id="utilitarios">
+        <ul class="nav nav-sm flex-column">
+            <li class="nav-item">
+                <a href="#}" class="nav-link" data-key="t-Suscripción">
+                    <i class="fas fa-building"></i> Mantenimientos de Compañias
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-key="t-Suscripción">
+                    <i class="fas fa-percent"></i> Tasa de IGV
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-key="t-Suscripción">
+                    <i class="fas fa-exchange-alt"></i> Tipo de cambio
+                </a>
+            </li>
+        </ul>
+    </div>
+</li>
+
+
+
 
 <!-- ============================================================== -->
 <!-- Proyectos -->
 <!-- ============================================================== -->
 <li class="nav-item">
     <a class="nav-link menu-link" href="#" data-bs-toggle="collapse" data-bs-target="#sidebarModuloConsultas" aria-expanded="false" aria-controls="sidebarModuloConsultas">
-        <i class="fas fa-search"></i> <span data-key="t-Configuración">Consultas</span>
+        <i class="fas fa-chart-bar"></i> <span data-key="t-Configuración">Reportes</span>
     </a>
     <div class="collapse menu-dropdown" id="sidebarModuloConsultas">
         <ul class="nav nav-sm flex-column">
             <li class="nav-item">
                 <a href="{{ route('ventas.index') }}" class="nav-link" data-key="t-Suscripción">
-                    <i class="fas fa-building"></i> RUC
+                    <i class="fas fa-file-invoice-dollar"></i> Registro de Ventas
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-key="t-Suscripción">
+                    <i class="fas fa-file-invoice"></i> Registro de Compras
                 </a>
             </li>
         </ul>
     </div>
 </li>
-                
+
         </div>
     </div>
 
