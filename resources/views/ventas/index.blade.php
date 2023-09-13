@@ -189,7 +189,7 @@
         <!-- Botones del formulario -->
         <div class="row">
             <div class="col-lg-12 text-end"><br><br>
-                <button type="submit" class="btn btn-primary">Guardar Venta</button>
+                <button type="submit" class="btn btn-success">Guardar Venta</button>
             </div>
         </div>
     </form>

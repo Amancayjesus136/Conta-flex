@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DocumentoRucController;
 use App\Http\Controllers\ActivityLogGeneralController;
 use App\Http\Controllers\VentasController;
+use App\Http\Controllers\EmpresaController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -77,6 +78,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Contabilidad
     Route::match( ['get', 'post'],'ventas', [VentasController::class, 'index'])->name('ventas.index');
     Route::post('/ventas', [VentasController::class, 'store'])->name('ventas.store');
+
+    Route::resource('empresa', EmpresaController::class);
+
 
 
 
