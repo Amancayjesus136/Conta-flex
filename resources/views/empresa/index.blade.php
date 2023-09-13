@@ -8,13 +8,16 @@
 </div>
 <div class="container">
     <div class="row justify-content-end"> <!-- Alineamos todo el contenido a la derecha -->
-        <div class="col-md-6">
+            <div class="col-md-6">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarModal">
                 Nueva Empresa
-            </button> 
+            </button>
             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#asignarModal">
                 Asignar Compañía
-            </button> <br><br>
+            </button> 
+            <a href="{{ route('listado.index') }}" class="btn btn-info">
+                Listado de Usuarios
+            </a> <br><br>
         </div>
     </div>
 

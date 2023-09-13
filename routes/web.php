@@ -8,6 +8,7 @@ use App\Http\Controllers\ActivityLogGeneralController;
 use App\Http\Controllers\VentasController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\AsignarController;
+use App\Http\Controllers\ListadoUsuarioController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -80,6 +81,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::match( ['get', 'post'],'ventas', [VentasController::class, 'index'])->name('ventas.index');
     Route::post('/ventas', [VentasController::class, 'store'])->name('ventas.store');
     Route::post('/asignar', [AsignarController::class, 'store'])->name('asignar.store');
+    Route::get('listado', [ListadoUsuarioController::class, 'index'])->name('listado.index');
+
+
 
 
 
