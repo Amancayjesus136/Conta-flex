@@ -230,18 +230,38 @@
 <!-- ============================================================== -->
 <li class="nav-item">
     <a class="nav-link menu-link" href="#" data-bs-toggle="collapse" data-bs-target="#sidebarModuloConsultas" aria-expanded="false" aria-controls="sidebarModuloConsultas">
-        <i class="fas fa-chart-bar"></i> <span data-key="t-Configuración">Reportes</span>
+        <i class="fas fa-chart-bar"></i> <span data-key="t-Configuración">Registros</span>
     </a>
     <div class="collapse menu-dropdown" id="sidebarModuloConsultas">
         <ul class="nav nav-sm flex-column">
             <li class="nav-item">
                 <a href="{{ route('ventas.index') }}" class="nav-link" data-key="t-Suscripción">
-                    <i class="fas fa-file-invoice-dollar"></i> Registro de Ventas
+                    <i class="fas fa-file-invoice-dollar"></i> Registro de Compras
                 </a>
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link" data-key="t-Suscripción">
-                    <i class="fas fa-file-invoice"></i> Registro de Compras
+                    <i class="fas fa-file-invoice"></i> Registro de Ventas
+                </a>
+            </li>
+        </ul>
+    </div>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link menu-link" href="#" data-bs-toggle="collapse" data-bs-target="#sidebarModuloListado" aria-expanded="false" aria-controls="sidebarModuloListado">
+        <i class="fas fa-chart-bar"></i> <span data-key="t-Configuración">Reportes</span>
+    </a>
+    <div class="collapse menu-dropdown" id="sidebarModuloListado">
+        <ul class="nav nav-sm flex-column">
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-key="t-Suscripción">
+                    <i class="fas fa-file-invoice-dollar"></i> Reporte de Ventas
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-key="t-Suscripción">
+                    <i class="fas fa-file-invoice"></i> Reporte de Compras
                 </a>
             </li>
         </ul>
