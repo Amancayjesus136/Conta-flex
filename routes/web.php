@@ -7,6 +7,7 @@ use App\Http\Controllers\DocumentoRucController;
 use App\Http\Controllers\ActivityLogGeneralController;
 use App\Http\Controllers\VentasController;
 use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\AsignarController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -78,8 +79,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Contabilidad
     Route::match( ['get', 'post'],'ventas', [VentasController::class, 'index'])->name('ventas.index');
     Route::post('/ventas', [VentasController::class, 'store'])->name('ventas.store');
+    Route::post('/asignar', [AsignarController::class, 'store'])->name('asignar.store');
 
-    Route::resource('empresa', EmpresaController::class);
+
+
+
+
+
+    Route::resource('empresa', EmpresaController::class)->names('empresa');
+
+
 
 
 

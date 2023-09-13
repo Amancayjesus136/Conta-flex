@@ -11,6 +11,7 @@ class Empresa extends Model
     protected $fillable = [
         'compania',
         'nombre_empresa',
+        'plan_cuentas',
     ];
 
 }

@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\AsignarUsuario;
 use App\Models\Empresa;
-use App\Models\User;
 
 
-class EmpresaController extends Controller
+
+class AsignarController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $users = User::all();
         $empresas = Empresa::all();
         return view('empresa.index', compact('empresas', 'users'));
     }
@@ -32,18 +32,30 @@ class EmpresaController extends Controller
      */
     public function store(Request $request)
 {
-    // Crear una nueva empresa
-    $empresa = new Empresa;
-    $empresa->compania = $request->compania;
-    $empresa->nombre_empresa = $request->nombre_empresa;
-    $empresa->plan_cuentas = $request->plan_cuentas;
+    // Valida los datos del formulario
+    $request->validate([
+        'usuario' => 'required|integer',
+        'empresa' => 'required|integer',
+    ]);
 
-    $empresa->save();
+    // Busca una relación existente entre el usuario y la empresa
+    $asignarUsuario = AsignarUsuario::where('usuario', $request->usuario)->first();
+
+    // Si se encuentra una relación existente, actualiza la empresa
+    if ($asignarUsuario) {
+        $empresa = Empresa::findOrFail($request->empresa); // Obtén la empresa seleccionada
+        $asignarUsuario->empresa = $empresa->id;
+        $asignarUsuario->save();
+    } else {
+        // Si no existe una relación, crea una nueva
+        AsignarUsuario::create([
+            'usuario' => $request->usuario,
+            'empresa' => $request->empresa,
+        ]);
+    }
 
     return redirect()->route('empresa.index');
 }
-
-
 
     /**
      * Display the specified resource.
@@ -64,15 +76,10 @@ class EmpresaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    private function actualizarUsuario($userId, $companiaUsuario)
-{
-    // Obtener el usuario relacionado con el ID proporcionado
-    $user = User::findOrFail($userId);
-
-    // Actualizar el campo "compania_usuario" del usuario
-    $user->compania_usuario = $companiaUsuario;
-    $user->save();
-}
+    public function update(Request $request, string $id)
+    {
+        //
+    }
 
     /**
      * Remove the specified resource from storage.
