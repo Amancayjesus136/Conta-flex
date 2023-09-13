@@ -1,27 +1,11 @@
 <?php
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\DniController;
 use App\Http\Controllers\RucController;
-use App\Http\Controllers\ConsultaController;
-use App\Http\Controllers\ReporteConsultaController;
-use App\Http\Controllers\ListadoController;
-use App\Http\Controllers\ListadoReportesController;
 use App\Http\Controllers\ActivityLogController;
-use App\Http\Controllers\ConsultarDniController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\DocumentoController;
-use App\Http\Controllers\DocumentoDniController;
 use App\Http\Controllers\DocumentoRucController;
-use App\Http\Controllers\ConsultaPlacaController;
-use App\Http\Controllers\SucursalController;
 use App\Http\Controllers\ActivityLogGeneralController;
-use App\Http\Controllers\ReporteController;
-use App\Http\Controllers\VehiculoController;
-use App\Http\Controllers\VehiculosPlacasController;
-
 use App\Http\Controllers\VentasController;
-
-
 
 
 use Illuminate\Support\Facades\Route;
