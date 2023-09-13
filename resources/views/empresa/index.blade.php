@@ -1,43 +1,59 @@
 @extends('layouts.admin')
 
 @section('content')
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-
+<div class="col-12 col-md-12">
+    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+        <h4 class="mb-sm-0">Compañias</h4>
+    </div>
+</div>
 <div class="container">
-    <div class="row">
+    <div class="row justify-content-end"> <!-- Alineamos todo el contenido a la derecha -->
         <div class="col-md-6">
-            <h1>Listado de Personas</h1>
-        </div>
-        <div class="col-md-6 text-end">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarModal">
-                Crear Compañia
-            </button>
+                Nueva Empresa
+            </button> 
             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#asignarModal">
                 Asignar Compañía
-            </button>
+            </button> <br><br>
         </div>
     </div>
-    
-    <table class="table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Compañia</th>
-                <th>Nombre de la empresa</th>
-                <th>Plan Cuentas</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($empresas as $empresa)
-                <tr>
-                    <td>{{ $empresa->id }}</td>
-                    <td>{{ $empresa->compania }}</td>
-                    <td>{{ $empresa->nombre_empresa }}</td>
-                    <td>{{ $empresa->plan_cuentas }}</td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+
+    <div class="card">
+        
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Compañía</th>
+                            <th scope="col">Nombre de la Empresa</th>
+                            <th scope="col">Plan de Cuentas</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($empresas as $empresa)
+                            <tr>
+                                <td>{{ $empresa->id }}</td>
+                                <td>{{ $empresa->compania }}</td>
+                                <td>{{ $empresa->nombre_empresa }}</td>
+                                <td>{{ $empresa->plan_cuentas }}</td>
+                                <td>
+                                    <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarEmpresaModal{{ $empresa->id }}">
+                                        Editar
+                                    </a>
+                                    <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarEmpresaModal{{ $empresa->id }}">
+                                        Eliminar
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Modal de Agregar -->
@@ -52,7 +68,7 @@
                 <form method="POST" action="{{ route('empresa.store') }}">
                     @csrf
                     <div class="mb-3">
-                        <label for="compania" class="form-label">Compañia</label>
+                        <label for="compania" class="form-label">Compañía</label>
                         <input type="text" class="form-control" id="compania" name="compania" required>
                     </div>
                     <div class="mb-3">
@@ -60,7 +76,7 @@
                         <input type="text" class="form-control" id="nombre_empresa" name="nombre_empresa" required>
                     </div>
                     <div class="mb-3">
-                        <label for="plan_cuentas" class="form-label">Plan Cuentas</label>
+                        <label for="plan_cuentas" class="form-label">Plan de Cuentas</label>
                         <input type="text" class="form-control" id="plan_cuentas" name="plan_cuentas" required>
                     </div>
                     <div class="modal-footer">
@@ -109,7 +125,66 @@
             </div>
         </div>
     </div>
-</div>
+</div> 
 
+<!-- Modales de edición y eliminación -->
+@foreach ($empresas as $empresa)
+    <!-- Modal de Editar -->
+    <div class="modal fade" id="editarEmpresaModal{{ $empresa->id }}" tabindex="-1" aria-labelledby="editarEmpresaModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editarEmpresaModalLabel">Editar Empresa</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div> 
+                <div class="modal-body">
+                    <form method="POST" action="{{ route('empresa.update', $empresa->id) }}">
+                        @csrf
+                        @method('PUT')
+                        <div class="mb-3">
+                            <label for="editar_compania" class="form-label">Compañía</label>
+                            <input type="text" class="form-control" id="editar_compania" name="editar_compania" value="{{ $empresa->compania }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editar_nombre_empresa" class="form-label">Nombre de la Empresa</label>
+                            <input type="text" class="form-control" id="editar_nombre_empresa" name="editar_nombre_empresa" value="{{ $empresa->nombre_empresa }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editar_plan_cuentas" class="form-label">Plan de Cuentas</label>
+                            <input type="text" class="form-control" id="editar_plan_cuentas" name="editar_plan_cuentas" value="{{ $empresa->plan_cuentas }}" required>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Eliminar -->
+    <div class="modal fade" id="eliminarEmpresaModal{{ $empresa->id }}" tabindex="-1" aria-labelledby="eliminarEmpresaModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="eliminarEmpresaModalLabel">Eliminar Empresa</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>¿Estás seguro de eliminar esta empresa?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <form method="POST" action="{{ route('empresa.destroy', $empresa->id) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+@endforeach
 
 @endsection
