@@ -196,50 +196,40 @@
 
 <!-- Modal de Listado de Empresas -->
 <div class="modal fade" id="listadoEmpresasModal" tabindex="-1" aria-labelledby="listadoEmpresasModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="listadoEmpresasModalLabel">Listado de Empresas</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Usuario</th>
-                                <th scope="col">Empresa</th>
-                                <!-- <th scope="col" class="text-end">Acciones</th> -->
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($personas as $persona)
-                            <tr>
-                                <td>{{ $persona->id }}</td>
-                                <td>{{ $persona->usuario }}</td>
-                                <td>{{ $persona->empresa }}</td>
-                                <!-- <td class="text-end">
-                                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editarUsuarioModal{{ $persona->id }}">
-                                        Editar
-                                    </button>
-                                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#eliminarUsuarioModal{{ $persona->id }}">
-                                        Eliminar
-                                    </button>
-                                </td> -->
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="listadoEmpresasModalLabel">Listado de Empresas</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Usuario</th>
+                                    <th scope="col">Empresa</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($empresas as $empresa)
+                                <tr>
+                                    <td>{{ $empresa->id }}</td>
+                                    <td>{{ $empresa->usuario }}</td>
+                                    <td>{{ $empresa->empresa }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

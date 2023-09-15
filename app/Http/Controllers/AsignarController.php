@@ -16,6 +16,7 @@ class AsignarController extends Controller
     public function index()
     {
         $empresas = Empresa::all();
+        $usuarios = User::all();
         return view('empresa.index', compact('empresas', 'users'));
     }
 
