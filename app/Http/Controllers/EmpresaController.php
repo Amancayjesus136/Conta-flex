@@ -67,8 +67,6 @@ class EmpresaController extends Controller
     // Redirige a una vista o a una ruta específica después de la actualización
     return redirect()->route('empresa.index')->with('success', 'Empresa actualizada con éxito');
 }
-
-
     /**
      * Remove the specified resource from storage.
      */

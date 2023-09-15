@@ -50,10 +50,10 @@
                                     <td>{{ str_pad($contador, 4, '0', STR_PAD_LEFT) }}</td>
                                     <td>
                                         <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarEmpresaModal{{ $empresa->id }}">
-                                            Editar
+                                            <i class="fas fa-edit"></i> Editar
                                         </a>
                                         <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarEmpresaModal{{ $empresa->id }}">
-                                            Eliminar
+                                            <i class="fas fa-trash-alt"></i> Eliminar
                                         </a>
                                     </td>
                                 </tr>
@@ -261,12 +261,17 @@
                         icon: 'success',
                         title: 'Éxito',
                         text: 'Empresa agregada con éxito',
-                    });
+                    }).then(function () {
+                        // Cerrar el modal después de 2 segundos
+                        setTimeout(function () {
+                            $('#agregarModal').modal('hide');
+                        }, 500);
 
-                    // Cerrar el modal después de 2 segundos
-                    setTimeout(function () {
-                        $('#agregarModal').modal('hide');
-                    }, 2000);
+                        // Recargar la página después de cerrar el modal
+                        setTimeout(function () {
+                            location.reload();
+                        }, 500);
+                    });
 
                     // Aquí puedes agregar el código para actualizar la tabla o realizar cualquier otra acción necesaria
                 },
@@ -282,5 +287,6 @@
         });
     });
 </script>
+
 
 @endsection

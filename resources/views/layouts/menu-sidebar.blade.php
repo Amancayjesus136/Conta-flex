@@ -247,7 +247,7 @@
 
 <li class="nav-item">
     <a class="nav-link menu-link" href="#" data-bs-toggle="collapse" data-bs-target="#sidebarModuloListado" aria-expanded="false" aria-controls="sidebarModuloListado">
-        <i class="fas fa-chart-bar"></i> <span data-key="t-Configuración">Reportes</span>
+        <i class="fas fa-chart-pie"></i> <span data-key="t-Configuración">Reportes</span>
     </a>
     <div class="collapse menu-dropdown" id="sidebarModuloListado">
         <ul class="nav nav-sm flex-column">
