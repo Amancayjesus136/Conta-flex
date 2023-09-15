@@ -59,5 +59,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(ActivityLogGeneral::class, 'user_id');
     }
+
+    public function asignaciones()
+    {
+        return $this->hasMany(AsignarUsuario::class, 'usuario_id');
+    }
 }
 

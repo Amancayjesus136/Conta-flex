@@ -13,16 +13,14 @@ class AsignarUsuario extends Model
         'empresa',
     ];
 
-    // Modelo AsignarUsuario
-public function user()
-{
-    return $this->belongsTo(User::class, 'usuario');
-}
+    public function usuario()
+    {
+        return $this->belongsTo(User::class, 'usuario_id');
+    }
 
-public function empresa()
-{
-    return $this->belongsTo(Empresa::class, 'empresa');
-}
-
+    public function empresa()
+    {
+        return $this->belongsTo(Empresa::class, 'empresa_id');
+    }
 
 }
