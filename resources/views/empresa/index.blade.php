@@ -3,7 +3,7 @@
 @section('content')
 <div class="col-12 col-md-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0">Listado de Compañias</h4>
+            <h4 class="mb-sm-0">Mantenimientos de Compañias</h4>
         </div>
     </div>
 <div class="container">
@@ -30,23 +30,24 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-striped">
+                    <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Compañía</th>
+                                    <th scope="col">Compañia</th>
                                     <th scope="col">Nombre de la Empresa</th>
                                     <th scope="col">Plan de Cuentas</th>
                                     <th scope="col">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $contador = 1;
+                                @endphp
                                 @foreach ($empresas as $empresa)
                                 <tr>
-                                    <td>{{ $empresa->id }}</td>
-                                    <td>{{ $empresa->compania }}</td>
+                                    <td>{{ $contador }}</td>
                                     <td>{{ $empresa->nombre_empresa }}</td>
-                                    <td>{{ $empresa->plan_cuentas }}</td>
+                                    <td>{{ str_pad($contador, 4, '0', STR_PAD_LEFT) }}</td>
                                     <td>
                                         <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarEmpresaModal{{ $empresa->id }}">
                                             Editar
@@ -56,6 +57,9 @@
                                         </a>
                                     </td>
                                 </tr>
+                                @php
+                                    $contador++;
+                                @endphp
                                 @endforeach
                             </tbody>
                         </table>
@@ -75,20 +79,17 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{ route('empresa.store') }}">
+                <form method="POST" action="{{ route('empresa.store') }}" id="agregar-form">
                     @csrf
-                    <div class="mb-3">
-                        <label for="compania" class="form-label">Compañía</label>
-                        <input type="text" class="form-control" id="compania" name="compania" required>
-                    </div>
+                  
                     <div class="mb-3">
                         <label for="nombre_empresa" class="form-label">Nombre de la Empresa</label>
                         <input type="text" class="form-control" id="nombre_empresa" name="nombre_empresa" required>
                     </div>
-                    <div class="mb-3">
+                    <!-- <div class="mb-3">
                         <label for="plan_cuentas" class="form-label">Plan de Cuentas</label>
                         <input type="text" class="form-control" id="plan_cuentas" name="plan_cuentas" required>
-                    </div>
+                    </div> -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                         <button type="submit" class="btn btn-primary">Guardar</button>
@@ -123,7 +124,7 @@
                         <select class="form-select" id="empresa" name="empresa" required>
                             <option value="" disabled selected>Selecciona una empresa</option>
                             @foreach ($empresas as $empresa)
-                            <option value="{{ $empresa->id }}">{{ $empresa->compania }}</option>
+                            <option value="{{ $empresa->id }}">{{ $empresa->nombre_empresa }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -152,17 +153,13 @@
                     @csrf
                     @method('PUT')
                     <div class="mb-3">
-                        <label for="editar_compania" class="form-label">Compañía</label>
-                        <input type="text" class="form-control" id="editar_compania" name="editar_compania" value="{{ $empresa->compania }}" required>
-                    </div>
-                    <div class="mb-3">
                         <label for="editar_nombre_empresa" class="form-label">Nombre de la Empresa</label>
                         <input type="text" class="form-control" id="editar_nombre_empresa" name="editar_nombre_empresa" value="{{ $empresa->nombre_empresa }}" required>
                     </div>
-                    <div class="mb-3">
+                    <!-- <div class="mb-3">
                         <label for="editar_plan_cuentas" class="form-label">Plan de Cuentas</label>
                         <input type="text" class="form-control" id="editar_plan_cuentas" name="editar_plan_cuentas" value="{{ $empresa->plan_cuentas }}" required>
-                    </div>
+                    </div> -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                         <button type="submit" class="btn btn-primary">Guardar Cambios</button>
@@ -244,4 +241,46 @@
 </div>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    $(document).ready(function () {
+        // Agregar un controlador de envío al formulario de agregar
+        $('#agregar-form').submit(function (e) {
+            e.preventDefault();
+
+            // Realizar una solicitud AJAX para enviar el formulario
+            $.ajax({
+                url: "{{ route('empresa.store') }}",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "json",
+                success: function (data) {
+                    // Mostrar un mensaje de éxito usando SweetAlert2
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Éxito',
+                        text: 'Empresa agregada con éxito',
+                    });
+
+                    // Cerrar el modal después de 2 segundos
+                    setTimeout(function () {
+                        $('#agregarModal').modal('hide');
+                    }, 2000);
+
+                    // Aquí puedes agregar el código para actualizar la tabla o realizar cualquier otra acción necesaria
+                },
+                error: function (error) {
+                    // Mostrar un mensaje de error si es necesario
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Hubo un error al agregar la empresa',
+                    });
+                }
+            });
+        });
+    });
+</script>
+
 @endsection

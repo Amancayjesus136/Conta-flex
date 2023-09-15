@@ -1,11 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Empresa;
 use App\Models\User;
 use App\Models\AsignarUsuario;
+use Illuminate\Support\Facades\DB;
 
 class EmpresaController extends Controller
 {
@@ -32,54 +32,54 @@ class EmpresaController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
-    // Crear una nueva empresa
-    $empresa = new Empresa;
-    $empresa->compania = $request->compania;
-    $empresa->nombre_empresa = $request->nombre_empresa;
-    $empresa->plan_cuentas = $request->plan_cuentas;
-
-    $empresa->save();
-
-    return redirect()->route('empresa.index');
-}
-
-
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
     {
-        //
+        // Crear una nueva empresa
+        $empresa = new Empresa;
+        $empresa->nombre_empresa = $request->nombre_empresa;
+        $empresa->plan_cuentas = $request->plan_cuentas;
+
+        $empresa->save();
+
+        // Devuelve una respuesta JSON para indicar el éxito
+        return response()->json(['success' => true, 'message' => 'Empresa registrada con éxito']);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $empresa = Empresa::findOrFail($id);
+        return view('empresa.edit', compact('empresa'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    private function actualizarUsuario($userId, $companiaUsuario)
+    public function update(Request $request, $id)
 {
-    // Obtener el usuario relacionado con el ID proporcionado
-    $user = User::findOrFail($userId);
+    // Encuentra y actualiza la empresa
+    $empresa = Empresa::findOrFail($id);
+    $empresa->nombre_empresa = $request->editar_nombre_empresa;
+    $empresa->plan_cuentas = $request->editar_plan_cuentas;
+    $empresa->save();
 
-    // Actualizar el campo "compania_usuario" del usuario
-    $user->compania_usuario = $companiaUsuario;
-    $user->save();
+    // Redirige a una vista o a una ruta específica después de la actualización
+    return redirect()->route('empresa.index')->with('success', 'Empresa actualizada con éxito');
 }
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        // Encuentra y elimina la empresa
+        $empresa = Empresa::findOrFail($id);
+        $empresa->delete();
+
+        // Redirige a una vista o a una ruta específica después de la eliminación
+        return redirect()->route('empresa.index')->with('success', 'Empresa eliminada con éxito');
     }
+
 }
