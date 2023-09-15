@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Empresa;
 use App\Models\User;
-
+use App\Models\AsignarUsuario;
 
 class EmpresaController extends Controller
 {
@@ -16,7 +16,8 @@ class EmpresaController extends Controller
     {
         $users = User::all();
         $empresas = Empresa::all();
-        return view('empresa.index', compact('empresas', 'users'));
+        $personas = AsignarUsuario::all();
+        return view('empresa.index', compact('empresas', 'users', 'personas'));
     }
 
     /**
