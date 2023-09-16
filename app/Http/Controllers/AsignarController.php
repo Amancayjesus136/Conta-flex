@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\AsignarUsuario;
 use App\Models\Empresa;
-
-
+use App\Models\User;
 
 class AsignarController extends Controller
 {
