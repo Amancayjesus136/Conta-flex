@@ -31,7 +31,7 @@
         </div>
     </div>
 <div class="white-box">
-    <form action="{{ route('ventas.store') }}" method="post">
+    <form action="{{ route('ventas.store') }}" method="get">
         @csrf
         <div class="border">
             <ul class="nav nav-pills custom-hover-nav-tabs">
@@ -67,6 +67,7 @@
                                 placeholder="Ingrese el Documento">
                         </div>
                     </div>
+                    
                     <div class="col-md-3">
                         <div class="form-group"><br>
                             <label for="nombre_proveedor">Nombre Proveedor</label>
