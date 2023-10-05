@@ -84,7 +84,7 @@
                                         <a href="#" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#editarSModal{{ $reporteventa->id }}">
                                             <i class="fas fa-edit"></i> ECXEL
                                         </a>
-                                        <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarSModal{{ $reporteventa->id }}">
+                                        <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal{{ $reporteventa->id }}">
                                             <i class="fas fa-edit"></i> Editar
                                         </a>
                                         <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#editarSModal{{ $reporteventa->id }}">
@@ -116,77 +116,85 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="#" method="POST" id="reservation-form">
+                <form id="crearModal" method="POST" action="#">
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="trago" class="form-label">Cod Compra</label>
+                                    <label for="cod_compra" class="form-label">Cod Compra</label>
                                     <input type="text" class="form-control" id="cod_compra" name="cod_compra" required>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="trago" class="form-label">Tipo Cambio</label>
-                                    <input type="text" class="form-control" id="tipo_cambio" name="tipo_cambio" required>
+                                    <label for="tipo_cambio" class="form-label">Tipo Cambio</label>
+                                    <input type="number" class="form-control" id="tipo_cambio" name="tipo_cambio" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="precio_trago" class="form-label">Fecha Comprobante</label>
-                                    <input type="number" class="form-control" id="fecha_comprobantes" name="fecha_comprobantes" required>
-                                </div>
-                            </div>+<div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="precio_trago" class="form-label">RUC</label>
-                                    <input type="number" class="form-control" id="ruc" name="ruc" required>
-                                </div>
-                            </div><div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="precio_trago" class="form-label">Nombre Proveedor</label>
-                                    <input type="number" class="form-control" id="nombre_proveedor" name="nombre_proveedor" required>
-                                </div>
-                            </div><div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="precio_trago" class="form-label">Documento</label>
-                                    <input type="number" class="form-control" id="documento" name="documento" required>
-                                </div>
-                            </div><div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="precio_trago" class="form-label">Factura Numero</label>
-                                    <input type="number" class="form-control" id="factura_numero" name="factura_numero" required>
-                                </div>
-                            </div><div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="precio_trago" class="form-label">Fecha Emision</label>
-                                    <input type="number" class="form-control" id="fecha_emision" name="fecha_emision" required>
+                                    <label for="fecha_comprobantes" class="form-label">Fecha Comprobante</label>
+                                    <input type="date" class="form-control" id="fecha_comprobantes" name="fecha_comprobantes" required>
                                 </div>
                             </div>
-                            </div><div class="col-md-6">
+                            <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="precio_trago" class="form-label">Fecha Venta</label>
-                                    <input type="number" class="form-control" id="fecha_venta" name="fecha_venta" required>
+                                    <label for="ruc" class="form-label">RUC</label>
+                                    <input type="text" class="form-control" id="ruc" name="ruc" required>
                                 </div>
-                            </div> </div><div class="col-md-6">
+                            </div>
+                            <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="precio_trago" class="form-label">Base disponible</label>
-                                    <input type="number" class="form-control" id="base_disponible" name="base_disponible" required>
+                                    <label for="nombre_proveedor" class="form-label">Nombre Proveedor</label>
+                                    <input type="text" class="form-control" id="nombre_proveedor" name="nombre_proveedor" required>
                                 </div>
-                            </div> </div><div class="col-md-6">
+                            </div>
+                            <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="precio_trago" class="form-label">IGV</label>
-                                    <input type="number" class="form-control" id="igv" name="igv" required>
+                                    <label for="documento" class="form-label">Documento</label>
+                                    <input type="text" class="form-control" id="documento" name="documento" required>
                                 </div>
-                            </div> </div><div class="col-md-6">
+                            </div>
+                            <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="precio_trago" class="form-label">Total</label>
+                                    <label for="factura_numero" class="form-label">Factura Numero</label>
+                                    <input type="text" class="form-control" id="factura_numero" name="factura_numero" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="fecha_emision" class="form-label">Fecha Emision</label>
+                                    <input type="date" class="form-control" id="fecha_emision" name="fecha_emision" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="fecha_venta" class="form-label">Fecha Venta</label>
+                                    <input type="date" class="form-control" id="fecha_venta" name="fecha_venta" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="base_disponible" class="form-label">Base disponible</label>
+                                        <input type="number" class="form-control" id="base_disponible" name="base_disponible" required>
+                                    </div>
+                                </div> 
+                            <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="igv" class="form-label">IGV</label>
+                                        <input type="number" class="form-control" id="igv" name="igv" required>
+                                    </div>
+                                </div> 
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="total" class="form-label">Total</label>
                                     <input type="number" class="form-control" id="total" name="total" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="precio_trago" class="form-label">Tasa IGV</label>
+                                    <label for="tasa_igv" class="form-label">Tasa IGV</label>
                                     <input type="number" class="form-control" id="tasa_igv" name="tasa_igv" required>
                                 </div>
                             </div>
@@ -209,24 +217,89 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="#">
+                <form id="editarModalForm{{ $reporteventa->id }}" method="POST" action="{{ route('reportes_ventas.update', $reporteventa->id) }}">
                     @csrf
                     @method('PUT')
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="trago" class="form-label">Ingrese el Nombre</label>
-                                <input type="text" class="form-control" id="tragos" name="tragos" value=""   required>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="cod_compra" class="form-label">Cod Compra</label>
+                                    <input type="text" class="form-control" id="cod_compra" name="cod_compra" value="{{ $reporteventa->cod_compra }}" required>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="precio_trago" class="form-label">Precio</label>
-                                <input type="number" class="form-control" id="precio_trago" name="precio_trago"  required>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="tipo_cambio" class="form-label">Tipo Cambio</label>
+                                    <input type="number" class="form-control" id="tipo_cambio" name="tipo_cambio" value="{{ $reporteventa->tipo_cambio }}" required>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="fecha_comprobantes" class="form-label">Fecha Comprobante</label>
+                                    <input type="date" class="form-control" id="fecha_comprobantes" name="fecha_comprobantes" value="{{ $reporteventa->fecha_comprobantes }}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="ruc" class="form-label">RUC</label>
+                                    <input type="text" class="form-control" id="ruc" name="ruc" value="{{ $reporteventa->ruc }}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="nombre_proveedor" class="form-label">Nombre Proveedor</label>
+                                    <input type="text" class="form-control" id="nombre_proveedor" name="nombre_proveedor" value="{{ $reporteventa->nombre_proveedor }}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="documento" class="form-label">Documento</label>
+                                    <input type="text" class="form-control" id="documento" name="documento" value="{{ $reporteventa->documento }}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="factura_numero" class="form-label">Factura Numero</label>
+                                    <input type="text" class="form-control" id="factura_numero" name="factura_numero" value="{{ $reporteventa->factura_numero }}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="fecha_emision" class="form-label">Fecha Emision</label>
+                                    <input type="date" class="form-control" id="fecha_emision" name="fecha_emision" value="{{ $reporteventa->fecha_emision }}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="fecha_venta" class="form-label">Fecha Venta</label>
+                                    <input type="date" class="form-control" id="fecha_venta" name="fecha_venta" value="{{ $reporteventa->fecha_venta }}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="base_disponible" class="form-label">Base disponible</label>
+                                        <input type="number" class="form-control" id="base_disponible" name="base_disponible" value="{{ $reporteventa->base_disponible }}" required>
+                                    </div>
+                                </div> 
+                            <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="igv" class="form-label">IGV</label>
+                                        <input type="number" class="form-control" id="igv" name="igv" value="{{ $reporteventa->igv }}" required>
+                                    </div>
+                                </div> 
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="total" class="form-label">Total</label>
+                                    <input type="number" class="form-control" id="total" name="total" value="{{ $reporteventa->total }}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="tasa_igv" class="form-label">Tasa IGV</label>
+                                    <input type="number" class="form-control" id="tasa_igv" name="tasa_igv" value="{{ $reporteventa->tasa_igv }}" required>
+                                </div>
+                            </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                         <button type="submit" class="btn btn-primary">Guardar Cambios</button>
@@ -238,19 +311,19 @@
 </div>
 
 
-<div class="modal fade" id="eliminarTragoModal" tabindex="-1" aria-labelledby="eliminarEmpresaModalLabel" aria-hidden="true">
+<div class="modal fade" id="eliminarModal{{ $reporteventa->id }}" tabindex="-1" aria-labelledby="eliminarEmpresaModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="eliminarTracoModalLabel">Eliminar Trago</h5>
+                <h5 class="modal-title" id="eliminarTracoModalLabel">Eliminar registro</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>¿Estás seguro de eliminar esta empresa?</p>
+                <p>¿Estás seguro de eliminar este registro?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <form method="POST" action="#">
+                <form id="eliminarModalForm{{ $reporteventa->id }}" method="POST" action="{{ route('reportes_ventas.destroy', $reporteventa->id) }}">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Eliminar</button>
