@@ -26,7 +26,7 @@
                         value="<?php if (!empty($_GET['s'])) echo $_GET['s']; ?>" />
                     <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
                 </form>
-                <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#agregarModal">
+                <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#crearModal">
                     <i class="fas fa-plus-circle"></i> Nuevo Registro
                 </a>
             </div>
@@ -108,7 +108,7 @@
 
 
 <!-- Modal para Crear Nuevo Tema -->
-<div class="modal fade" id="agregarModal" tabindex="-1" aria-labelledby="crearModalLabel" aria-hidden="true">
+<div class="modal fade" id="crearModal" tabindex="-1" aria-labelledby="crearModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -215,7 +215,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="trago" class="form-label">Ingrese el Nombre</label>
-                                <input type="text" class="form-control" id="tragos" name="tragos" value=" required>
+                                <input type="text" class="form-control" id="tragos" name="tragos" value=""   required>
                             </div>
                         </div>
 
