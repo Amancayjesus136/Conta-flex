@@ -120,77 +120,70 @@
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="mb-3">
+                                
                                     <label for="trago" class="form-label">Cod Compra</label>
                                     <input type="text" class="form-control" id="cod_compra" name="cod_compra" required>
-                                </div>
                             </div>
 
                             <div class="col-md-6">
-                                <div class="mb-3">
+                                
                                     <label for="trago" class="form-label">Tipo Cambio</label>
                                     <input type="text" class="form-control" id="tipo_cambio" name="tipo_cambio" required>
-                                </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="mb-3">
+                                
                                     <label for="precio_trago" class="form-label">Fecha Comprobante</label>
                                     <input type="number" class="form-control" id="fecha_comprobantes" name="fecha_comprobantes" required>
-                                </div>
-                            </div>+<div class="col-md-6">
-                                <div class="mb-3">
+                            </div>
+                            <div class="col-md-6">
+                                
                                     <label for="precio_trago" class="form-label">RUC</label>
                                     <input type="number" class="form-control" id="ruc" name="ruc" required>
-                                </div>
                             </div><div class="col-md-6">
-                                <div class="mb-3">
+                                
                                     <label for="precio_trago" class="form-label">Nombre Proveedor</label>
                                     <input type="number" class="form-control" id="nombre_proveedor" name="nombre_proveedor" required>
-                                </div>
                             </div><div class="col-md-6">
-                                <div class="mb-3">
+                                
                                     <label for="precio_trago" class="form-label">Documento</label>
                                     <input type="number" class="form-control" id="documento" name="documento" required>
-                                </div>
                             </div><div class="col-md-6">
-                                <div class="mb-3">
+                                
                                     <label for="precio_trago" class="form-label">Factura Numero</label>
                                     <input type="number" class="form-control" id="factura_numero" name="factura_numero" required>
-                                </div>
                             </div><div class="col-md-6">
-                                <div class="mb-3">
+                                
                                     <label for="precio_trago" class="form-label">Fecha Emision</label>
                                     <input type="number" class="form-control" id="fecha_emision" name="fecha_emision" required>
-                                </div>
                             </div>
-                            </div><div class="col-md-6">
-                                <div class="mb-3">
+                            </div>
+                            <div class="col-md-6">
+                                
                                     <label for="precio_trago" class="form-label">Fecha Venta</label>
                                     <input type="number" class="form-control" id="fecha_venta" name="fecha_venta" required>
-                                </div>
-                            </div> </div><div class="col-md-6">
-                                <div class="mb-3">
+                            </div> 
+                            <div class="col-md-6">
+                                
                                     <label for="precio_trago" class="form-label">Base disponible</label>
                                     <input type="number" class="form-control" id="base_disponible" name="base_disponible" required>
-                                </div>
-                            </div> </div><div class="col-md-6">
-                                <div class="mb-3">
+                            </div>
+                            <div class="col-md-6">
+                                
                                     <label for="precio_trago" class="form-label">IGV</label>
                                     <input type="number" class="form-control" id="igv" name="igv" required>
-                                </div>
-                            </div> </div><div class="col-md-6">
-                                <div class="mb-3">
+                            </div> 
+                        <div class="col-md-6">
+                                
                                     <label for="precio_trago" class="form-label">Total</label>
                                     <input type="number" class="form-control" id="total" name="total" required>
                                 </div>
-                            </div> </div><div class="col-md-6">
-                                <div class="mb-3">
+                            <div class="col-md-6">
+                                
                                     <label for="precio_trago" class="form-label">Tasa IGV</label>
                                     <input type="number" class="form-control" id="tasa_igv" name="tasa_igv" required>
                                 </div>
-                            </div>
-                        </div>
                         <button type="submit" class="btn btn-primary">Registrar</button>
+                        </div>
                     </form>
                 </div>
             </div>

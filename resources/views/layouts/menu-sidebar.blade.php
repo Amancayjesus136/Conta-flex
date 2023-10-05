@@ -253,12 +253,12 @@
         <ul class="nav nav-sm flex-column">
             <li class="nav-item">
                 <a href="#" class="nav-link" data-key="t-Suscripción">
-                    <i class="fas fa-file-invoice-dollar"></i> Reporte de Ventas
+                    <i class="fas fa-file-invoice-dollar"></i> Reporte de Compras
                 </a>
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link" data-key="t-Suscripción">
-                    <i class="fas fa-file-invoice"></i> Reporte de Compras
+                    <i class="fas fa-file-invoice"></i> Reporte de Ventas
                 </a>
             </li>
         </ul>

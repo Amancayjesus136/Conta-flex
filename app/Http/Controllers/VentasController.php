@@ -10,7 +10,6 @@ class VentasController extends Controller
     public function index()
     {
         return view ('ventas.index');
-
     }
 
     /**
@@ -21,13 +20,14 @@ class VentasController extends Controller
         //
     }
 
+
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
         Ventas::create($request->all());
-        return redirect('ventas')->with('success', 'Registro exitoso');
+        return redirect('listadoventas')->with('success', 'Registro exitoso');
     }
 
     public function consultarRuc(Request $request)
