@@ -13,8 +13,6 @@ class VentasController extends Controller
 
     }
 
-
-
     /**
      * Show the form for creating a new resource.
      */
@@ -28,28 +26,7 @@ class VentasController extends Controller
      */
     public function store(Request $request)
     {
-        // Crear una nueva instancia del modelo Ventas y establecer los valores de los campos
-        $venta = new Ventas();
-        $venta->cod_compra = $request->input('cod_compra');
-        $venta->tipo_cambio = $request->input('tipo_cambio');
-        $venta->fecha_comprobante = $request->input('fecha_comprobante');
-        $venta->ruc = $request->input('ruc');
-        $venta->nombre_proveedor = $request->input('nombre_proveedor');
-        $venta->documento = $request->input('documento');
-        $venta->factura_numero = $request->input('factura_numero');
-        $venta->fecha_emision = $request->input('fecha_emision');
-        $venta->fecha_venta = $request->input('fecha_venta');
-        $venta->base_disponible = $request->input('base_disponible');
-        $venta->IGV = $request->input('IGV');
-        $venta->total = $request->input('total');
-        $venta->tasa_IGV = $request->input('tasa_IGV');
-        // Asigna valores a otros campos según sea necesario
-        // Continúa asignando valores a otros campos...
-
-        // Guardar el modelo en la base de datos
-        $venta->save();
-
-        // Redirigir a la página de destino con un mensaje de éxito
+        Ventas::create($request->all());
         return redirect('ventas')->with('success', 'Registro exitoso');
     }
 
@@ -57,7 +34,7 @@ class VentasController extends Controller
     {
         $ruc = $request->input('ruc');
 
-        $data = null; // Inicializar $data en caso de no hacer una consulta
+        $data = null;
 
         if ($ruc) {
             $response = Http::timeout(30)->get('https://api.apis.net.pe/v1/ruc', [

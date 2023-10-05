@@ -9,6 +9,7 @@ use App\Http\Controllers\VentasController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\AsignarController;
 use App\Http\Controllers\ListadoUsuarioController;
+use App\Http\Controllers\ReporteVentasController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -83,14 +84,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/asignar', [AsignarController::class, 'store'])->name('asignar.store');
     Route::get('listado', [ListadoUsuarioController::class, 'index'])->name('listado.index');
 
-
-
-
-
-
-
-
     Route::resource('empresa', EmpresaController::class)->names('empresa');
+
+    // REPORTES
+    Route::resource('reporte', ReporteVentasController::class)->names('reportes_ventas.index');
+
 
 
 

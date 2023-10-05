@@ -31,7 +31,7 @@
         </div>
     </div>
 <div class="white-box">
-    <form action="{{ route('ventas.store') }}" method="get">
+    <form action="{{ route('ventas.store') }}" method="POST">
         @csrf
         <div class="border">
             <ul class="nav nav-pills custom-hover-nav-tabs">
@@ -58,7 +58,6 @@
 
         <div class="tab-content">
             <div class="tab-pane fade show active" id="datos">
-                <!-- Contenido de la pestaña "Datos" -->
                 <div class="row">
                     <div class="col-md-2">
                         <div class="form-group"><br>
@@ -70,44 +69,19 @@
                     
                     <div class="col-md-3">
                         <div class="form-group"><br>
-                            <label for="nombre_proveedor">Nombre Proveedor</label>
+                            <label for="nombre_proveedor">Nombre del Proveedor</label>
                             <input type="text" class="form-control" id="nombre_proveedor" name="nombre_proveedor">
                         </div>
                     </div>
-                    <div class="col-md-2">
-                        <div class="form-group"><br>
-                            <label for="cod_compra">Código de Compra</label>
-                            <input type="text" class="form-control" name="cod_compra" id="cod_compra" required
-                                placeholder="Ingrese el Código de Compra">
-                        </div>
-                    </div>
                 </div>
-                @if(isset($data))
-                @if(isset($data['error']))
-                <div class="alert alert-danger">
-                    <strong>Error:</strong> {{ $data['error'] }}
-                </div>
-                @else
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group"><br>
-                            <label for="numero_documento">Número de RUC</label>
-                            <input type="text" class="form-control" id="numero_documento" name="ruc"
-                                value="{{ $data['numeroDocumento'] }}" readonly>
-                        </div>
-                    </div>
-                </div>
-                @endif
-                @endif
             </div>
+
             <div class="tab-pane fade" id="facturacion">
-                <!-- Contenido de la pestaña "Facturación" -->
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group"><br>
-                            <label for="moneda">Moneda</label>
-                            <select class="form-select rounded-pill mb-3" aria-label="Moneda" id="moneda"
-                                name="moneda">
+                            <label for="cod_compra">Cod Compra</label>
+                            <select class="form-select rounded-pill mb-3" aria-label="cod_compra" id="cod_compra" name="cod_compra">
                                 <option selected>Seleccionar moneda...</option>
                                 <option value="soles">Soles</option>
                                 <option value="dolares">Dólares</option>
@@ -117,7 +91,7 @@
                     <div class="col-md-4">
                         <div class="form-group"><br>
                             <label for="tipo_cambio">Tipo de Cambio</label>
-                            <input type="text" class="form-control" id="tipo_cambio" name="tipo_cambio">
+                            <input type="number" class="form-control" id="tipo_cambio" name="tipo_cambio">
                         </div>
                     </div>
                 </div>
@@ -125,13 +99,13 @@
                     <div class="col-md-4">
                         <div class="form-group"><br>
                             <label for="documento">Documento</label>
-                            <input type="text" class="form-control" id="tipo_cambio" name="documento">
+                            <input type="number" class="form-control" id="tipo_cambio" name="documento">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group"><br>
                             <label for="factura_numero">Factura número</label>
-                            <input type="text" class="form-control" id="factura_numero" name="factura_numero">
+                            <input type="number" class="form-control" id="factura_numero" name="factura_numero">
                         </div>
                     </div>
                 </div>
@@ -139,31 +113,30 @@
                     <div class="col-md-2">
                         <div class="form-group"><br>
                             <label for="base_disponible">Base Disponible</label>
-                            <input type="text" class="form-control" id="base_disponible" name="base_disponible">
+                            <input type="number" class="form-control" id="base_disponible" name="base_disponible">
                         </div>
                     </div>
                     <div class="col-md-2">
                         <div class="form-group"><br>
                             <label for="tasa_IGV">Tasa de IGV</label>
-                            <input type="text" class="form-control" id="tasa_IGV" name="tasa_IGV">
+                            <input type="number" class="form-control" id="tasa_IGV" name="tasa_IGV">
                         </div>
                     </div>
                     <div class="col-md-2">
                         <div class="form-group"><br>
                             <label for="IGV">IGV</label>
-                            <input type="text" class="form-control" id="IGV" name="IGV">
+                            <input type="number" class="form-control" id="IGV" name="IGV">
                         </div>
                     </div>
                     <div class="col-md-2">
                         <div class="form-group"><br>
                             <label for="total">Total</label>
-                            <input type="text" class="form-control" id="total" name="total">
+                            <input type="number" class="form-control" id="total" name="total">
                         </div>
                     </div>
                 </div>
             </div>
             <div class="tab-pane fade" id="fechas">
-                <!-- Contenido de la pestaña "Fechas" -->
                 <div class="row">
                     <div class="col-md-2">
                         <div class="form-group"><br>
@@ -187,7 +160,6 @@
                 </div>
             </div>
         </div>
-        <!-- Botones del formulario -->
         <div class="row">
             <div class="col-lg-12 text-end"><br><br>
                 <button type="submit" class="btn btn-success">Guardar Venta</button>

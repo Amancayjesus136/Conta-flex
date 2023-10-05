@@ -81,7 +81,6 @@
             <div class="modal-body">
                 <form method="POST" action="{{ route('empresa.store') }}" id="agregar-form">
                     @csrf
-                  
                     <div class="mb-3">
                         <label for="nombre_empresa" class="form-label">Nombre de la Empresa</label>
                         <input type="text" class="form-control" id="nombre_empresa" name="nombre_empresa" required>

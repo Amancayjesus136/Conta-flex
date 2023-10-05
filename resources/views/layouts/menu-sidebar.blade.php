@@ -227,7 +227,7 @@
 <!-- ============================================================== -->
 <li class="nav-item">
     <a class="nav-link menu-link" href="#" data-bs-toggle="collapse" data-bs-target="#sidebarModuloConsultas" aria-expanded="false" aria-controls="sidebarModuloConsultas">
-        <i class="fas fa-chart-bar"></i> <span data-key="t-Configuración">Registros</span>
+        <i class="fas fa-chart-bar"></i> <span data-key="t-Configuración">Comprobantes</span>
     </a>
     <div class="collapse menu-dropdown" id="sidebarModuloConsultas">
         <ul class="nav nav-sm flex-column">
