@@ -218,7 +218,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="editarModalForm{{ $reporteventa->id }}" method="POST" action="{{ route('reportes_ventas.update', $reporteventa->id) }}">
+                <form id="editarModalForm{{ $reporteventa->id }}" method="POST" action="#">
                     @csrf
                     @method('PUT')
                     <div class="row">
@@ -324,7 +324,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <form id="eliminarModalForm{{ $reporteventa->id }}" method="POST" action="{{ route('reportes_ventas.destroy', $reporteventa->id) }}">
+                <form id="eliminarModalForm{{ $reporteventa->id }}" method="POST" action="#">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Eliminar</button>
@@ -335,5 +335,41 @@
 </div>
 @endforeach
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    $(document).ready(function() {
+        $('form').submit(function(e) {
+            e.preventDefault();
+
+            var form = $(this);
+
+            $.ajax({
+                type: "POST",
+                url: form.attr('action'),
+                data: form.serialize(),
+                success: function(response) {
+                    if (response.success) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Usuario registrado correctamente',
+                            showConfirmButton: false,
+                            timer: 2000
+                        });
+
+                        setTimeout(function() {
+                           
+                        }, 2000);
+                    }
+                },
+                error: function(response) {
+                }
+            });
+        });
+    });
+
+</script>
+
 @endsection
+
+
 

@@ -47,7 +47,8 @@ class ReporteVentasController extends Controller
     public function store(Request $request)
     {
         Ventas::create($request->all());
-        return redirect('reporte')->with('success', 'Registro exitoso');
+        return response()->json(['success' => true]);
+
     }
 
     /**
