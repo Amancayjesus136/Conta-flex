@@ -335,42 +335,5 @@
 </div>
 @endforeach
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    $(document).ready(function() {
-        $('form').submit(function(e) {
-            e.preventDefault();
-
-            var form = $(this);
-
-            $.ajax({
-                type: "POST",
-                url: form.attr('action'),
-                data: form.serialize(),
-                success: function(response) {
-                    if (response.success) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Usuario registrado correctamente',
-                            showConfirmButton: false,
-                            timer: 2000
-                        });
-
-                        // Redirige al usuario a la página deseada después de 2 segundos
-                        setTimeout(function() {
-                            window.location.href = "{{ route('crear_usuario.index') }}";
-                        }, 2000);
-                    }
-                },
-                error: function(response) {
-                    // Manejar el error si es necesario
-                }
-            });
-        });
-    });
-
-</script>
-
-
 @endsection
 

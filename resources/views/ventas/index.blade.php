@@ -168,6 +168,8 @@
     </form>
 </div>
 
+<!-- animaciones -->
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     $(document).ready(function() {
@@ -189,20 +191,21 @@
                             timer: 2000
                         });
 
-                        // Redirige al usuario a la página deseada después de 2 segundos
                         setTimeout(function() {
                             window.location.href = "{{ route('ventas.index') }}";
                         }, 2000);
                     }
                 },
                 error: function(response) {
-                    // Manejar el error si es necesario
                 }
             });
         });
     });
 
 </script>
+
+<!-- animaciones -->
+
 
 <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="assets/libs/simplebar/simplebar.min.js"></script>
