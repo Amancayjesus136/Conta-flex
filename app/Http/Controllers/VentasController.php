@@ -27,7 +27,7 @@ class VentasController extends Controller
     public function store(Request $request)
     {
         Ventas::create($request->all());
-        return redirect('listadoventas')->with('success', 'Registro exitoso');
+        return response()->json(['success' => true]);
     }
 
     public function consultarRuc(Request $request)
