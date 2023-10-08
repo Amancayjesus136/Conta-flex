@@ -116,90 +116,133 @@
                 <div class="modal-body">
                     <form action="{{route('reporte_ventas.store')}}" method="POST" id="reservation-form">
                         @csrf
-                        <div class="row">
-                        <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="ruc" class="form-label">RUC</label>
-                                    <input type="number" class="form-control" id="ruc" name="ruc" required>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="nombre_proveedor" class="form-label">Nombre Proveedor</label>
-                                    <input type="number" class="form-control" id="nombre_proveedor" name="nombre_proveedor" required>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="cod_compra" class="form-label">Cod Compra</label>
-                                    <input type="text" class="form-control" id="cod_compra" name="cod_compra" required>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="tipo_compra" class="form-label">Tipo Cambio</label>
-                                    <input type="number" class="form-control" id="tipo_compra" name="tipo_compra" required>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="documento" class="form-label">Documento</label>
-                                    <input type="number" class="form-control" id="documento" name="documento" required>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="fecha_emision" class="form-label">Factura Numero</label>
-                                    <input type="number" class="form-control" id="fecha_emision" name="fecha_emision" required>
-                                </div>
-                            </div>
+                        <div class="border">
+                            <ul class="nav nav-pills custom-hover-nav-tabs">
+                                <li class="nav-item">
+                                    <a href="#datos" data-bs-toggle="tab" aria-expanded="false" class="nav-link active">
+                                        <i class="ri-user-fill nav-icon nav-tab-position"></i>
+                                        <h5 class="nav-title nav-tab-position m-0"></h5>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#facturacion" data-bs-toggle="tab" aria-expanded="true" class="nav-link">
+                                        <i class="ri-file-text-line nav-icon nav-tab-position"></i>
+                                        <h5 class="nav-title nav-tab-position m-0"></h5>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#fechas" data-bs-toggle="tab" aria-expanded="true" class="nav-link">
+                                        <i class="ri-calendar-line nav-icon nav-tab-position"></i>
+                                        <h5 class="nav-title nav-tab-position m-0"></h5>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="mb-3">
-                                    <label for="fecha_comprobantes" class="form-label">Fecha Comprobante</label>
-                                    <input type="date" class="form-control" id="fecha_comprobantes" name="fecha_comprobantes" required>
+
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="datos">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"><br>
+                                            <label for="ruc">RUC</label>
+                                            <input type="text" class="form-control" name="ruc" id="ruc" required
+                                                placeholder="Ingrese el Documento">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <div class="form-group"><br>
+                                            <label for="nombre_proveedor">Nombre del Proveedor</label>
+                                            <input type="text" class="form-control" id="nombre_proveedor" name="nombre_proveedor">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="mb-3">
-                                    <label for="precio_trago" class="form-label">Fecha Emision</label>
-                                    <input type="date" class="form-control" id="precio_trago" name="precio_trago" required>
+
+                            <div class="tab-pane fade" id="facturacion">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"><br>
+                                            <label for="cod_compra">Cod Compra</label>
+                                            <select class="form-select rounded-pill mb-3" aria-label="cod_compra" id="cod_compra" name="cod_compra">
+                                                <option selected>Seleccionar moneda...</option>
+                                                <option value="soles">Soles</option>
+                                                <option value="dolares">Dólares</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group"><br>
+                                            <label for="tipo_cambio">Tipo de Cambio</label>
+                                            <input type="number" class="form-control" id="tipo_cambio" name="tipo_cambio">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"><br>
+                                            <label for="documento">Documento</label>
+                                            <input type="number" class="form-control" id="tipo_cambio" name="documento">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group"><br>
+                                            <label for="factura_numero">Factura número</label>
+                                            <input type="number" class="form-control" id="factura_numero" name="factura_numero">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group"><br>
+                                            <label for="base_disponible">Base Dis</label>
+                                            <input type="number" class="form-control" id="base_disponible" name="base_disponible">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group"><br>
+                                            <label for="tasa_IGV">Tasa de IGV</label>
+                                            <input type="number" class="form-control" id="tasa_IGV" name="tasa_IGV">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group"><br>
+                                            <label for="IGV">IGV</label>
+                                            <input type="number" class="form-control" id="IGV" name="IGV">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group"><br>
+                                            <label for="total">Total</label>
+                                            <input type="number" class="form-control" id="total" name="total">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="mb-3">
-                                    <label for="fecha_venta" class="form-label">Fecha Venta</label>
-                                    <input type="date" class="form-control" id="fecha_venta" name="fecha_venta" required>
+                            <div class="tab-pane fade" id="fechas">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group"><br>
+                                            <label for="fecha_comprobante">Fecha Comprobante</label>
+                                            <input type="date" class="form-control" id="fecha_comprobante"
+                                                name="fecha_comprobante">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group"><br>
+                                            <label for="fecha_emision">Fecha de Emisión</label>
+                                            <input type="date" class="form-control" id="fecha_emision" name="fecha_emision">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group"><br>
+                                            <label for="fecha_venta">Fecha de Venta</label>
+                                            <input type="date" class="form-control" id="fecha_venta" name="fecha_venta">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="mb-3">
-                                    <label for="base_disponible" class="form-label">Base Dis</label>
-                                    <input type="number" class="form-control" id="base_disponible" name="base_disponible" required>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="mb-3">
-                                    <label for="tasa_igv" class="form-label">Tasa IGV</label>
-                                    <input type="number" class="form-control" id="tasa_igv" name="tasa_igv" required>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="mb-3">
-                                    <label for="igv" class="form-label">IGV</label>
-                                    <input type="number" class="form-control" id="igv" name="igv" required>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="mb-3">
-                                    <label for="total" class="form-label">Total</label>
-                                    <input type="number" class="form-control" id="total" name="total" required>
-                                </div>
-                            </div>
-                        </div>
+                        </div><br>
                         <button type="submit" class="btn btn-primary">Registrar</button>
                     </form>
                 </div>
@@ -221,90 +264,134 @@
                 <form method="POST" action="{{ route('reporte_ventas.update', $reporteventa->id) }}">
                     @csrf
                     @method('PUT')
-                    <div class="row">
-                    <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="ruc" class="form-label">RUC</label>
-                                <input type="number" class="form-control" id="ruc" name="ruc" value="{{ $reporteventa->ruc}}" required>
-                            </div>
+                        <div class="border">
+                            <ul class="nav nav-pills custom-hover-nav-tabs">
+                                <li class="nav-item">
+                                    <a href="#datos2" data-bs-toggle="tab" aria-expanded="false" class="nav-link active">
+                                        <i class="ri-user-fill nav-icon nav-tab-position"></i>
+                                        <h5 class="nav-title nav-tab-position m-0"></h5>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#facturacion2" data-bs-toggle="tab" aria-expanded="true" class="nav-link">
+                                        <i class="ri-file-text-line nav-icon nav-tab-position"></i>
+                                        <h5 class="nav-title nav-tab-position m-0"></h5>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#fechas2" data-bs-toggle="tab" aria-expanded="true" class="nav-link">
+                                        <i class="ri-calendar-line nav-icon nav-tab-position"></i>
+                                        <h5 class="nav-title nav-tab-position m-0"></h5>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="nombre_proveedor" class="form-label">Nombre Proveedor</label>
-                                <input type="text" class="form-control" id="nombre_proveedor" name="nombre_proveedor" value="{{ $reporteventa->nombre_proveedor}}" required>
+
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="datos2">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"><br>
+                                            <label for="ruc">RUC</label>
+                                            <input type="text" class="form-control" name="ruc" id="ruc" value="{{ $reporteventa->ruc }}" required
+                                                placeholder="Ingrese el Documento">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <div class="form-group"><br>
+                                            <label for="nombre_proveedor">Nombre del Proveedor</label>
+                                            <input type="text" class="form-control" id="nombre_proveedor" name="nombre_proveedor" value="{{ $reporteventa->nombre_proveedor }}" required>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="cod_compra" class="form-label">Cod Compra</label>
-                                <input type="text" class="form-control" id="cod_compra" name="cod_compra" value="{{ $reporteventa->cod_compra}}" required>
+
+                            <div class="tab-pane fade" id="facturacion2">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"><br>
+                                            <label for="cod_compra">Cod Compra</label>
+                                            <select class="form-select rounded-pill mb-3" aria-label="cod_compra" id="cod_compra" name="cod_compra" value="{{ $reporteventa->cod_compra }}" required>
+                                                <option selected>Seleccionar moneda...</option>
+                                                <option value="soles">Soles</option>
+                                                <option value="dolares">Dólares</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group"><br>
+                                            <label for="tipo_cambio">Tipo de Cambio</label>
+                                            <input type="number" class="form-control" id="tipo_cambio" name="tipo_cambio" value="{{ $reporteventa->tipo_cambio }}" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"><br>
+                                            <label for="documento">Documento</label>
+                                            <input type="number" class="form-control" id="tipo_cambio" name="documento" value="{{ $reporteventa->documento }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group"><br>
+                                            <label for="factura_numero">Factura número</label>
+                                            <input type="number" class="form-control" id="factura_numero" name="factura_numero" value="{{ $reporteventa->factura_numero }}" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group"><br>
+                                            <label for="base_disponible">Base Dis</label>
+                                            <input type="number" class="form-control" id="base_disponible" name="base_disponible" value="{{ $reporteventa->base_disponible }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group"><br>
+                                            <label for="tasa_IGV">Tasa de IGV</label>
+                                            <input type="number" class="form-control" id="tasa_IGV" name="tasa_IGV" value="{{ $reporteventa->tasa_IGV }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group"><br>
+                                            <label for="IGV">IGV</label>
+                                            <input type="number" class="form-control" id="IGV" name="IGV" value="{{ $reporteventa->IGV }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group"><br>
+                                            <label for="total">Total</label>
+                                            <input type="number" class="form-control" id="total" name="total" value="{{ $reporteventa->total }}" required>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="tipo_cambio" class="form-label">Tipo Cambio</label>
-                                <input type="number" class="form-control" id="tipo_cambio" name="tipo_cambio" value="{{ $reporteventa->tipo_cambio}}" required>
+                            <div class="tab-pane fade" id="fechas2">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group"><br>
+                                            <label for="fecha_comprobante">Fecha Comprobante</label>
+                                            <input type="date" class="form-control" id="fecha_comprobante" name="fecha_comprobante" value="{{ $reporteventa->fecha_comprobante }}" required> 
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group"><br>
+                                            <label for="fecha_emision">Fecha de Emisión</label>
+                                            <input type="date" class="form-control" id="fecha_emision" name="fecha_emision" value="{{ $reporteventa->fecha_emision }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group"><br>
+                                            <label for="fecha_venta">Fecha de Venta</label>
+                                            <input type="date" class="form-control" id="fecha_venta" name="fecha_venta" value="{{ $reporteventa->fecha_venta }}" required>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="fecha_comprobante" class="form-label">Fecha Comprobante</label>
-                                <input type="date" class="form-control" id="fecha_comprobante" name="fecha_comprobante" value="{{ $reporteventa->fecha_comprobante}}" required>
-                            </div>
-                        </div>
-                        
-                        
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="documento" class="form-label">Documento</label>
-                                <input type="number" class="form-control" id="documento" name="documento" value="{{ $reporteventa->documento}}" required>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="factura_numero" class="form-label">Factura Numero</label>
-                                <input type="number" class="form-control" id="factura_numero" name="factura_numero" value="{{ $reporteventa->factura_numero}}" required>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="fecha_emision" class="form-label">Fecha Emision</label>
-                                <input type="date" class="form-control" id="fecha_emision" name="fecha_emision" value="{{ $reporteventa->fecha_emision}}" required>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="fecha_venta" class="form-label">Fecha Venta</label>
-                                <input type="date" class="form-control" id="fecha_venta" name="fecha_venta" value="{{ $reporteventa->fecha_venta}}" required>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="base_disponible" class="form-label">Base disponible</label>
-                                <input type="number" class="form-control" id="base_disponible" name="base_disponible" value="{{ $reporteventa->base_disponible}}" required>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="IGV" class="form-label">IGV</label>
-                                <input type="number" class="form-control" id="IGV" name="IGV" value="{{ $reporteventa->IGV}}" required>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="total" class="form-label">Total</label>
-                                <input type="number" class="form-control" id="total" name="total" value="{{ $reporteventa->total}}" required>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="tasa_IGV" class="form-label">Tasa IGV</label>
-                                <input type="number" class="form-control" id="tasa_IGV" name="tasa_IGV" value="{{ $reporteventa->tasa_IGV}}" required>
-                            </div>
-                        </div>
-                    </div>
+                        </div><br>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button><br>
                         <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                     </div>
                 </form>
