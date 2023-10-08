@@ -30,7 +30,7 @@ class ReporteVentasController extends Controller
                             ->orWhere('tasa_IGV', 'LIKE', '%'.$_GET['s'].'%');
           }
           $reporteventas = $reporteventas->get();
-        return view ('reportes_ventas.index', compact('reporteventas'));
+        return view ('reporte.index', compact('reporteventas'));
     }
 
     /**
@@ -47,7 +47,8 @@ class ReporteVentasController extends Controller
     public function store(Request $request)
     {
         Ventas::create($request->all());
-        return response()->json(['success' => true]);
+        return redirect()->back()->with('success', 'actualizado exitosamente');
+
 
     }
 
