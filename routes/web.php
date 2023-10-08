@@ -5,10 +5,11 @@ use App\Http\Controllers\ActivityLogController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DocumentoRucController;
 use App\Http\Controllers\ActivityLogGeneralController;
-use App\Http\Controllers\VentasController;
+use App\Http\Controllers\ComprasController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\AsignarController;
 use App\Http\Controllers\ListadoUsuarioController;
+use App\Http\Controllers\ReporteComprasController;
 use App\Http\Controllers\ReporteVentasController;
 
 
@@ -79,13 +80,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/actividades-generales', [ActivityLogGeneralController::class, 'index'])->name('actividades-generales.index')->middleware('role:superadministrador');
 
     // Contabilidad
-    Route::match( ['get', 'post'],'ventas', [VentasController::class, 'index'])->name('ventas.index');
-    Route::post('/ventas', [VentasController::class, 'store'])->name('ventas.store');
+    Route::match( ['get', 'post'],'compras', [ComprasController::class, 'index'])->name('compras.index');
+    Route::post('/compras', [ComprasController::class, 'store'])->name('compras.store');
     Route::post('/asignar', [AsignarController::class, 'store'])->name('asignar.store');
     Route::get('listado', [ListadoUsuarioController::class, 'index'])->name('listado.index');
 
     Route::resource('empresa', EmpresaController::class)->names('empresa');
-    Route::resource('/reporte_ventas', ReporteVentasController::class);
+    Route::resource('reporte_compras', ReporteComprasController::class);
+    Route::resource('reporte_ventas', ReporteVentasController::class);
 
 
 

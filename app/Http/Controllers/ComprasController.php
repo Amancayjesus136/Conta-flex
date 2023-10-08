@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Ventas;
 
-class VentasController extends Controller
+class ComprasController extends Controller
 {
     public function index()
     {
-        return view ('ventas.index');
+        return view ('compras.index');
     }
 
     /**
@@ -26,7 +26,7 @@ class VentasController extends Controller
      */
     public function store(Request $request)
     {
-        Ventas::create($request->all());
+        compras::create($request->all());
         return response()->json(['success' => true]);
     }
 

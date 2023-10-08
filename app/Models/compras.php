@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ventas extends Model
+class compras extends Model
 {
     use HasFactory;
-    protected $table = 'ventas';
+
+    protected $table = 'compras';
 
     protected $fillable = [
-        'cod_venta',
+        'cod_compra',
         'tipo_cambio',
         'fecha_comprobante',
         'ruc',
@@ -19,10 +20,11 @@ class ventas extends Model
         'documento',
         'factura_numero',
         'fecha_emision',
-        'fecha_venta',
+        'fecha_compra',
         'base_disponible',
         'IGV',
         'total',
         'tasa_IGV',
     ];
 }
+

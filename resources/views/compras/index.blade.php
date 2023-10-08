@@ -31,7 +31,7 @@
         </div>
     </div>
 <div class="white-box">
-    <form action="{{ route('ventas.store') }}" method="POST">
+    <form action="{{ route('compras.store') }}" method="POST">
         @csrf
         <div class="border">
             <ul class="nav nav-pills custom-hover-nav-tabs">
@@ -192,7 +192,7 @@
                         });
 
                         setTimeout(function() {
-                            window.location.href = "{{ route('ventas.index') }}";
+                            window.location.href = "{{ route('compras.index') }}";
                         }, 2000);
                     }
                 },

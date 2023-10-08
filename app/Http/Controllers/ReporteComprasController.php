@@ -4,18 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\ventas;
+use App\Models\compras;
 
-class ReporteVentasController extends Controller
+class ReporteComprasController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $reporteventas = ventas::query();
+        $reportecompras = compras::query();
         if (!empty($_GET['s'])) {
-            $reporteventas = $reporteventas->where('cod_venta', 'LIKE', '%'.$_GET['s'].'%')
+            $reportecompras = $reportecompras->where('cod_compra', 'LIKE', '%'.$_GET['s'].'%')
                             ->orWhere('tipo_cambio', 'LIKE', '%'.$_GET['s'].'%')
                             ->orWhere('fecha_comprobante', 'LIKE', '%'.$_GET['s'].'%')
                             ->orWhere('ruc', 'LIKE', '%'.$_GET['s'].'%')
@@ -29,8 +29,8 @@ class ReporteVentasController extends Controller
                             ->orWhere('total', 'LIKE', '%'.$_GET['s'].'%')
                             ->orWhere('tasa_IGV', 'LIKE', '%'.$_GET['s'].'%');
           }
-          $reporteventas = $reporteventas->get();
-        return view ('reporte_ventas.index', compact('reporteventas'));
+          $reportecompras = $reportecompras->get();
+        return view ('reporte.index', compact('reportecompras'));
     }
 
     /**
@@ -46,7 +46,7 @@ class ReporteVentasController extends Controller
      */
     public function store(Request $request)
     {
-        ventas::create($request->all());
+        compras::create($request->all());
         return redirect()->back()->with('success', 'actualizado exitosamente');
 
     }
@@ -64,7 +64,7 @@ class ReporteVentasController extends Controller
      */
     public function edit(string $id)
     {
-        $reporteventa = ventas::findOrFail($id);
+        $reportecompra = compras::findOrFail($id);
         return redirect()->back()->with('success', 'actualizado exitosamente');
     }
 
@@ -73,8 +73,8 @@ class ReporteVentasController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $reporteventas = ventas::findOrFail($id);
-        $reporteventas->update($request->all());
+        $reportecompras = compras::findOrFail($id);
+        $reportecompras->update($request->all());
         return redirect()->back()->with('success', 'actualizado exitosamente');
     }
 
@@ -83,8 +83,8 @@ class ReporteVentasController extends Controller
      */
     public function destroy(string $id)
     {
-        $reporteventas = ventas::findOrFail($id);
-        $reporteventas->delete();
+        $reportecompras = compras::findOrFail($id);
+        $reportecompras->delete();
         return redirect()->back()->with('success', 'actualizado exitosamente');
     }
 }

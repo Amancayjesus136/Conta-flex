@@ -46,7 +46,7 @@
                             <thead class="table-light">
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Cod Compra</th>
+                                    <th scope="col">Cod Venta</th>
                                     <th scope="col">Tipo Cambio</th>
                                     <th scope="col">Fecha Comprobante</th>
                                     <th scope="col">RUC</th>
@@ -65,27 +65,27 @@
                             <tbody>
                                 <!-- FILAS DE LA TABLA -->
                                 @php $contador = 1; @endphp
-                                @foreach($reportecompras as $reportecompra)
+                                @foreach($reporteventas as $reporteventa)
                                     <tr>
                                     <td>{{ $contador }}</td>
-                                        <td>{{ $reportecompra->cod_compra }}</td>
-                                        <td>{{ $reportecompra->tipo_cambio }}</td>
-                                        <td>{{ $reportecompra->fecha_comprobante }}</td>
-                                        <td>{{ $reportecompra->ruc }}</td>
-                                        <td>{{ $reportecompra->nombre_proveedor }}</td>
-                                        <td>{{ $reportecompra->documento }}</td>
-                                        <td>{{ $reportecompra->factura_numero }}</td>
-                                        <td>{{ $reportecompra->fecha_emision }}</td>
-                                        <td>{{ $reportecompra->fecha_venta }}</td>
-                                        <td>{{ $reportecompra->base_disponible }}</td>
-                                        <td>{{ $reportecompra->IGV }}</td>
-                                        <td>{{ $reportecompra->total }}</td>
-                                        <td>{{ $reportecompra->tasa_IGV }}</td>
+                                        <td>{{ $reporteventa->cod_venta }}</td>
+                                        <td>{{ $reporteventa->tipo_cambio }}</td>
+                                        <td>{{ $reporteventa->fecha_comprobante }}</td>
+                                        <td>{{ $reporteventa->ruc }}</td>
+                                        <td>{{ $reporteventa->nombre_proveedor }}</td>
+                                        <td>{{ $reporteventa->documento }}</td>
+                                        <td>{{ $reporteventa->factura_numero }}</td>
+                                        <td>{{ $reporteventa->fecha_emision }}</td>
+                                        <td>{{ $reporteventa->fecha_venta }}</td>
+                                        <td>{{ $reporteventa->base_disponible }}</td>
+                                        <td>{{ $reporteventa->IGV }}</td>
+                                        <td>{{ $reporteventa->total }}</td>
+                                        <td>{{ $reporteventa->tasa_IGV }}</td>
                                         <td>
-                                        <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal{{ $reportecompra->id }}">
+                                        <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal{{ $reporteventa->id }}">
                                             <i class="fas fa-edit"></i> Editar
                                         </a>
-                                            <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarTragoModal{{ $reportecompra->id }}">
+                                            <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarTragoModal{{ $reporteventa->id }}">
                                                 <i class="fas fa-trash-alt"></i> Eliminar
                                             </a>
                                         </td>
@@ -114,7 +114,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{route('reporte_compras.store')}}" method="POST" id="reservation-form">
+                    <form action="{{route('reporte_ventas.store')}}" method="POST" id="reservation-form">
                         @csrf
                         <div class="border">
                             <ul class="nav nav-pills custom-hover-nav-tabs">
@@ -163,8 +163,8 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group"><br>
-                                            <label for="cod_compra">Cod Compra</label>
-                                            <select class="form-select rounded-pill mb-3" aria-label="cod_compra" id="cod_compra" name="cod_compra">
+                                            <label for="cod_compra">Cod Venta</label>
+                                            <select class="form-select rounded-pill mb-3" aria-label="cod_venta" id="cod_venta" name="cod_venta">
                                                 <option selected>Seleccionar moneda...</option>
                                                 <option value="soles">Soles</option>
                                                 <option value="dolares">Dólares</option>
@@ -236,8 +236,8 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group"><br>
-                                            <label for="fecha_venta">Fecha de compra</label>
-                                            <input type="date" class="form-control" id="fecha_compra" name="fecha_compra">
+                                            <label for="fecha_venta">Fecha de venta</label>
+                                            <input type="date" class="form-control" id="fecha_venta" name="fecha_venta">
                                         </div>
                                     </div>
                                 </div>
@@ -251,9 +251,9 @@
     </div>
 <!-- Modal para Crear Nuevo Tema -->
 
-@foreach ($reportecompras as $reportecompra)
+@foreach ($reporteventas as $reporteventa)
 <!-- Modal de Editar -->
-<div class="modal fade" id="editarModal{{ $reportecompra->id }}" tabindex="-1" aria-labelledby="editarTragoModalLabel" aria-hidden="true">
+<div class="modal fade" id="editarModal{{ $reporteventa->id }}" tabindex="-1" aria-labelledby="editarTragoModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -261,7 +261,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{ route('reporte_compras.update', $reportecompra->id) }}">
+                <form method="POST" action="{{ route('reporte_ventas.update', $reporteventa->id) }}">
                     @csrf
                     @method('PUT')
                         <div class="border">
@@ -293,7 +293,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group"><br>
                                             <label for="ruc">RUC</label>
-                                            <input type="text" class="form-control" name="ruc" id="ruc" value="{{ $reportecompra->ruc }}" required
+                                            <input type="text" class="form-control" name="ruc" id="ruc" value="{{ $reporteventa->ruc }}" required
                                                 placeholder="Ingrese el Documento">
                                         </div>
                                     </div>
@@ -301,7 +301,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group"><br>
                                             <label for="nombre_proveedor">Nombre del Proveedor</label>
-                                            <input type="text" class="form-control" id="nombre_proveedor" name="nombre_proveedor" value="{{ $reportecompra->nombre_proveedor }}" required>
+                                            <input type="text" class="form-control" id="nombre_proveedor" name="nombre_proveedor" value="{{ $reporteventa->nombre_proveedor }}" required>
                                         </div>
                                     </div>
                                 </div>
@@ -311,8 +311,8 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group"><br>
-                                            <label for="cod_compra">Cod Compra</label>
-                                            <select class="form-select rounded-pill mb-3" aria-label="cod_compra" id="cod_compra" name="cod_compra" value="{{ $reportecompra->cod_compra }}" required>
+                                            <label for="cod_compra">Cod Venta</label>
+                                            <select class="form-select rounded-pill mb-3" aria-label="cod_venta" id="cod_venta" name="cod_venta" value="{{ $reporteventa->cod_venta }}" required>
                                                 <option selected>Seleccionar moneda...</option>
                                                 <option value="soles">Soles</option>
                                                 <option value="dolares">Dólares</option>
@@ -322,7 +322,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group"><br>
                                             <label for="tipo_cambio">Tipo de Cambio</label>
-                                            <input type="number" class="form-control" id="tipo_cambio" name="tipo_cambio" value="{{ $reportecompra->tipo_cambio }}" required>
+                                            <input type="number" class="form-control" id="tipo_cambio" name="tipo_cambio" value="{{ $reporteventa->tipo_cambio }}" required>
                                         </div>
                                     </div>
                                 </div>
@@ -330,13 +330,13 @@
                                     <div class="col-md-6">
                                         <div class="form-group"><br>
                                             <label for="documento">Documento</label>
-                                            <input type="number" class="form-control" id="tipo_cambio" name="documento" value="{{ $reportecompra->documento }}" required>
+                                            <input type="number" class="form-control" id="tipo_cambio" name="documento" value="{{ $reporteventa->documento }}" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group"><br>
                                             <label for="factura_numero">Factura número</label>
-                                            <input type="number" class="form-control" id="factura_numero" name="factura_numero" value="{{ $reportecompra->factura_numero }}" required>
+                                            <input type="number" class="form-control" id="factura_numero" name="factura_numero" value="{{ $reporteventa->factura_numero }}" required>
                                         </div>
                                     </div>
                                 </div>
@@ -344,25 +344,25 @@
                                     <div class="col-md-3">
                                         <div class="form-group"><br>
                                             <label for="base_disponible">Base Dis</label>
-                                            <input type="number" class="form-control" id="base_disponible" name="base_disponible" value="{{ $reportecompra->base_disponible }}" required>
+                                            <input type="number" class="form-control" id="base_disponible" name="base_disponible" value="{{ $reporteventa->base_disponible }}" required>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group"><br>
                                             <label for="tasa_IGV">Tasa de IGV</label>
-                                            <input type="number" class="form-control" id="tasa_IGV" name="tasa_IGV" value="{{ $reportecompra->tasa_IGV }}" required>
+                                            <input type="number" class="form-control" id="tasa_IGV" name="tasa_IGV" value="{{ $reporteventa->tasa_IGV }}" required>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group"><br>
                                             <label for="IGV">IGV</label>
-                                            <input type="number" class="form-control" id="IGV" name="IGV" value="{{ $reportecompra->IGV }}" required>
+                                            <input type="number" class="form-control" id="IGV" name="IGV" value="{{ $reporteventa->IGV }}" required>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group"><br>
                                             <label for="total">Total</label>
-                                            <input type="number" class="form-control" id="total" name="total" value="{{ $reportecompra->total }}" required>
+                                            <input type="number" class="form-control" id="total" name="total" value="{{ $reporteventa->total }}" required>
                                         </div>
                                     </div>
                                 </div>
@@ -372,19 +372,19 @@
                                     <div class="col-md-4">
                                         <div class="form-group"><br>
                                             <label for="fecha_comprobante">Fecha Comprobante</label>
-                                            <input type="date" class="form-control" id="fecha_comprobante" name="fecha_comprobante" value="{{ $reportecompra->fecha_comprobante }}" required> 
+                                            <input type="date" class="form-control" id="fecha_comprobante" name="fecha_comprobante" value="{{ $reporteventa->fecha_comprobante }}" required> 
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group"><br>
                                             <label for="fecha_emision">Fecha de Emisión</label>
-                                            <input type="date" class="form-control" id="fecha_emision" name="fecha_emision" value="{{ $reportecompra->fecha_emision }}" required>
+                                            <input type="date" class="form-control" id="fecha_emision" name="fecha_emision" value="{{ $reporteventa->fecha_emision }}" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group"><br>
                                             <label for="fecha_compra">Fecha de Venta</label>
-                                            <input type="date" class="form-control" id="fecha_compra" name="fecha_compra" value="{{ $reportecompra->fecha_compra }}" required>
+                                            <input type="date" class="form-control" id="fecha_venta" name="fecha_venta" value="{{ $reporteventa->fecha_venta }}" required>
                                         </div>
                                     </div>
                                 </div>
@@ -401,7 +401,7 @@
 </div>
 
 
-<div class="modal fade" id="eliminarTragoModal{{ $reportecompra->id }}" tabindex="-1" aria-labelledby="eliminarEmpresaModalLabel" aria-hidden="true">
+<div class="modal fade" id="eliminarTragoModal{{ $reporteventa->id }}" tabindex="-1" aria-labelledby="eliminarEmpresaModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -413,7 +413,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <form method="POST" action="{{ route('reporte_compras.destroy', $reportecompra->id) }}">
+                <form method="POST" action="{{ route('reporte_ventas.destroy', $reporteventa->id) }}">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Eliminar</button>

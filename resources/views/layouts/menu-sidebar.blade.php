@@ -232,7 +232,7 @@
     <div class="collapse menu-dropdown" id="sidebarModuloConsultas">
         <ul class="nav nav-sm flex-column">
             <li class="nav-item">
-                <a href="{{ route('ventas.index') }}" class="nav-link" data-key="t-Suscripción">
+                <a href="{{ route('compras.index') }}" class="nav-link" data-key="t-Suscripción">
                     <i class="fas fa-file-invoice-dollar"></i> Registro de Compras
                 </a>
             </li>
@@ -252,12 +252,12 @@
     <div class="collapse menu-dropdown" id="sidebarModuloListado">
         <ul class="nav nav-sm flex-column">
             <li class="nav-item">
-                <a href="#" class="nav-link" data-key="t-Suscripción">
+                <a href="{{ route('reporte_compras.index') }}" class="nav-link" data-key="t-Suscripción">
                     <i class="fas fa-file-invoice-dollar"></i> Reporte de Compras
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link" data-key="t-Suscripción">
+                <a href="{{ route('reporte_ventas.index') }}" class="nav-link" data-key="t-Suscripción">
                     <i class="fas fa-file-invoice"></i> Reporte de Ventas
                 </a>
             </li>
