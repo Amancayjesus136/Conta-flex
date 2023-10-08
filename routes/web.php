@@ -85,7 +85,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('listado', [ListadoUsuarioController::class, 'index'])->name('listado.index');
 
     Route::resource('empresa', EmpresaController::class)->names('empresa');
-    Route::resource('/reporte', ReporteVentasController::class)->names('reporte.index');
+    Route::resource('/reporte_ventas', ReporteVentasController::class);
 
 
 

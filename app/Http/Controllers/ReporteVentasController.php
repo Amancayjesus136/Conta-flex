@@ -49,7 +49,6 @@ class ReporteVentasController extends Controller
         Ventas::create($request->all());
         return redirect()->back()->with('success', 'actualizado exitosamente');
 
-
     }
 
     /**
@@ -66,7 +65,7 @@ class ReporteVentasController extends Controller
     public function edit(string $id)
     {
         $reporteventa = Ventas::findOrFail($id);
-        return redirect()->route('reporte.index');
+        return redirect()->back()->with('success', 'actualizado exitosamente');
     }
 
     /**
@@ -76,7 +75,7 @@ class ReporteVentasController extends Controller
     {
         $reporteventa = Ventas::findOrFail($id);
         $reporteventa->update($request->all());
-        return redirect()->route('reporte.index');
+        return redirect()->back()->with('success', 'actualizado exitosamente');
     }
 
     /**
@@ -86,6 +85,6 @@ class ReporteVentasController extends Controller
     {
         $reporteventa = Ventas::findOrFail($id);
         $reporteventa->delete();
-        return redirect()->route('reporte.index');
+        return redirect()->back()->with('success', 'actualizado exitosamente');
     }
 }
