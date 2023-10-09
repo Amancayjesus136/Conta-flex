@@ -16,22 +16,26 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0">Listado reporte</h4>
+        <a href="{{ route('reporte_compras.index', ['export' => 1]) }}" class="btn btn-success btn-sm">
+            <i class="fas fa-file-excel"></i>  Excel
+        </a>
+
 
             <div class="page-title-right">
-            <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1"></h4>
-                <form method="GET" class="listado-busqueda">
-                    <input type="text" placeholder="Ingrese su búsqueda" name="s" class="form-control input-sm"
-                        value="<?php if (!empty($_GET['s'])) echo $_GET['s']; ?>" />
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                </form>
-                <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#agregarModal">
-                    <i class="fas fa-plus-circle"></i> Nuevo Registro
-                </a>
+                <div class="card-header align-items-center d-flex">
+                    <h4 class="card-title mb-0 flex-grow-1"></h4>
+                    <form method="GET" class="listado-busqueda">
+                        <input type="text" placeholder="Ingrese su búsqueda" name="s" class="form-control input-sm"
+                            value="<?php if (!empty($_GET['s'])) echo $_GET['s']; ?>" />
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                    </form>
+                    
+                    <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#agregarModal">
+                        <i class="fas fa-plus-circle"></i> Nuevo Registro
+                    </a>
+                    
+                </div>
             </div>
-            </div>
-
         </div>
     </div>
 </div>
@@ -47,15 +51,15 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Cod Compra</th>
-                                    <th scope="col">Tipo Cambio</th>
-                                    <th scope="col">Fecha Comprobante</th>
+                                    <th scope="col">Tipo Cam</th>
+                                    <th scope="col">F. Comp</th>
                                     <th scope="col">RUC</th>
-                                    <th scope="col">Nombre Proveedor</th>
-                                    <th scope="col">Documento</th>
-                                    <th scope="col">Factura Numero</th>
-                                    <th scope="col">Fecha Emision</th>
-                                    <th scope="col">Fecha Venta</th>
-                                    <th scope="col">Base disponible</th>
+                                    <th scope="col">Proveedor</th>
+                                    <th scope="col">Docum</th>
+                                    <th scope="col">F. Num</th>
+                                    <th scope="col">F. Emis</th>
+                                    <th scope="col">F. Vent</th>
+                                    <th scope="col">B. Disp</th>
                                     <th scope="col">IGV</th>
                                     <th scope="col">Total</th>
                                     <th scope="col">Tasa IGV</th>
@@ -82,12 +86,13 @@
                                         <td>{{ $reportecompra->total }}</td>
                                         <td>{{ $reportecompra->tasa_IGV }}</td>
                                         <td>
-                                        <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal{{ $reportecompra->id }}">
-                                            <i class="fas fa-edit"></i> Editar
-                                        </a>
-                                            <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarTragoModal{{ $reportecompra->id }}">
-                                                <i class="fas fa-trash-alt"></i> Eliminar
+                                            <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal{{ $reportecompra->id }}">
+                                                <i class="fas fa-edit"></i> 
                                             </a>
+                                            <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarTragoModal{{ $reportecompra->id }}">
+                                                <i class="fas fa-trash-alt"></i> 
+                                            </a>
+                                            
                                         </td>
                                     </tr>
                                     @php 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\compras;
+use App\Exports\ComprasExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ReporteComprasController extends Controller
 {
@@ -14,23 +16,33 @@ class ReporteComprasController extends Controller
     public function index()
     {
         $reportecompras = compras::query();
+
         if (!empty($_GET['s'])) {
-            $reportecompras = $reportecompras->where('cod_compra', 'LIKE', '%'.$_GET['s'].'%')
-                            ->orWhere('tipo_cambio', 'LIKE', '%'.$_GET['s'].'%')
-                            ->orWhere('fecha_comprobante', 'LIKE', '%'.$_GET['s'].'%')
-                            ->orWhere('ruc', 'LIKE', '%'.$_GET['s'].'%')
-                            ->orWhere('nombre_proveedor', 'LIKE', '%'.$_GET['s'].'%')
-                            ->orWhere('documento', 'LIKE', '%'.$_GET['s'].'%')
-                            ->orWhere('factura_numero', 'LIKE', '%'.$_GET['s'].'%')
-                            ->orWhere('fecha_emision', 'LIKE', '%'.$_GET['s'].'%')
-                            ->orWhere('fecha_venta', 'LIKE', '%'.$_GET['s'].'%')
-                            ->orWhere('base_disponible', 'LIKE', '%'.$_GET['s'].'%')
-                            ->orWhere('IGV', 'LIKE', '%'.$_GET['s'].'%')
-                            ->orWhere('total', 'LIKE', '%'.$_GET['s'].'%')
-                            ->orWhere('tasa_IGV', 'LIKE', '%'.$_GET['s'].'%');
-          }
-          $reportecompras = $reportecompras->get();
-        return view ('reporte.index', compact('reportecompras'));
+            $term = $_GET['s'];
+            $reportecompras = $reportecompras->where(function ($query) use ($term) {
+                $query->where('cod_compra', 'LIKE', "%$term%")
+                      ->orWhere('tipo_cambio', 'LIKE', "%$term%")
+                      ->orWhere('fecha_comprobante', 'LIKE', "%$term%")
+                      ->orWhere('ruc', 'LIKE', "%$term%")
+                      ->orWhere('nombre_proveedor', 'LIKE', "%$term%")
+                      ->orWhere('documento', 'LIKE', "%$term%")
+                      ->orWhere('factura_numero', 'LIKE', "%$term%")
+                      ->orWhere('fecha_emision', 'LIKE', "%$term%")
+                      ->orWhere('fecha_venta', 'LIKE', "%$term%")
+                      ->orWhere('base_disponible', 'LIKE', "%$term%")
+                      ->orWhere('IGV', 'LIKE', "%$term%")
+                      ->orWhere('total', 'LIKE', "%$term%")
+                      ->orWhere('tasa_IGV', 'LIKE', "%$term%");
+            });
+        }
+
+        $reportecompras = $reportecompras->get();
+
+        if (request()->has('export')) {
+            return Excel::download(new ComprasExport, 'compras.xlsx');
+        }
+
+        return view('reporte.index', compact('reportecompras'));
     }
 
     /**
