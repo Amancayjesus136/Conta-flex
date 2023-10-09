@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ventas;
 use App\Exports\VentasExport;
-use Excel;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ReporteVentasController extends Controller
 {
