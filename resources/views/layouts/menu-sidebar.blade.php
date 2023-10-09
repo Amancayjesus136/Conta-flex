@@ -237,7 +237,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link" data-key="t-Suscripción">
+                <a href="{{ route('ventas.index') }}" class="nav-link" data-key="t-Suscripción">
                     <i class="fas fa-file-invoice"></i> Registro de Ventas
                 </a>
             </li>

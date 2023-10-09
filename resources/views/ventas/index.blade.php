@@ -27,11 +27,11 @@
 </style>
 <div class="col-12 col-md-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0">Compras</h4>
+            <h4 class="mb-sm-0">Ventas</h4>
         </div>
     </div>
 <div class="white-box">
-<form action="{{ route('compras.store') }}" method="POST">
+<form action="{{ route('ventas.store') }}" method="POST">
     @csrf
     <div class="border">
         <ul class="nav nav-pills custom-hover-nav-tabs">
@@ -147,8 +147,8 @@
                 </div>
                 <div class="col-md-2">
                     <div class="form-group"><br>
-                        <label for="fecha_venta">Fecha de Venta</label>
-                        <input type="date" class="form-control" id="fecha_venta" name="fecha_venta">
+                        <label for="fecha_compra">Fecha de Compras</label>
+                        <input type="date" class="form-control" id="fecha_compra" name="fecha_compra">
                     </div>
                 </div>
             </div>

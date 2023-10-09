@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DocumentoRucController;
 use App\Http\Controllers\ActivityLogGeneralController;
 use App\Http\Controllers\ComprasController;
+use App\Http\Controllers\VentasController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\AsignarController;
 use App\Http\Controllers\ListadoUsuarioController;
@@ -82,6 +83,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Contabilidad
     Route::match( ['get', 'post'],'compras', [ComprasController::class, 'index'])->name('compras.index');
     Route::post('/compras', [ComprasController::class, 'store'])->name('compras.store');
+    Route::resource('ventas', VentasController::class);
     Route::post('/asignar', [AsignarController::class, 'store'])->name('asignar.store');
     Route::get('listado', [ListadoUsuarioController::class, 'index'])->name('listado.index');
 
