@@ -147,8 +147,8 @@
                 </div>
                 <div class="col-md-2">
                     <div class="form-group"><br>
-                        <label for="fecha_venta">Fecha de Venta</label>
-                        <input type="date" class="form-control" id="fecha_venta" name="fecha_venta">
+                        <label for="fecha_compra">Fecha de Compra</label>
+                        <input type="date" class="form-control" id="fecha_compra" name="fecha_compra">
                     </div>
                 </div>
             </div>
