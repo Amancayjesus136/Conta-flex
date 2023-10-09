@@ -111,19 +111,21 @@
                 <form method="POST" action="{{ route('asignar.store') }}">
                     @csrf
                     <div class="mb-3">
-                        <label for="user_id" class="form-label">Selecciona un usuario</label>
+                        <label for="usuario" class="form-label">Selecciona un usuario</label>
                         <select class="form-select" id="usuario" name="usuario" required>
+                        <option value="" disabled selected>Selecciona un usuario</option>
                             @foreach ($users as $user)
-                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                <option value="{{ $user->name }}">{{ $user->name }}</option>
                             @endforeach
                         </select>
                     </div>
+
                     <div class="mb-3">
                         <label for="empresa" class="form-label">Selecciona una empresa</label>
                         <select class="form-select" id="empresa" name="empresa" required>
                             <option value="" disabled selected>Selecciona una empresa</option>
                             @foreach ($empresas as $empresa)
-                            <option value="{{ $empresa->id }}">{{ $empresa->nombre_empresa }}</option>
+                            <option value="{{ $empresa->nombre_empresa }}">{{ $empresa->nombre_empresa }}</option>
                             @endforeach
                         </select>
                     </div>

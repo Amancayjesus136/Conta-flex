@@ -15,7 +15,7 @@ class AsignarController extends Controller
     public function index()
     {
         $empresas = Empresa::all();
-        $usuarios = User::all();
+        $users = User::all();
         return view('empresa.index', compact('empresas', 'users'));
     }
 
@@ -32,28 +32,7 @@ class AsignarController extends Controller
      */
     public function store(Request $request)
 {
-    // Valida los datos del formulario
-    $request->validate([
-        'usuario' => 'required|integer',
-        'empresa' => 'required|integer',
-    ]);
-
-    // Busca una relación existente entre el usuario y la empresa
-    $asignarUsuario = AsignarUsuario::where('usuario', $request->usuario)->first();
-
-    // Si se encuentra una relación existente, actualiza la empresa
-    if ($asignarUsuario) {
-        $empresa = Empresa::findOrFail($request->empresa); // Obtén la empresa seleccionada
-        $asignarUsuario->empresa = $empresa->id;
-        $asignarUsuario->save();
-    } else {
-        // Si no existe una relación, crea una nueva
-        AsignarUsuario::create([
-            'usuario' => $request->usuario,
-            'empresa' => $request->empresa,
-        ]);
-    }
-
+    AsignarUsuario::create($request->all());
     return redirect()->route('empresa.index');
 }
 
