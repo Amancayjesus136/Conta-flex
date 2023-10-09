@@ -28,7 +28,7 @@ class ReporteComprasController extends Controller
                       ->orWhere('documento', 'LIKE', "%$term%")
                       ->orWhere('factura_numero', 'LIKE', "%$term%")
                       ->orWhere('fecha_emision', 'LIKE', "%$term%")
-                      ->orWhere('fecha_venta', 'LIKE', "%$term%")
+                      ->orWhere('fecha_compra', 'LIKE', "%$term%")
                       ->orWhere('base_disponible', 'LIKE', "%$term%")
                       ->orWhere('IGV', 'LIKE', "%$term%")
                       ->orWhere('total', 'LIKE', "%$term%")
