@@ -25,8 +25,8 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
 </style>
-<div class="col-12 col-md-12">
-        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+    <div class="col-12 col-md-12">
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between style">
             <h4 class="mb-sm-0">Compras</h4>
         </div>
     </div>

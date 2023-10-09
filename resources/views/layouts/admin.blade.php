@@ -51,6 +51,11 @@
         padding: 10px;
         box-shadow: 5px 5px 5px #888888;
     }
+   
+    /* body {
+    background-color: #405189 !important;
+   
+  } */
 </style>
 
 <!-- JQUERY -->

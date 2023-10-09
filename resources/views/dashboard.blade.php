@@ -72,13 +72,13 @@
                                 </div>
                             </div>
 
-                            <div class="row">
+                            <!-- <div class="row">
                                 <div class="col-xl-12">
                                     <div class="card">
                                     <img src="{{ asset('assets/images/logo2.jpg') }}" alt="" height="60" class="img-fluid">
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
 
 @extends('layouts.footer')
