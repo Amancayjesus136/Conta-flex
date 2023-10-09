@@ -2,6 +2,8 @@
 
 
 @section('content')
+
+
                     <div class="row project-wrapper">
                         <div class="col-xxl-8">
                             <div class="row">
@@ -59,18 +61,18 @@
                                                     </span>
                                                 </div>
                                                 <div class="flex-grow-1 overflow-hidden ms-3">
-                                                    <p class="text-uppercase fw-medium text-muted text-truncate mb-3">Total Hours</p>
+                                                    <p class="text-uppercase fw-medium text-muted text-truncate mb-3">Fecha & Hora</p>
                                                     <div class="d-flex align-items-center mb-3">
-                                                        <h4 class="fs-4 flex-grow-1 mb-0"><span class="counter-value" data-target="168">0</span>h <span class="counter-value" data-target="40">0</span>m</h4>
-                                                        <span class="badge badge-soft-danger fs-12"><i class="ri-arrow-down-s-line fs-13 align-middle me-1"></i>10.35 %</span>
+                                                        <h4 class="fs-4 flex-grow-1 mb-0">
+                                                            <span id="reloj"></span>
+                                                        </h4>
                                                     </div>
-                                                    <p class="text-muted text-truncate mb-0">Work this month</p>
+                                                    <p class="text-muted text-truncate mb-0"><span id="fecha"></span></p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
                             <!-- <div class="row">
                                 <div class="col-xl-12">
@@ -82,6 +84,36 @@
                         </div>
 
 @extends('layouts.footer')
+
+<!-- Coloca esto al final de tu vista o enlaza a un archivo JavaScript externo -->
+<script>
+    function actualizarHora() {
+        var ahora = new Date();
+        var horas = ahora.getHours();
+        var minutos = ahora.getMinutes();
+        var segundos = ahora.getSeconds();
+
+        // Formatea los minutos y segundos para que siempre tengan dos dígitos
+        minutos = minutos < 10 ? '0' + minutos : minutos;
+        segundos = segundos < 10 ? '0' + segundos : segundos;
+
+        // Obtiene la fecha actual en el formato "dd/mm/yyyy"
+        var fechaActual = ahora.getDate() + '/' + (ahora.getMonth() + 1) + '/' + ahora.getFullYear();
+
+        // Actualiza el contenido del elemento con el ID "reloj"
+        document.getElementById('reloj').textContent = horas + ':' + minutos + ':' + segundos;
+
+        // Actualiza el contenido del elemento con el ID "fecha"
+        document.getElementById('fecha').textContent = fechaActual;
+    }
+
+    // Actualiza la hora y la fecha cada segundo
+    setInterval(actualizarHora, 1000);
+
+    // Llama a la función una vez para mostrar la hora y la fecha iniciales inmediatamente
+    actualizarHora();
+</script>
+
 
 @endsection
         
