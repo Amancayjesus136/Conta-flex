@@ -18,7 +18,9 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0">Listado reporte</h4>
+        <a href="{{ route('reporte_compras.index', ['export' => 1]) }}" class="btn btn-success btn-sm">
+            <i class="fas fa-file-excel"></i>  Excel
+        </a>
 
             <div class="page-title-right">
             <div class="card-header align-items-center d-flex">
