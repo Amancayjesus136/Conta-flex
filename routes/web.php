@@ -15,7 +15,6 @@ use App\Http\Controllers\ReporteVentasController;
 use App\Http\Controllers\TazaIgvController;
 use App\Http\Controllers\TipoCambioController;
 
-
 use Illuminate\Support\Facades\Route;
 // Ruta para la página de inicio
 // Route::get('/', function () {
@@ -95,6 +94,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::resource('taza_igv', TazaIgvController::class);
     Route::resource('tipo_cambio', TipoCambioController::class);
+
 
 
 
