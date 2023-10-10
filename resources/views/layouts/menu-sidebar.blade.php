@@ -199,7 +199,7 @@
 <!-- ============================================================== -->
 <li class="nav-item">
     <a class="nav-link menu-link" href="#" data-bs-toggle="collapse" data-bs-target="#utilitarios" aria-expanded="false" aria-controls="utilitarios">
-        <i class="fas fa-cogs"></i> <span data-key="t-Configuración">utilitarios</span>
+        <i class="fas fa-tools"></i> <span data-key="t-Configuración">utilitarios</span>
     </a>
     <div class="collapse menu-dropdown" id="utilitarios">
         <ul class="nav nav-sm flex-column">
@@ -233,12 +233,12 @@
         <ul class="nav nav-sm flex-column">
             <li class="nav-item">
                 <a href="{{ route('compras.index') }}" class="nav-link" data-key="t-Suscripción">
-                    <i class="fas fa-file-invoice-dollar"></i> Registro de Compras
+                    <i class="fas fa-shopping-cart"></i>  Registro de Compras
                 </a>
             </li>
             <li class="nav-item">
                 <a href="{{ route('ventas.index') }}" class="nav-link" data-key="t-Suscripción">
-                    <i class="fas fa-file-invoice"></i> Registro de Ventas
+                    <i class="fas fa-chart-line"></i>  Registro de Ventas
                 </a>
             </li>
         </ul>
@@ -253,12 +253,12 @@
         <ul class="nav nav-sm flex-column">
             <li class="nav-item">
                 <a href="{{ route('reporte_compras.index') }}" class="nav-link" data-key="t-Suscripción">
-                    <i class="fas fa-file-invoice-dollar"></i> Reporte de Compras
+                    <i class="fas fa-clipboard-list"></i> Reporte de Compras
                 </a>
             </li>
             <li class="nav-item">
                 <a href="{{ route('reporte_ventas.index') }}" class="nav-link" data-key="t-Suscripción">
-                    <i class="fas fa-file-invoice"></i> Reporte de Ventas
+                    <i class="fas fa-file-invoice-dollar"></i> Reporte de Ventas
                 </a>
             </li>
         </ul>
