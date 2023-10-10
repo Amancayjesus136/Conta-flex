@@ -29,8 +29,8 @@
                 <div class="col-4">
                     <select class="form-select form-select-sm mb-2" id="moneda" name="moneda" aria-label=".form-select-sm example" required>
                         <option value="" disabled selected>Seleccionar...</option>
-                        <option value="soles">Soles</option>
-                        <option value="dolares">Dólares</option>
+                        <option value="Soles">Soles</option>
+                        <option value="Dólares">Dólares</option>
                     </select>
                 </div>
             </div>
