@@ -12,6 +12,8 @@ use App\Http\Controllers\AsignarController;
 use App\Http\Controllers\ListadoUsuarioController;
 use App\Http\Controllers\ReporteComprasController;
 use App\Http\Controllers\ReporteVentasController;
+use App\Http\Controllers\TazaIgvController;
+use App\Http\Controllers\TipoCambioController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -90,6 +92,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('empresa', EmpresaController::class)->names('empresa');
     Route::resource('reporte_compras', ReporteComprasController::class);
     Route::resource('reporte_ventas', ReporteVentasController::class);
+
+    Route::resource('taza_igv', TazaIgvController::class);
+    Route::resource('tipo_cambio', TipoCambioController::class);
 
 
 
