@@ -74,7 +74,7 @@
                         <td>{{ $tipocambio->fecha_creacion }}</td>
                         <td>
                         <a href="#" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal{{ $tipocambio->id }}">
-                            <i class="ri-attachment-2"></i> Adjuntar
+                            <i class="ri-attachment-2"></i>
                         </a>
                         <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal{{ $tipocambio->id }}">
                             <i class="fas fa-edit"></i> Editar
