@@ -306,8 +306,8 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="cod_compra">Cod Compra</label>
-                                                <select class="form-select rounded-pill mb-3" aria-label="cod_compra" id="cod_compra" name="cod_compra" required>
+                                                <label for="cod_venta">Cod Venta</label>
+                                                <select class="form-select rounded-pill mb-3" aria-label="cod_venta" id="cod_venta" name="cod_venta" required>
                                                     <option value="soles" {{ $reporteventa->cod_compra == 'soles' ? 'selected' : '' }}>Soles</option>
                                                     <option value="dolares" {{ $reporteventa->cod_compra == 'dolares' ? 'selected' : '' }}>Dólares</option>
                                                 </select>

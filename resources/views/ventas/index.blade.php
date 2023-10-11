@@ -31,7 +31,7 @@
         </div>
     </div>
 <div class="white-box">
-<form action="{{ route('ventas.store') }}" method="POST">
+<form action="{{ route('ventas.store') }}" method="POST" id="agregar-form">
     @csrf
     <div class="border">
         <ul class="nav nav-pills custom-hover-nav-tabs">
@@ -78,8 +78,8 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group"><br>
-                        <label for="cod_compra">Cod Compra</label>
-                        <select class="form-select rounded-pill mb-3" aria-label="cod_compra" id="cod_compra" name="cod_compra">
+                        <label for="cod_venta">Cod Venta</label>
+                        <select class="form-select rounded-pill mb-3" aria-label="cod_venta" id="cod_venta" name="cod_venta">
                             <option selected>Seleccionar moneda...</option>
                             <option value="soles">Soles</option>
                             <option value="dolares">Dólares</option>
@@ -163,40 +163,45 @@
 
 </div>
 
-<!-- animaciones -->
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    $(document).ready(function() {
-        $('form').submit(function(e) {
+    $(document).ready(function () {
+        $('#agregar-form').submit(function (e) {
             e.preventDefault();
 
-            var form = $(this);
-
             $.ajax({
-                type: "POST",
-                url: form.attr('action'),
-                data: form.serialize(),
-                success: function(response) {
-                    if (response.success) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Usuario registrado correctamente',
-                            showConfirmButton: false,
-                            timer: 2000
-                        });
+                url: "{{ route('ventas.store') }}",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "json",
+                success: function (data) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Éxito',
+                        text: 'Empresa agregada con éxito',
+                    }).then(function () {
+                        setTimeout(function () {
+                            $('#agregarModal').modal('hide');
+                        }, 500);
 
-                        setTimeout(function() {
-                            window.location.href = "{{ route('compras.index') }}";
-                        }, 2000);
-                    }
+                        setTimeout(function () {
+                            location.reload();
+                        }, 500);
+                    });
+
                 },
-                error: function(response) {
+                error: function (error) {
+                    // Mostrar un mensaje de error si es necesario
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Hubo un error al agregar la empresa',
+                    });
                 }
             });
         });
     });
-
 </script>
 
 <!-- animaciones -->

@@ -31,7 +31,7 @@
         </div>
     </div>
 <div class="white-box">
-<form action="{{ route('compras.store') }}" method="POST">
+<form action="{{ route('compras.store') }}" method="POST" id="agregar-form">
     @csrf
     <div class="border">
         <ul class="nav nav-pills custom-hover-nav-tabs">
@@ -167,36 +167,41 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    $(document).ready(function() {
-        $('form').submit(function(e) {
+    $(document).ready(function () {
+        $('#agregar-form').submit(function (e) {
             e.preventDefault();
 
-            var form = $(this);
-
             $.ajax({
-                type: "POST",
-                url: form.attr('action'),
-                data: form.serialize(),
-                success: function(response) {
-                    if (response.success) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Usuario registrado correctamente',
-                            showConfirmButton: false,
-                            timer: 2000
-                        });
+                url: "{{ route('compras.store') }}",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "json",
+                success: function (data) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Éxito',
+                        text: 'Empresa agregada con éxito',
+                    }).then(function () {
+                        setTimeout(function () {
+                            $('#agregarModal').modal('hide');
+                        }, 500);
 
-                        setTimeout(function() {
-                            window.location.href = "{{ route('compras.index') }}";
-                        }, 2000);
-                    }
+                        setTimeout(function () {
+                            location.reload();
+                        }, 500);
+                    });
+
                 },
-                error: function(response) {
+                error: function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Hubo un error al agregar la empresa',
+                    });
                 }
             });
         });
     });
-
 </script>
 
 <!-- animaciones -->
