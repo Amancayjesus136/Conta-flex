@@ -34,7 +34,7 @@
                     </select>
                 </div>
             </div>
-            <button type="submit" class="btn btn-success">Registrar <i class="fas fa-paper-plane"></i></button>
+            <button type="submit" class="btn btn-secondary">Registrar <i class="fas fa-paper-plane"></i></button>
         </div>
     </form>
 </div><br>
@@ -73,8 +73,11 @@
                         <td>{{ $tipocambio->tipo_venta }}</td>
                         <td>{{ $tipocambio->fecha_creacion }}</td>
                         <td>
-                        <a href="#" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal{{ $tipocambio->id }}">
-                            <i class="ri-attachment-2"></i> Adjuntar
+                        <a href="#" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal{{ $tipocambio->id }}">
+                            <i class="ri-shopping-cart-2-fill"></i> 
+                        </a>
+                        <a href="#" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal{{ $tipocambio->id }}">
+                            <i class="ri-shopping-bag-3-fill"></i> 
                         </a>
                         <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal{{ $tipocambio->id }}">
                             <i class="fas fa-edit"></i> Editar
