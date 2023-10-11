@@ -15,7 +15,7 @@ class RucController extends Controller
     {
         $ruc = $request->input('ruc');
 
-        $data = null; // Inicializar $data en caso de no hacer una consulta
+        $data = null;
 
         if ($ruc) {
             $response = Http::timeout(30)->get('https://api.apis.net.pe/v1/ruc', [
@@ -25,7 +25,6 @@ class RucController extends Controller
 
             $data = $response->json();
 
-            // Registrar la consulta en la tabla logs_ruc solo si se ha hecho una consulta
             if (!empty($data)) {
                 LogRuc::create([
                     'user_id' => auth()->user()->id,
