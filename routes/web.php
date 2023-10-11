@@ -94,6 +94,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::resource('taza_igv', TazaIgvController::class);
     Route::resource('tipo_cambio', TipoCambioController::class);
+    Route::get('/tipo-cambio', [AsignarController::class, 'consultarRuc'])->name('tipo-cambio.consultarRuc');
+
 
 
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\TazaIgv;
+use App\Models\PruebaIGV;
 
 class TazaIgvController extends Controller
 {
@@ -29,7 +30,8 @@ class TazaIgvController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        PruebaIGV::create($request->all());
+        return response()->json(['success' => true]);
     }
 
     /**

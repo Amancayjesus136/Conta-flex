@@ -51,6 +51,35 @@ class TipoCambioController extends Controller
         //
     }
 
+    public function consultarRuc(Request $request)
+    {
+        $ruc = $request->input('ruc');
+
+        $data = null; // Inicializar $data en caso de no hacer una consulta
+
+        if ($ruc) {
+            $response = Http::timeout(30)->get('https://api.apis.net.pe/v1/ruc', [
+                'numero' => $ruc,
+                'apis-token' => 'apis-token-1301.adsa-82CS1YrzRXRCe',
+            ]);
+
+            $data = $response->json();
+
+            // Registrar la consulta en la tabla logs_ruc solo si se ha hecho una consulta
+            if (!empty($data)) {
+                LogRuc::create([
+                    'user_id' => auth()->user()->id,
+                    'accion' => 'Consultó el RUC: ' . $ruc,
+                ]);
+
+                // Registrar la actividad general por abrir la vista de consulta de RUC
+                app(ActivityLogGeneralController::class)->logActivity('Consultó RUC', 'Abrió la vista de consultas de RUC');
+            }
+        }
+
+        return view('tipo_cambio', compact('data'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      */

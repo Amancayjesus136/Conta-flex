@@ -40,10 +40,6 @@ class RucController extends Controller
         return view('consultar-ruc', compact('data'));
     }
 
-    
-
-
-
     public function historialConsultasRuc(Request $request)
     {
         $searchUser = $request->input('searchUser');

@@ -12,6 +12,7 @@ class TipoCambio extends Model
 
     protected $fillable = [
         'moneda',
+        'IGV',
         'dia',
         'tipo_compra',
         'tipo_venta',
