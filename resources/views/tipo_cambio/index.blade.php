@@ -20,31 +20,27 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-4">
-                    <input type="number" class="form-control mb-2" id="ano1" name="tipo_compra" aria-label="Año" placeholder="Compra..." required>
+                <div class="col-3">
+                    <input type="text" class="form-control mb-2" id="ano1" name="tipo_compra" aria-label="Año" placeholder="Compra..." required>
                 </div>
-                <div class="col-4">
-                    <input type="number" class="form-control mb-2" id="ano2" name="tipo_venta" aria-label="Año" placeholder="Venta..." required>
+                <div class="col-3">
+                    <input type="text" class="form-control mb-2" id="ano2" name="tipo_venta" aria-label="Año" placeholder="Venta..." required>
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     <select class="form-select form-select-sm mb-2" id="moneda" name="moneda" aria-label=".form-select-sm example" required>
                         <option value="" disabled selected>Seleccionar...</option>
                         <option value="Soles">Soles</option>
                         <option value="Dólares">Dólares</option>
                     </select>
                 </div>
+                <div class="col-3">
+                    <button class="btn btn-primary" id="pegarBtn"><i class="ri-survey-fill"></i></button>
+                </div>
             </div>
             <button type="submit" class="btn btn-secondary">Registrar <i class="fas fa-paper-plane"></i></button>
         </div>
     </form>
-    <div class="row">
-        <div class="col-12">
-            <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#agregarModal">
-                <i class="ri-search-eye-line"></i> Consultar Tipo de Cambio
-            </a>
-        </div>
-    </div>
-</div><br><br>
+</div><br>
 
 <div class="table-responsive table-card">
     <table class="table table-nowrap table-striped-columns mb-0">
@@ -248,6 +244,25 @@
             });
         });
     });
+    var pegarBtn = document.getElementById('pegarBtn');
+
+    pegarBtn.addEventListener('click', function() {
+        var textoCopiado = prompt("Por favor, pegue los campos copiados aquí:");
+        if (textoCopiado) {
+            var campos = textoCopiado.split('\n');
+            var compra = campos[0].split(':')[1].trim();
+            var venta = campos[1].split(':')[1].trim();
+
+            // Asignar valores a los campos del formulario
+            document.getElementById('ano1').value = compra;
+            document.getElementById('ano2').value = venta;
+
+            alert('Campos pegados exitosamente.');
+        } else {
+            alert('Nada para pegar.');
+        }
+    });
 </script>
+
 
 @endsection
