@@ -33,14 +33,12 @@ class EmpresaController extends Controller
      */
     public function store(Request $request)
     {
-        // Crear una nueva empresa
         $empresa = new Empresa;
         $empresa->nombre_empresa = $request->nombre_empresa;
         $empresa->plan_cuentas = $request->plan_cuentas;
 
         $empresa->save();
 
-        // Devuelve una respuesta JSON para indicar el éxito
         return response()->json(['success' => true, 'message' => 'Empresa registrada con éxito']);
     }
 

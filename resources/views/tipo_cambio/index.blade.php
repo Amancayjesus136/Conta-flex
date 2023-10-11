@@ -11,7 +11,7 @@
 </style>
 
 <div class="col-12 col-md-12">
-    <form action="{{route('tipo_cambio.store')}}" method="POST">
+    <form action="{{route('tipo_cambio.store')}}" method="POST" id="agregar-form">
         @csrf
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
             <div class="row">
@@ -203,4 +203,50 @@
     </div>
 </div>
 @endforeach
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    $(document).ready(function () {
+        // Agregar un controlador de envío al formulario de agregar
+        $('#agregar-form').submit(function (e) {
+            e.preventDefault();
+
+            // Realizar una solicitud AJAX para enviar el formulario
+            $.ajax({
+                url: "{{ route('tipo_cambio.store') }}",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "json",
+                success: function (data) {
+                    // Mostrar un mensaje de éxito usando SweetAlert2
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Éxito',
+                        text: 'Empresa agregada con éxito',
+                    }).then(function () {
+                        // Cerrar el modal después de 2 segundos
+                        setTimeout(function () {
+                            $('#agregarModal').modal('hide');
+                        }, 500);
+
+                        // Recargar la página después de cerrar el modal
+                        setTimeout(function () {
+                            location.reload();
+                        }, 500);
+                    });
+
+                    // Aquí puedes agregar el código para actualizar la tabla o realizar cualquier otra acción necesaria
+                },
+                error: function (error) {
+                    // Mostrar un mensaje de error si es necesario
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Hubo un error al agregar la empresa',
+                    });
+                }
+            });
+        });
+    });
+</script>
 @endsection

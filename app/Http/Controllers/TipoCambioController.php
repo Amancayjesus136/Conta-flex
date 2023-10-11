@@ -31,8 +31,16 @@ class TipoCambioController extends Controller
      */
     public function store(Request $request)
     {
-        TipoCambio::create($request->all());
-        return redirect()->route('tipo_cambio.index');
+        $tipocambio = new TipoCambio;
+        $tipocambio->moneda = $request->moneda;
+        $tipocambio->tipo_compra = $request->tipo_compra;
+        $tipocambio->tipo_venta = $request->tipo_venta;
+        $tipocambio->fecha_creacion = $request->fecha_creacion;
+
+        $tipocambio->save();
+
+        return response()->json(['success' => true, 'message' => 'Empresa registrada con éxito']);
+
     }
 
     /**
