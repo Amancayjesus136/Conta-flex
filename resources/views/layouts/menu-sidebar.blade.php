@@ -204,6 +204,11 @@
     <div class="collapse menu-dropdown" id="utilitarios">
         <ul class="nav nav-sm flex-column">
             <li class="nav-item">
+                <a href="{{ route('empresa.index') }}" class="nav-link" data-key="t-Suscripción">
+                    <i class="fas fa-building"></i> Mantenimientos de Compañias
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="{{ route('taza_igv.index') }}" class="nav-link" data-key="t-Suscripción">
                     <i class="fas fa-percent"></i> Tasa de IGV
                 </a>
@@ -211,11 +216,6 @@
             <li class="nav-item">
                 <a href="{{ route('tipo_cambio.index') }}" class="nav-link" data-key="t-Suscripción">
                     <i class="fas fa-exchange-alt"></i> Tipo de cambio
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('empresa.index') }}" class="nav-link" data-key="t-Suscripción">
-                    <i class="fas fa-building"></i> Mantenimientos de Compañias
                 </a>
             </li>
         </ul>

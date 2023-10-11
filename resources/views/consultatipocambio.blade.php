@@ -43,7 +43,15 @@
                                 </tr>
                             </table>
                         </div>
-                        <button class="btn btn-primary mt-3" id="copiarBtn">Copiar Campos</button>
+                        <div class="row">
+                            <div class="col-6">
+                                <button class="btn btn-primary mt-3" id="copiarBtn">Copiar Campos <i class="ri-file-copy-2-fill"></i></button>
+                            </div>
+                            <div class="col-6">
+                            <button class="btn btn-success mt-3" id="copiarBtn" style="color: white;">
+                                <a href="{{ route('tipo_cambio.index') }}" style="color: white; text-decoration: none;">Ir a Tipo de Compra <i class="ri-send-plane-2-fill"></i></a></button>
+                            </div>
+                        </div>
                     @endif
                 @endif
             </div>

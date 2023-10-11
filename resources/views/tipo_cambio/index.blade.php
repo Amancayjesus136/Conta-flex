@@ -53,8 +53,8 @@
                 </th>
                 <th scope="col">#</th>
                 <th scope="col">Moneda</th>
-                <th scope="col">Tipo Cambio Compra</th>
-                <th scope="col">Tipo Cambio Venta</th>
+                <th scope="col">Tipo Compra</th>
+                <th scope="col">Tipo Venta</th>
                 <th scope="col">Fecha Creación</th>
                 <th scope="col">Acciones</th>   
             </tr>
@@ -76,10 +76,10 @@
                         <td>{{ $tipocambio->tipo_venta }}</td>
                         <td>{{ $tipocambio->fecha_creacion }}</td>
                         <td>
-                        <a href="#" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#">
+                        <a href="{{route('compras.index')}}" class="btn btn-warning btn-sm">
                             <i class="ri-shopping-cart-2-fill"></i> 
                         </a>
-                        <a href="#" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#">
+                        <a href="{{route('ventas.index')}}" class="btn btn-success btn-sm">
                             <i class="ri-shopping-bag-3-fill"></i> 
                         </a>
                         <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal{{ $tipocambio->id }}">
@@ -222,7 +222,7 @@
                     Swal.fire({
                         icon: 'success',
                         title: 'Éxito',
-                        text: 'Empresa agregada con éxito',
+                        text: 'Tipo Cambio registrado con éxito',
                     }).then(function () {
                         setTimeout(function () {
                             $('#agregarModal').modal('hide');

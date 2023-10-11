@@ -89,7 +89,7 @@
                 <div class="col-md-4">
                     <div class="form-group"><br>
                         <label for="tipo_cambio">Tipo de Cambio</label>
-                        <input type="number" class="form-control" id="tipo_cambio" name="tipo_cambio">
+                        <input type="text" class="form-control" id="tipo_cambio" name="tipo_cambio">
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -101,19 +101,19 @@
                 <div class="col-md-4">
                     <div class="form-group"><br>
                         <label for="factura_numero">Factura número</label>
-                        <input type="number" class="form-control" id="factura_numero" name="factura_numero">
+                        <input type="text" class="form-control" id="factura_numero" name="factura_numero">
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group"><br>
                         <label for="abase_disponible">Base Disponible</label>
-                        <input type="number" class="form-control" id="base_disponible" name="base_disponible">
+                        <input type="text" class="form-control" id="base_disponible" name="base_disponible">
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group"><br>
                         <label for="tasa_IGV">Tasa de IGV</label>
-                        <input type="number" class="form-control" id="tasa_IGV" name="tasa_IGV">
+                        <input type="text" class="form-control" id="tasa_IGV" name="tasa_IGV">
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -180,7 +180,7 @@
                     Swal.fire({
                         icon: 'success',
                         title: 'Éxito',
-                        text: 'Empresa agregada con éxito',
+                        text: 'Compra agregada con éxito',
                     }).then(function () {
                         setTimeout(function () {
                             $('#agregarModal').modal('hide');

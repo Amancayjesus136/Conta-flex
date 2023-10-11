@@ -48,11 +48,11 @@
             <div class="card-body">
                 <div class="d-flex">
                     <div class="flex-grow-1">
-                        <h6 class="text-muted mb-3">Ir a Tipo Cambio</h6>
+                        <h6 class="text-muted mb-3">Ir a Consulta de Cambio</h6>
                     </div>
                     <div class="flex-shrink-0 avatar-sm">
                         <div class="avatar-title bg-soft-warning text-warning fs-22 rounded">
-                            <a href="{{route('tipo_cambio.index')}}"><i class="ri-arrow-left-down-fill"></i></a>
+                            <a href="/consultatipocambio"><i class="ri-arrow-left-down-fill"></i></a>
                         </div>
                     </div>
                 </div>
