@@ -24,7 +24,6 @@ class compras extends Model
         'base_disponible',
         'IGV',
         'total',
-        'tasa_IGV',
     ];
 }
 

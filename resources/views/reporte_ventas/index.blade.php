@@ -61,7 +61,6 @@
                                     <th scope="col">Base disponible</th>
                                     <th scope="col">IGV</th>
                                     <th scope="col">Total</th>
-                                    <th scope="col">Tasa IGV</th>
                                     <th scope="col" style="width: 150px;">Acciones</th>
                                 </tr>
                             </thead>
@@ -83,7 +82,6 @@
                                         <td>{{ $reporteventa->base_disponible }}</td>
                                         <td>{{ $reporteventa->IGV }}</td>
                                         <td>{{ $reporteventa->total }}</td>
-                                        <td>{{ $reporteventa->tasa_IGV }}</td>
                                         <td>
                                         <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal{{ $reporteventa->id }}">
                                             <i class="fas fa-edit"></i> Editar
@@ -196,25 +194,19 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group"><br>
-                                            <label for="base_disponible">Base Dis</label>
+                                            <label for="base_disponible">Base Imp</label>
                                             <input type="number" class="form-control" id="base_disponible" name="base_disponible">
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group"><br>
-                                            <label for="tasa_IGV">Tasa de IGV</label>
-                                            <input type="number" class="form-control" id="tasa_IGV" name="tasa_IGV">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group"><br>
                                             <label for="IGV">IGV</label>
-                                            <input type="number" class="form-control" id="IGV" name="IGV">
+                                            <input type="number" class="form-control" id="IGV" name="IGV" value="18">
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group"><br>
                                             <label for="total">Total</label>
                                             <input type="number" class="form-control" id="total" name="total">
@@ -335,25 +327,19 @@
                                         </div>
                                     </div><br>
                                     <div class="row">
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="base_disponible">Base Disp</label>
                                                 <input type="number" class="form-control" id="base_disponible" name="base_disponible" value="{{ $reporteventa->base_disponible }}" required>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="tasa_IGV">Tasa de IGV</label>
-                                                <input type="number" class="form-control" id="tasa_IGV" name="tasa_IGV" value="{{ $reporteventa->tasa_IGV }}" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="IGV">IGV</label>
                                                 <input type="number" class="form-control" id="IGV" name="IGV" value="{{ $reporteventa->IGV }}" required>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="total">Total</label>
                                                 <input type="number" class="form-control" id="total" name="total" value="{{ $reporteventa->total }}" required>
@@ -432,5 +418,31 @@
     </div>
 </div>
 @endforeach
+
+<script>
+    // Obtiene los elementos de los campos de entrada
+    var baseInput = document.getElementById('base_disponible');
+    var igvInput = document.getElementById('IGV');
+    var totalInput = document.getElementById('total');
+
+    // Agrega un evento de escucha para detectar cambios en base_disponible
+    baseInput.addEventListener('input', calcularTotal);
+
+    // Función para calcular el total
+    function calcularTotal() {
+        // Obtiene el valor del campo de entrada de base imponible
+        var base = parseFloat(baseInput.value) || 0; // Si no se ingresa un número, se asume 0
+
+        // Calcula el IGV (18% de la Base Imponible)
+        var igvPorcentaje = 0.18; // 18% en forma decimal
+        var igv = base * igvPorcentaje;
+
+        // Calcula el total sumando la Base Imponible y el IGV
+        var total = base + igv;
+
+        // Actualiza el valor del campo Total
+        totalInput.value = total.toFixed(2); // Limita el resultado del total a dos decimales
+    }
+</script>
 @endsection
 
