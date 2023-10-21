@@ -56,13 +56,11 @@ class EmpresaController extends Controller
      */
     public function update(Request $request, $id)
 {
-    // Encuentra y actualiza la empresa
     $empresa = Empresa::findOrFail($id);
     $empresa->nombre_empresa = $request->editar_nombre_empresa;
     $empresa->plan_cuentas = $request->editar_plan_cuentas;
     $empresa->save();
 
-    // Redirige a una vista o a una ruta específica después de la actualización
     return redirect()->route('empresa.index')->with('success', 'Empresa actualizada con éxito');
 }
     /**
@@ -70,11 +68,8 @@ class EmpresaController extends Controller
      */
     public function destroy($id)
     {
-        // Encuentra y elimina la empresa
         $empresa = Empresa::findOrFail($id);
         $empresa->delete();
-
-        // Redirige a una vista o a una ruta específica después de la eliminación
         return redirect()->route('empresa.index')->with('success', 'Empresa eliminada con éxito');
     }
 

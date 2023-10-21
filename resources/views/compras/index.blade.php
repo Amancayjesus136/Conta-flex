@@ -199,28 +199,20 @@
 </script>
 
 <script>
-    // Obtiene los elementos de los campos de entrada
     var baseInput = document.getElementById('base_disponible');
     var igvInput = document.getElementById('IGV');
     var totalInput = document.getElementById('total');
 
-    // Agrega un evento de escucha para detectar cambios en base_disponible
     baseInput.addEventListener('input', calcularTotal);
 
-    // Función para calcular el total
     function calcularTotal() {
-        // Obtiene el valor del campo de entrada de base imponible
-        var base = parseFloat(baseInput.value) || 0; // Si no se ingresa un número, se asume 0
+        var base = parseFloat(baseInput.value) || 0; 
 
-        // Calcula el IGV (18% de la Base Imponible)
-        var igvPorcentaje = 0.18; // 18% en forma decimal
         var igv = base * igvPorcentaje;
 
-        // Calcula el total sumando la Base Imponible y el IGV
         var total = base + igv;
 
-        // Actualiza el valor del campo Total
-        totalInput.value = total.toFixed(2); // Limita el resultado del total a dos decimales
+        totalInput.value = total.toFixed(2); 
     }
 </script>
 

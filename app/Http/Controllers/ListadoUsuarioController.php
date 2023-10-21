@@ -13,8 +13,7 @@ class ListadoUsuarioController extends Controller
      */
     public function index()
     {
-        $personas = AsignarUsuario::all(); // Obtener todos los usuarios
-
+        $personas = AsignarUsuario::all();
         return view('listado.index', compact('personas'));
     }
 
@@ -35,10 +34,8 @@ class ListadoUsuarioController extends Controller
         $persona->usuario = $request->usuario;
         $persona->empresa = $request->empresa;
 
-        // Guardar la persona en la base de datos
         $persona->save();
 
-        // Redirigir a la vista de confirmación o a donde desees
         return redirect()->route('listado.index');
     }
 
