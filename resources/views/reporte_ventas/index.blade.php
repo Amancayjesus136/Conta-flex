@@ -212,7 +212,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group"><br>
                                             <label for="total">Total</label>
-                                            <input type="number" class="form-control" id="total" name="total">
+                                            <input type="number" class="form-control" id="total" name="total" step="any">
                                         </div>
                                     </div>
                                 </div>
