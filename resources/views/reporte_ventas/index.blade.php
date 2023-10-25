@@ -108,145 +108,145 @@
 
 <!-- Modal para Crear Nuevo Tema -->
 <div class="modal fade" id="agregarModal" tabindex="-1" aria-labelledby="crearModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="crearModalLabel">Crear nuevo registro</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{route('reporte_ventas.store')}}" method="POST" id="reservation-form">
-                        @csrf
-                        <div class="border">
-                            <ul class="nav nav-pills custom-hover-nav-tabs">
-                                <li class="nav-item">
-                                    <a href="#datos" data-bs-toggle="tab" aria-expanded="false" class="nav-link active">
-                                        <i class="ri-user-fill nav-icon nav-tab-position"></i>
-                                        <h5 class="nav-title nav-tab-position m-0"></h5>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#facturacion" data-bs-toggle="tab" aria-expanded="true" class="nav-link">
-                                        <i class="ri-file-text-line nav-icon nav-tab-position"></i>
-                                        <h5 class="nav-title nav-tab-position m-0"></h5>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#fechas" data-bs-toggle="tab" aria-expanded="true" class="nav-link">
-                                        <i class="ri-calendar-line nav-icon nav-tab-position"></i>
-                                        <h5 class="nav-title nav-tab-position m-0"></h5>
-                                    </a>
-                                </li>
-                            </ul>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="crearModalLabel">Crear nuevo registro</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="{{route('reporte_ventas.store')}}" method="POST" id="reservation-form">
+          @csrf
+          <div class="border">
+            <ul class="nav nav-pills custom-hover-nav-tabs">
+              <li class="nav-item">
+                  <a href="#datos" data-bs-toggle="tab" aria-expanded="false" class="nav-link active">
+                      <i class="ri-user-fill nav-icon nav-tab-position"></i>
+                      <h5 class="nav-title nav-tab-position m-0"></h5>
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a href="#facturacion" data-bs-toggle="tab" aria-expanded="true" class="nav-link">
+                      <i class="ri-file-text-line nav-icon nav-tab-position"></i>
+                      <h5 class="nav-title nav-tab-position m-0"></h5>
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a href="#fechas" data-bs-toggle="tab" aria-expanded="true" class="nav-link">
+                      <i class="ri-calendar-line nav-icon nav-tab-position"></i>
+                      <h5 class="nav-title nav-tab-position m-0"></h5>
+                  </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="tab-content">
+              <div class="tab-pane fade show active" id="datos">
+                  <div class="row">
+                      <div class="col-md-6">
+                          <div class="form-group"><br>
+                              <label for="ruc">RUC</label>
+                              <input type="text" class="form-control" name="ruc" id="ruc" required
+                                  placeholder="Ingrese el Documento">
+                          </div>
+                      </div>
+                      
+                      <div class="col-md-6">
+                          <div class="form-group"><br>
+                              <label for="nombre_proveedor">Nombre del Proveedor</label>
+                              <input type="text" class="form-control" id="nombre_proveedor" name="nombre_proveedor">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="tab-pane fade" id="facturacion">
+                  <div class="row">
+                      <div class="col-md-6">
+                          <div class="form-group"><br>
+                              <label for="cod_compra">Cod Venta</label>
+                              <select class="form-select rounded-pill mb-3" aria-label="cod_venta" id="cod_venta" name="cod_venta">
+                                  <option selected>Seleccionar moneda...</option>
+                                  <option value="soles">Soles</option>
+                                  <option value="dolares">Dólares</option>
+                              </select>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="form-group"><br>
+                              <label for="tipo_cambio">Tipo de Cambio</label>
+                              <input type="number" class="form-control" id="tipo_cambio" name="tipo_cambio" step="any">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-6">
+                          <div class="form-group"><br>
+                              <label for="documento">Documento</label>
+                              <input type="number" class="form-control" id="tipo_cambio" name="documento">
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="form-group"><br>
+                              <label for="factura_numero">Factura número</label>
+                              <input type="number" class="form-control" id="factura_numero" name="factura_numero">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-md-4">
+                          <div class="form-group"><br>
+                              <label for="base_disponible">Base Imp</label>
+                              <input type="number" class="form-control" id="base_disponible" name="base_disponible">
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group"><br>
+                            <label for="IGV">IGV</label>
+                            <select class="form-control" id="IGV" name="IGV">
+                                <option value="18">IGV</option>
+                                <option value="1.18">IGV INCLUIDO</option>
+                            </select>
                         </div>
-
-                        <div class="tab-content">
-                            <div class="tab-pane fade show active" id="datos">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group"><br>
-                                            <label for="ruc">RUC</label>
-                                            <input type="text" class="form-control" name="ruc" id="ruc" required
-                                                placeholder="Ingrese el Documento">
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-md-6">
-                                        <div class="form-group"><br>
-                                            <label for="nombre_proveedor">Nombre del Proveedor</label>
-                                            <input type="text" class="form-control" id="nombre_proveedor" name="nombre_proveedor">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tab-pane fade" id="facturacion">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group"><br>
-                                            <label for="cod_compra">Cod Venta</label>
-                                            <select class="form-select rounded-pill mb-3" aria-label="cod_venta" id="cod_venta" name="cod_venta">
-                                                <option selected>Seleccionar moneda...</option>
-                                                <option value="soles">Soles</option>
-                                                <option value="dolares">Dólares</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group"><br>
-                                            <label for="tipo_cambio">Tipo de Cambio</label>
-                                            <input type="number" class="form-control" id="tipo_cambio" name="tipo_cambio">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group"><br>
-                                            <label for="documento">Documento</label>
-                                            <input type="number" class="form-control" id="tipo_cambio" name="documento">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group"><br>
-                                            <label for="factura_numero">Factura número</label>
-                                            <input type="number" class="form-control" id="factura_numero" name="factura_numero">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group"><br>
-                                            <label for="base_disponible">Base Imp</label>
-                                            <input type="number" class="form-control" id="base_disponible" name="base_disponible">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                      <div class="form-group"><br>
-                                          <label for="IGV">IGV</label>
-                                          <select class="form-control" id="IGV" name="IGV">
-                                              <option value="18">IGV</option>
-                                              <option value="1.18">IGV INCLUIDO</option>
-                                          </select>
-                                      </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group"><br>
-                                            <label for="total">Total</label>
-                                            <input type="number" class="form-control" id="total" name="total" step="any">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="fechas">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group"><br>
-                                            <label for="fecha_comprobante">Fecha Comprobante</label>
-                                            <input type="date" class="form-control" id="fecha_comprobante"
-                                                name="fecha_comprobante">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group"><br>
-                                            <label for="fecha_emision">Fecha de Emisión</label>
-                                            <input type="date" class="form-control" id="fecha_emision" name="fecha_emision">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group"><br>
-                                            <label for="fecha_venta">Fecha de venta</label>
-                                            <input type="date" class="form-control" id="fecha_venta" name="fecha_venta">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><br>
-                        <button type="submit" class="btn btn-primary">Registrar</button>
-                    </form>
-                </div>
-            </div>
-        </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div class="form-group"><br>
+                              <label for="total">Total</label>
+                              <input type="number" class="form-control" id="total" name="total" step="any">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="tab-pane fade" id="fechas">
+                  <div class="row">
+                      <div class="col-md-4">
+                          <div class="form-group"><br>
+                              <label for="fecha_comprobante">Fecha Comprobante</label>
+                              <input type="date" class="form-control" id="fecha_comprobante"
+                                  name="fecha_comprobante">
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div class="form-group"><br>
+                              <label for="fecha_emision">Fecha de Emisión</label>
+                              <input type="date" class="form-control" id="fecha_emision" name="fecha_emision">
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div class="form-group"><br>
+                              <label for="fecha_venta">Fecha de venta</label>
+                              <input type="date" class="form-control" id="fecha_venta" name="fecha_venta">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div><br>
+          <button type="submit" class="btn btn-primary">Registrar</button>
+        </form>
+      </div>
     </div>
+  </div>
+</div>
 <!-- Modal para Crear Nuevo Tema -->
 
 @foreach ($reporteventas as $reporteventa)
