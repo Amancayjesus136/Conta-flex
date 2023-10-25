@@ -2,33 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\compras;
+use App\Models\LogRuc;
 
-class ComprasController extends Controller
+use Illuminate\Support\Facades\Http;
+
+
+class GetPostController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
-        return view ('compras.index');
+        return view('getpost.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        compras::create($request->all());
-        return response()->json(['success' => true]);
-    }
 
     public function consultarRuc(Request $request)
     {
@@ -56,7 +46,23 @@ class ComprasController extends Controller
             }
         }
 
-        return view('compras.index', compact('data'));
+        return view('getpost.index', compact('data'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
     }
 
     /**

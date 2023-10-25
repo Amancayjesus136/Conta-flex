@@ -15,6 +15,7 @@ use App\Http\Controllers\ReporteVentasController;
 use App\Http\Controllers\TazaIgvController;
 use App\Http\Controllers\TipoCambioController;
 use App\Http\Controllers\ConsultaTipoCambioController;
+use App\Http\Controllers\GetPostController;
 
 use Illuminate\Support\Facades\Route;
 // Ruta para la página de inicio
@@ -97,6 +98,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('tipo_cambio', TipoCambioController::class);
     Route::resource('consultatipocambio', ConsultaTipoCambioController::class);
     Route::post('consultar-tipo-cambio', [ConsultaTipoCambioController::class, 'consultarTipoCambio'])->name('consultatipocambio');
+
+    Route::get('getpost', [GetPostController::class, 'consultarRuc'])->name('getpost.consultarRuc');
+
+
 
 
 
