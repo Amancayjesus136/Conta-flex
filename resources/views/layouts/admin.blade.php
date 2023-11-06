@@ -118,6 +118,25 @@
         </div>
     </div>
 
+
+    <style>
+    .pagination {
+        width: 100px;
+        display: block;
+        height: 90px;
+        padding-top: 40px;
+    }
+
+    .listado-busqueda {
+        width: 240px;
+        float: right;
+    }
+
+    .listado-busqueda input {
+    width: calc(100% - 70px);
+    display: inline-block;
+    }
+    </style>
     
 
 

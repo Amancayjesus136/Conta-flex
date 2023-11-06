@@ -1,16 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-<style>
-    .listado-busqueda {
-  width: 240px;
-  float: right;
-}
-.listado-busqueda input {
-  width: calc(100% - 70px);
-  display: inline-block;
-}
-</style>
 
 <!-- cabecera -->
 <div class="row">
@@ -97,6 +87,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                    </div>
+                    <div class="pagination">
+                        {{ $reporteventas->appends(request()->input())->links();}}
                     </div>
                 </div>
             </div>
