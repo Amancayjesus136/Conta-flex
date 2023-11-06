@@ -36,7 +36,7 @@ class ReporteVentasController extends Controller
             });
         }
 
-        $reporteventas = $reporteventas->paginate(5);
+        $reporteventas = $reporteventas->paginate(7);
 
         if ($request->has('export')) {
             return Excel::download(new VentasExport, 'ventas.xlsx');
