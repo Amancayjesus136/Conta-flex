@@ -9,6 +9,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Spatie\Activitylog\LogOptions;
+use App\Models\User;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -23,14 +25,36 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
-    public function store(LoginRequest $request): RedirectResponse
-    {
-        $request->authenticate();
+    public function store(LoginRequest $request)
+{
+    $data = $request->all();
+    $usuario = User::where('email', $data['email'])->first();
 
-        $request->session()->regenerate();
-
+    if ($this->checkUserRoleAndAuthenticate($usuario)) {
         return redirect()->intended(RouteServiceProvider::HOME);
+    } else {
+        return back()->with('error', 'No tienes permiso para acceder al Sistema. Solicita un rol al superadministrador');
     }
+}
+
+private function checkUserRoleAndAuthenticate($usuario): bool
+{
+    if ($usuario) {
+        // Obtén los roles del usuario
+        $rolesUsuario = $usuario->getRoleNames();
+
+        // Verificar si el usuario tiene uno de los roles válidos
+        if ($rolesUsuario->contains('superadministrador') || $rolesUsuario->contains('admin') || $rolesUsuario->contains('jefesucursal') || $rolesUsuario->contains('operador')) {
+            // Usuario tiene un rol válido
+            Auth::login($usuario); // Autenticar al usuario
+            request()->session()->regenerate();
+            return true;
+        }
+    }
+
+    // Usuario no tiene un rol válido o no se encontró
+    return false;
+}
 
     /**
      * Destroy an authenticated session.

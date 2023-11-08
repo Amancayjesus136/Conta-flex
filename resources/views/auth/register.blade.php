@@ -8,6 +8,12 @@
                 <div class="text-center mt-2">
                     <h5 class="text-primary">Crear una cuenta</h5>
                     <p class="text-muted">Regístrate para acceder a Phenomenal.</p>
+                    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
                 </div>
                 <div class="mb-3">
                     <form method="POST" action="{{ route('register') }}">

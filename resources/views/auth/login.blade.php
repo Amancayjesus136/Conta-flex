@@ -4,11 +4,18 @@
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 50vh">
     <div class="col-md-8 col-lg-6 col-xl-5">
         <div class="card mt-4">
+        
+
 
             <div class="card-body p-4">
                 <div class="text-center mt-2">
                     <h5 class="text-primary">Bienvenid@ de nuevo!</h5>
                     <p class="text-muted">Iniciar sesión para continuar a ContaFlex.</p>
+                    @if(session('error'))
+                        <div class="alert alert-danger">
+                            {!! session('error') !!}
+                        </div>
+                    @endif
                 </div>
                 <div class="mb-3">
                     <form method="POST" action="{{ route('login') }}">

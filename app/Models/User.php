@@ -10,6 +10,7 @@ use Spatie\Permission\Traits\HasRoles;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions; // Asegúrate de importar la clase LogOptions
 
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, LogsActivity, HasRoles;
@@ -54,6 +55,24 @@ class User extends Authenticatable
             ->logName('user_activities')
             ->logDescription('Registro de actividades de usuarios');
         // Puedes agregar más opciones de configuración aquí
+        if ($usuario) {
+            // Obtén los roles del usuario
+            $rolesUsuario = $usuario->getRoleNames();
+    
+            // Verificar si el usuario tiene uno de los roles válidos
+            if ($rolesUsuario->contains('superadministrador') || $rolesUsuario->contains('admin') || $rolesUsuario->contains('jefesucursal') || $rolesUsuario->contains('operador')) {
+                // Usuario tiene un rol válido
+                $request->authenticate();
+                $request->session()->regenerate();
+                return redirect()->intended(RouteServiceProvider::HOME);
+            } else {
+                // Usuario no tiene un rol válido
+                return back()->with('error', 'No tienes permiso para acceder al administrador.<br><a href="/panel/login">Ingresa al panel de usuarios</a>');
+            }
+        } else {
+            // Usuario no encontrado
+            return back()->with('error', 'Usuario no encontrado');
+        }
     }
     public function activityLogs()
     {
