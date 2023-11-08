@@ -58,11 +58,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- FILAS DE LA TABLA -->
-                                @php $contador = 1; @endphp
-                                @foreach($reporteventas as $reporteventa)
+                                @foreach($reporteventas as $index => $reporteventa)
                                     <tr>
-                                        <td>{{ $reporteventa->id }}</td>
+                                        <td>{{ ($reporteventas->currentPage() - 1) * $reporteventas->perPage() + $index + 1 }}</td>
                                         <td>{{ $reporteventa->cod_venta }}</td>
                                         <td>{{ $reporteventa->tipo_cambio }}</td>
                                         <td>{{ $reporteventa->fecha_comprobante }}</td>
@@ -76,17 +74,14 @@
                                         <td>{{ $reporteventa->IGV }}</td>
                                         <td>{{ $reporteventa->total }}</td>
                                         <td>
-                                        <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal{{ $reporteventa->id }}">
-                                            <i class="fas fa-edit"></i> Editar
-                                        </a>
+                                            <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal{{ $reporteventa->id }}">
+                                                <i class="fas fa-edit"></i> Editar
+                                            </a>
                                             <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarTragoModal{{ $reporteventa->id }}">
                                                 <i class="fas fa-trash-alt"></i> Eliminar
                                             </a>
                                         </td>
                                     </tr>
-                                    @php 
-                                        $contador++; 
-                                    @endphp
                                 @endforeach
                             </tbody>
                         </table>
