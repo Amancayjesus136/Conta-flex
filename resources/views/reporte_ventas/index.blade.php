@@ -118,13 +118,6 @@
         </div>
     </div>
 </div>
-
-<!-- Paginación personalizada -->
-
-<!-- Fin de la paginación personalizada -->
-
-
-
 <!-- listado -->
 
 
