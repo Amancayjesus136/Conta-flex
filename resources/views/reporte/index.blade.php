@@ -41,70 +41,93 @@
 </div>
 <!-- cabecera -->
 
-<!-- listado -->
+<<!-- listado -->
 <div class="card">
-  <div class="card-body">
-    <div class="live-preview">
-      <div class="table-responsive table-card">
-        <table class="table align-middle table-nowrap table-striped-columns mb-0">
-          <thead class="table-light">
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Cod Venta</th>
-              <th scope="col">Tipo Cambio</th>
-              <th scope="col">Fecha Comprobante</th>
-              <th scope="col">RUC</th>
-              <th scope="col">Nombre Proveedor</th>
-              <th scope="col">Documento</th>
-              <th scope="col">Factura Numero</th>
-              <th scope="col">Fecha Emision</th>
-              <th scope="col">Fecha Compra</th>
-              <th scope="col">Base disponible</th>
-              <th scope="col">IGV</th>
-              <th scope="col">Total</th>
-              <th scope="col" style="width: 150px;">Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- FILAS DE LA TABLA -->
-            @php $contador = 1; @endphp
-            @foreach($reportecompras as $reportecompra)
-            <tr>
-              <td>{{ $contador }}</td>
-                <td>{{ $reportecompra->cod_compra}}</td>
-                <td>{{ $reportecompra->tipo_cambio }}</td>
-                <td>{{ $reportecompra->fecha_comprobante }}</td>
-                <td>{{ $reportecompra->ruc }}</td>
-                <td>{{ $reportecompra->nombre_proveedor }}</td>
-                <td>{{ $reportecompra->documento }}</td>
-                <td>{{ $reportecompra->factura_numero }}</td>
-                <td>{{ $reportecompra->fecha_emision }}</td>
-                <td>{{ $reportecompra->fecha_compra }}</td>
-                <td>{{ $reportecompra->base_disponible }}</td>
-                <td>{{ $reportecompra->IGV }}</td>
-                <td>{{ $reportecompra->total }}</td>
-                <td>
-                <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal{{ $reportecompra->id }}">
-                  <i class="fas fa-edit"></i> Editar
-                </a>
-                  <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarTragoModal{{ $reportecompra->id }}">
-                  <i class="fas fa-trash-alt"></i> Eliminar
-                </a>
-              </td>
-            </tr>
-                @php 
-                    $contador++; 
-                @endphp
-            @endforeach
-          </tbody>
-        </table>
-      </div>
+    <div class="card-body">
+        <div class="live-preview">
+            <div class="table-responsive table-card">
+                <table class="table align-middle table-nowrap table-striped-columns mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Cod Venta</th>
+                            <th scope="col">Tipo Cambio</th>
+                            <th scope="col">Fecha Comprobante</th>
+                            <th scope="col">RUC</th>
+                            <th scope="col">Nombre Proveedor</th>
+                            <th scope="col">Documento</th>
+                            <th scope="col">Factura Numero</th>
+                            <th scope="col">Fecha Emision</th>
+                            <th scope="col">Fecha Compra</th>
+                            <th scope="col">Base disponible</th>
+                            <th scope="col">IGV</th>
+                            <th scope="col">Total</th>
+                            <th scope="col" style="width: 150px;">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($reportescompras as $index => $reportecompra)
+                            <tr>
+                                <td>{{ ($reportescompras->currentPage() - 1) * $reportescompras->perPage() + $index + 1 }}</td>
+                                <td>{{ $reportecompra->cod_compra }}</td>
+                                <td>{{ $reportecompra->tipo_cambio }}</td>
+                                <td>{{ $reportecompra->fecha_comprobante }}</td>
+                                <td>{{ $reportecompra->ruc }}</td>
+                                <td>{{ $reportecompra->nombre_proveedor }}</td>
+                                <td>{{ $reportecompra->documento }}</td>
+                                <td>{{ $reportecompra->factura_numero }}</td>
+                                <td>{{ $reportecompra->fecha_emision }}</td>
+                                <td>{{ $reportecompra->fecha_compra }}</td>
+                                <td>{{ $reportecompra->base_disponible }}</td>
+                                <td>{{ $reportecompra->IGV }}</td>
+                                <td>{{ $reportecompra->total }}</td>
+                                <td>
+                                    <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal{{ $reportecompra->id }}">
+                                        <i class="fas fa-edit"></i> Editar
+                                    </a>
+                                    <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarTragoModal{{ $reportecompra->id }}">
+                                        <i class="fas fa-trash-alt"></i> Eliminar
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-  </div>
+    <!-- pagination  -->
+    <div style="margin-top: 20px; margin-bottom: 20px" class="d-flex justify-content-between">
+        <p style="margin-left: 50px" class="text-start">Mostrando {{ $reportescompras->firstItem() }} a {{ $reportescompras->lastItem() }} de {{ $reportescompras->total() }} resultados</p>
+
+        <div style="margin-right: 50px" class="pagination-container">
+            <ul class="pagination">
+                @if ($reportescompras->onFirstPage())
+                    <li class="page-item disabled"><span class="page-link">Anterior</span></li>
+                @else
+                    <li class="page-item"><a class="page-link" href="{{ $reportescompras->previousPageUrl() }}">Anterior</a></li>
+                @endif
+
+                @for ($i = 1; $i <= $reportescompras->lastPage(); $i++)
+                    <li class="page-item {{ $i == $reportescompras->currentPage() ? 'active' : '' }}">
+                        <a class="page-link" href="{{ $reportescompras->url($i) }}">{{ $i }}</a>
+                    </li>
+                @endfor
+
+                @if ($reportescompras->hasMorePages())
+                    <li class="page-item"><a class="page-link" href="{{ $reportescompras->nextPageUrl() }}">Siguiente</a></li>
+                @else
+                    <li class="page-item disabled"><span class="page-link">Siguiente</span></li>
+                @endif
+            </ul>
+        </div>
+    </div>
+    <!-- pagination  -->
 </div>
 </div>
 </div>
 <!-- listado -->
+
 
 
 <!-- Modal para Crear Nuevo Tema -->
@@ -250,7 +273,7 @@
 </div>
 <!-- Modal para Crear Nuevo Tema -->
 
-@foreach ($reportecompras as $reportecompra)
+@foreach ($reportescompras as $reportecompra)
 <!-- Modal de Editar -->
 <div class="modal fade custom-accordion" id="editarModal{{ $reportecompra->id }}" tabindex="-1" aria-labelledby="editarTragoModalLabel{{ $reportecompra->id }}" aria-hidden="true">
   <div class="modal-dialog">
@@ -399,7 +422,7 @@
 </div>
 @endforeach
 
-@foreach ($reportecompras as $reportecompra)
+@foreach ($reportescompras as $reportecompra)
 <div class="modal fade" id="eliminarTragoModal{{ $reportecompra->id }}" tabindex="-1" aria-labelledby="eliminarEmpresaModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

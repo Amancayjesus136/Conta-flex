@@ -13,37 +13,39 @@ class ReporteComprasController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $reportecompras = compras::query();
+    public function index(Request $request)
+{
+    $reportecompras = Compras::query();
 
-        if (!empty($_GET['s'])) {
-            $term = $_GET['s'];
-            $reportecompras = $reportecompras->where(function ($query) use ($term) {
-                $query->where('cod_compra', 'LIKE', "%$term%")
-                      ->orWhere('tipo_cambio', 'LIKE', "%$term%")
-                      ->orWhere('fecha_comprobante', 'LIKE', "%$term%")
-                      ->orWhere('ruc', 'LIKE', "%$term%")
-                      ->orWhere('nombre_proveedor', 'LIKE', "%$term%")
-                      ->orWhere('documento', 'LIKE', "%$term%")
-                      ->orWhere('factura_numero', 'LIKE', "%$term%")
-                      ->orWhere('fecha_emision', 'LIKE', "%$term%")
-                      ->orWhere('fecha_compra', 'LIKE', "%$term%")
-                      ->orWhere('base_disponible', 'LIKE', "%$term%")
-                      ->orWhere('IGV', 'LIKE', "%$term%")
-                      ->orWhere('total', 'LIKE', "%$term%")
-                      ->orWhere('tasa_IGV', 'LIKE', "%$term%");
-            });
-        }
-
-        $reportecompras = $reportecompras->get();
-
-        if (request()->has('export')) {
-            return Excel::download(new ComprasExport, 'compras.xlsx');
-        }
-
-        return view('reporte.index', compact('reportecompras'));
+    if ($request->has('s')) {
+        $term = $request->s;
+        $reportecompras = $reportecompras->where(function ($query) use ($term) {
+            $query->where('cod_compra', 'LIKE', "%$term%")
+                ->orWhere('tipo_cambio', 'LIKE', "%$term%")
+                ->orWhere('fecha_comprobante', 'LIKE', "%$term%")
+                ->orWhere('ruc', 'LIKE', "%$term%")
+                ->orWhere('nombre_proveedor', 'LIKE', "%$term%")
+                ->orWhere('documento', 'LIKE', "%$term%")
+                ->orWhere('factura_numero', 'LIKE', "%$term%")
+                ->orWhere('fecha_emision', 'LIKE', "%$term%")
+                ->orWhere('fecha_compra', 'LIKE', "%$term%")
+                ->orWhere('base_disponible', 'LIKE', "%$term%")
+                ->orWhere('IGV', 'LIKE', "%$term%")
+                ->orWhere('total', 'LIKE', "%$term%");
+        });
     }
+
+    $porPagina = 5;
+    $reportescompras = $reportecompras->paginate($porPagina);
+
+    if ($request->has('export')) {
+        return Excel::download(new ComprasExport, 'compras.xlsx');
+    }
+
+    return view('reporte.index', compact('reportescompras'));
+}
+
+    
 
     /**
      * Show the form for creating a new resource.
