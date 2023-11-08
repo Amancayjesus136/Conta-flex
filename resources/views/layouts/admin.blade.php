@@ -150,7 +150,7 @@
 
 .pagination li.active a,
 .pagination li a:hover {
-    background-color: #007bff;
+    background-color: #405189;
     color: #fff;
     border-color: #007bff;
     cursor: pointer;
