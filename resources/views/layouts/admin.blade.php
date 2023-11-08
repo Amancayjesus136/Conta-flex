@@ -120,19 +120,50 @@
 
 
     <style>
-     .pagination {
-  width: 100%;
-  display: block;
-  height: 90px;
+    /* Estilos para la paginación */
+.pagination-container {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-bottom: -10px; /* Ajusta este valor según sea necesario */
 }
-.pagination > nav > div {
-  text-align: center;
-  padding-bottom: 20px;
+
+.pagination {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
 }
-.pagination .rounded-md > span[aria-current="page"] span {
-  background-color: #dfdfdf !important;
-  font-weight: bold;
+
+.pagination li {
+    margin: 0;
 }
+
+.pagination li a,
+.pagination li span {
+    color: #007bff;
+    text-decoration: none;
+    padding: 8px 16px;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    margin: 0 5px;
+}
+
+.pagination li.active a,
+.pagination li a:hover {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+    cursor: pointer;
+}
+
+.pagination li.disabled span {
+    background-color: #e9ecef;
+    color: #6c757d;
+    border-color: #dee2e6;
+    cursor: not-allowed;
+}
+
+    
 
     .listado-busqueda {
         width: 240px;

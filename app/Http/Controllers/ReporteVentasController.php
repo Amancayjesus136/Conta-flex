@@ -14,29 +14,31 @@ class ReporteVentasController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request)
-    {
-        $reporteventas = ventas::query();
+{
+    $reporteventas = ventas::query();
 
-        if (!empty($request->get('s'))) {
-            $term = $request->get('s');
-            $reporteventas = $reporteventas->where(function ($query) use ($term) {
-                $query->where('cod_venta', 'LIKE', "%$term%")
-                    ->orWhere('tipo_cambio', 'LIKE', "%$term%")
-                    ->orWhere('fecha_comprobante', 'LIKE', "%$term%")
-                    ->orWhere('ruc', 'LIKE', "%$term%")
-                    ->orWhere('nombre_proveedor', 'LIKE', "%$term%")
-                    ->orWhere('documento', 'LIKE', "%$term%")
-                    ->orWhere('factura_numero', 'LIKE', "%$term%")
-                    ->orWhere('fecha_emision', 'LIKE', "%$term%")
-                    ->orWhere('fecha_venta', 'LIKE', "%$term%")
-                    ->orWhere('base_disponible', 'LIKE', "%$term%")
-                    ->orWhere('IGV', 'LIKE', "%$term%")
-                    ->orWhere('total', 'LIKE', "%$term%")
-                    ->orWhere('tasa_IGV', 'LIKE', "%$term%");
-            });
-        }
+    // Aplicar búsqueda si se proporciona un término de búsqueda
+    if (!empty($request->get('s'))) {
+        $term = $request->get('s');
+        $reporteventas = $reporteventas->where(function ($query) use ($term) {
+            $query->where('cod_venta', 'LIKE', "%$term%")
+                ->orWhere('tipo_cambio', 'LIKE', "%$term%")
+                ->orWhere('fecha_comprobante', 'LIKE', "%$term%")
+                ->orWhere('ruc', 'LIKE', "%$term%")
+                ->orWhere('nombre_proveedor', 'LIKE', "%$term%")
+                ->orWhere('documento', 'LIKE', "%$term%")
+                ->orWhere('factura_numero', 'LIKE', "%$term%")
+                ->orWhere('fecha_emision', 'LIKE', "%$term%")
+                ->orWhere('fecha_venta', 'LIKE', "%$term%")
+                ->orWhere('base_disponible', 'LIKE', "%$term%")
+                ->orWhere('IGV', 'LIKE', "%$term%")
+                ->orWhere('total', 'LIKE', "%$term%")
+                ->orWhere('tasa_IGV', 'LIKE', "%$term%");
+        });
+    }
 
-        $reporteventas = $reporteventas->paginate(5);
+    $porPagina = 5; // Número de registros por página
+        $reporteventas = $reporteventas->paginate($porPagina);
 
         if ($request->has('export')) {
             return Excel::download(new VentasExport, 'ventas.xlsx');
@@ -44,6 +46,8 @@ class ReporteVentasController extends Controller
 
         return view('reporte_ventas.index', compact('reporteventas'));
     }
+
+
 
     /**
      * Show the form for creating a new resource.
