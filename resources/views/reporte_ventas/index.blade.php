@@ -2,7 +2,7 @@
 
 @section('content')
 <style>
-    
+   
 </style>
 
 <!-- cabecera -->
@@ -62,7 +62,7 @@
                                 @php $contador = 1; @endphp
                                 @foreach($reporteventas as $reporteventa)
                                     <tr>
-                                    <td>{{ $contador }}</td>
+                                        <td>{{ $reporteventa->id }}</td>
                                         <td>{{ $reporteventa->cod_venta }}</td>
                                         <td>{{ $reporteventa->tipo_cambio }}</td>
                                         <td>{{ $reporteventa->fecha_comprobante }}</td>

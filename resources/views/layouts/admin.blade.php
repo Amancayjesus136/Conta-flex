@@ -120,12 +120,19 @@
 
 
     <style>
-    .pagination {
-        width: 100px;
-        display: block;
-        height: 90px;
-        padding-top: 40px;
-    }
+     .pagination {
+  width: 100%;
+  display: block;
+  height: 90px;
+}
+.pagination > nav > div {
+  text-align: center;
+  padding-bottom: 20px;
+}
+.pagination .rounded-md > span[aria-current="page"] span {
+  background-color: #dfdfdf !important;
+  font-weight: bold;
+}
 
     .listado-busqueda {
         width: 240px;
