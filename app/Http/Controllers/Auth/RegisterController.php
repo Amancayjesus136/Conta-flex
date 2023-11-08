@@ -63,18 +63,16 @@ class RegisterController extends Controller
      * @return \App\Models\User
      */
     protected function create(array $data)
-{
-    // Crea el usuario
-    $user = User::create([
-        'name' => $data['name'],
-        'email' => $data['email'],
-        'password' => Hash::make($data['password']),
-    ]);
+    {
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
 
-    // Muestra un mensaje de éxito
-    session()->flash('success', 'Tu cuenta ha sido creada. Sin embargo, no podrás ingresar hasta que un administrador te asigne un rol.');
+        // Asigna el rol 'usuario' al usuario recién creado
+        $user->assignRole('usuario');
 
-    return $user;
-}
-
+        return $user;
+    }
 }

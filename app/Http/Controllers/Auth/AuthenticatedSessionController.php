@@ -26,35 +26,31 @@ class AuthenticatedSessionController extends Controller
      * Handle an incoming authentication request.
      */
     public function store(LoginRequest $request)
-{
-    $data = $request->all();
-    $usuario = User::where('email', $data['email'])->first();
+    {
+        $data = $request->all();
+        $usuario = User::where('email', $data['email'])->first();
 
-    if ($this->checkUserRoleAndAuthenticate($usuario)) {
-        return redirect()->intended(RouteServiceProvider::HOME);
-    } else {
-        return back()->with('error', 'No tienes permiso para acceder al Sistema. Solicita un rol al superadministrador');
-    }
-}
-
-private function checkUserRoleAndAuthenticate($usuario): bool
-{
-    if ($usuario) {
-        // Obtén los roles del usuario
-        $rolesUsuario = $usuario->getRoleNames();
-
-        // Verificar si el usuario tiene uno de los roles válidos
-        if ($rolesUsuario->contains('superadministrador') || $rolesUsuario->contains('admin') || $rolesUsuario->contains('jefesucursal') || $rolesUsuario->contains('operador')) {
-            // Usuario tiene un rol válido
-            Auth::login($usuario); // Autenticar al usuario
-            request()->session()->regenerate();
-            return true;
+        if ($this->checkUserRoleAndAuthenticate($usuario)) {
+            return redirect()->intended(RouteServiceProvider::HOME);
+        } else {
+            return back()->with('error', 'No tienes permiso para acceder al Sistema. Solicita un rol al superadministrador');
         }
     }
 
-    // Usuario no tiene un rol válido o no se encontró
-    return false;
-}
+    private function checkUserRoleAndAuthenticate($usuario): bool
+    {
+        if ($usuario) {
+            $rolesUsuario = $usuario->getRoleNames();
+
+            if ($rolesUsuario->contains('superadministrador') || $rolesUsuario->contains('admin') || $rolesUsuario->contains('jefesucursal') || $rolesUsuario->contains('operador')) {
+                Auth::login($usuario); 
+                request()->session()->regenerate();
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     /**
      * Destroy an authenticated session.
