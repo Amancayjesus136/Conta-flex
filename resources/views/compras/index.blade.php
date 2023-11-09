@@ -120,12 +120,10 @@
                     <div class="form-group"><br>
                         <label for="consulta">Tipo <span style="color: red; font-size: 15px;">*</span></label>
                         <select class="form-select mb-3" aria-label=".form-select-lg example" id="consultaSelect" required onchange="seleccionarTipo()">
-    <option value="">Selecciona el tipo...</option>
-    <option value="1">IGV INCLUIDO</option>
-    <option value="2">IGV</option>
-</select>
-
-
+                            <option value="">Selecciona el tipo...</option>
+                            <option value="1">IGV INCLUIDO</option>
+                            <option value="2">IGV</option>
+                        </select>
                     </div>
                 </div>
 

@@ -106,22 +106,29 @@
                 </div>
                 <div class="col-md-2">
                     <div class="form-group"><br>
-                        <label for="abase_disponible">Base Disponible</label>
+                        <label for="base_disponible">Base Imponible</label>
                         <input type="number" class="form-control" id="base_disponible" name="base_disponible">
                     </div>
                 </div>
+
                 <div class="col-md-2">
                     <div class="form-group"><br>
-                        <label for="tasa_IGV">Tasa de IGV</label>
-                        <input type="number" class="form-control" id="tasa_IGV" name="tasa_IGV">
+                        <label for="consulta">Tipo <span style="color: red; font-size: 15px;">*</span></label>
+                        <select class="form-select mb-3" aria-label=".form-select-lg example" id="consultaSelect" required onchange="seleccionarTipo()">
+                            <option value="">Selecciona el tipo...</option>
+                            <option value="1">IGV INCLUIDO</option>
+                            <option value="2">IGV</option>
+                        </select>
                     </div>
                 </div>
+
                 <div class="col-md-2">
                     <div class="form-group"><br>
-                        <label for="IGV">IGV</label>
-                        <input type="number" class="form-control" id="IGV" name="IGV">
+                        <label for="igv">IGV</label>
+                        <input type="number" class="form-control" id="igv" name="IGV">
                     </div>
                 </div>
+
                 <div class="col-md-2">
                     <div class="form-group"><br>
                         <label for="total">Total</label>
@@ -202,6 +209,97 @@
             });
         });
     });
+</script>
+
+
+<script>
+    function seleccionarTipo() {
+        var tipoConsulta = document.getElementById("consultaSelect").value;
+
+        if (tipoConsulta === "1") {
+            document.getElementById("base_disponible").disabled = true;
+            document.getElementById("igv").disabled = true;
+            document.getElementById("total").disabled = false;
+            document.getElementById("base_disponible").value = "";
+            document.getElementById("igv").value = "";
+            document.getElementById("base_disponible").focus();
+        } else if (tipoConsulta === "2") {
+            document.getElementById("base_disponible").disabled = false;
+            document.getElementById("igv").disabled = true;
+            document.getElementById("total").disabled = true;
+            document.getElementById("igv").value = "";
+            document.getElementById("total").value = "";
+            document.getElementById("base_disponible").focus();
+        }
+    }
+
+    function calcularTotal() {
+        var tipoConsulta = document.getElementById("consultaSelect").value;
+        var baseImponible = parseFloat(document.getElementById("base_disponible").value);
+        var igv = 0;
+        var total = 0;
+
+        if (tipoConsulta === "1") { 
+            total = baseImponible;
+            igv = total / 1.18 * 0.18;
+        } else if (tipoConsulta === "2") { 
+            igv = baseImponible * 0.18;
+            total = baseImponible + igv;
+        }
+
+        document.getElementById("igv").value = igv.toFixed(2);
+        document.getElementById("total").value = total.toFixed(2);
+    }
+</script>
+
+<script>
+    document.getElementById("consultaSelect").addEventListener("change", function() {
+        calcularIGVIncluido();
+    });
+
+    document.getElementById("total").addEventListener("input", function() {
+        calcularIGVIncluido();
+    });
+
+    function calcularIGVIncluido() {
+        var total = parseFloat(document.getElementById("total").value) || 0;
+        var igvSelect = document.getElementById("consultaSelect").value;
+        var baseImponible = 0;
+        var igv = 0;
+
+        if (igvSelect === "1") {
+            baseImponible = total / 1.18; 
+            igv = total - baseImponible;
+        }
+
+        document.getElementById("base_disponible").value = baseImponible.toFixed(2);
+        document.getElementById("igv").value = igv.toFixed(2);
+    }
+</script>
+
+<script>
+    document.getElementById("consultaSelect").addEventListener("change", function() {
+        calcularIGV();
+    });
+
+    document.getElementById("base_disponible").addEventListener("input", function() {
+        calcularIGV();
+    });
+
+    function calcularIGV() {
+        var baseImponible = parseFloat(document.getElementById("base_disponible").value) || 0;
+        var igvSelect = document.getElementById("consultaSelect").value;
+        var igv = 0;
+        var total = 0;
+
+        if (igvSelect === "2") {
+            igv = baseImponible * 0.18;
+            total = baseImponible + igv;
+        }
+
+        document.getElementById("igv").value = igv.toFixed(2);
+        document.getElementById("total").value = total.toFixed(2);
+    }
 </script>
 
 <!-- animaciones -->
