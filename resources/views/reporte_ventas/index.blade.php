@@ -206,31 +206,40 @@
                                 <label for="factura_numero">Factura número</label>
                                 <input type="number" class="form-control" id="factura_numero" name="factura_numero">
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
+                        </div><br><br>
+                        <div class="col-md-3">
                             <div class="form-group"><br>
-                                <label for="base_disponible">Base Imp</label>
+                                <label for="consulta">Tipo <span style="color: red; font-size: 15px;">*</span></label>
+                                <select class="form-select mb-3" aria-label=".form-select-lg example" id="consultaSelect" required onchange="seleccionarTipo()">
+                                    <option value="">Selecciona el tipo...</option>
+                                    <option value="1">IGV INCLUIDO</option>
+                                    <option value="2">IGV</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group"><br>
+                                <label for="base_disponible">Base</label>
                                 <input type="number" class="form-control" id="base_disponible" name="base_disponible">
                             </div>
                         </div>
-                        <div class="col-md-4">
-                        <div class="form-group"><br>
-                            <label for="IGV">IGV</label>
-                            <select class="form-control" id="IGV" name="IGV">
-                                <option value="18">IGV</option>
-                                <option value="1.18">IGV INCLUIDO</option>
-                            </select>
+
+                        <div class="col-md-3">
+                            <div class="form-group"><br>
+                                <label for="igv">IGV</label>
+                                <input type="number" class="form-control" id="igv" name="IGV">
+                            </div>
                         </div>
-                        </div>
-                        <div class="col-md-4">
+
+                        <div class="col-md-3">
                             <div class="form-group"><br>
                                 <label for="total">Total</label>
-                                <input type="number" class="form-control" id="total" name="total" step="any">
+                                <input type="number" class="form-control" id="total" name="total">
                             </div>
                         </div>
                     </div>
+
                 </div>
                 <div class="tab-pane fade" id="fechas">
                     <div class="row">
@@ -438,66 +447,93 @@
 @endforeach
 
 <script>
-    // Obtener elementos del DOM
-    const igvSelect = document.getElementById('IGV');
-    const baseDisponibleInput = document.getElementById('base_disponible');
-    const totalInput = document.getElementById('total');
+    function seleccionarTipo() {
+        var tipoConsulta = document.getElementById("consultaSelect").value;
 
-    // Agregar un evento de cambio al select
-    igvSelect.addEventListener('change', calcularTotal);
-    
-    // Agregar un evento de entrada al campo "base_disponible"
-    baseDisponibleInput.addEventListener('input', calcularTotal);
+        if (tipoConsulta === "1") {
+            document.getElementById("base_disponible").disabled = true;
+            document.getElementById("igv").disabled = true;
+            document.getElementById("total").disabled = false;
+            document.getElementById("base_disponible").value = "";
+            document.getElementById("igv").value = "";
+            document.getElementById("base_disponible").focus();
+        } else if (tipoConsulta === "2") {
+            document.getElementById("base_disponible").disabled = false;
+            document.getElementById("igv").disabled = true;
+            document.getElementById("total").disabled = true;
+            document.getElementById("igv").value = "";
+            document.getElementById("total").value = "";
+            document.getElementById("base_disponible").focus();
+        }
+    }
 
-    // Función para calcular el total
     function calcularTotal() {
-        const selectedValue = parseFloat(igvSelect.value);
-        const baseDisponible = parseFloat(baseDisponibleInput.value);
-        let result;
+        var tipoConsulta = document.getElementById("consultaSelect").value;
+        var baseImponible = parseFloat(document.getElementById("base_disponible").value);
+        var igv = 0;
+        var total = 0;
 
-        if (isNaN(baseDisponible)) {
-            // Si el usuario no ingresó un número en "base_disponible", el total se establece en 0
-            result = 0;
-        } else if (selectedValue === 18) {
-            // Si se selecciona "IGV" (valor 18), realizar el cálculo
-            result = baseDisponible * 0.18;
-        } else if (selectedValue === 1.18) {
-            // Si se selecciona "IGV INCLUIDO" (valor 1.18), realizar el cálculo
-            result = (baseDisponible / 1.18) * 0.18;
-        } else {
-            // Manejar otras opciones aquí
-            result = 0; // Otra opción
+        if (tipoConsulta === "1") { 
+            total = baseImponible;
+            igv = total / 1.18 * 0.18;
+        } else if (tipoConsulta === "2") { 
+            igv = baseImponible * 0.18;
+            total = baseImponible + igv;
         }
 
-        // Mostrar el resultado en el campo "total"
-        totalInput.value = result.toFixed(2); // Redondear a 2 decimales
+        document.getElementById("igv").value = igv.toFixed(2);
+        document.getElementById("total").value = total.toFixed(2);
     }
 </script>
 
-<!-- <script>
-    // Obtiene los elementos de los campos de entrada
-    var baseInput = document.getElementById('base_disponible');
-    var igvInput = document.getElementById('IGV');
-    var totalInput = document.getElementById('total');
+<script>
+    document.getElementById("consultaSelect").addEventListener("change", function() {
+        calcularIGVIncluido();
+    });
 
-    // Agrega un evento de escucha para detectar cambios en base_disponible
-    baseInput.addEventListener('input', calcularTotal);
+    document.getElementById("total").addEventListener("input", function() {
+        calcularIGVIncluido();
+    });
 
-    // Función para calcular el total
-    function calcularTotal() {
-        // Obtiene el valor del campo de entrada de base imponible
-        var base = parseFloat(baseInput.value) || 0; // Si no se ingresa un número, se asume 0
+    function calcularIGVIncluido() {
+        var total = parseFloat(document.getElementById("total").value) || 0;
+        var igvSelect = document.getElementById("consultaSelect").value;
+        var baseImponible = 0;
+        var igv = 0;
 
-        // Calcula el IGV (18% de la Base Imponible)
-        var igvPorcentaje = 0.18; // 18% en forma decimal
-        var igv = base * igvPorcentaje;
+        if (igvSelect === "1") {
+            baseImponible = total / 1.18; 
+            igv = total - baseImponible;
+        }
 
-        // Calcula el total sumando la Base Imponible y el IGV
-        var total = base + igv;
-
-        // Actualiza el valor del campo Total
-        totalInput.value = total.toFixed(2); // Limita el resultado del total a dos decimales
+        document.getElementById("base_disponible").value = baseImponible.toFixed(2);
+        document.getElementById("igv").value = igv.toFixed(2);
     }
-</script> -->
+</script>
+
+<script>
+    document.getElementById("consultaSelect").addEventListener("change", function() {
+        calcularIGV();
+    });
+
+    document.getElementById("base_disponible").addEventListener("input", function() {
+        calcularIGV();
+    });
+
+    function calcularIGV() {
+        var baseImponible = parseFloat(document.getElementById("base_disponible").value) || 0;
+        var igvSelect = document.getElementById("consultaSelect").value;
+        var igv = 0;
+        var total = 0;
+
+        if (igvSelect === "2") {
+            igv = baseImponible * 0.18;
+            total = baseImponible + igv;
+        }
+
+        document.getElementById("igv").value = igv.toFixed(2);
+        document.getElementById("total").value = total.toFixed(2);
+    }
+</script>
 @endsection
 
