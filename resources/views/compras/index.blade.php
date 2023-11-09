@@ -92,36 +92,55 @@
                         <input type="text" class="form-control" id="tipo_cambio" name="tipo_cambio">
                     </div>
                 </div>
+
                 <div class="col-md-4">
                     <div class="form-group"><br>
                         <label for="documento">Documento</label>
                         <input type="number" class="form-control" id="documento" name="documento">
                     </div>
                 </div>
+                
                 <div class="col-md-4">
                     <div class="form-group"><br>
                         <label for="factura_numero">Factura número</label>
                         <input type="text" class="form-control" id="factura_numero" name="factura_numero">
                     </div>
                 </div>
+
+                
+
                 <div class="col-md-2">
                     <div class="form-group"><br>
                         <label for="base_disponible">Base Imponible</label>
                         <input type="number" class="form-control" id="base_disponible" name="base_disponible">
                     </div>
                 </div>
+
                 <div class="col-md-2">
                     <div class="form-group"><br>
-                        <label for="IGV">IGV</label>
-                        <input type="number" class="form-control" id="IGV" name="IGV" value="18">
+                        <label for="consulta">Tipo <span style="color: red; font-size: 15px;">*</span></label>
+                        <select class="form-select mb-3" aria-label=".form-select-lg example" id="consultaSelect" required>
+                            <option value="">Selecciona el tipo...</option>
+                            <option value="1">IGV</option>
+                            <option value="2">IGV INCLUIDO</option>
+                        </select>
                     </div>
                 </div>
+
+                <div class="col-md-2">
+                    <div class="form-group"><br>
+                        <label for="igv">IGV</label>
+                        <input type="number" class="form-control" id="igv" name="IGV">
+                    </div>
+                </div>
+
                 <div class="col-md-2">
                     <div class="form-group"><br>
                         <label for="total">Total</label>
                         <input type="number" class="form-control" id="total" name="total">
                     </div>
                 </div>
+
             </div>
         </div>
 
@@ -199,22 +218,43 @@
 </script>
 
 <script>
-    var baseInput = document.getElementById('base_disponible');
-    var igvInput = document.getElementById('IGV');
-    var totalInput = document.getElementById('total');
+    document.getElementById("consultaSelect").addEventListener("change", function() {
+        calcularIGVyTotal();
+    });
 
-    baseInput.addEventListener('input', calcularTotal);
+    document.getElementById("total").addEventListener("input", function() {
+        calcularIGVyTotal();
+    });
 
-    function calcularTotal() {
-        var base = parseFloat(baseInput.value) || 0; 
+    document.getElementById("base_disponible").addEventListener("input", function() {
+        calcularIGVyTotal();
+    });
 
-        var igv = base * igvPorcentaje;
+    function calcularIGVyTotal() {
+        var total = parseFloat(document.getElementById("total").value) || 0;
+        var igvSelect = document.getElementById("consultaSelect").value;
+        var baseImponible = 0;
+        var igv = 0;
 
-        var total = base + igv;
+        if (igvSelect === "1") {
+            // Calcular IGV incluido
+            baseImponible = total / 1.18; // Dividir por 1.18 para obtener la base imponible
+            igv = total - baseImponible;
+        } else if (igvSelect === "2") {
+            // Calcular IGV
+            igv = total * 0.18; // 18% de IGV
+            baseImponible = total - igv;
+        }
 
-        totalInput.value = total.toFixed(2); 
+        document.getElementById("base_disponible").value = baseImponible.toFixed(2);
+        document.getElementById("igv").value = igv.toFixed(2);
     }
 </script>
+
+
+
+
+
 
 
 <!-- animaciones -->

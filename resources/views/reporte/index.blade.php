@@ -132,39 +132,39 @@
 
 <!-- Modal para Crear Nuevo Tema -->
 <div class="modal fade" id="agregarModal" tabindex="-1" aria-labelledby="crearModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+<div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
+    <div class="modal-header">
         <h5 class="modal-title" id="crearModalLabel">Crear nuevo registro</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
+    </div>
+    <div class="modal-body">
         <form action="{{route('reporte_compras.store')}}" method="POST" id="reservation-form">
-          @csrf
-          <div class="border">
-            <ul class="nav nav-pills custom-hover-nav-tabs">
-              <li class="nav-item">
-                  <a href="#datos" data-bs-toggle="tab" aria-expanded="false" class="nav-link active">
-                      <i class="ri-user-fill nav-icon nav-tab-position"></i>
-                      <h5 class="nav-title nav-tab-position m-0"></h5>
-                  </a>
-              </li>
-              <li class="nav-item">
-                  <a href="#facturacion" data-bs-toggle="tab" aria-expanded="true" class="nav-link">
-                      <i class="ri-file-text-line nav-icon nav-tab-position"></i>
-                      <h5 class="nav-title nav-tab-position m-0"></h5>
-                  </a>
-              </li>
-              <li class="nav-item">
-                  <a href="#fechas" data-bs-toggle="tab" aria-expanded="true" class="nav-link">
-                      <i class="ri-calendar-line nav-icon nav-tab-position"></i>
-                      <h5 class="nav-title nav-tab-position m-0"></h5>
-                  </a>
-              </li>
-            </ul>
-          </div>
+        @csrf
+        <div class="border">
+        <ul class="nav nav-pills custom-hover-nav-tabs">
+            <li class="nav-item">
+                <a href="#datos" data-bs-toggle="tab" aria-expanded="false" class="nav-link active">
+                    <i class="ri-user-fill nav-icon nav-tab-position"></i>
+                    <h5 class="nav-title nav-tab-position m-0"></h5>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#facturacion" data-bs-toggle="tab" aria-expanded="true" class="nav-link">
+                    <i class="ri-file-text-line nav-icon nav-tab-position"></i>
+                    <h5 class="nav-title nav-tab-position m-0"></h5>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#fechas" data-bs-toggle="tab" aria-expanded="true" class="nav-link">
+                    <i class="ri-calendar-line nav-icon nav-tab-position"></i>
+                    <h5 class="nav-title nav-tab-position m-0"></h5>
+                </a>
+            </li>
+        </ul>
+        </div>
 
-          <div class="tab-content">
+        <div class="tab-content">
             <div class="tab-pane fade show active" id="datos">
                 <div class="row">
                     <div class="col-md-6">
