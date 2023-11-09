@@ -222,47 +222,43 @@
 
 
 <script>
-function seleccionarTipo() {
-    var tipoConsulta = document.getElementById("consultaSelect").value;
+    function seleccionarTipo() {
+        var tipoConsulta = document.getElementById("consultaSelect").value;
 
-    if (tipoConsulta === "1") {
-        // IGV INCLUIDO
-        document.getElementById("base_disponible").disabled = true;
-        document.getElementById("igv").disabled = true;
-        document.getElementById("total").disabled = false;
-        document.getElementById("base_disponible").value = "";
-        document.getElementById("igv").value = "";
-        document.getElementById("base_disponible").focus();
-    } else if (tipoConsulta === "2") {
-        // IGV
-        document.getElementById("base_disponible").disabled = false;
-        document.getElementById("igv").disabled = true;
-        document.getElementById("total").disabled = true;
-        document.getElementById("igv").value = "";
-        document.getElementById("total").value = "";
-        document.getElementById("base_disponible").focus();
-    }
-}
-
-function calcularTotal() {
-    var tipoConsulta = document.getElementById("consultaSelect").value;
-    var baseImponible = parseFloat(document.getElementById("base_disponible").value);
-    var igv = 0;
-    var total = 0;
-
-    if (tipoConsulta === "1") { // IGV INCLUIDO
-        total = baseImponible;
-        igv = total / 1.18 * 0.18;
-    } else if (tipoConsulta === "2") { // IGV
-        igv = baseImponible * 0.18;
-        total = baseImponible + igv;
+        if (tipoConsulta === "1") {
+            document.getElementById("base_disponible").disabled = true;
+            document.getElementById("igv").disabled = true;
+            document.getElementById("total").disabled = false;
+            document.getElementById("base_disponible").value = "";
+            document.getElementById("igv").value = "";
+            document.getElementById("base_disponible").focus();
+        } else if (tipoConsulta === "2") {
+            document.getElementById("base_disponible").disabled = false;
+            document.getElementById("igv").disabled = true;
+            document.getElementById("total").disabled = true;
+            document.getElementById("igv").value = "";
+            document.getElementById("total").value = "";
+            document.getElementById("base_disponible").focus();
+        }
     }
 
-    document.getElementById("igv").value = igv.toFixed(2);
-    document.getElementById("total").value = total.toFixed(2);
-}
+    function calcularTotal() {
+        var tipoConsulta = document.getElementById("consultaSelect").value;
+        var baseImponible = parseFloat(document.getElementById("base_disponible").value);
+        var igv = 0;
+        var total = 0;
 
+        if (tipoConsulta === "1") { // IGV INCLUIDO
+            total = baseImponible;
+            igv = total / 1.18 * 0.18;
+        } else if (tipoConsulta === "2") { // IGV
+            igv = baseImponible * 0.18;
+            total = baseImponible + igv;
+        }
 
+        document.getElementById("igv").value = igv.toFixed(2);
+        document.getElementById("total").value = total.toFixed(2);
+    }
 </script>
 
 <script>
@@ -281,18 +277,38 @@ function calcularTotal() {
         var igv = 0;
 
         if (igvSelect === "1") {
-            // Calcular IGV incluido
-            baseImponible = total / 1.18; // Dividir por 1.18 para obtener la base imponible
             igv = total - baseImponible;
         }
 
-        // Colocar la base imponible en el primer campo y el IGV en su campo correspondiente
         document.getElementById("base_disponible").value = baseImponible.toFixed(2);
         document.getElementById("igv").value = igv.toFixed(2);
     }
 </script>
 
+<script>
+    document.getElementById("consultaSelect").addEventListener("change", function() {
+        calcularIGV();
+    });
 
+    document.getElementById("base_disponible").addEventListener("input", function() {
+        calcularIGV();
+    });
+
+    function calcularIGV() {
+        var baseImponible = parseFloat(document.getElementById("base_disponible").value) || 0;
+        var igvSelect = document.getElementById("consultaSelect").value;
+        var igv = 0;
+        var total = 0;
+
+        if (igvSelect === "2") {
+            igv = baseImponible * 0.18;
+            total = baseImponible + igv;
+        }
+
+        document.getElementById("igv").value = igv.toFixed(2);
+        document.getElementById("total").value = total.toFixed(2);
+    }
+</script>
 
 
 
