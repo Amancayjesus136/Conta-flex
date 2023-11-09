@@ -59,7 +59,6 @@
                             <th scope="col">Factura Numero</th>
                             <th scope="col">Fecha Emision</th>
                             <th scope="col">Fecha Compra</th>
-                            <th scope="col">Consulta</th>
                             <th scope="col">Base disponible</th>
                             <th scope="col">IGV</th>
                             <th scope="col">Total</th>
@@ -79,7 +78,6 @@
                                 <td>{{ $reportecompra->factura_numero }}</td>
                                 <td>{{ $reportecompra->fecha_emision }}</td>
                                 <td>{{ $reportecompra->fecha_compra }}</td>
-                                <td>{{ $reportecompra->consulta }}</td>
                                 <td>{{ $reportecompra->base_disponible }}</td>
                                 <td>{{ $reportecompra->IGV }}</td>
                                 <td>{{ $reportecompra->total }}</td>
