@@ -107,7 +107,7 @@
                 <div class="col-md-2">
                     <div class="form-group"><br>
                         <label for="consulta">Tipo <span style="color: red; font-size: 15px;">*</span></label>
-                        <select class="form-select mb-3" aria-label=".form-select-lg example" id="consultaSelect" required onchange="seleccionarTipo()">
+                        <select class="form-select mb-3" aria-label=".form-select-lg example" id="consultaSelect" name="consulta" required onchange="seleccionarTipo()">
                             <option value="">Selecciona el tipo...</option>
                             <option value="1">IGV INCLUIDO</option>
                             <option value="2">IGV</option>
@@ -117,7 +117,7 @@
                 <div class="col-md-2">
                     <div class="form-group"><br>
                         <label for="base_disponible">Base Imponible</label>
-                        <input type="number" class="form-control" id="base_disponible" name="base_disponible">
+                        <input type="text" class="form-control" id="base_disponible" name="base_disponible">
                     </div>
                 </div>
 
@@ -126,14 +126,14 @@
                 <div class="col-md-2">
                     <div class="form-group"><br>
                         <label for="igv">IGV</label>
-                        <input type="number" class="form-control" id="igv" name="IGV">
+                        <input type="text" class="form-control" id="igv" name="IGV">
                     </div>
                 </div>
 
                 <div class="col-md-2">
                     <div class="form-group"><br>
                         <label for="total">Total</label>
-                        <input type="number" class="form-control" id="total" name="total">
+                        <input type="text" class="form-control" id="total" name="total">
                     </div>
                 </div>
             </div>
@@ -214,26 +214,6 @@
 
 
 <script>
-    function seleccionarTipo() {
-        var tipoConsulta = document.getElementById("consultaSelect").value;
-
-        if (tipoConsulta === "1") {
-            document.getElementById("base_disponible").disabled = true;
-            document.getElementById("igv").disabled = true;
-            document.getElementById("total").disabled = false;
-            document.getElementById("base_disponible").value = "";
-            document.getElementById("igv").value = "";
-            document.getElementById("base_disponible").focus();
-        } else if (tipoConsulta === "2") {
-            document.getElementById("base_disponible").disabled = false;
-            document.getElementById("igv").disabled = true;
-            document.getElementById("total").disabled = true;
-            document.getElementById("igv").value = "";
-            document.getElementById("total").value = "";
-            document.getElementById("base_disponible").focus();
-        }
-    }
-
     function calcularTotal() {
         var tipoConsulta = document.getElementById("consultaSelect").value;
         var baseImponible = parseFloat(document.getElementById("base_disponible").value);

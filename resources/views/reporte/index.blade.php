@@ -457,8 +457,6 @@
 @endforeach
 
 <script>
-  
-
     function calcularTotal() {
         var tipoConsulta = document.getElementById("consultaSelect").value;
         var baseImponible = parseFloat(document.getElementById("base_disponible").value);

@@ -118,7 +118,7 @@
                 <div class="col-md-2">
                     <div class="form-group"><br>
                         <label for="consulta">Tipo <span style="color: red; font-size: 15px;">*</span></label>
-                        <select class="form-select mb-3" aria-label=".form-select-lg example" id="consultaSelect" required onchange="seleccionarTipo()">
+                        <select class="form-select mb-3" aria-label=".form-select-lg example" id="consultaSelect" name="consulta" required onchange="seleccionarTipo()">
                             <option value="">Selecciona el tipo...</option>
                             <option value="1">IGV INCLUIDO</option>
                             <option value="2">IGV</option>
@@ -129,21 +129,21 @@
                 <div class="col-md-2">
                     <div class="form-group"><br>
                         <label for="base_disponible">Base Imponible</label>
-                        <input type="number" class="form-control" id="base_disponible" name="base_disponible">
+                        <input type="text" class="form-control" id="base_disponible" name="base_disponible">
                     </div>
                 </div>
 
                 <div class="col-md-2">
                     <div class="form-group"><br>
                         <label for="igv">IGV</label>
-                        <input type="number" class="form-control" id="igv" name="IGV">
+                        <input type="text" class="form-control" id="igv" name="IGV">
                     </div>
                 </div>
 
                 <div class="col-md-2">
                     <div class="form-group"><br>
                         <label for="total">Total</label>
-                        <input type="number" class="form-control" id="total" name="total">
+                        <input type="text" class="form-control" id="total" name="total">
                     </div>
                 </div>
 
@@ -226,75 +226,73 @@
 
 
 <script>
-    function seleccionarTipo() {
-    var tipoConsulta = document.getElementById("consultaSelect").value;
-    var baseDisponibleInput = document.getElementById("base_disponible");
-    var igvInput = document.getElementById("igv");
-    var totalInput = document.getElementById("total");
+    function calcularTotal() {
+        var tipoConsulta = document.getElementById("consultaSelect").value;
+        var baseImponible = parseFloat(document.getElementById("base_disponible").value);
+        var igv = 0;
+        var total = 0;
 
-    if (tipoConsulta === "1") {
-        baseDisponibleInput.classList.remove("disabled");
-        igvInput.classList.remove("disabled");
-        totalInput.classList.add("disabled");
-        baseDisponibleInput.value = "";
-        igvInput.value = "";
-        baseDisponibleInput.focus();
-    } else if (tipoConsulta === "2") {
-        baseDisponibleInput.classList.add("disabled");
-        igvInput.classList.remove("disabled");
-        totalInput.classList.remove("disabled");
-        igvInput.value = "";
-        totalInput.value = "";
-        baseDisponibleInput.focus();
+        if (tipoConsulta === "1") { 
+            total = baseImponible;
+            igv = total / 1.18 * 0.18;
+        } else if (tipoConsulta === "2") { 
+            igv = baseImponible * 0.18;
+            total = baseImponible + igv;
+        }
+
+        document.getElementById("igv").value = igv.toFixed(2);
+        document.getElementById("total").value = total.toFixed(2);
     }
-}
+</script>
 
-document.getElementById("consultaSelect").addEventListener("change", function() {
-    calcularIGVIncluido();
-});
+<script>
+    document.getElementById("consultaSelect").addEventListener("change", function() {
+        calcularIGVIncluido();
+    });
 
-document.getElementById("total").addEventListener("input", function() {
-    calcularIGVIncluido();
-});
+    document.getElementById("total").addEventListener("input", function() {
+        calcularIGVIncluido();
+    });
 
-function calcularIGVIncluido() {
-    var total = parseFloat(document.getElementById("total").value) || 0;
-    var igvSelect = document.getElementById("consultaSelect").value;
-    var baseImponible = 0;
-    var igv = 0;
+    function calcularIGVIncluido() {
+        var total = parseFloat(document.getElementById("total").value) || 0;
+        var igvSelect = document.getElementById("consultaSelect").value;
+        var baseImponible = 0;
+        var igv = 0;
 
-    if (igvSelect === "1") {
-        baseImponible = total / 1.18; 
-        igv = total - baseImponible;
+        if (igvSelect === "1") {
+            baseImponible = total / 1.18; 
+            igv = total - baseImponible;
+        }
+
+        document.getElementById("base_disponible").value = baseImponible.toFixed(2);
+        document.getElementById("igv").value = igv.toFixed(2);
     }
+</script>
 
-    document.getElementById("base_disponible").value = baseImponible.toFixed(2);
-    document.getElementById("igv").value = igv.toFixed(2);
-}
+<script>
+    document.getElementById("consultaSelect").addEventListener("change", function() {
+        calcularIGV();
+    });
 
-document.getElementById("consultaSelect").addEventListener("change", function() {
-    calcularIGV();
-});
+    document.getElementById("base_disponible").addEventListener("input", function() {
+        calcularIGV();
+    });
 
-document.getElementById("base_disponible").addEventListener("input", function() {
-    calcularIGV();
-});
+    function calcularIGV() {
+        var baseImponible = parseFloat(document.getElementById("base_disponible").value) || 0;
+        var igvSelect = document.getElementById("consultaSelect").value;
+        var igv = 0;
+        var total = 0;
 
-function calcularIGV() {
-    var baseImponible = parseFloat(document.getElementById("base_disponible").value) || 0;
-    var igvSelect = document.getElementById("consultaSelect").value;
-    var igv = 0;
-    var total = 0;
+        if (igvSelect === "2") {
+            igv = baseImponible * 0.18;
+            total = baseImponible + igv;
+        }
 
-    if (igvSelect === "2") {
-        igv = baseImponible * 0.18;
-        total = baseImponible + igv;
+        document.getElementById("igv").value = igv.toFixed(2);
+        document.getElementById("total").value = total.toFixed(2);
     }
-
-    document.getElementById("igv").value = igv.toFixed(2);
-    document.getElementById("total").value = total.toFixed(2);
-}
-
 </script>
 
 
