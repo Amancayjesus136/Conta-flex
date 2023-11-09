@@ -59,6 +59,7 @@
                             <th scope="col">Factura Numero</th>
                             <th scope="col">Fecha Emision</th>
                             <th scope="col">Fecha Compra</th>
+                            <th scope="col">Consulta</th>
                             <th scope="col">Base disponible</th>
                             <th scope="col">IGV</th>
                             <th scope="col">Total</th>
@@ -78,6 +79,7 @@
                                 <td>{{ $reportecompra->factura_numero }}</td>
                                 <td>{{ $reportecompra->fecha_emision }}</td>
                                 <td>{{ $reportecompra->fecha_compra }}</td>
+                                <td>{{ $reportecompra->consulta }}</td>
                                 <td>{{ $reportecompra->base_disponible }}</td>
                                 <td>{{ $reportecompra->IGV }}</td>
                                 <td>{{ $reportecompra->total }}</td>
@@ -219,7 +221,7 @@
                     <div class="col-md-3">
                             <div class="form-group"><br>
                                 <label for="consulta">Tipo <span style="color: red; font-size: 15px;">*</span></label>
-                                <select class="form-select mb-3" aria-label=".form-select-lg example" id="consultaSelect" required onchange="seleccionarTipo()">
+                                <select class="form-select mb-3" aria-label=".form-select-lg example" id="consultaSelect" name="consulta" required onchange="seleccionarTipo()">
                                     <option value="">Selecciona el tipo...</option>
                                     <option value="1">IGV INCLUIDO</option>
                                     <option value="2">IGV</option>

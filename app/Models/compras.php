@@ -21,6 +21,7 @@ class compras extends Model
         'factura_numero',
         'fecha_emision',
         'fecha_compra',
+        'consulta',
         'base_disponible',
         'IGV',
         'total',
