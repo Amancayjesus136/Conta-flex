@@ -58,6 +58,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            @if ($reporteventas && count($reporteventas) > 0)
                                 @foreach($reporteventas as $index => $reporteventa)
                                     <tr>
                                         <td>{{ ($reporteventas->currentPage() - 1) * $reporteventas->perPage() + $index + 1 }}</td>
@@ -83,6 +84,11 @@
                                         </td>
                                     </tr>
                                 @endforeach
+                                @else
+                                <tr>
+                                    <td class="text-center" colspan="14">No se encontraron ventas</td>
+                                </tr>
+                                @endif
                             </tbody>
                         </table>
                     </div>

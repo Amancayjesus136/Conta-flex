@@ -41,7 +41,7 @@
 </div>
 <!-- cabecera -->
 
-<<!-- listado -->
+<!-- listado -->
 <div class="card">
     <div class="card-body">
         <div class="live-preview">
@@ -50,22 +50,23 @@
                     <thead class="table-light">
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Cod Venta</th>
-                            <th scope="col">Tipo Cambio</th>
-                            <th scope="col">Fecha Comprobante</th>
+                            <th scope="col">Cod</th>
+                            <th scope="col">T. Cambio</th>
+                            <th scope="col">F. Comprobante</th>
                             <th scope="col">RUC</th>
-                            <th scope="col">Nombre Proveedor</th>
+                            <th scope="col">Proveedor</th>
                             <th scope="col">Documento</th>
-                            <th scope="col">Factura Numero</th>
-                            <th scope="col">Fecha Emision</th>
-                            <th scope="col">Fecha Compra</th>
-                            <th scope="col">Base disponible</th>
+                            <th scope="col">F. Numero</th>
+                            <th scope="col">F. Emision</th>
+                            <th scope="col">F. Compra</th>
+                            <th scope="col">Base</th>
                             <th scope="col">IGV</th>
                             <th scope="col">Total</th>
                             <th scope="col" style="width: 150px;">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
+                    @if ($reportescompras && count($reportescompras) > 0)
                         @foreach($reportescompras as $index => $reportecompra)
                             <tr>
                                 <td>{{ ($reportescompras->currentPage() - 1) * $reportescompras->perPage() + $index + 1 }}</td>
@@ -91,6 +92,11 @@
                                 </td>
                             </tr>
                         @endforeach
+                    @else
+                        <tr>
+                            <td class="text-center" colspan="14">No se encontraron compras</td>
+                        </tr>
+                    @endif
                     </tbody>
                 </table>
             </div>
