@@ -61,14 +61,20 @@
             <div class="row">
                 <div class="col-md-2">
                     <div class="form-group"><br>
-                        <label for="ruc">RUC</label>
-                        <input type="text" class="form-control" name="ruc" id="ruc" required placeholder="Ingrese el Documento">
+                        <label for="ruc">RUC: <span class="required">*</span></label>
+                        <input type="text" class="form-control" name="ruc" id="ruc" required placeholder="Ingrese el Documento" required>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group"><br>
-                        <label for="nombre_proveedor">Nombre del Proveedor</label>
-                        <input type="text" class="form-control" id="nombre_proveedor" name="nombre_proveedor">
+                        <label for="nombre_proveedor">Nombre del Proveedor: <span class="required">*</span></label>
+                        <input type="text" class="form-control" id="nombre_proveedor" name="nombre_proveedor" required>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group"><br>
+                        <label for="documento">Número de Documento: <span class="required">*</span></label>
+                        <input type="number" class="form-control" id="documento" name="documento" required>
                     </div>
                 </div>
             </div>
@@ -78,9 +84,9 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group"><br>
-                        <label for="cod_venta">Cod Venta</label>
-                        <select class="form-select rounded-pill mb-3" aria-label="cod_venta" id="cod_venta" name="cod_venta">
-                            <option selected>Seleccionar moneda...</option>
+                        <label for="cod_venta">Cod Venta: <span class="required">*</span></label>
+                        <select class="form-select rounded-pill mb-3" aria-label="cod_venta" id="cod_venta" name="cod_venta" required>
+                            <option value="" selected>Seleccionar moneda...</option>
                             <option value="soles">Soles</option>
                             <option value="dolares">Dólares</option>
                         </select>
@@ -88,25 +94,21 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group"><br>
-                        <label for="tipo_cambio">Tipo de Cambio</label>
-                        <input type="text" class="form-control" id="tipo_cambio" name="tipo_cambio">
+                        <label for="tipo_cambio">Tipo de Cambio: <span class="required">*</span></label>
+                        <input type="text" class="form-control" id="tipo_cambio" name="tipo_cambio" required>
                     </div>
                 </div>
+                
                 <div class="col-md-4">
                     <div class="form-group"><br>
-                        <label for="documento">Documento</label>
-                        <input type="number" class="form-control" id="documento" name="documento">
+                        <label for="factura_numero">Factura número: <span class="required">*</span></label>
+                            <i class="fa fa-info-circle" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="hola"></i></label>
+                        <input type="text" class="form-control" id="factura_numero" name="factura_numero" required>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group"><br>
-                        <label for="factura_numero">Factura número</label>
-                        <input type="text" class="form-control" id="factura_numero" name="factura_numero">
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group"><br>
-                        <label for="consulta">Tipo <span style="color: red; font-size: 15px;">*</span></label>
+                        <label for="consulta">Tipo: <span class="required">*</span></label>
                         <select class="form-select mb-3" aria-label=".form-select-lg example" id="consultaSelect" name="consulta" required onchange="seleccionarTipo()">
                             <option value="">Selecciona el tipo...</option>
                             <option value="1">IGV INCLUIDO</option>
@@ -114,26 +116,26 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <div class="form-group"><br>
-                        <label for="base_disponible">Base Imponible</label>
-                        <input type="text" class="form-control" id="base_disponible" name="base_disponible">
+                        <label for="base_disponible">Base Imponible <span class="required">*</span></label>
+                        <input type="text" class="form-control" id="base_disponible" name="base_disponible" required>
                     </div>
                 </div>
 
                 
 
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <div class="form-group"><br>
-                        <label for="igv">IGV</label>
-                        <input type="text" class="form-control" id="igv" name="IGV">
+                        <label for="igv">IGV <span class="required">*</span></label>
+                        <input type="text" class="form-control" id="igv" name="IGV" required>
                     </div>
                 </div>
 
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <div class="form-group"><br>
-                        <label for="total">Total</label>
-                        <input type="text" class="form-control" id="total" name="total">
+                        <label for="total">Total <span class="required">*</span></label>
+                        <input type="text" class="form-control" id="total" name="total" required>
                     </div>
                 </div>
             </div>
@@ -143,20 +145,20 @@
             <div class="row">
                 <div class="col-md-2">
                     <div class="form-group"><br>
-                        <label for="fecha_comprobante">Fecha Comprobante</label>
-                        <input type="date" class="form-control" id="fecha_comprobante" name="fecha_comprobante">
+                        <label for="fecha_comprobante">Fecha Comprobante: <span class="required">*</span></label>
+                        <input type="date" class="form-control" id="fecha_comprobante" name="fecha_comprobante" required>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group"><br>
-                        <label for="fecha_emision">Fecha de Emisión</label>
-                        <input type="date" class="form-control" id="fecha_emision" name="fecha_emision">
+                        <label for="fecha_emision">Fecha de Emisión: <span class="required">*</span></label>
+                        <input type="date" class="form-control" id="fecha_emision" name="fecha_emision" required>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group"><br>
-                        <label for="fecha_venta">Fecha de Ventas</label>
-                        <input type="date" class="form-control" id="fecha_venta" name="fecha_venta">
+                        <label for="fecha_venta">Fecha de Ventas: <span class="required">*</span></label>
+                        <input type="date" class="form-control" id="fecha_venta" name="fecha_venta" required>
                     </div>
                 </div>
             </div>

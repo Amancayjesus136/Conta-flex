@@ -43,24 +43,25 @@
     @csrf
     <div class="border">
         <ul class="nav nav-pills custom-hover-nav-tabs">
-            <li class="nav-item">
-                <a href="#datos" data-bs-toggle="tab" aria-expanded="false" class="nav-link active">
-                    <i class="ri-user-fill nav-icon nav-tab-position"></i>
-                    <h5 class="nav-title nav-tab-position m-0"></h5>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#facturacion" data-bs-toggle="tab" aria-expanded="true" class="nav-link">
-                    <i class="ri-file-text-line nav-icon nav-tab-position"></i>
-                    <h5 class="nav-title nav-tab-position m-0"></h5>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#fechas" data-bs-toggle="tab" aria-expanded="true" class="nav-link">
-                    <i class="ri-calendar-line nav-icon nav-tab-position"></i>
-                    <h5 class="nav-title nav-tab-position m-0"></h5>
-                </a>
-            </li>
+        <li class="nav-item">
+            <a href="#datos" data-bs-toggle="tab" aria-expanded="false" class="nav-link active" data-bs-toggle="tooltip" title="Datos">
+                <i class="ri-user-fill nav-icon nav-tab-position"></i>
+                <h5 class="nav-title nav-tab-position m-0"></h5>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#facturacion" data-bs-toggle="tab" aria-expanded="true" class="nav-link" data-bs-toggle="tooltip" title="Facturación">
+                <i class="ri-file-text-line nav-icon nav-tab-position"></i>
+                <h5 class="nav-title nav-tab-position m-0"></h5>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#fechas" data-bs-toggle="tab" aria-expanded="true" class="nav-link" data-bs-toggle="tooltip" title="Fechas">
+                <i class="ri-calendar-line nav-icon nav-tab-position"></i>
+                <h5 class="nav-title nav-tab-position m-0"></h5>
+            </a>
+        </li>
+
         </ul>
     </div>
 
@@ -69,14 +70,20 @@
             <div class="row">
                 <div class="col-md-2">
                     <div class="form-group"><br>
-                        <label for="ruc">RUC</label>
-                        <input type="text" class="form-control" name="ruc" id="ruc" required placeholder="Ingrese el Documento">
+                        <label for="ruc">RUC: <span class="required">*</span></label>
+                        <input type="text" class="form-control" name="ruc" id="ruc" required placeholder="Ingrese el Documento" required>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group"><br>
-                        <label for="nombre_proveedor">Nombre del Proveedor</label>
-                        <input type="text" class="form-control" id="nombre_proveedor" name="nombre_proveedor">
+                        <label for="nombre_proveedor">Nombre del Proveedor: <span class="required">*</span></label>
+                        <input type="text" class="form-control" id="nombre_proveedor" name="nombre_proveedor" required>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group"><br>
+                        <label for="documento">NumeroDocumento: <span class="required">*</span></label>
+                        <input type="number" class="form-control" id="documento" name="documento" required>
                     </div>
                 </div>
             </div>
@@ -86,8 +93,8 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group"><br>
-                        <label for="cod_compra">Cod Compra</label>
-                        <select class="form-select rounded-pill mb-3" aria-label="cod_compra" id="cod_compra" name="cod_compra">
+                        <label for="cod_compra">Cod Compra: <span class="required">*</span></label>
+                        <select class="form-select rounded-pill mb-3" aria-label="cod_compra" id="cod_compra" name="cod_compra" required>
                             <option selected>Seleccionar moneda...</option>
                             <option value="soles">Soles</option>
                             <option value="dolares">Dólares</option>
@@ -96,28 +103,24 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group"><br>
-                        <label for="tipo_cambio">Tipo de Cambio</label>
-                        <input type="text" class="form-control" id="tipo_cambio" name="tipo_cambio">
+                        <label for="tipo_cambio">Tipo de Cambio: <span class="required">*</span></label>
+                        <input type="text" class="form-control" id="tipo_cambio" name="tipo_cambio" required>
                     </div>
                 </div>
 
-                <div class="col-md-4">
-                    <div class="form-group"><br>
-                        <label for="documento">Documento</label>
-                        <input type="number" class="form-control" id="documento" name="documento">
-                    </div>
-                </div>
+                
                 
                 <div class="col-md-4">
                     <div class="form-group"><br>
-                        <label for="factura_numero">Factura número</label>
-                        <input type="text" class="form-control" id="factura_numero" name="factura_numero">
+                        <label for="factura_numero">Factura número 
+                            <i class="fa fa-info-circle" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="hola"></i></label>
+                        <input type="text" class="form-control" id="factura_numero" name="factura_numero" required>
                     </div>
                 </div>
 
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <div class="form-group"><br>
-                        <label for="consulta">Tipo <span style="color: red; font-size: 15px;">*</span></label>
+                        <label for="consulta">Tipo: <span class="required">*</span></label>
                         <select class="form-select mb-3" aria-label=".form-select-lg example" id="consultaSelect" name="consulta" required onchange="seleccionarTipo()">
                             <option value="">Selecciona el tipo...</option>
                             <option value="1">IGV INCLUIDO</option>
@@ -126,24 +129,24 @@
                     </div>
                 </div>
 
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <div class="form-group"><br>
-                        <label for="base_disponible">Base Imponible</label>
-                        <input type="any" class="form-control" id="base_disponible" name="base_disponible">
+                        <label for="base_disponible">Base Imponible: <span class="required">*</span></label>
+                        <input type="any" class="form-control" id="base_disponible" name="base_disponible" required>
                     </div>
                 </div>
 
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <div class="form-group"><br>
-                        <label for="igv">IGV</label>
-                        <input type="any" class="form-control" id="igv" name="IGV">
+                        <label for="igv">IGV: <span class="required">*</span></label>
+                        <input type="any" class="form-control" id="igv" name="IGV" required>
                     </div>
                 </div>
 
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <div class="form-group"><br>
-                        <label for="total">Total</label>
-                        <input type="any" class="form-control" id="total" name="total">
+                        <label for="total">Total: <span class="required">*</span></label>
+                        <input type="any" class="form-control" id="total" name="total" required>
                     </div>
                 </div>
 
@@ -154,20 +157,20 @@
             <div class="row">
                 <div class="col-md-2">
                     <div class="form-group"><br>
-                        <label for="fecha_comprobante">Fecha Comprobante</label>
-                        <input type="date" class="form-control" id="fecha_comprobante" name="fecha_comprobante">
+                        <label for="fecha_comprobante">Fecha Comprobante: <span class="required">*</span></label>
+                        <input type="date" class="form-control" id="fecha_comprobante" name="fecha_comprobante" required>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group"><br>
-                        <label for="fecha_emision">Fecha de Emisión</label>
-                        <input type="date" class="form-control" id="fecha_emision" name="fecha_emision">
+                        <label for="fecha_emision">Fecha de Emisión: <span class="required">*</span></label>
+                        <input type="date" class="form-control" id="fecha_emision" name="fecha_emision" required>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group"><br>
-                        <label for="fecha_compra">Fecha de Compra</label>
-                        <input type="date" class="form-control" id="fecha_compra" name="fecha_compra">
+                        <label for="fecha_compra">Fecha de Compra: <span class="required">*</span></label>
+                        <input type="date" class="form-control" id="fecha_compra" name="fecha_compra" required>
                     </div>
                 </div>
             </div>
