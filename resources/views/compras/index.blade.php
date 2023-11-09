@@ -119,11 +119,13 @@
                 <div class="col-md-2">
                     <div class="form-group"><br>
                         <label for="consulta">Tipo <span style="color: red; font-size: 15px;">*</span></label>
-                        <select class="form-select mb-3" aria-label=".form-select-lg example" id="consultaSelect" required>
-                            <option value="">Selecciona el tipo...</option>
-                            <option value="1">IGV INCLUIDO</option>
-                            <option value="2">IGV</option>
-                        </select>
+                        <select class="form-select mb-3" aria-label=".form-select-lg example" id="consultaSelect" required onchange="seleccionarTipo()">
+    <option value="">Selecciona el tipo...</option>
+    <option value="1">IGV INCLUIDO</option>
+    <option value="2">IGV</option>
+</select>
+
+
                     </div>
                 </div>
 
@@ -217,42 +219,80 @@
     });
 </script>
 
+
+
+<script>
+function seleccionarTipo() {
+    var tipoConsulta = document.getElementById("consultaSelect").value;
+
+    if (tipoConsulta === "1") {
+        // IGV INCLUIDO
+        document.getElementById("base_disponible").disabled = true;
+        document.getElementById("igv").disabled = true;
+        document.getElementById("total").disabled = false;
+        document.getElementById("base_disponible").value = "";
+        document.getElementById("igv").value = "";
+        document.getElementById("base_disponible").focus();
+    } else if (tipoConsulta === "2") {
+        // IGV
+        document.getElementById("base_disponible").disabled = false;
+        document.getElementById("igv").disabled = true;
+        document.getElementById("total").disabled = true;
+        document.getElementById("igv").value = "";
+        document.getElementById("total").value = "";
+        document.getElementById("base_disponible").focus();
+    }
+}
+
+function calcularTotal() {
+    var tipoConsulta = document.getElementById("consultaSelect").value;
+    var baseImponible = parseFloat(document.getElementById("base_disponible").value);
+    var igv = 0;
+    var total = 0;
+
+    if (tipoConsulta === "1") { // IGV INCLUIDO
+        total = baseImponible;
+        igv = total / 1.18 * 0.18;
+    } else if (tipoConsulta === "2") { // IGV
+        igv = baseImponible * 0.18;
+        total = baseImponible + igv;
+    }
+
+    document.getElementById("igv").value = igv.toFixed(2);
+    document.getElementById("total").value = total.toFixed(2);
+}
+
+
+</script>
+
 <script>
     document.getElementById("consultaSelect").addEventListener("change", function() {
-        calcularIGVyTotal();
+        calcularIGVIncluido();
     });
 
     document.getElementById("total").addEventListener("input", function() {
-        calcularIGVyTotal();
+        calcularIGVIncluido();
     });
 
-    document.getElementById("base_disponible").addEventListener("input", function() {
-        calcularIGVyTotal();
-    });
-
-    function calcularIGVyTotal() {
+    function calcularIGVIncluido() {
         var total = parseFloat(document.getElementById("total").value) || 0;
         var igvSelect = document.getElementById("consultaSelect").value;
-        var igv = 0;
         var baseImponible = 0;
+        var igv = 0;
 
         if (igvSelect === "1") {
             // Calcular IGV incluido
             baseImponible = total / 1.18; // Dividir por 1.18 para obtener la base imponible
             igv = total - baseImponible;
-        } else if (igvSelect === "2") {
-            // Calcular IGV
-            igv = total * 0.18; // 18% de IGV
-            // Calcular base imponible como el 18% del total
-            baseImponible = total / 1.18;
         }
 
-        // Si se selecciona "IGV", colocar la base imponible en el primer campo
-        // Si se selecciona "IGV Incluido", colocar el total en el primer campo
-        document.getElementById(igvSelect === "1" ? "base_disponible" : "total").value = igvSelect === "1" ? baseImponible.toFixed(2) : total.toFixed(2);
+        // Colocar la base imponible en el primer campo y el IGV en su campo correspondiente
+        document.getElementById("base_disponible").value = baseImponible.toFixed(2);
         document.getElementById("igv").value = igv.toFixed(2);
     }
 </script>
+
+
 
 
 
