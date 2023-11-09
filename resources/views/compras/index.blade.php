@@ -107,15 +107,6 @@
                     </div>
                 </div>
 
-                
-
-                <div class="col-md-2">
-                    <div class="form-group"><br>
-                        <label for="base_disponible">Base Imponible</label>
-                        <input type="number" class="form-control" id="base_disponible" name="base_disponible">
-                    </div>
-                </div>
-
                 <div class="col-md-2">
                     <div class="form-group"><br>
                         <label for="consulta">Tipo <span style="color: red; font-size: 15px;">*</span></label>
@@ -124,6 +115,13 @@
                             <option value="1">IGV INCLUIDO</option>
                             <option value="2">IGV</option>
                         </select>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group"><br>
+                        <label for="base_disponible">Base Imponible</label>
+                        <input type="number" class="form-control" id="base_disponible" name="base_disponible">
                     </div>
                 </div>
 
@@ -246,10 +244,10 @@
         var igv = 0;
         var total = 0;
 
-        if (tipoConsulta === "1") { // IGV INCLUIDO
+        if (tipoConsulta === "1") { 
             total = baseImponible;
             igv = total / 1.18 * 0.18;
-        } else if (tipoConsulta === "2") { // IGV
+        } else if (tipoConsulta === "2") { 
             igv = baseImponible * 0.18;
             total = baseImponible + igv;
         }
@@ -275,6 +273,7 @@
         var igv = 0;
 
         if (igvSelect === "1") {
+            baseImponible = total / 1.18; 
             igv = total - baseImponible;
         }
 
@@ -307,7 +306,6 @@
         document.getElementById("total").value = total.toFixed(2);
     }
 </script>
-
 
 
 <!-- animaciones -->

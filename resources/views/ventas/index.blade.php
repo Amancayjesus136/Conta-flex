@@ -106,13 +106,6 @@
                 </div>
                 <div class="col-md-2">
                     <div class="form-group"><br>
-                        <label for="base_disponible">Base Imponible</label>
-                        <input type="number" class="form-control" id="base_disponible" name="base_disponible">
-                    </div>
-                </div>
-
-                <div class="col-md-2">
-                    <div class="form-group"><br>
                         <label for="consulta">Tipo <span style="color: red; font-size: 15px;">*</span></label>
                         <select class="form-select mb-3" aria-label=".form-select-lg example" id="consultaSelect" required onchange="seleccionarTipo()">
                             <option value="">Selecciona el tipo...</option>
@@ -121,6 +114,14 @@
                         </select>
                     </div>
                 </div>
+                <div class="col-md-2">
+                    <div class="form-group"><br>
+                        <label for="base_disponible">Base Imponible</label>
+                        <input type="number" class="form-control" id="base_disponible" name="base_disponible">
+                    </div>
+                </div>
+
+                
 
                 <div class="col-md-2">
                     <div class="form-group"><br>
