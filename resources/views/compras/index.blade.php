@@ -121,8 +121,8 @@
                         <label for="consulta">Tipo <span style="color: red; font-size: 15px;">*</span></label>
                         <select class="form-select mb-3" aria-label=".form-select-lg example" id="consultaSelect" required>
                             <option value="">Selecciona el tipo...</option>
-                            <option value="1">IGV</option>
-                            <option value="2">IGV INCLUIDO</option>
+                            <option value="1">IGV INCLUIDO</option>
+                            <option value="2">IGV</option>
                         </select>
                     </div>
                 </div>
@@ -233,8 +233,8 @@
     function calcularIGVyTotal() {
         var total = parseFloat(document.getElementById("total").value) || 0;
         var igvSelect = document.getElementById("consultaSelect").value;
-        var baseImponible = 0;
         var igv = 0;
+        var baseImponible = 0;
 
         if (igvSelect === "1") {
             // Calcular IGV incluido
@@ -243,13 +243,21 @@
         } else if (igvSelect === "2") {
             // Calcular IGV
             igv = total * 0.18; // 18% de IGV
-            baseImponible = total - igv;
+            // Calcular base imponible como el 18% del total
+            baseImponible = total / 1.18;
         }
 
-        document.getElementById("base_disponible").value = baseImponible.toFixed(2);
+        // Si se selecciona "IGV", colocar la base imponible en el primer campo
+        // Si se selecciona "IGV Incluido", colocar el total en el primer campo
+        document.getElementById(igvSelect === "1" ? "base_disponible" : "total").value = igvSelect === "1" ? baseImponible.toFixed(2) : total.toFixed(2);
         document.getElementById("igv").value = igv.toFixed(2);
     }
 </script>
+
+
+
+
+
 
 
 
