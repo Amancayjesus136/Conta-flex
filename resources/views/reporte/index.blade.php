@@ -457,25 +457,7 @@
 @endforeach
 
 <script>
-    function seleccionarTipo() {
-        var tipoConsulta = document.getElementById("consultaSelect").value;
-
-        if (tipoConsulta === "1") {
-            document.getElementById("base_disponible").disabled = true;
-            document.getElementById("igv").disabled = true;
-            document.getElementById("total").disabled = false;
-            document.getElementById("base_disponible").value = "";
-            document.getElementById("igv").value = "";
-            document.getElementById("base_disponible").focus();
-        } else if (tipoConsulta === "2") {
-            document.getElementById("base_disponible").disabled = false;
-            document.getElementById("igv").disabled = true;
-            document.getElementById("total").disabled = true;
-            document.getElementById("igv").value = "";
-            document.getElementById("total").value = "";
-            document.getElementById("base_disponible").focus();
-        }
-    }
+  
 
     function calcularTotal() {
         var tipoConsulta = document.getElementById("consultaSelect").value;
