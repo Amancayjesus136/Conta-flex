@@ -41,17 +41,17 @@
                         <table class="table align-middle table-nowrap table-striped-columns mb-0">
                             <thead class="table-light">
                                 <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Cod Venta</th>
-                                    <th scope="col">Tipo Cambio</th>
-                                    <th scope="col">Fecha Comprobante</th>
+                                <th scope="col">#</th>
+                                    <th scope="col">Cod</th>
+                                    <th scope="col">T. Cambio</th>
+                                    <th scope="col">F. Comprobante</th>
                                     <th scope="col">RUC</th>
-                                    <th scope="col">Nombre Proveedor</th>
+                                    <th scope="col">Proveedor</th>
                                     <th scope="col">Documento</th>
-                                    <th scope="col">Factura Numero</th>
-                                    <th scope="col">Fecha Emision</th>
-                                    <th scope="col">Fecha Venta</th>
-                                    <th scope="col">Base disponible</th>
+                                    <th scope="col">F. Numero</th>
+                                    <th scope="col">F. Emision</th>
+                                    <th scope="col">F. Venta</th>
+                                    <th scope="col">Base</th>
                                     <th scope="col">IGV</th>
                                     <th scope="col">Total</th>
                                     <th scope="col" style="width: 150px;">Acciones</th>
