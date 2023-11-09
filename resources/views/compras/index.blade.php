@@ -129,21 +129,21 @@
                 <div class="col-md-2">
                     <div class="form-group"><br>
                         <label for="base_disponible">Base Imponible</label>
-                        <input type="text" class="form-control" id="base_disponible" name="base_disponible">
+                        <input type="any" class="form-control" id="base_disponible" name="base_disponible">
                     </div>
                 </div>
 
                 <div class="col-md-2">
                     <div class="form-group"><br>
                         <label for="igv">IGV</label>
-                        <input type="text" class="form-control" id="igv" name="IGV">
+                        <input type="any" class="form-control" id="igv" name="IGV">
                     </div>
                 </div>
 
                 <div class="col-md-2">
                     <div class="form-group"><br>
                         <label for="total">Total</label>
-                        <input type="text" class="form-control" id="total" name="total">
+                        <input type="any" class="form-control" id="total" name="total">
                     </div>
                 </div>
 

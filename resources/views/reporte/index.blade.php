@@ -260,20 +260,19 @@
                     <div class="col-md-4">
                         <div class="form-group"><br>
                             <label for="fecha_comprobante">Fecha Comprobante</label>
-                            <input type="date" class="form-control" id="fecha_comprobante"
-                                name="fecha_comprobante">
+                            <input type="date" class="form-control" id="fecha_comprobante"name="fecha_comprobante" required>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group"><br>
                             <label for="fecha_emision">Fecha de Emisión</label>
-                            <input type="date" class="form-control" id="fecha_emision" name="fecha_emision">
+                            <input type="date" class="form-control" id="fecha_emision" name="fecha_emision" required>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group"><br>
                             <label for="fecha_compra">Fecha de Compra</label>
-                            <input type="date" class="form-control" id="fecha_compra" name="fecha_compra">
+                            <input type="date" class="form-control" id="fecha_compra" name="fecha_compra" required>
                         </div>
                     </div>
                 </div>
