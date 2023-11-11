@@ -18,9 +18,17 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-        <a href="{{ route('reporte_compras.index', ['export' => 1]) }}" class="btn btn-success btn-sm">
-            <i class="fas fa-file-excel"></i>  Excel
-        </a>
+        <div class="form-group">
+                <select class="form-select" id="opciones" onchange="redirectToURL(this)">
+                    <option value="">Descargar..</option>
+                    <option value="{{ route('reporte_ventas.index', ['export' => 1]) }}">
+                        <span><i class="fas fa-file-excel"></i></span> Excel
+                    </option>
+                    <option value="#">
+                        <span><i class="fas fa-file-excel"></i></span> PDF
+                    </option>
+                </select>
+            </div>
 
             <div class="page-title-right">
             <div class="card-header align-items-center d-flex">
@@ -526,6 +534,17 @@
 
         document.getElementById("igv").value = igv.toFixed(2);
         document.getElementById("total").value = total.toFixed(2);
+    }
+</script>
+
+<!-- excel -->
+
+<script>
+    function redirectToURL(selectElement) {
+        var selectedOption = selectElement.options[selectElement.selectedIndex];
+        if (selectedOption.value !== "") {
+            window.location.href = selectedOption.value;
+        }
     }
 </script>
 @endsection
