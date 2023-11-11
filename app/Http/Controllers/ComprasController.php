@@ -12,23 +12,6 @@ class ComprasController extends Controller
         return view ('compras.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        compras::create($request->all());
-        return response()->json(['success' => true]);
-    }
 
     public function consultarRuc(Request $request)
     {
@@ -43,25 +26,17 @@ class ComprasController extends Controller
             ]);
 
             $data = $response->json();
-
-            // Registrar la consulta en la tabla logs_ruc solo si se ha hecho una consulta
-            if (!empty($data)) {
-                LogRuc::create([
-                    'user_id' => auth()->user()->id,
-                    'accion' => 'Consultó el RUC: ' . $ruc,
-                ]);
-
-                // Registrar la actividad general por abrir la vista de consulta de RUC
-                app(ActivityLogGeneralController::class)->logActivity('Consultó RUC', 'Abrió la vista de consultas de RUC');
-            }
         }
 
         return view('compras.index', compact('data'));
     }
 
-    /**
-     * Display the specified resource.
-     */
+    public function store(Request $request)
+    {
+        compras::create($request->all());
+        return response()->json(['success' => true]);
+    }
+
     public function show(string $id)
     {
         //
