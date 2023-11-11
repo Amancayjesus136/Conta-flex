@@ -13,7 +13,7 @@
                     <label for="ruc">Número de RUC</label>
                     <input type="text" class="form-control" name="ruc" id="ruc" required placeholder="Ingrese el RUC">
                 </div>
-                <button type="submit" class="btn btn-primary">Consultar</button>
+                <button type="submit" class="btn btn-primary">Consultar</button><br><br><br>
             </form>
 
             @if(isset($data))
@@ -22,7 +22,6 @@
                         <strong>Error:</strong> {{ $data['error'] }}
                     </div>
                 @else
-                    <h3 class="text-center mb-4">Resultado:</h3>
                     <div class="row">
                         <div class="col-md-6">
                             <label>Número de RUC</label>
@@ -32,29 +31,15 @@
                             <label>Nombre</label>
                             <p>{{ $data['nombre'] }}</p>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-6">
-                            <label>Estado</label>
-                            <p>{{ $data['estado'] }}</p>
+                            <label for="documento">NumeroDocumento: <span class="required">*</span></label>
+                            <input type="number" class="form-control" id="documento" name="documento" required>
                         </div>
                         <div class="col-md-6">
-                            <label>Condición</label>
-                            <p>{{ $data['condicion'] }}</p>
-                        </div>
-                        <div class="col-md-6">
-                            <label>Dirección</label>
-                            <p>{{ $data['direccion'] }}</p>
-                        </div>
-                        <div class="col-md-6">
-                            <label>Ubigeo</label>
-                            <p>{{ $data['ubigeo'] }}</p>
-                        </div>
-                        <div class="col-md-6">
-                            <label>Provincia</label>
-                            <p>{{ $data['provincia'] }}</p>
-                        </div>
-                        <div class="col-md-6">
-                            <label>Departamento</label>
-                            <p>{{ $data['departamento'] }}</p>
+                            <label for="edad">edad: <span class="required">*</span></label>
+                            <input type="number" class="form-control" id="edad" name="edad" required>
                         </div>
                     </div>
                 @endif
