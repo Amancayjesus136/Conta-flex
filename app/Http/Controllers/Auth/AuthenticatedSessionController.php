@@ -30,20 +30,20 @@ class AuthenticatedSessionController extends Controller
         $data = $request->all();
         $usuario = User::where('email', $data['email'])->first();
 
-        if ($this->checkUserRoleAndAuthenticate($usuario)) {
+        if ($this->checkUserRoleAndAuthenticate($usuario, $request->has('remember'))) {
             return redirect()->intended(RouteServiceProvider::HOME);
         } else {
             return back()->with('error', 'No tienes permiso para acceder al Sistema. Solicita un rol al superadministrador');
         }
     }
 
-    private function checkUserRoleAndAuthenticate($usuario): bool
+    private function checkUserRoleAndAuthenticate($usuario, $remember): bool
     {
         if ($usuario) {
             $rolesUsuario = $usuario->getRoleNames();
 
             if ($rolesUsuario->contains('superadministrador') || $rolesUsuario->contains('admin') || $rolesUsuario->contains('jefesucursal') || $rolesUsuario->contains('operador')) {
-                Auth::login($usuario); 
+                Auth::login($usuario, $remember); 
                 request()->session()->regenerate();
                 return true;
             }
