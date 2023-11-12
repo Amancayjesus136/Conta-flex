@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container-fluid vh-100 d-flex align-items-center">
     <div class="card shadow mx-auto">
         <div class="card-header bg-lg text-black">
             <h2 class="text-center mb-0">Consulta de RUC</h2>
@@ -9,10 +8,18 @@
         <div class="card-body">
             <form id="consultaForm" action="{{ route('getpost.consultarRuc') }}" method="get">
                 @csrf
-                <div class="form-group">
-                    <label for="ruc">Número de RUC</label>
-                    <input type="text" class="form-control" name="ruc" id="ruc" placeholder="Ingrese el RUC">
-                    <button type="button" class="btn btn-primary" onclick="consultarRuc()">Consultar</button><br><br><br>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="ruc">Número de RUC</label>
+                            <input type="text" class="form-control" name="ruc" id="ruc" placeholder="Ingrese el RUC">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div style="margin-top: 28px;" class="form-group">
+                            <button type="button" class="btn btn-primary" onclick="consultarRuc()">Consultar</button><br><br><br>
+                        </div>
+                    </div>
                 </div>
 
                 @if(isset($data))
@@ -29,7 +36,6 @@
                         </div>
                     </div>
                     
-                    <button type="button" class="btn btn-primary" onclick="guardar()">Guardar</button>
                 @endif
             </form>
             
@@ -47,24 +53,21 @@
                         <input type="number" class="form-control" id="edad_guardar" name="edad" required>
                     </div>
                 </div>
+                <button type="button" class="btn btn-primary" onclick="guardar()">Guardar</button>
             </form>
         </div>
     </div>
-</div>
 
 <script>
     function consultarRuc() {
-        // Cambiar la acción del formulario para apuntar a la función de consulta
         document.getElementById('consultaForm').action = "{{ route('getpost.consultarRuc') }}";
         document.getElementById('consultaForm').submit();
     }
 
     function guardar() {
-        // Pasar los datos de la consulta API al formulario de guardar
         document.getElementById('ruc_guardar').value = document.getElementsByName('ruc_api')[0].value;
         document.getElementById('nombre_guardar').value = document.getElementsByName('nombre_api')[0].value;
 
-        // Cambiar la acción del formulario para apuntar a la función de guardar
         document.getElementById('guardarForm').action = "{{ route('getpost.guardar') }}";
         document.getElementById('guardarForm').submit();
     }
