@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\LogRuc;
+use App\Models\Prueba;
 
 use Illuminate\Support\Facades\Http;
 
@@ -15,7 +16,6 @@ class GetPostController extends Controller
     {
         return view('getpost.index');
     }
-
 
     public function consultarRuc(Request $request)
     {
@@ -43,5 +43,23 @@ class GetPostController extends Controller
 
         return view('getpost.index', compact('data'));
     }
+
+
+    public function store(Request $request)
+{
+   
+
+    // Crear un nuevo registro en la base de datos
+    Prueba::create([
+        'ruc' => $request->input('ruc'),
+        'nombre' => $request->input('nombre'),
+        'documento' => $request->input('documento'),
+        'edad' => $request->input('edad'),
+    ]);
+
+    // Redirigir de vuelta con un mensaje de éxito
+    return redirect()->back()->with('success', 'Registro almacenado correctamente');
+}
+
     
 }

@@ -90,6 +90,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/asignar', [AsignarController::class, 'store'])->name('asignar.store');
     Route::get('listado', [ListadoUsuarioController::class, 'index'])->name('listado.index');
 
+
+    Route::post('/guardar', [GetPostController::class, 'store'])->name('getpost.guardar');
+
     Route::resource('empresa', EmpresaController::class)->names('empresa');
     Route::resource('reporte_compras', ReporteComprasController::class);
     Route::resource('reporte_ventas', ReporteVentasController::class);

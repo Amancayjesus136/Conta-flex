@@ -31,10 +31,10 @@ class AsignarController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
-    AsignarUsuario::create($request->all());
-    return redirect()->route('empresa.index');
-}
+    {
+        AsignarUsuario::create($request->all());
+        return redirect()->route('empresa.index');
+    }
 
     /**
      * Display the specified resource.
