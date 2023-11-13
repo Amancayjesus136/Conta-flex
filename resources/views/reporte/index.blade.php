@@ -74,7 +74,7 @@
                                 <td>{{ $reportecompra->tipo_cambio }}</td>
                                 <td>{{ $reportecompra->fecha_comprobante }}</td>
                                 <td>{{ $reportecompra->ruc }}</td>
-                                <td>{{ $reportecompra->nombre_proveedor }}</td>
+                                <td>{{ $reportecompra->nombre }}</td>
                                 <td>{{ $reportecompra->documento }}</td>
                                 <td>{{ $reportecompra->factura_numero }}</td>
                                 <td>{{ $reportecompra->fecha_emision }}</td>

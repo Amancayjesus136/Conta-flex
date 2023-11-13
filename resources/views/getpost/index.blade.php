@@ -24,12 +24,12 @@
                 @if(isset($data))
                     <div class="row">
                         <div class="col-md-5">
-                            <label for="nombre">Nombre</label>
+                            <label for="nombre">Proveedor:</label>
                             <p name="nombre">{{ $data['nombre'] }}</p>
                             <input type="hidden" name="nombre_api" value="{{ $data['nombre'] }}">
                         </div>
                         <div class="col-md-3">
-                            <label for="nombre">Número de RUC</label>
+                            <label for="nombre">Número de RUC:</label>
                             <p name="ruc">{{ $data['numeroDocumento'] }}</p>
                             <input type="hidden" name="ruc_api" value="{{ $data['numeroDocumento'] }}">
                         </div>
@@ -103,30 +103,28 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-3">
                         <div class="col-md-12">
                             <label for="consulta">Consulta: <span class="required">*</span></label>
                             <input type="any" class="form-control" id="consulta" name="consulta" required>
                             <div class="invalid-feedback">Registro de consulta de formulario no válido</div><br>
                         </div>    
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         <div class="col-md-12">
                             <label for="base_disponible">Base: <span class="required">*</span></label>
                             <input type="any" class="form-control" id="base_disponible" name="base_disponible" required>
                             <div class="invalid-feedback">Registro de base de formulario no válido</div><br>
                         </div>   
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         <div class="col-md-12">
                             <label for="IGV">IGV: <span class="required">*</span></label>
                             <input type="any" class="form-control" id="IGV" name="IGV" required>
                             <div class="invalid-feedback">Registro de igv de formulario no válido</div><br>
                         </div>  
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-4">
+                    <div class="col-3">
                         <div class="col-md-12">
                             <label for="total">Total: <span class="required">*</span></label>
                             <input type="any" class="form-control" id="total" name="total" required>
