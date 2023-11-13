@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\LogRuc;
 use App\Models\Prueba;
+use App\Models\compras;
 
 use Illuminate\Support\Facades\Http;
 
@@ -46,20 +47,24 @@ class GetPostController extends Controller
 
 
     public function store(Request $request)
-{
-   
+    {
+        compras::create([
+            'cod_compra' => $request->input('cod_compra'),
+            'tipo_cambio' => $request->input('tipo_cambio'),
+            'fecha_comprobante' => $request->input('fecha_comprobante'),
+            'ruc' => $request->input('ruc'),
+            'nombre' => $request->input('nombre'),
+            'documento' => $request->input('documento'),
+            'factura_numero' => $request->input('factura_numero'),
+            'fecha_emision' => $request->input('fecha_emision'),
+            'fecha_compra' => $request->input('fecha_compra'),
+            'consulta' => $request->input('consulta'),
+            'base_disponible' => $request->input('base_disponible'),
+            'IGV' => $request->input('IGV'),
+            'total' => $request->input('total'),
+        ]);
 
-    // Crear un nuevo registro en la base de datos
-    Prueba::create([
-        'ruc' => $request->input('ruc'),
-        'nombre' => $request->input('nombre'),
-        'documento' => $request->input('documento'),
-        'edad' => $request->input('edad'),
-    ]);
-
-    // Redirigir de vuelta con un mensaje de éxito
-    return redirect()->back()->with('success', 'Registro almacenado correctamente');
-}
-
+        return redirect()->back()->with('success', 'Registro almacenado correctamente');
+    }
     
 }
