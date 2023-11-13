@@ -179,7 +179,7 @@
                     <i class="fas fa-users"></i> Roles
                 </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a href="{{ route('historial.consultas.ruc') }}" class="nav-link" data-key="t-Suscripción">
                     <i class="fas fa-archive"></i> Historial de RUC
                 </a>
@@ -188,7 +188,7 @@
                 <a href="{{ route('actividades-generales.index') }}" class="nav-link" data-key="t-Suscripción">
                     <i class="fas fa-archive"></i> Historial de Actividad de usuarios
                 </a>
-            </li>
+            </li> -->
         </ul>
     </div>
 </li>
