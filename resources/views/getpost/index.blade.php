@@ -39,20 +39,28 @@
                 @endif
             </form>
             
-            <form id="guardarForm" action="{{ route('getpost.guardar') }}" method="post">
+            <form id="guardarForm" action="{{ route('getpost.guardar') }}" method="post" class="was-validated">
                 @csrf
                 <input type="hidden" name="ruc" id="ruc_guardar">
                 <input type="hidden" name="nombre" id="nombre_guardar">
+
                 <div class="row">
-                    <div class="col-md-6">
-                        <label for="cod_compra">Cod: <span class="required">*</span></label>
-                        <input type="any" class="form-control" id="cod_compra" name="cod_compra" required>
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="cod_compra">Cod: <span class="required">*</span></label>
+                            <input type="any" class="form-control" aria-label="file example" name="cod_compra" required>
+                            <div class="invalid-feedback">Cod invalid form file feedback</div>
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <label for="tipo_cambio">Tipo Cambio: <span class="required">*</span></label>
-                        <input type="any" class="form-control" id="tipo_cambio" name="tipo_cambio" required>
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="tipo_cambio">Tipo Cambio: <span class="required">*</span></label>
+                            <input type="any" class="form-control" id="tipo_cambio" name="tipo_cambio" required>
+                            <div class="invalid-feedback">Tipo Cambio invalid form file feedback</div>
+                        </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-md-6">
                         <label for="fecha_comprobante">Fecha Comprobante: <span class="required">*</span></label>
@@ -119,3 +127,5 @@
     }
 </script>
 @endsection
+
+
