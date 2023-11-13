@@ -1,10 +1,8 @@
 @extends('layouts.admin')
 
 @section('content')
+<div class="container mt-5">
     <div class="card shadow mx-auto">
-        <div class="card-header bg-lg text-black">
-            <h2 class="text-center mb-0">Consulta de RUC</h2>
-        </div>
         <div class="card-body">
             <form id="consultaForm" action="{{ route('getpost.consultarRuc') }}" method="get">
                 @csrf
@@ -17,25 +15,25 @@
                     </div>
                     <div class="col-6">
                         <div style="margin-top: 28px;" class="form-group">
-                            <button type="button" class="btn btn-primary" onclick="consultarRuc()">Consultar</button><br><br><br>
+                            <button type="button" class="btn btn-primary" onclick="consultarRuc()">Consultar <i class="las la-search"></i></button>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#agregarModal" class="btn btn-info"><i class="fas fa-cloud-download-alt"></i> Traer Proovedor</button><br><br><br>
                         </div>
                     </div>
                 </div>
 
                 @if(isset($data))
                     <div class="row">
-                        <div class="col-md-6">
-                            <label for="nombre">Número de RUC</label>
-                            <p name="ruc">{{ $data['numeroDocumento'] }}</p>
-                            <input type="hidden" name="ruc_api" value="{{ $data['numeroDocumento'] }}">
-                        </div>
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                             <label for="nombre">Nombre</label>
                             <p name="nombre">{{ $data['nombre'] }}</p>
                             <input type="hidden" name="nombre_api" value="{{ $data['nombre'] }}">
                         </div>
+                        <div class="col-md-3">
+                            <label for="nombre">Número de RUC</label>
+                            <p name="ruc">{{ $data['numeroDocumento'] }}</p>
+                            <input type="hidden" name="ruc_api" value="{{ $data['numeroDocumento'] }}">
+                        </div>
                     </div>
-                    
                 @endif
             </form>
             
@@ -45,73 +43,103 @@
                 <input type="hidden" name="nombre" id="nombre_guardar">
 
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-3">
                         <div class="mb-3">
                             <label for="cod_compra">Cod: <span class="required">*</span></label>
                             <input type="any" class="form-control" aria-label="file example" name="cod_compra" required>
                             <div class="invalid-feedback">Cod invalid form file feedback</div>
                         </div>
                     </div>
-                    <div class="col-6">
-                        <div class="mb-3">
+                </div>
+
+                <div class="row">
+                    <div class="col-4">
+                        <div class="col-md-12">
+                            <label for="documento">N° de Documento: <span class="required">*</span></label>
+                            <input type="any" class="form-control" id="ocumento_guardar" name="documento" required>
+                            <div class="invalid-feedback">Cod invalid form file feedback</div><br>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="col-md-12">
+                            <label for="factura_numero">Factura Numero: <span class="required">*</span></label>
+                            <input type="any" class="form-control" id="factura_numero" name="factura_numero" required>
+                            <div class="invalid-feedback">Cod invalid form file feedback</div><br>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="mb-12">
                             <label for="tipo_cambio">Tipo Cambio: <span class="required">*</span></label>
                             <input type="any" class="form-control" id="tipo_cambio" name="tipo_cambio" required>
                             <div class="invalid-feedback">Tipo Cambio invalid form file feedback</div>
                         </div>
                     </div>
-                    
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6">
-                        <label for="fecha_comprobante">Fecha Comprobante: <span class="required">*</span></label>
-                        <input type="date" class="form-control" id="fecha_comprobante" name="fecha_comprobante" required>
+                    <div class="col-4">
+                        <div class="col-md-12">
+                            <label for="fecha_comprobante">Fecha Comprobante: <span class="required">*</span></label>
+                            <input type="date" class="form-control" id="fecha_comprobante" name="fecha_comprobante" required>
+                            <div class="invalid-feedback">Cod invalid form file feedback</div><br>
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <label for="factura_numero">Factura Numero: <span class="required">*</span></label>
-                        <input type="any" class="form-control" id="factura_numero" name="factura_numero" required>
+
+                    <div class="col-4">
+                        <div class="col-md-12">
+                            <label for="fecha_emision">Fecha Emision: <span class="required">*</span></label>
+                            <input type="date" class="form-control" id="fecha_emision" name="fecha_emision" required>
+                            <div class="invalid-feedback">Cod invalid form file feedback</div><br>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="documento">NumeroDocumento: <span class="required">*</span></label>
-                        <input type="any" class="form-control" id="ocumento_guardar" name="documento" required>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="fecha_emision">Fecha Emision: <span class="required">*</span></label>
-                        <input type="date" class="form-control" id="fecha_emision" name="fecha_emision" required>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="fecha_compra">Fecha compra: <span class="required">*</span></label>
-                        <input type="date" class="form-control" id="fecha_compra" name="fecha_compra" required>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="consulta">Consulta: <span class="required">*</span></label>
-                        <input type="any" class="form-control" id="consulta" name="consulta" required>
+
+                    <div class="col-4">
+                        <div class="col-md-12">
+                            <label for="fecha_compra">Fecha compra: <span class="required">*</span></label>
+                            <input type="date" class="form-control" id="fecha_compra" name="fecha_compra" required>
+                            <div class="invalid-feedback">Cod invalid form file feedback</div><br>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
-                        <label for="base_disponible">Base: <span class="required">*</span></label>
-                        <input type="any" class="form-control" id="base_disponible" name="base_disponible" required>
+                    <div class="col-4">
+                        <div class="col-md-12">
+                            <label for="consulta">Consulta: <span class="required">*</span></label>
+                            <input type="any" class="form-control" id="consulta" name="consulta" required>
+                            <div class="invalid-feedback">Cod invalid form file feedback</div><br>
+                        </div>    
                     </div>
-                    <div class="col-md-6">
-                        <label for="IGV">IGV: <span class="required">*</span></label>
-                        <input type="any" class="form-control" id="IGV" name="IGV" required>
+                    <div class="col-4">
+                        <div class="col-md-12">
+                            <label for="base_disponible">Base: <span class="required">*</span></label>
+                            <input type="any" class="form-control" id="base_disponible" name="base_disponible" required>
+                            <div class="invalid-feedback">Cod invalid form file feedback</div><br>
+                        </div>   
+                    </div>
+                    <div class="col-4">
+                        <div class="col-md-12">
+                            <label for="IGV">IGV: <span class="required">*</span></label>
+                            <input type="any" class="form-control" id="IGV" name="IGV" required>
+                            <div class="invalid-feedback">Cod invalid form file feedback</div><br>
+                        </div>  
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
-                        <label for="total">Total: <span class="required">*</span></label>
-                        <input type="any" class="form-control" id="total" name="total" required>
+                    <div class="col-4">
+                        <div class="col-md-12">
+                            <label for="total">Total: <span class="required">*</span></label>
+                            <input type="any" class="form-control" id="total" name="total" required>
+                            <div class="invalid-feedback">Cod invalid form file feedback</div><br>
+                        </div> 
                     </div>
                 </div>
-                <button type="button" class="btn btn-primary" onclick="guardar()">Guardar</button>
+                <button style="margin-top: 10px;" type="button" class="btn btn-primary" onclick="guardar()">Guardar</button>
             </form>
         </div>
     </div>
+</div>
 
 <script>
     function consultarRuc() {
@@ -152,7 +180,6 @@
 
         return false; // Cambia esto a true si el formulario es válido
     }
- 
 </script>
 @endsection
 
