@@ -86,7 +86,7 @@
                         <input type="text" class="form-control" id="nombre_empresa" name="nombre_empresa" required>
                     </div>
                     <!-- <div class="mb-3">
-                        <label for="plan_cuentas" class="form-label">Plan de Cuentas</label>
+                        <label for="plan_cuentas" class="forkm-label">Plan de Cuentas</label>
                         <input type="text" class="form-control" id="plan_cuentas" name="plan_cuentas" required>
                     </div> -->
                     <div class="modal-footer">

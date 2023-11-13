@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Empresa;
 use App\Models\User;
+use App\Models\compras;
 use App\Models\AsignarUsuario;
 use Illuminate\Support\Facades\DB;
 
