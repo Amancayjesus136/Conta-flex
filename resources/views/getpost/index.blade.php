@@ -127,6 +127,33 @@
         document.getElementById('guardarForm').submit();
     }
 </script>
+
+<script>
+    // Función para validar el formulario
+    function validarFormulario() {
+        var codCompra = document.getElementsByName('cod_compra')[0].value;
+        var tipoCambio = document.getElementById('tipo_cambio').value;
+
+        if (codCompra === "") {
+            document.getElementById('codCompraError').style.display = 'block';
+        } else {
+            document.getElementById('codCompraError').style.display = 'none';
+        }
+
+        if (tipoCambio === "") {
+            document.getElementById('tipoCambioError').style.display = 'block';
+        } else {
+            document.getElementById('tipoCambioError').style.display = 'none';
+        }
+
+        // Agrega validaciones para otros campos
+
+        // Resto de la lógica de validación según tus necesidades
+
+        return false; // Cambia esto a true si el formulario es válido
+    }
+ 
+</script>
 @endsection
 
 
