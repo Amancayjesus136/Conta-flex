@@ -146,7 +146,9 @@
                         </div> 
                     </div>
                 </div>
-                <button style="margin-top: 10px;" type="button" class="btn btn-primary" onclick="guardar()">Guardar</button>
+                <div style="text-align: right;">
+                    <button style="margin-top: 10px;" type="button" class="btn btn-primary" onclick="guardar()">Guardar <i class="bx bx-send"></i></button>
+                </div>
             </form>
         </div>
     </div>
