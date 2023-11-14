@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card p-4">
-                <form id="consultaForm" action="/consultar-tipo-cambio" method="get">
+                <form id="consultaForm" action="/consultar-tipo-cambio" method="post">
                     @csrf
                     <div class="mb-3">
                         <label for="fecha" class="form-label">Consulta Fecha:</label>
