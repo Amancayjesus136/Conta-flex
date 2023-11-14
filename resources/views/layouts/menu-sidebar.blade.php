@@ -200,12 +200,12 @@
             </li>
             <li class="nav-item">
                 <a href="{{ route('consultatipocambio') }}" class="nav-link" data-key="t-Suscripción">
-                    <i class="fas fa-percent"></i> Tasa de IGV
+                    <i class="fas fa-money-bill-wave"></i> Consulta Api
                 </a>
             </li>
             <li class="nav-item">
                 <a href="{{ route('tipo_cambio.index') }}" class="nav-link" data-key="t-Suscripción">
-                    <i class="fas fa-exchange-alt"></i> Tipo de cambio
+                    <i class="bx bx-dollar"></i> Tipo de cambio
                 </a>
             </li>
         </ul>
