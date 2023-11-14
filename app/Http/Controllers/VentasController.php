@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use App\Models\Ventas;
 
 class VentasController extends Controller
@@ -30,15 +31,6 @@ class VentasController extends Controller
             ]);
 
             $data = $response->json();
-
-            if (!empty($data)) {
-                LogRuc::create([
-                    'user_id' => auth()->user()->id,
-                    'accion' => 'Consultó el RUC: ' . $ruc,
-                ]);
-
-                app(ActivityLogGeneralController::class)->logActivity('Consultó RUC', 'Abrió la vista de consultas de RUC');
-            }
         }
 
         return view('ventas.index', compact('data'));

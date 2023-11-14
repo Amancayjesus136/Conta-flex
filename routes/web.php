@@ -90,11 +90,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/asignar', [AsignarController::class, 'store'])->name('asignar.store');
     Route::get('listado', [ListadoUsuarioController::class, 'index'])->name('listado.index');
 
-
-    Route::post('/guardar', [GetPostController::class, 'store'])->name('getpost.guardar');
-    Route::post('/guardar', [VentasController::class, 'store'])->name('getpost.guardar');
-    Route::post('/guardar', [ComprasController::class, 'store'])->name('getpost.guardar');
-
     Route::resource('empresa', EmpresaController::class)->names('empresa');
     Route::resource('reporte_compras', ReporteComprasController::class);
     Route::resource('reporte_ventas', ReporteVentasController::class);
@@ -104,8 +99,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('consultatipocambio', ConsultaTipoCambioController::class);
     Route::post('consultar-tipo-cambio', [ConsultaTipoCambioController::class, 'consultarTipoCambio'])->name('consultatipocambio');
 
-    Route::get('getpost', [GetPostController::class, 'consultarRuc'])->name('getpost.consultarRuc');
+    Route::get('getpost', [ComprasController::class, 'consultarRuc'])->name('getpost.consultarRuc');
+    Route::post('/guardar', [ComprasController::class, 'store'])->name('getpost.guardarcompras');
 
+
+    
+    Route::get('getpost', [VentasController::class, 'consultarRuc'])->name('getpost.consultarRuc');
+    Route::post('/guardar', [VentasController::class, 'store'])->name('getpost.guardarventas');
 
 
 

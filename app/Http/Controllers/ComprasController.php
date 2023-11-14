@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\compras;
+use Illuminate\Support\Facades\Http;
+
 
 class ComprasController extends Controller
 {
@@ -26,14 +28,6 @@ class ComprasController extends Controller
 
             $data = $response->json();
 
-            if (!empty($data)) {
-                LogRuc::create([
-                    'user_id' => auth()->user()->id,
-                    'accion' => 'Consultó el RUC: ' . $ruc,
-                ]);
-
-                app(ActivityLogGeneralController::class)->logActivity('Consultó RUC', 'Abrió la vista de consultas de RUC');
-            }
         }
 
         return view('compras.index', compact('data'));

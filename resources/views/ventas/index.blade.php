@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0">Ventas</h4>
+            <h4 class="mb-sm-0">Ventas correcto</h4>
         </div>
     </div>
 </div>
@@ -14,7 +14,7 @@
 <div class="container mt-5">
     <div class="card shadow mx-auto">
         <div class="card-body">
-            <form id="consultaForm" action="{{ route('getpost.consultarRuc') }}" method="get">
+            <form id="consultaForm" action="{{ route('getpost.guardarventas') }}" method="get">
                 @csrf
                 <div class="row">
                     <div class="col-6">
@@ -47,7 +47,7 @@
                 @endif
             </form>
             
-            <form id="guardarForm" action="{{ route('getpost.guardar') }}" method="post" class="was-validated">
+            <form id="guardarForm" action="{{ route('getpost.consultarRuc') }}" method="post" class="was-validated">
                 @csrf
                 <input type="hidden" name="ruc" id="ruc_guardar">
                 <input type="hidden" name="nombre" id="nombre_guardar">
@@ -162,7 +162,7 @@
         document.getElementById('ruc_guardar').value = document.getElementsByName('ruc_api')[0].value;
         document.getElementById('nombre_guardar').value = document.getElementsByName('nombre_api')[0].value;
 
-        document.getElementById('guardarForm').action = "{{ route('getpost.guardar') }}";
+        document.getElementById('guardarForm').action = "{{ route('getpost.guardarventas') }}";
         document.getElementById('guardarForm').submit();
     }
 </script>

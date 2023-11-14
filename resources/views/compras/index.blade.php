@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0">Compras</h4>
+            <h4 class="mb-sm-0">Compras correcto</h4>
         </div>
     </div>
 </div>
@@ -47,7 +47,7 @@
                 @endif
             </form>
             
-            <form id="guardarForm" action="{{ route('getpost.guardar') }}" method="post" class="was-validated">
+            <form id="guardarForm" action="{{ route('getpost.guardarcompras') }}" method="post" class="was-validated">
                 @csrf
                 <input type="hidden" name="ruc" id="ruc_guardar">
                 <input type="hidden" name="nombre" id="nombre_guardar">
@@ -162,7 +162,7 @@
         document.getElementById('ruc_guardar').value = document.getElementsByName('ruc_api')[0].value;
         document.getElementById('nombre_guardar').value = document.getElementsByName('nombre_api')[0].value;
 
-        document.getElementById('guardarForm').action = "{{ route('getpost.guardar') }}";
+        document.getElementById('guardarForm').action = "{{ route('getpost.guardarcompras') }}";
         document.getElementById('guardarForm').submit();
     }
 </script>
