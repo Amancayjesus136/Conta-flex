@@ -1,219 +1,197 @@
 @extends('layouts.admin')
 
 @section('content')
-<style>
-    body {
-        font-family: 'Roboto', sans-serif;
-    }
-
-    .form-control {
-        border-radius: 20px;
-    }
-
-    .custom-card {
-        background-color: white;
-        padding: 20px;
-        border-radius: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Estilo para el cuadro blanco */
-    .white-box {
-        background-color: white;
-        padding: 20px;
-        border-radius: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    }
-</style>
-<div class="col-12 col-md-12">
+<!-- cabecera -->
+<div class="row">
+    <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
             <h4 class="mb-sm-0">Ventas</h4>
         </div>
     </div>
-<div class="white-box">
-<form action="{{ route('ventas.store') }}" method="POST" id="agregar-form">
-    @csrf
-    <div class="border">
-        <ul class="nav nav-pills custom-hover-nav-tabs">
-            <li class="nav-item">
-                <a href="#datos" data-bs-toggle="tab" aria-expanded="false" class="nav-link active">
-                    <i class="ri-user-fill nav-icon nav-tab-position"></i>
-                    <h5 class="nav-title nav-tab-position m-0"></h5>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#facturacion" data-bs-toggle="tab" aria-expanded="true" class="nav-link">
-                    <i class="ri-file-text-line nav-icon nav-tab-position"></i>
-                    <h5 class="nav-title nav-tab-position m-0"></h5>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#fechas" data-bs-toggle="tab" aria-expanded="true" class="nav-link">
-                    <i class="ri-calendar-line nav-icon nav-tab-position"></i>
-                    <h5 class="nav-title nav-tab-position m-0"></h5>
-                </a>
-            </li>
-        </ul>
+</div>
+<!-- cabecera -->
+
+<div class="container mt-5">
+    <div class="card shadow mx-auto">
+        <div class="card-body">
+            <form id="consultaForm" action="{{ route('getpost.consultarRuc') }}" method="get">
+                @csrf
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="ruc">Número de RUC</label>
+                            <input type="text" class="form-control" name="ruc" id="ruc" placeholder="Ingrese el RUC">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div style="margin-top: 28px;" class="form-group">
+                            <button type="button" class="btn btn-primary" onclick="consultarRuc()">Consultar <i class="las la-search"></i></button>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#agregarModal" class="btn btn-info"><i class="fas fa-cloud-download-alt"></i> Traer Proovedor</button><br><br><br>
+                        </div>
+                    </div>
+                </div>
+
+                @if(isset($data))
+                    <div class="row">
+                        <div class="col-md-5">
+                            <label for="nombre">Proveedor:</label>
+                            <p name="nombre">{{ $data['nombre'] }}</p>
+                            <input type="hidden" name="nombre_api" value="{{ $data['nombre'] }}">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="nombre">Número de RUC:</label>
+                            <p name="ruc">{{ $data['numeroDocumento'] }}</p>
+                            <input type="hidden" name="ruc_api" value="{{ $data['numeroDocumento'] }}">
+                        </div>
+                    </div>
+                @endif
+            </form>
+            
+            <form id="guardarForm" action="{{ route('getpost.guardar') }}" method="post" class="was-validated">
+                @csrf
+                <input type="hidden" name="ruc" id="ruc_guardar">
+                <input type="hidden" name="nombre" id="nombre_guardar">
+
+                <div class="row">
+                    <div class="col-3">
+                        <div class="mb-3">
+                            <label for="cod_compra">Cod: <span class="required">*</span></label>
+                            <input type="any" class="form-control" aria-label="file example" name="cod_compra" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-4">
+                        <div class="col-md-12">
+                            <label for="documento">N° de Documento: <span class="required">*</span></label>
+                            <input type="any" class="form-control" id="ocumento_guardar" name="documento" required>
+                            <div class="invalid-feedback">Registro de documento de formulario no válido</div><br>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="col-md-12">
+                            <label for="factura_numero">Factura Numero: <span class="required">*</span></label>
+                            <input type="any" class="form-control" id="factura_numero" name="factura_numero" required>
+                            <div class="invalid-feedback">Registro de documento de formulario no válido</div><br>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="mb-12">
+                            <label for="tipo_cambio">Tipo Cambio: <span class="required">*</span></label>
+                            <input type="any" class="form-control" id="tipo_cambio" name="tipo_cambio" required>
+                            <div class="invalid-feedback">Registro de tipo de cambio de formulario no válido</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-4">
+                        <div class="col-md-12">
+                            <label for="fecha_comprobante">Fecha Comprobante: <span class="required">*</span></label>
+                            <input type="date" class="form-control" id="fecha_comprobante" name="fecha_comprobante" required>
+                            <div class="invalid-feedback">Registro de fecha comprobante de formulario no válido</div><br>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="col-md-12">
+                            <label for="fecha_emision">Fecha Emisión: <span class="required">*</span></label>
+                            <input type="date" class="form-control" id="fecha_emision" name="fecha_emision" required>
+                            <div class="invalid-feedback">Registro de fecha emisión de formulario no válido</div><br>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="col-md-12">
+                            <label for="fecha_compra">Fecha compra: <span class="required">*</span></label>
+                            <input type="date" class="form-control" id="fecha_compra" name="fecha_compra" required>
+                            <div class="invalid-feedback">Registro de fecha comprobante de formulario no válido</div><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <div class="col-md-12">
+                            <label for="consulta">Tipo <span style="color: red; font-size: 15px;">*</span></label>
+                            <select class="form-select mb-3" aria-label=".form-select-lg example" id="consultaSelect" name="consulta" required onchange="seleccionarTipo()">
+                                <option value="">Selecciona el tipo...</option>
+                                <option value="1">IGV INCLUIDO</option>
+                                <option value="2">IGV</option>
+                            </select>
+                            <div class="invalid-feedback">Registro de consulta de formulario no válido</div><br>
+                        </div>    
+                    </div>
+                    <div class="col-3">
+                        <div class="col-md-12">
+                            <label for="base_disponible">Base: <span class="required">*</span></label>
+                            <input type="any" class="form-control" id="base_disponible" name="base_disponible" required>
+                            <div class="invalid-feedback">Registro de base de formulario no válido</div><br>
+                        </div>   
+                    </div>
+                    <div class="col-3">
+                        <div class="col-md-12">
+                            <label for="igv">IGV: <span class="required">*</span></label>
+                            <input type="any" class="form-control" id="igv" name="IGV" required>
+                            <div class="invalid-feedback">Registro de igv de formulario no válido</div><br>
+                        </div>  
+                    </div>
+                    <div class="col-3">
+                        <div class="col-md-12">
+                            <label for="total">Total: <span class="required">*</span></label>
+                            <input type="any" class="form-control" id="total" name="total" required>
+                            <div class="invalid-feedback">Registro de total de formulario no válido</div><br>
+                        </div> 
+                    </div>
+                </div>
+                <button style="margin-top: 10px;" type="button" class="btn btn-primary" onclick="guardar()">Guardar</button>
+            </form>
+        </div>
     </div>
-
-    <div class="tab-content">
-        <div class="tab-pane fade show active" id="datos">
-            <div class="row">
-                <div class="col-md-2">
-                    <div class="form-group"><br>
-                        <label for="ruc">RUC: <span class="required">*</span></label>
-                        <input type="text" class="form-control" name="ruc" id="ruc" required placeholder="Ingrese el Documento" required>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group"><br>
-                        <label for="nombre_proveedor">Nombre del Proveedor: <span class="required">*</span></label>
-                        <input type="text" class="form-control" id="nombre_proveedor" name="nombre_proveedor" required>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group"><br>
-                        <label for="documento">Número de Documento: <span class="required">*</span></label>
-                        <input type="number" class="form-control" id="documento" name="documento" required>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="tab-pane fade" id="facturacion">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group"><br>
-                        <label for="cod_venta">Cod Venta: <span class="required">*</span></label>
-                        <select class="form-select rounded-pill mb-3" aria-label="cod_venta" id="cod_venta" name="cod_venta" required>
-                            <option value="" selected>Seleccionar moneda...</option>
-                            <option value="soles">Soles</option>
-                            <option value="dolares">Dólares</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group"><br>
-                        <label for="tipo_cambio">Tipo de Cambio: <span class="required">*</span></label>
-                        <input type="text" class="form-control" id="tipo_cambio" name="tipo_cambio" required>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="form-group"><br>
-                        <label for="factura_numero">Factura número: <span class="required">*</span></label>
-                            <i class="fa fa-info-circle" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="hola"></i></label>
-                        <input type="text" class="form-control" id="factura_numero" name="factura_numero" required>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group"><br>
-                        <label for="consulta">Tipo: <span class="required">*</span></label>
-                        <select class="form-select mb-3" aria-label=".form-select-lg example" id="consultaSelect" name="consulta" required onchange="seleccionarTipo()">
-                            <option value="">Selecciona el tipo...</option>
-                            <option value="1">IGV INCLUIDO</option>
-                            <option value="2">IGV</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group"><br>
-                        <label for="base_disponible">Base Imponible <span class="required">*</span></label>
-                        <input type="text" class="form-control" id="base_disponible" name="base_disponible" required>
-                    </div>
-                </div>
-
-                
-
-                <div class="col-md-3">
-                    <div class="form-group"><br>
-                        <label for="igv">IGV <span class="required">*</span></label>
-                        <input type="text" class="form-control" id="igv" name="IGV" required>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="form-group"><br>
-                        <label for="total">Total <span class="required">*</span></label>
-                        <input type="text" class="form-control" id="total" name="total" required>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="tab-pane fade" id="fechas">
-            <div class="row">
-                <div class="col-md-2">
-                    <div class="form-group"><br>
-                        <label for="fecha_comprobante">Fecha Comprobante: <span class="required">*</span></label>
-                        <input type="date" class="form-control" id="fecha_comprobante" name="fecha_comprobante" required>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group"><br>
-                        <label for="fecha_emision">Fecha de Emisión: <span class="required">*</span></label>
-                        <input type="date" class="form-control" id="fecha_emision" name="fecha_emision" required>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group"><br>
-                        <label for="fecha_venta">Fecha de Ventas: <span class="required">*</span></label>
-                        <input type="date" class="form-control" id="fecha_venta" name="fecha_venta" required>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12 text-end"><br><br>
-            <button type="submit" class="btn btn-success">Guardar Venta</button>
-        </div>
-    </div>
-</form>
-
 </div>
 
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    $(document).ready(function () {
-        $('#agregar-form').submit(function (e) {
-            e.preventDefault();
+    function consultarRuc() {
+        document.getElementById('consultaForm').action = "{{ route('getpost.consultarRuc') }}";
+        document.getElementById('consultaForm').submit();
+    }
 
-            $.ajax({
-                url: "{{ route('ventas.store') }}",
-                method: "POST",
-                data: $(this).serialize(),
-                dataType: "json",
-                success: function (data) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Éxito',
-                        text: 'Venta agregada con éxito',
-                    }).then(function () {
-                        setTimeout(function () {
-                            $('#agregarModal').modal('hide');
-                        }, 500);
+    function guardar() {
+        document.getElementById('ruc_guardar').value = document.getElementsByName('ruc_api')[0].value;
+        document.getElementById('nombre_guardar').value = document.getElementsByName('nombre_api')[0].value;
 
-                        setTimeout(function () {
-                            location.reload();
-                        }, 500);
-                    });
-
-                },
-                error: function (error) {
-                    // Mostrar un mensaje de error si es necesario
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'Hubo un error al agregar la empresa',
-                    });
-                }
-            });
-        });
-    });
+        document.getElementById('guardarForm').action = "{{ route('getpost.guardar') }}";
+        document.getElementById('guardarForm').submit();
+    }
 </script>
 
+<script>
+    // Función para validar el formulario
+    function validarFormulario() {
+        var codCompra = document.getElementsByName('cod_compra')[0].value;
+        var tipoCambio = document.getElementById('tipo_cambio').value;
+
+        if (codCompra === "") {
+            document.getElementById('codCompraError').style.display = 'block';
+        } else {
+            document.getElementById('codCompraError').style.display = 'none';
+        }
+
+        if (tipoCambio === "") {
+            document.getElementById('tipoCambioError').style.display = 'block';
+        } else {
+            document.getElementById('tipoCambioError').style.display = 'none';
+        }
+
+        // Agrega validaciones para otros campos
+
+        // Resto de la lógica de validación según tus necesidades
+
+        return false; // Cambia esto a true si el formulario es válido
+    }
+</script>
 
 <script>
     function calcularTotal() {
@@ -284,23 +262,6 @@
         document.getElementById("total").value = total.toFixed(2);
     }
 </script>
-
-<!-- animaciones -->
-
-
-<script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/libs/simplebar/simplebar.min.js"></script>
-<script src="assets/libs/node-waves/waves.min.js"></script>
-<script src="assets/libs/feather-icons/feather.min.js"></script>
-<script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
-<script src="assets/js/plugins.js"></script>
-
-<!-- prismjs plugin -->
-<script src="assets/libs/prismjs/prism.js"></script>
-
-<!-- App js -->
-<script src="assets/js/app.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 @endsection
+
+

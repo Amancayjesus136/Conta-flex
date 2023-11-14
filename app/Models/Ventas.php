@@ -15,7 +15,7 @@ class ventas extends Model
         'tipo_cambio',
         'fecha_comprobante',
         'ruc',
-        'nombre_proveedor',
+        'nombre',
         'documento',
         'factura_numero',
         'fecha_emision',
