@@ -48,14 +48,24 @@
                         <div class="col-6">
                             <div class="mb-3">
                                 <label for="tipo_compra" class="form-label">Tipo Compra</label>
-                                <input type="text" class="form-control" id="tipo_compra" name="tipo_compra" required>
+                                <select class="form-select" id="tipo_compra" name="tipo_compra" required>
+                                    <option value="" disabled selected>Selecciona compra</option>
+                                    @if ($ultimoRegistro)
+                                        <option value="{{ $ultimoRegistro->compra }}">{{ $ultimoRegistro->compra }}</option>
+                                    @endif
+                                </select>
                             </div>
                         </div>
 
                         <div class="col-6">
                             <div class="mb-3">
                                 <label for="tipo_venta" class="form-label">Tipo Venta</label>
-                                <input type="text" class="form-control" id="tipo_venta" name="tipo_venta" required>
+                                <select class="form-select" id="tipo_venta" name="tipo_venta" required>
+                                    <option value="" disabled selected>Selecciona venta</option>
+                                    @if ($ultimoRegistro)
+                                        <option value="{{ $ultimoRegistro2->venta }}">{{ $ultimoRegistro2->venta }}</option>
+                                    @endif
+                                </select>
                             </div>
                         </div>
                     </div>

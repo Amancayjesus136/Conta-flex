@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\TipoCambio;
+use App\Models\Datos;
 use App\Models\LogTipoCambio;
 
 
@@ -16,7 +17,9 @@ class TipoCambioController extends Controller
     public function index()
     {
         $tipocambios = TipoCambio::all();
-        return view('tipo_cambio.index', compact('tipocambios'));
+        $ultimoRegistro = Datos::latest('created_at')->first();
+        $ultimoRegistro2 = Datos::latest('created_at')->first();
+        return view('tipo_cambio.index', compact('tipocambios', 'ultimoRegistro', 'ultimoRegistro2'));
     }
 
     /**
