@@ -23,7 +23,7 @@ class ComprasController extends Controller
         if ($ruc) {
             $response = Http::timeout(30)->get('https://api.apis.net.pe/v1/ruc', [
                 'numero' => $ruc,
-                'apis-token' => 'apis-token-1301.adsa-82CS1YrzRXRCe',
+                'apis-token' => 'apis-token-5787.JDcEODexUBJ4HISBmUT6svVY2O6HXtQT',
             ]);
 
             $data = $response->json();
@@ -51,6 +51,7 @@ class ComprasController extends Controller
             'total' => $request->input('total'),
         ]);
 
-        return redirect()->back()->with('success', 'Registro almacenado correctamente');
+        return redirect()->route('compras.index')->with('success', 'Empresa eliminada con éxito');
+
     }
 }

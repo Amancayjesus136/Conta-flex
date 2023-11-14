@@ -154,7 +154,7 @@
 
 <script>
     function consultarRuc() {
-        document.getElementById('consultaForm').action = "{{ route('getpost.consultarRuc') }}";
+        document.getElementById('consultaForm').action = "{{ route('getpost.consultarRucCompras') }}";
         document.getElementById('consultaForm').submit();
     }
 
