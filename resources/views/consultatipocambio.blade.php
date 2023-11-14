@@ -7,12 +7,18 @@
             <div class="card p-4">
                 <form id="consultaForm" action="/consultar-tipo-cambio" method="get">
                     @csrf
-                    <div class="mb-3">
-                        <label for="fecha" class="form-label">Consulta Fecha:</label>
-                        <input type="date" class="form-control" id="fecha" name="fecha" required>
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Consultar</button>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="fecha" class="form-label">Consulta Fecha:</label>
+                                <input type="date" class="form-control" id="fecha" name="fecha" required>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div style="margin-top: 30px;">
+                                <button type="submit" class="btn btn-primary">Consultar <i class="las la-search"></i></button>
+                            </div>
+                        </div>
                     </div>
                 </form>
 
@@ -22,7 +28,7 @@
                             <strong>Error:</strong> {{ $data['error'] }}
                         </div>
                     @else
-                        <h3 class="text-center mt-4">Resultado:</h3>
+                        <h5 class="text-center mt-4">Resultado:</h5>
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover">
                                 <tr>
@@ -44,12 +50,10 @@
                             </table>
                         </div>
                         <div class="row">
-                            <div class="col-6">
-                                <button class="btn btn-primary mt-3" id="copiarBtn">Copiar Campos <i class="ri-file-copy-2-fill"></i></button>
-                            </div>
-                            <div class="col-6">
-                            <button class="btn btn-success mt-3" id="copiarBtn" style="color: white;">
-                                <a href="{{ route('tipo_cambio.index') }}" style="color: white; text-decoration: none;">Ir a Tipo de Compra <i class="ri-send-plane-2-fill"></i></a></button>
+                            <div class="col-12 d-flex justify-content-end">
+                                <button class="btn btn-info mt-3" id="copiarBtn" style="color: white;">
+                                    <a href="{{ route('tipo_cambio.index') }}" style="color: white; text-decoration: none;">Tipo de Compra <i class="bx bx-dollar"></i></a>
+                                </button>
                             </div>
                         </div>
                     @endif
@@ -66,33 +70,4 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 </style>
-
-<script>
-    var copiarBtn = document.getElementById('copiarBtn');
-
-    copiarBtn.addEventListener('click', function() {
-        var compra = document.getElementById('compra').innerText;
-        var venta = document.getElementById('venta').innerText;
-
-        var texto = `Compra: ${compra}\nVenta: ${venta}`;
-
-        var textarea = document.createElement('textarea');
-        textarea.value = texto;
-        textarea.style.position = 'fixed';
-        document.body.appendChild(textarea);
-
-        textarea.select();
-        document.execCommand('copy');
-
-        document.body.removeChild(textarea);
-
-        alert('Campos de compra y venta copiados al portapapeles');
-        
-        // Recargar la página después de copiar
-        location.reload();
-    });
-</script>
-
-
-
 @endsection

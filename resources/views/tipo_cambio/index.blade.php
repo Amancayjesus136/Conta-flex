@@ -10,37 +10,86 @@
   }
 </style>
 
-<div class="col-12 col-md-12">
-    <form action="{{route('tipo_cambio.store')}}" method="POST" id="agregar-form">
-        @csrf
+<!-- cabecera -->
+<div class="row">
+    <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <div class="row">
-                <div class="col-12">
-                    <input type="date" class="form-control mb-2" id="mes" name="fecha_creacion" aria-label="Mes" placeholder="Fecha de Creación" required>
+            <div class="form-group">
+                <h4 class="mb-sm-0">Mantenimientos de Compañias</h4>
+            </div>
+
+            <div class="page-title-right">
+                <div class="card-header align-items-center d-flex">
+                    <h4 class="card-title mb-0 flex-grow-1"></h4>
+                    <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#agregarModal">
+                        <i class="fas fa-plus-circle"></i> Nuevo Registro
+                    </a>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-3">
-                    <input type="text" class="form-control mb-2" id="ano1" name="tipo_compra" aria-label="Año" placeholder="Compra..." required>
-                </div>
-                <div class="col-3">
-                    <input type="text" class="form-control mb-2" id="ano2" name="tipo_venta" aria-label="Año" placeholder="Venta..." required>
-                </div>
-                <div class="col-3">
-                    <select class="form-select form-select-sm mb-2" id="moneda" name="moneda" aria-label=".form-select-sm example" required>
-                        <option value="" disabled selected>Seleccionar...</option>
-                        <option value="Soles">Soles</option>
-                        <option value="Dólares">Dólares</option>
-                    </select>
-                </div>
-                <div class="col-3">
-                    <button class="btn btn-primary" id="pegarBtn"><i class="ri-survey-fill"></i></button>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-secondary">Registrar <i class="fas fa-paper-plane"></i></button>
+
         </div>
-    </form>
-</div><br>
+    </div>
+</div>
+<!-- cabecera -->
+
+<!-- Modal de Agregar -->
+<div class="modal fade" id="agregarModal" tabindex="-1" aria-labelledby="agregarModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="agregarModalLabel">Agregar Empresa</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="{{ route('tipo_cambio.store') }}" id="agregar-form">
+                    @csrf
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="tipo_compra" class="form-label">Tipo Compra</label>
+                                <input type="text" class="form-control" id="tipo_compra" name="tipo_compra" required>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="tipo_venta" class="form-label">Tipo Venta</label>
+                                <input type="text" class="form-control" id="tipo_venta" name="tipo_venta" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label for="fecha_creacion" class="form-label">Fecha Creación</label>
+                                <input type="date" class="form-control" id="fecha_creacion" name="fecha_creacion" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="fecha_creacion" class="form-label">Tipo de moneda</label>
+                            <select class="form-select" id="moneda" name="moneda" aria-label=".form-select-sm example" required>
+                                <option value="" disabled selected>Seleccionar...</option>
+                                <option value="Soles">Soles</option>
+                                <option value="Dólares">Dólares</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal de Agregar -->
 
 <div class="table-responsive table-card">
     <table class="table table-nowrap table-striped-columns mb-0">
@@ -243,24 +292,6 @@
                 }
             });
         });
-    });
-    var pegarBtn = document.getElementById('pegarBtn');
-
-    pegarBtn.addEventListener('click', function() {
-        var textoCopiado = prompt("Por favor, pegue los campos copiados aquí:");
-        if (textoCopiado) {
-            var campos = textoCopiado.split('\n');
-            var compra = campos[0].split(':')[1].trim();
-            var venta = campos[1].split(':')[1].trim();
-
-            // Asignar valores a los campos del formulario
-            document.getElementById('ano1').value = compra;
-            document.getElementById('ano2').value = venta;
-
-            alert('Campos pegados exitosamente.');
-        } else {
-            alert('Nada para pegar.');
-        }
     });
 </script>
 

@@ -35,7 +35,7 @@ class ReporteComprasController extends Controller
         });
     }
 
-    $porPagina = 5;
+    $porPagina = 10;
     $reportescompras = $reportecompras->paginate($porPagina);
 
     if ($request->has('export')) {
