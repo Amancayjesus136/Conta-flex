@@ -115,8 +115,12 @@
                 <div class="row">
                     <div class="col-3">
                         <div class="col-md-12">
-                            <label for="consulta">Consulta: <span class="required">*</span></label>
-                            <input type="any" class="form-control" id="consulta" name="consulta" required>
+                            <label for="consulta">Tipo <span style="color: red; font-size: 15px;">*</span></label>
+                            <select class="form-select mb-3" aria-label=".form-select-lg example" id="consultaSelect" name="consulta" required onchange="seleccionarTipo()">
+                                <option value="">Selecciona el tipo...</option>
+                                <option value="1">IGV INCLUIDO</option>
+                                <option value="2">IGV</option>
+                            </select>
                             <div class="invalid-feedback">Registro de consulta de formulario no válido</div><br>
                         </div>    
                     </div>
@@ -129,8 +133,8 @@
                     </div>
                     <div class="col-3">
                         <div class="col-md-12">
-                            <label for="IGV">IGV: <span class="required">*</span></label>
-                            <input type="any" class="form-control" id="IGV" name="IGV" required>
+                            <label for="igv">IGV: <span class="required">*</span></label>
+                            <input type="any" class="form-control" id="igv" name="IGV" required>
                             <div class="invalid-feedback">Registro de igv de formulario no válido</div><br>
                         </div>  
                     </div>
@@ -186,6 +190,76 @@
         // Resto de la lógica de validación según tus necesidades
 
         return false; // Cambia esto a true si el formulario es válido
+    }
+</script>
+
+<script>
+    function calcularTotal() {
+        var tipoConsulta = document.getElementById("consultaSelect").value;
+        var baseImponible = parseFloat(document.getElementById("base_disponible").value);
+        var igv = 0;
+        var total = 0;
+
+        if (tipoConsulta === "1") { 
+            total = baseImponible;
+            igv = total / 1.18 * 0.18;
+        } else if (tipoConsulta === "2") { 
+            igv = baseImponible * 0.18;
+            total = baseImponible + igv;
+        }
+
+        document.getElementById("igv").value = igv.toFixed(2);
+        document.getElementById("total").value = total.toFixed(2);
+    }
+</script>
+
+<script>
+    document.getElementById("consultaSelect").addEventListener("change", function() {
+        calcularIGVIncluido();
+    });
+
+    document.getElementById("total").addEventListener("input", function() {
+        calcularIGVIncluido();
+    });
+
+    function calcularIGVIncluido() {
+        var total = parseFloat(document.getElementById("total").value) || 0;
+        var igvSelect = document.getElementById("consultaSelect").value;
+        var baseImponible = 0;
+        var igv = 0;
+
+        if (igvSelect === "1") {
+            baseImponible = total / 1.18; 
+            igv = total - baseImponible;
+        }
+
+        document.getElementById("base_disponible").value = baseImponible.toFixed(2);
+        document.getElementById("igv").value = igv.toFixed(2);
+    }
+</script>
+
+<script>
+    document.getElementById("consultaSelect").addEventListener("change", function() {
+        calcularIGV();
+    });
+
+    document.getElementById("base_disponible").addEventListener("input", function() {
+        calcularIGV();
+    });
+
+    function calcularIGV() {
+        var baseImponible = parseFloat(document.getElementById("base_disponible").value) || 0;
+        var igvSelect = document.getElementById("consultaSelect").value;
+        var igv = 0;
+        var total = 0;
+
+        if (igvSelect === "2") {
+            igv = baseImponible * 0.18;
+            total = baseImponible + igv;
+        }
+
+        document.getElementById("igv").value = igv.toFixed(2);
+        document.getElementById("total").value = total.toFixed(2);
     }
 </script>
 @endsection
