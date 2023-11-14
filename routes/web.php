@@ -90,6 +90,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/asignar', [AsignarController::class, 'store'])->name('asignar.store');
     Route::get('listado', [ListadoUsuarioController::class, 'index'])->name('listado.index');
 
+    Route::post('/guardarventas', [VentasController::class, 'store'])->name('getpost.guardarventas');
+    Route::post('/guardarcompras', [ComprasController::class, 'store'])->name('getpost.guardar');
+
     Route::resource('empresa', EmpresaController::class)->names('empresa');
     Route::resource('reporte_compras', ReporteComprasController::class);
     Route::resource('reporte_ventas', ReporteVentasController::class);
@@ -100,21 +103,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('consultar-tipo-cambio', [ConsultaTipoCambioController::class, 'consultarTipoCambio'])->name('consultatipocambio');
 
 
-    
-  // Rutas para Ventas
-Route::get('getpost/ventas', [GetPostController::class, 'consultarRuc'])->name('getpost.consultarRuc');
-Route::post('getpost/ventas/guardar', [GetPostController::class, 'store'])->name('getpost.ventas.guardar');
-Route::post('/guardarventas', [GetPostController::class, 'store'])->name('guardar.ventas');
-
-
-// Rutas para Compras
-Route::get('getpost/compras', [ComprasController::class, 'consultarRuc'])->name('getpost.compras.consultarRuc');
-Route::post('getpost/compras/guardar', [ComprasController::class, 'store'])->name('getpost.compras.guardar');
-Route::post('/guardarcompras', [ComprasController::class, 'store'])->name('guardar.compras');
-
-Route::post('/guardar', [GetPostController::class, 'store'])->name('getpost.guardar');
-Route::post('/guardar', [VentasController::class, 'store'])->name('getpost.guardar');
-Route::post('/guardar', [ComprasController::class, 'store'])->name('getpost.guardar');
+    Route::get('getpostcompras', [ComprasController::class, 'consultarRuc'])->name('getpostcompras.consultarRuc');
+    Route::get('getpostventas', [VentasController::class, 'consultarRuc'])->name('getpostventas.consultarRuc');
 
 
 
