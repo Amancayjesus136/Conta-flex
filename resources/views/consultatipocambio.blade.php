@@ -103,6 +103,7 @@
         .then(response => response.json())
         .then(data => {
             alert(data.message);
+            window.location.href = "{{ route('tipo_cambio.index') }}";
         })
         .catch(error => {
             console.error('Error al guardar datos:', error);
