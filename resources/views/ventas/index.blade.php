@@ -14,7 +14,7 @@
 <div class="container mt-5">
     <div class="card shadow mx-auto">
         <div class="card-body">
-            <form id="consultaForm" action="{{ route('getpost.guardarventas') }}" method="get">
+            <form id="consultaForm" action="{{ route('guardar.compras') }}" method="get">
                 @csrf
                 <div class="row">
                     <div class="col-6">
@@ -162,7 +162,7 @@
         document.getElementById('ruc_guardar').value = document.getElementsByName('ruc_api')[0].value;
         document.getElementById('nombre_guardar').value = document.getElementsByName('nombre_api')[0].value;
 
-        document.getElementById('guardarForm').action = "{{ route('getpost.guardarventas') }}";
+        document.getElementById('guardarForm').action = "{{ route('getpost.ventas.guardar') }}";
         document.getElementById('guardarForm').submit();
     }
 </script>

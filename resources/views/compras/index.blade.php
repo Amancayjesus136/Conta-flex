@@ -47,7 +47,7 @@
                 @endif
             </form>
             
-            <form id="guardarForm" action="{{ route('getpost.guardarcompras') }}" method="post" class="was-validated">
+            <form id="guardarForm" action="{{ route('guardar.compras') }}" method="post" class="was-validated">
                 @csrf
                 <input type="hidden" name="ruc" id="ruc_guardar">
                 <input type="hidden" name="nombre" id="nombre_guardar">
@@ -154,7 +154,7 @@
 
 <script>
     function consultarRuc() {
-        document.getElementById('consultaForm').action = "{{ route('getpost.consultarRucCompras') }}";
+        document.getElementById('consultaForm').action = "{{ route('getpost.consultarRuc') }}";
         document.getElementById('consultaForm').submit();
     }
 
@@ -162,7 +162,7 @@
         document.getElementById('ruc_guardar').value = document.getElementsByName('ruc_api')[0].value;
         document.getElementById('nombre_guardar').value = document.getElementsByName('nombre_api')[0].value;
 
-        document.getElementById('guardarForm').action = "{{ route('getpost.guardarcompras') }}";
+        document.getElementById('guardarForm').action = "{{ route('getpost.compras.guardar') }}";
         document.getElementById('guardarForm').submit();
     }
 </script>

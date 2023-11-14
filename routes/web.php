@@ -99,13 +99,21 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('consultatipocambio', ConsultaTipoCambioController::class);
     Route::post('consultar-tipo-cambio', [ConsultaTipoCambioController::class, 'consultarTipoCambio'])->name('consultatipocambio');
 
-    Route::get('getpost', [ComprasController::class, 'consultarRuc'])->name('getpost.consultarRuc');
-    Route::post('/guardar', [ComprasController::class, 'store'])->name('getpost.guardarcompras');
-
 
     
-    Route::get('getpost', [VentasController::class, 'consultarRuc'])->name('getpost.consultarRuc');
-    Route::post('/guardar', [VentasController::class, 'store'])->name('getpost.guardarventas');
+  // Rutas para Ventas
+Route::get('getpost/ventas', [VentasController::class, 'consultarRuc'])->name('getpost.consultarRuc');
+Route::post('getpost/ventas/guardar', [VentasController::class, 'store'])->name('getpost.ventas.guardar');
+Route::post('/guardarventas', [VentasController::class, 'store'])->name('guardar.ventas');
+
+
+// Rutas para Compras
+Route::get('getpost/compras', [ComprasController::class, 'consultarRuc'])->name('getpost.compras.consultarRuc');
+Route::post('getpost/compras/guardar', [ComprasController::class, 'store'])->name('getpost.compras.guardar');
+Route::post('/guardarcompras', [ComprasController::class, 'store'])->name('guardar.compras');
+
+
+
 
 
 

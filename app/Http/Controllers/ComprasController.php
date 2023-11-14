@@ -51,7 +51,8 @@ class ComprasController extends Controller
             'total' => $request->input('total'),
         ]);
 
-        return redirect()->route('compras.index')->with('success', 'Empresa eliminada con éxito');
-
+        return redirect()->route('compras.index')->with('success', 'Compra almacenada correctamente');
     }
+
 }
+
