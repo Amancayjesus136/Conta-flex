@@ -102,15 +102,19 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     
   // Rutas para Ventas
-Route::get('getpost/ventas', [VentasController::class, 'consultarRuc'])->name('getpost.consultarRuc');
-Route::post('getpost/ventas/guardar', [VentasController::class, 'store'])->name('getpost.ventas.guardar');
-Route::post('/guardarventas', [VentasController::class, 'store'])->name('guardar.ventas');
+Route::get('getpost/ventas', [GetPostController::class, 'consultarRuc'])->name('getpost.consultarRuc');
+Route::post('getpost/ventas/guardar', [GetPostController::class, 'store'])->name('getpost.ventas.guardar');
+Route::post('/guardarventas', [GetPostController::class, 'store'])->name('guardar.ventas');
 
 
 // Rutas para Compras
 Route::get('getpost/compras', [ComprasController::class, 'consultarRuc'])->name('getpost.compras.consultarRuc');
 Route::post('getpost/compras/guardar', [ComprasController::class, 'store'])->name('getpost.compras.guardar');
 Route::post('/guardarcompras', [ComprasController::class, 'store'])->name('guardar.compras');
+
+Route::post('/guardar', [GetPostController::class, 'store'])->name('getpost.guardar');
+Route::post('/guardar', [VentasController::class, 'store'])->name('getpost.guardar');
+Route::post('/guardar', [ComprasController::class, 'store'])->name('getpost.guardar');
 
 
 
