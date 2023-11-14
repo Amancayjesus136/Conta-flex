@@ -83,10 +83,10 @@
                 <h6 class="dropdown-header">Welcome {{ Auth::user()->name }}!</h6>
                 <a class="dropdown-item" href="{{ route('profile.edit') }}"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
                 <form method="POST" action="{{ route('logout') }}">
-                  @csrf
-                  <a href="#" onclick="event.preventDefault(); this.closest('form').submit();">
-                    <i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span>
-                  </a>
+                @csrf
+                    <a href="#" onclick="event.preventDefault(); this.closest('form').submit();">
+                        <i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span>
+                    </a>
                 </form>
             </div>
         </div>
@@ -179,16 +179,6 @@
                     <i class="fas fa-users"></i> Roles
                 </a>
             </li>
-            <!-- <li class="nav-item">
-                <a href="{{ route('historial.consultas.ruc') }}" class="nav-link" data-key="t-Suscripción">
-                    <i class="fas fa-archive"></i> Historial de RUC
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('actividades-generales.index') }}" class="nav-link" data-key="t-Suscripción">
-                    <i class="fas fa-archive"></i> Historial de Actividad de usuarios
-                </a>
-            </li> -->
         </ul>
     </div>
 </li>
@@ -209,7 +199,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('taza_igv.index') }}" class="nav-link" data-key="t-Suscripción">
+                <a href="{{ route('consultatipocambio') }}" class="nav-link" data-key="t-Suscripción">
                     <i class="fas fa-percent"></i> Tasa de IGV
                 </a>
             </li>

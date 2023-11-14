@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use App\Models\LogRuc;
 
 
 
@@ -32,13 +31,6 @@ class ConsultaTipoCambioController extends Controller
         ]);
 
         $data = $response->json();
-
-        if (!empty($data)) {
-            LogRuc::create([
-                'user_id' => auth()->user()->id,
-                'accion' => 'Consultó el Tipo cambio: ' . $fecha,
-            ]);
-        }
     }
 
     return view('consultatipocambio', compact('data'));
