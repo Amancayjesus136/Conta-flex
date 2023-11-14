@@ -209,7 +209,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('taza_igv.index') }}" class="nav-link" data-key="t-Suscripción">
+                <a href="{{ route('consultatipocambio') }}" class="nav-link" data-key="t-Suscripción">
                     <i class="fas fa-percent"></i> Tasa de IGV
                 </a>
             </li>

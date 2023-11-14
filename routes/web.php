@@ -102,31 +102,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('taza_igv', TazaIgvController::class);
     Route::resource('tipo_cambio', TipoCambioController::class);
     Route::resource('consultatipocambio', ConsultaTipoCambioController::class);
-    Route::post('consultar-tipo-cambio', [ConsultaTipoCambioController::class, 'consultarTipoCambio'])->name('consultatipocambio');
-
-    Route::get('getpost', [GetPostController::class, 'consultarRuc'])->name('getpost.consultarRuc');
-
-
-
-
-
-
-
-
-
-
-    // REPORTES
-
-
-
-
-
-
-
-
-
-
-
+    Route::get('consultar-tipo-cambio', [ConsultaTipoCambioController::class, 'consultarTipoCambio'])->name('consultatipocambio');
 
 });
 // Ruta para la autenticación
