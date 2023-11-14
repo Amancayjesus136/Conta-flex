@@ -90,8 +90,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/asignar', [AsignarController::class, 'store'])->name('asignar.store');
     Route::get('listado', [ListadoUsuarioController::class, 'index'])->name('listado.index');
 
-    Route::post('/guardarventas', [VentasController::class, 'store'])->name('getpost.guardarventas');
-    Route::post('/guardarcompras', [ComprasController::class, 'store'])->name('getpost.guardar');
 
     Route::resource('empresa', EmpresaController::class)->names('empresa');
     Route::resource('reporte_compras', ReporteComprasController::class);
@@ -99,12 +97,21 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::resource('taza_igv', TazaIgvController::class);
     Route::resource('tipo_cambio', TipoCambioController::class);
-    Route::resource('consultatipocambio', ConsultaTipoCambioController::class);
-    Route::get('consultar-tipo-cambio', [ConsultaTipoCambioController::class, 'consultarTipoCambio'])->name('consultatipocambio');
+    Route::get('consultar-tipo-cambio', [ConsultaTipoCambioController::class, 'consultatipocambio'])->name('consultatipocambio');
 
 
     Route::get('getpostcompras', [ComprasController::class, 'consultarRuc'])->name('getpostcompras.consultarRuc');
     Route::get('getpostventas', [VentasController::class, 'consultarRuc'])->name('getpostventas.consultarRuc');
+    
+    Route::post('/guardarventas', [VentasController::class, 'store'])->name('getpost.guardarventas');
+    Route::post('/guardarcompras', [ComprasController::class, 'store'])->name('getpost.guardar');
+
+
+    Route::get('tipo', [ConsultaTipoCambioController::class, 'consultatipocambio'])->name('tipo.consultartipo');
+    Route::post('/guardartipo', [ConsultaTipoCambioController::class, 'store'])->name('tipo.guardar');
+
+
+
 
 
 

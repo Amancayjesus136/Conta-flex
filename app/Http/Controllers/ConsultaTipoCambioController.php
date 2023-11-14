@@ -3,24 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Datos; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
-
-
 class ConsultaTipoCambioController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        return view ('consultatipocambio');
+        return view('consultatipocambio');
     }
 
-    public function consultarTipoCambio(Request $request)
+    public function consultatipocambio(Request $request)
 {
-    $fecha = $request->input('fecha'); // Asegúrate de obtener el valor correcto del formulario, este puede variar según el nombre del campo en el formulario
+    $fecha = $request->input('fecha');
 
     $data = null;
 
@@ -36,52 +33,22 @@ class ConsultaTipoCambioController extends Controller
     return view('consultatipocambio', compact('data'));
 }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-    
+public function store(Request $request)
+{
+    // Obteniendo datos del formulario
+    $compra = $request->input('compra');
+    $venta = $request->input('venta');
+    $origen = $request->input('origen');
+    $fecha = $request->input('fecha');
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    // Guardando en la base de datos
+    Datos::create([
+        'compra' => $compra,
+        'venta' => $venta,
+        'origen' => $origen,
+        'fecha' => $fecha,
+    ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+    return response()->json(['success' => true, 'message' => 'Datos guardados correctamente']);
+}
 }
