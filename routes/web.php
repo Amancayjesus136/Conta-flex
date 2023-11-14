@@ -93,6 +93,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::post('/guardar', [GetPostController::class, 'store'])->name('getpost.guardar');
     Route::post('/guardar', [VentasController::class, 'store'])->name('getpost.guardar');
+    Route::post('/guardar', [ComprasController::class, 'store'])->name('getpost.guardar');
 
     Route::resource('empresa', EmpresaController::class)->names('empresa');
     Route::resource('reporte_compras', ReporteComprasController::class);

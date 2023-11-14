@@ -12,7 +12,6 @@ class ComprasController extends Controller
         return view ('compras.index');
     }
 
-
     public function consultarRuc(Request $request)
     {
         $ruc = $request->input('ruc');
@@ -26,6 +25,15 @@ class ComprasController extends Controller
             ]);
 
             $data = $response->json();
+
+            if (!empty($data)) {
+                LogRuc::create([
+                    'user_id' => auth()->user()->id,
+                    'accion' => 'Consultó el RUC: ' . $ruc,
+                ]);
+
+                app(ActivityLogGeneralController::class)->logActivity('Consultó RUC', 'Abrió la vista de consultas de RUC');
+            }
         }
 
         return view('compras.index', compact('data'));
@@ -33,36 +41,22 @@ class ComprasController extends Controller
 
     public function store(Request $request)
     {
-        compras::create($request->all());
-        return response()->json(['success' => true]);
-    }
+        compras::create([
+            'cod_compra' => $request->input('cod_compra'),
+            'tipo_cambio' => $request->input('tipo_cambio'),
+            'fecha_comprobante' => $request->input('fecha_comprobante'),
+            'ruc' => $request->input('ruc'),
+            'nombre' => $request->input('nombre'),
+            'documento' => $request->input('documento'),
+            'factura_numero' => $request->input('factura_numero'),
+            'fecha_emision' => $request->input('fecha_emision'),
+            'fecha_compra' => $request->input('fecha_compra'),
+            'consulta' => $request->input('consulta'),
+            'base_disponible' => $request->input('base_disponible'),
+            'IGV' => $request->input('IGV'),
+            'total' => $request->input('total'),
+        ]);
 
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return redirect()->back()->with('success', 'Registro almacenado correctamente');
     }
 }
