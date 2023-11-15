@@ -14,11 +14,23 @@ class TipoCambioController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $tipocambios = TipoCambio::all();
         $ultimoRegistro = Datos::latest('created_at')->first();
         $ultimoRegistro2 = Datos::latest('created_at')->first();
+        $tipocambios = TipoCambio::query();
+        if (!empty($request->get('s'))) {
+            $term = $request->get('s');
+            $tipocambios = $tipocambios->where(function ($query) use ($term) {
+                $query->where('moneda', 'LIKE', "%$term%")
+                    ->orWhere('tipo_compra', 'LIKE', "%$term%")
+                    ->orWhere('tipo_venta', 'LIKE', "%$term%")
+                    ->orWhere('fecha_creacion', 'LIKE', "%$term%");
+            });
+        }
+    
+        $porPagina = 10; // Número de registros por página
+            $tipocambios = $tipocambios->paginate($porPagina);
         return view('tipo_cambio.index', compact('tipocambios', 'ultimoRegistro', 'ultimoRegistro2'));
     }
 

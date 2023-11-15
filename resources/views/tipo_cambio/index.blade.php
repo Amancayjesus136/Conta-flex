@@ -155,6 +155,33 @@
                     </div>
                 </div>
             </div>
+            <!-- pagination  -->
+            <div style="margin-top: 20px; margin-bottom: 20px" class="d-flex justify-content-between">
+                <p style="margin-left: 50px" class="text-start">Mostrando {{ $tipocambios->firstItem() }} a {{ $tipocambios->lastItem() }} de {{ $tipocambios->total() }} resultados</p>
+
+                <div style="margin-right: 50px" class="pagination-container">
+                    <ul class="pagination">
+                        @if ($tipocambios->onFirstPage())
+                            <li class="page-item disabled"><span class="page-link">Anterior</span></li>
+                        @else
+                            <li class="page-item"><a class="page-link" href="{{ $tipocambios->previousPageUrl() }}">Anterior</a></li>
+                        @endif
+
+                        @for ($i = 1; $i <= $tipocambios->lastPage(); $i++)
+                            <li class="page-item {{ $i == $tipocambios->currentPage() ? 'active' : '' }}">
+                                <a class="page-link" href="{{ $tipocambios->url($i) }}">{{ $i }}</a>
+                            </li>
+                        @endfor
+
+                        @if ($tipocambios->hasMorePages())
+                            <li class="page-item"><a class="page-link" href="{{ $tipocambios->nextPageUrl() }}">Siguiente</a></li>
+                        @else
+                            <li class="page-item disabled"><span class="page-link">Siguiente</span></li>
+                        @endif
+                    </ul>
+                </div>
+            </div>
+            <!-- pagination  -->
         </div>
     </div>
 </div>
