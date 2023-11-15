@@ -11,6 +11,13 @@
 </div>
 <!-- cabecera -->
 
+@if(session('success'))
+    <div id="successAlert" class="alert alert-success alert-dismissible bg-success text-white alert-label-icon fade show" role="alert">
+        <i class="ri-notification-off-line label-icon"></i><strong>Éxito</strong> - Compras registrado correctamente
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
 <div class="container mt-5">
     <div class="card shadow mx-auto">
         <div class="card-body">
@@ -262,6 +269,20 @@
         document.getElementById("total").value = total.toFixed(2);
     }
 </script>
+
+<script>
+    var successAlert = document.getElementById('successAlert');
+    
+    if (successAlert) {
+        setTimeout(function () {
+            successAlert.classList.remove('show');
+            setTimeout(function () {
+                window.location.reload();
+            }, 2000);
+        }, 1000);
+    }
+</script>
+
 @endsection
 
 
