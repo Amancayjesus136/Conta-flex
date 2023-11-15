@@ -1,6 +1,10 @@
 @extends('layouts.admin')
 
 @section('content')
+
+@php
+    $tipocambios = DB::table('tipo_cambio')->get(); 
+@endphp
 <!-- cabecera -->
 <div class="row">
     <div class="col-12">
@@ -81,7 +85,12 @@
                     <div class="col-4">
                         <div class="mb-12">
                             <label for="tipo_cambio">Tipo Cambio: <span class="required">*</span></label>
-                            <input type="any" class="form-control" id="tipo_cambio" name="tipo_cambio" required>
+                            <select class="form-select" id="tipo_cambio" name="tipo_cambio" required>
+                                <option value="" disabled selected>Selecciona tipo de compra</option>
+                                @foreach ($tipocambios as $tipocambio)
+                                    <option value="{{ $tipocambio->tipo_venta }}">{{ $tipocambio->tipo_venta }}</option>
+                                @endforeach
+                            </select>
                             <div class="invalid-feedback">Registro de tipo de cambio de formulario no válido</div>
                         </div>
                     </div>
@@ -168,6 +177,7 @@
 </script>
 
 <script>
+
     // Función para validar el formulario
     function validarFormulario() {
         var codCompra = document.getElementsByName('cod_compra')[0].value;

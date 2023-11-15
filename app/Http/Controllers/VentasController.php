@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Models\Ventas;
+use App\Models\TipoCambio;
 
 class VentasController extends Controller
 {
@@ -15,7 +16,8 @@ class VentasController extends Controller
     public function index()
     {
         $reportecompras = Ventas::all();
-        return view('ventas.index', compact('reportecompras'));
+        $tipocambios = TipoCambio::all();
+        return view('ventas.index', compact('tipocambios', 'reportecompras'));
     }
 
     public function consultarRuc(Request $request)
