@@ -50,7 +50,7 @@
                             <thead class="table-light">
                                 <tr>
                                 <th scope="col">#</th>
-                                    <th scope="col">Cod</th>
+                                    <th scope="col">Moneda</th>
                                     <th scope="col">T. Cambio</th>
                                     <th scope="col">F. Comprobante</th>
                                     <th scope="col">RUC</th>

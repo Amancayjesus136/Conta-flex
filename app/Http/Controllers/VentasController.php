@@ -42,7 +42,7 @@ class VentasController extends Controller
     public function store(Request $request)
     {
         Ventas::create([
-            'cod_compra' => $request->input('cod_compra'),
+            'cod_venta' => $request->input('cod_venta'),
             'tipo_cambio' => $request->input('tipo_cambio'),
             'fecha_comprobante' => $request->input('fecha_comprobante'),
             'ruc' => $request->input('ruc'),
