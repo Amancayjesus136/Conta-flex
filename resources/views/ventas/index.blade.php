@@ -67,19 +67,18 @@
                 <input type="hidden" name="ruc" id="ruc_guardar">
                 <input type="hidden" name="nombre" id="nombre_guardar">
 
-                    <div class="row">
-                        <div class="col-3">
-                            <div class="mb-3">
-                                <label for="cod_venta">Tipo de Moneda: <span class="required">*</span></label>
-                                <select class="form-select" id="cod_venta" name="cod_venta" required>
-                                    <option value="" disabled selected>Selecciona tipo</option>
-                                    <option value="Soles">Soles</option>
-                                    <option value="Dolares">Dolares</option>
-                                </select>
-                            </div>
+                <div class="row">
+                    <div class="col-3">
+                        <div class="mb-3">
+                            <label for="cod_venta">Tipo de Moneda: <span class="required">*</span></label>
+                            <select class="form-select" id="cod_venta" name="cod_venta" required>
+                                <option value="" disabled selected>Selecciona tipo</option>
+                                <option value="Soles">Soles</option>
+                                <option value="Dolares">Dolares</option>
+                            </select>
                         </div>
                     </div>
-
+                </div>
 
                 <div class="row">
                     <div class="col-4">

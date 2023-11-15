@@ -1,6 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
+
+@php
+    $tipocambios = DB::table('tipo_cambio')->get(); 
+    $nombres = DB::table('compras')->distinct()->pluck('nombre');
+@endphp
 <!-- cabecera --> 
 <div class="row">
     <div class="col-12">
@@ -62,8 +67,12 @@
                 <div class="row">
                     <div class="col-3">
                         <div class="mb-3">
-                            <label for="cod_compra">Cod: <span class="required">*</span></label>
-                            <input type="any" class="form-control" aria-label="file example" name="cod_compra" required>
+                            <label for="cod_compra">Tipo de Moneda: <span class="required">*</span></label>
+                            <select class="form-select" id="cod_compra" name="cod_compra" required>
+                                <option value="" disabled selected>Selecciona tipo</option>
+                                <option value="Soles">Soles</option>
+                                <option value="Dolares">Dolares</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -80,7 +89,11 @@
                     <div class="col-4">
                         <div class="col-md-12">
                             <label for="factura_numero">Factura Numero: <span class="required">*</span></label>
-                            <input type="any" class="form-control" id="factura_numero" name="factura_numero" required>
+                            <select class="form-select" id="factura_numero" name="factura_numero" required>
+                                <option value="" disabled selected>Selecciona tipo factura</option>
+                                <option value="001">001</option>
+                                <option value="005">005</option>
+                            </select>
                             <div class="invalid-feedback">Registro de documento de formulario no válido</div><br>
                         </div>
                     </div>
@@ -88,7 +101,12 @@
                     <div class="col-4">
                         <div class="mb-12">
                             <label for="tipo_cambio">Tipo Cambio: <span class="required">*</span></label>
-                            <input type="any" class="form-control" id="tipo_cambio" name="tipo_cambio" required>
+                            <select class="form-select" id="tipo_cambio" name="tipo_cambio" required>
+                                <option value="" disabled selected>Selecciona tipo de compra</option>
+                                @foreach ($tipocambios as $tipocambio)
+                                    <option value="{{ $tipocambio->tipo_compra }}">{{ $tipocambio->tipo_compra }}</option>
+                                @endforeach
+                            </select>
                             <div class="invalid-feedback">Registro de tipo de cambio de formulario no válido</div>
                         </div>
                     </div>
@@ -158,6 +176,36 @@
         </div>
     </div>
 </div>
+
+<!-- Modal pra extraer proveedores-->
+<div class="modal fade" id="agregarModal" tabindex="-1" aria-labelledby="crearModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="crearModalLabel">Crear nuevo registro</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="#" method="POST" id="reservation-form">
+                @csrf
+                <div class="col-md-12">
+                    <div class="form-group"><br>
+                        <label for="nombre">Proveedores</label>
+                        <select class="form-select" id="nombre" name="nombre" required>
+                            <option value="" disabled selected>Selecciona un usuario</option>
+                            @foreach ($nombres as $nombre)
+                                <option value="{{ $nombre }}">{{ $nombre }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div><br>
+                <button type="submit" class="btn btn-primary">Seleccionar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal pra extraer proveedores-->
 
 <script>
     function consultarRuc() {
