@@ -15,15 +15,26 @@
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
             <div class="form-group">
-                <h4 class="mb-sm-0">Mantenimientos de Compañias</h4>
+                <h4 class="mb-sm-0">Tipo de Cambio</h4>
             </div>
 
             <div class="page-title-right">
                 <div class="card-header align-items-center d-flex">
-                    <h4 class="card-title mb-0 flex-grow-1"></h4>
-                    <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#agregarModal">
-                        <i class="fas fa-plus-circle"></i> Nuevo Registro
+                    <a href="{{route('consultatipocambio')}}" class="btn btn-info btn-sm"> Consulta API
+                        <i class="ri-arrow-left-right-fill"></i> 
                     </a>
+
+                    <a style="margin-left: 10px;" href="{{route('compras.index')}}" class="btn btn-warning btn-sm"> compras
+                        <i class="ri-shopping-cart-2-fill"></i> 
+                    </a>
+
+                    <a style="margin-left: 10px;" href="{{route('ventas.index')}}" class="btn btn-success btn-sm"> ventas
+                        <i class="ri-shopping-bag-3-fill"></i> 
+                    </a>
+
+                    <a style="margin-left: 10px;" href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#agregarModal">
+                        <i class="fas fa-plus-circle"></i> Nuevo Registro
+                    </a> 
                 </div>
             </div>
 
@@ -101,62 +112,53 @@
 </div>
 <!-- Modal de Agregar -->
 
-<div class="table-responsive table-card">
-    <table class="table table-nowrap table-striped-columns mb-0">
-        <thead class="table-light">
-            <tr>
-                <th scope="col">
-                    <div class="form-check">
-                        <label class="form-check-label" for="cardtableCheck"></label>
+<!-- listado -->
+<div class="card">
+            <div class="card-body">
+                <div class="live-preview">
+                    <div class="table-responsive table-card">
+                        <table class="table align-middle table-nowrap table-striped-columns mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Moneda</th>
+                                <th scope="col">Tipo Compra</th>
+                                <th scope="col">Tipo Venta</th>
+                                <th scope="col">Fecha Creación</th>
+                                <th scope="col" style="width: 50px;">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @php $contador = 1; @endphp
+                                @foreach($tipocambios as $tipocambio)
+                                    <tr>
+                                        <td>{{ $contador }}</td>
+                                        <td>{{ $tipocambio->moneda }}</td>
+                                        <td>{{ $tipocambio->tipo_compra }}</td>
+                                        <td>{{ $tipocambio->tipo_venta }}</td>
+                                        <td>{{ $tipocambio->fecha_creacion }}</td>
+                                        <td>
+                                            <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal{{ $tipocambio->id }}">
+                                                <i class="fas fa-edit"></i> Editar
+                                            </a>
+                                            <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarTragoModal{{ $tipocambio->id}}">
+                                                <i class="fas fa-trash-alt"></i> Eliminar
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    @php 
+                                        $contador++; 
+                                    @endphp
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
-                </th>
-                <th scope="col">#</th>
-                <th scope="col">Moneda</th>
-                <th scope="col">Tipo Compra</th>
-                <th scope="col">Tipo Venta</th>
-                <th scope="col">Fecha Creación</th>
-                <th scope="col">Acciones</th>   
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                @php $contador = 1; @endphp
-                @foreach($tipocambios as $tipocambio)
-                    <tr>
-                    <td>
-                        <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="cardtableCheck03">
-                                <label class="form-check-label" for="cardtableCheck03"></label>
-                            </div>
-                        </td>
-                        <td>{{ $contador }}</td>
-                        <td>{{ $tipocambio->moneda }}</td>
-                        <td>{{ $tipocambio->tipo_compra }}</td>
-                        <td>{{ $tipocambio->tipo_venta }}</td>
-                        <td>{{ $tipocambio->fecha_creacion }}</td>
-                        <td>
-                        <a href="{{route('compras.index')}}" class="btn btn-warning btn-sm">
-                            <i class="ri-shopping-cart-2-fill"></i> 
-                        </a>
-                        <a href="{{route('ventas.index')}}" class="btn btn-success btn-sm">
-                            <i class="ri-shopping-bag-3-fill"></i> 
-                        </a>
-                        <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal{{ $tipocambio->id }}">
-                            <i class="fas fa-edit"></i> Editar
-                        </a>
-                            <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarTragoModal{{ $tipocambio->id}}">
-                                <i class="fas fa-trash-alt"></i> Eliminar
-                            </a>
-                        </td>
-                    </tr>
-                    @php 
-                        $contador++; 
-                    @endphp
-                @endforeach
-            </tr>
-        </tbody>
-    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<!-- listado -->
 
 @foreach ($tipocambios as $tipocambio)
 <!-- Modal de Editar -->
