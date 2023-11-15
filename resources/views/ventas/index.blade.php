@@ -5,6 +5,7 @@
 @php
     $tipocambios = DB::table('tipo_cambio')->get(); 
 @endphp
+
 <!-- cabecera -->
 <div class="row">
     <div class="col-12">
@@ -51,7 +52,7 @@
                 @endif
             </form>
             
-            <form id="guardarForm" action="{{ route('getpost.guardarventas') }}" method="post" class="was-validated">
+            <form id="guardarForm" action="{{ route('getpost.guardarventas') }}" method="post" id="agregar-form" class="was-validated">
                 @csrf
                 <input type="hidden" name="ruc" id="ruc_guardar">
                 <input type="hidden" name="nombre" id="nombre_guardar">
