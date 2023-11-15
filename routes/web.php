@@ -111,6 +111,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/guardartipo', [ConsultaTipoCambioController::class, 'store'])->name('tipo.guardar');
 
 
+    Route::post('/guardar-venta', [VentaController::class, 'store'])->name('guardar_venta');
+
+
+
 
 
 

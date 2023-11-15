@@ -17,7 +17,8 @@ class VentasController extends Controller
     {
         $reportecompras = Ventas::all();
         $tipocambios = TipoCambio::all();
-        return view('ventas.index', compact('tipocambios', 'reportecompras'));
+        $nombres = Ventas::all();
+        return view('ventas.index', compact('tipocambios', 'nombres', 'reportecompras'));
     }
 
     public function consultarRuc(Request $request)

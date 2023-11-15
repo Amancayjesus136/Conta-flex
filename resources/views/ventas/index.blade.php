@@ -4,6 +4,7 @@
 
 @php
     $tipocambios = DB::table('tipo_cambio')->get(); 
+    $nombres = DB::table('ventas')->distinct()->pluck('nombre');
 @endphp
 
 <!-- cabecera -->
@@ -38,7 +39,9 @@
                     <div class="col-6">
                         <div style="margin-top: 28px;" class="form-group">
                             <button type="button" class="btn btn-primary" onclick="consultarRuc()">Consultar <i class="las la-search"></i></button>
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#agregarModal" class="btn btn-info"><i class="fas fa-cloud-download-alt"></i> Traer Proovedor</button><br><br><br>
+                            <a href="#" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#agregarModal">
+                                <i class="fas fa-cloud-download-alt"></i> Traer Proveedor
+                            </a><br><br>
                         </div>
                     </div>
                 </div>
@@ -172,6 +175,36 @@
         </div>
     </div>
 </div>
+
+<!-- Modal pra extraer proveedores-->
+<div class="modal fade" id="agregarModal" tabindex="-1" aria-labelledby="crearModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="crearModalLabel">Crear nuevo registro</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="#" method="POST" id="reservation-form">
+                @csrf
+                <div class="col-md-12">
+                    <div class="form-group"><br>
+                        <label for="nombre">Proveedores</label>
+                        <select class="form-select" id="nombre" name="nombre" required>
+                            <option value="" disabled selected>Selecciona un usuario</option>
+                            @foreach ($nombres as $nombre)
+                                <option value="{{ $nombre }}">{{ $nombre }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div><br>
+                <button type="submit" class="btn btn-primary">Seleccionar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal pra extraer proveedores-->
 
 <script>
     function consultarRuc() {
