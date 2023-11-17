@@ -66,52 +66,83 @@
                                     <thead>
                                         <tr class="table-active">
                                             <th scope="col" style="width: 50px;">#</th>
-                                            <th scope="col">Product Details</th>
-                                            <th scope="col">Rate</th>
-                                            <th scope="col">Quantity</th>
-                                            <th scope="col" class="text-end">Amount</th>
+                                            <th scope="col"></th>
+                                            <th scope="col">Compras</th>
+                                            <th scope="col">Ventas</th>
                                         </tr>
                                     </thead>
                                     <tbody id="products-list">
                                         <tr>
                                             <th scope="row">01</th>
                                             <td class="text-start">
-                                                <span class="fw-medium">Sweatshirt for Men (Pink)</span>
-                                                <p class="text-muted mb-0">Graphic Print Men & Women Sweatshirt</p>
+                                                <span class="fw-medium">Base Imponible</span>
                                             </td>
                                             <td>$119.99</td>
                                             <td>02</td>
-                                            <td class="text-end">$239.98</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">02</th>
                                             <td class="text-start">
-                                                <span class="fw-medium">Noise NoiseFit Endure Smart Watch</span>
-                                                <p class="text-muted mb-0">32.5mm (1.28 Inch) TFT Color Touch Display</p>
+                                                <span class="fw-medium">Factura agregadas</span>
                                             </td>
                                             <td>$94.99</td>
                                             <td>01</td>
-                                            <td class="text-end">$94.99</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">03</th>
                                             <td class="text-start">
-                                                <span class="fw-medium">350 ml Glass Grocery Container</span>
-                                                <p class="text-muted mb-0">Glass Grocery Container (Pack of 3, White)</p>
+                                                <span class="fw-medium">Nueva base compras</span>
                                             </td>
                                             <td>$24.99</td>
                                             <td>01</td>
-                                            <td class="text-end">$24.99</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">04</th>
                                             <td class="text-start">
-                                                <span class="fw-medium">Fabric Dual Tone Living Room Chair</span>
-                                                <p class="text-muted mb-0">Chair (White)</p>
+                                                <span class="fw-medium">IGV</span>
                                             </td>
                                             <td>$340.00</td>
                                             <td>01</td>
-                                            <td class="text-end">$340.00</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">05</th>
+                                            <td class="text-start">
+                                                <span class="fw-medium">IGV por Pagar</span>
+                                            </td>
+                                            <td>$340.00</td>
+                                            <td>01</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">06</th>
+                                            <td class="text-start">
+                                                <span class="fw-medium">Saldo Anterior</span>
+                                            </td>
+                                            <td>$340.00</td>
+                                            <td>01</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">07</th>
+                                            <td class="text-start">
+                                                <span class="fw-medium">Saldos Comprobantes Retencion</span>
+                                            </td>
+                                            <td>$340.00</td>
+                                            <td>01</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">08</th>
+                                            <td class="text-start">
+                                                <span class="fw-medium">Sados Comprobantes Percepcion</span>
+                                            </td>
+                                            <td>$340.00</td>
+                                            <td>01</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">09</th>
+                                            <td class="text-start">
+                                                <span class="fw-medium">Total IGV por Pagar</span>
+                                            </td>
+                                            <td>$340.00</td>
+                                            <td>01</td>
                                         </tr>
                                     </tbody>
                                 </table><!--end table-->
