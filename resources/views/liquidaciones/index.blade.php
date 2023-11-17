@@ -78,15 +78,15 @@
                                                 <span class="fw-medium">Base Imponible</span>
                                             </td>
                                             <td>$119.99</td>
-                                            <td>02</td>
+                                            <td>$340.00</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">02</th>
                                             <td class="text-start">
                                                 <span class="fw-medium">Factura agregadas</span>
                                             </td>
-                                            <td>$94.99</td>
-                                            <td>01</td>
+                                            <td></td>
+                                            <td></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">03</th>
@@ -94,7 +94,7 @@
                                                 <span class="fw-medium">Nueva base compras</span>
                                             </td>
                                             <td>$24.99</td>
-                                            <td>01</td>
+                                            <td>$340.00</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">04</th>
@@ -102,7 +102,7 @@
                                                 <span class="fw-medium">IGV</span>
                                             </td>
                                             <td>$340.00</td>
-                                            <td>01</td>
+                                            <td>$340.00</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">05</th>
@@ -110,88 +110,131 @@
                                                 <span class="fw-medium">IGV por Pagar</span>
                                             </td>
                                             <td>$340.00</td>
-                                            <td>01</td>
+                                            <td>$340.00</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">06</th>
                                             <td class="text-start">
                                                 <span class="fw-medium">Saldo Anterior</span>
                                             </td>
-                                            <td>$340.00</td>
-                                            <td>01</td>
+                                            <td></td>
+                                            <td></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">07</th>
                                             <td class="text-start">
                                                 <span class="fw-medium">Saldos Comprobantes Retencion</span>
                                             </td>
-                                            <td>$340.00</td>
-                                            <td>01</td>
+                                            <td></td>
+                                            <td></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">08</th>
                                             <td class="text-start">
                                                 <span class="fw-medium">Sados Comprobantes Percepcion</span>
                                             </td>
-                                            <td>$340.00</td>
-                                            <td>01</td>
+                                            <td>0</td>
+                                            <td></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">09</th>
                                             <td class="text-start">
                                                 <span class="fw-medium">Total IGV por Pagar</span>
                                             </td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table><br><br>
+
+                                <table class="table table-borderless text-center table-nowrap align-middle mb-0">
+                                    <thead>
+                                        <tr class="table-active">
+                                            <th scope="col">Renta</th>
+                                            <th scope="col">Ventas</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="products-list">
+                                        <tr>
+                                            <td>Base Imponible</td>
                                             <td>$340.00</td>
-                                            <td>01</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total renta por pagar</td>
+                                            <td>$340.00</td>
                                         </tr>
                                     </tbody>
-                                </table><!--end table-->
-                            </div>
-                            <div class="border-top border-top-dashed mt-2">
-                                <table class="table table-borderless table-nowrap align-middle mb-0 ms-auto" style="width:250px">
-                                    <tbody>
+                                </table><br><br>
+
+                                <table class="table table-borderless text-center table-nowrap align-middle mb-0">
+                                    <thead>
+                                        <tr class="table-active">
+                                            <th scope="col"></th>
+                                            <th scope="col">Compras</th>
+                                            <th scope="col">Ventas</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="products-list">
                                         <tr>
-                                            <td>Sub Total</td>
-                                            <td class="text-end">$699.96</td>
+                                            <td class="text-start">
+                                                <span class="fw-medium">IGV por Pagar</span>
+                                            </td>
+                                            <td>0</td>
+                                            <td>0</td>
                                         </tr>
                                         <tr>
-                                            <td>Estimated Tax (12.5%)</td>
-                                            <td class="text-end">$44.99</td>
+                                            <td class="text-start">
+                                                <span class="fw-medium">Renta por pagar</span>
+                                            </td>
+                                            <td>$340.00</td>
+                                            <td>$340.00</td>
                                         </tr>
                                         <tr>
-                                            <td>Discount <small class="text-muted">(VELZON15)</small></td>
-                                            <td class="text-end">- $53.99</td>
+                                            <td class="text-start">
+                                                <span class="fw-medium">Otros</span>
+                                            </td>
+                                            <td>0</td>
+                                            <td>0</td>
                                         </tr>
                                         <tr>
-                                            <td>Shipping Charge</td>
-                                            <td class="text-end">$65.00</td>
+                                            <td class="text-start">
+                                                <span class="fw-medium">EsSalud</span>
+                                            </td>
+                                            <td>0</td>
+                                            <td>0</td>
                                         </tr>
-                                        <tr class="border-top border-top-dashed fs-15">
-                                            <th scope="row">Total Amount</th>
-                                            <th class="text-end">$755.96</th>
+                                        <tr>
+                                            <td class="text-start">
+                                                <span class="fw-medium">AFP</span>
+                                            </td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-start">
+                                                <span class="fw-medium">Contador</span>
+                                            </td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-start">
+                                                <span class="fw-medium">Total a pagar</span>
+                                            </td>
+                                            <td style="font-weight: bold;">183</td>
+                                            <td style="font-weight: bold;">183</td>
                                         </tr>
                                     </tbody>
-                                </table>
-                                <!--end table-->
+                                </table><br><br><br>
                             </div>
+                            
                             <div class="mt-3">
-                                <h6 class="text-muted text-uppercase fw-semibold mb-3">Payment Details:</h6>
-                                <p class="text-muted mb-1">Payment Method: <span class="fw-medium" id="payment-method">Mastercard</span></p>
-                                <p class="text-muted mb-1">Card Holder: <span class="fw-medium" id="card-holder-name">David Nichols</span></p>
-                                <p class="text-muted mb-1">Card Number: <span class="fw-medium" id="card-number">xxx xxxx xxxx 1234</span></p>
-                                <p class="text-muted">Total Amount: <span class="fw-medium" id="">$ </span><span id="card-total-amount">755.96</span></p>
+                                <h6 class="text-muted text-uppercase fw-semibold mb-3">Detalles finales:</h6>
+                                <p class="text-muted mb-1">Sistema: <span class="fw-medium" id="payment-method">ContaFlex</span></p>
+                                <p class="text-muted mb-1">Propietario: <span class="fw-medium" id="card-holder-name">Jesús Amancay</span></p>
+                                <p class="text-muted">Cantidad total: <span class="fw-medium" id="">$</span><span id="card-total-amount">755.96</span></p>
                             </div>
-                            <div class="mt-4">
-                                <div class="alert alert-info">
-                                    <p class="mb-0"><span class="fw-semibold">NOTES:</span>
-                                        <span id="note">All accounts are to be paid within 7 days from receipt of invoice. To be paid by cheque or
-                                            credit card or direct payment online. If account is not paid within 7
-                                            days the credits details supplied as confirmation of work undertaken
-                                            will be charged the agreed quoted fee noted above.
-                                        </span>
-                                    </p>
-                                </div>
-                            </div>
+                            
                             <div class="hstack gap-2 justify-content-end d-print-none mt-4">
                                 <a href="javascript:window.print()" class="btn btn-success"><i class="ri-printer-line align-bottom me-1"></i> Print</a>
                                 <a href="javascript:void(0);" class="btn btn-primary"><i class="ri-download-2-line align-bottom me-1"></i> Download</a>
