@@ -37,7 +37,7 @@ class ReporteVentasController extends Controller
         });
     }
 
-    $porPagina = 10; // Número de registros por página
+    $porPagina = 5; // Número de registros por página
         $reporteventas = $reporteventas->paginate($porPagina);
 
         if ($request->has('export')) {

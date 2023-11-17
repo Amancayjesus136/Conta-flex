@@ -2,7 +2,7 @@
 
 @section('content')
 <style>
-   
+
 </style>
 
 <!-- cabecera -->
@@ -98,6 +98,23 @@
                                 </tr>
                                 @endif
                             </tbody>
+                            <tfoot class="table-light">
+                                <td colsan="4">Total</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>$940</td>
+                                <td>$940</td>
+                                <td>$940</td>
+                                <td></td>
+                                <td></td>
+                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -133,7 +150,6 @@
     </div>
 </div>
 <!-- listado -->
-
 
 <!-- Modal para Crear Nuevo Tema -->
 <div class="modal fade" id="agregarModal" tabindex="-1" aria-labelledby="crearModalLabel" aria-hidden="true">

@@ -98,6 +98,23 @@
                         </tr>
                     @endif
                     </tbody>
+                    <tfoot class="table-light">
+                                <td colsan="4">Total</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>$940</td>
+                                <td>$940</td>
+                                <td>$940</td>
+                                <td></td>
+                                <td></td>
+                            </tfoot>
                 </table>
             </div>
         </div>
