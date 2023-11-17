@@ -77,8 +77,8 @@
                                             <td class="text-start">
                                                 <span class="fw-medium">Base Imponible</span>
                                             </td>
-                                            <td>$119.99</td>
-                                            <td>$340.00</td>
+                                            <td><input input type="number" value=""></td>
+                                            <td><input input type="number" value=""></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">02</th>
@@ -93,24 +93,24 @@
                                             <td class="text-start">
                                                 <span class="fw-medium">Nueva base compras</span>
                                             </td>
-                                            <td>$24.99</td>
-                                            <td>$340.00</td>
+                                            <td><input input type="number" value=""></td>
+                                            <td><input input type="number" value=""></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">04</th>
                                             <td class="text-start">
                                                 <span class="fw-medium">IGV</span>
                                             </td>
-                                            <td>$340.00</td>
-                                            <td>$340.00</td>
+                                            <td><input input type="number" value=""></td>
+                                            <td><input input type="number" value=""></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">05</th>
                                             <td class="text-start">
                                                 <span class="fw-medium">IGV por Pagar</span>
                                             </td>
-                                            <td>$340.00</td>
-                                            <td>$340.00</td>
+                                            <td><input input type="number" value=""></td>
+                                            <td><input input type="number" value=""></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">06</th>
@@ -157,11 +157,11 @@
                                     <tbody id="products-list">
                                         <tr>
                                             <td>Base Imponible</td>
-                                            <td>$340.00</td>
+                                            <td><input input type="number" value=""></td>
                                         </tr>
                                         <tr>
                                             <td>Total renta por pagar</td>
-                                            <td>$340.00</td>
+                                            <td><input input type="number" value=""></td>
                                         </tr>
                                     </tbody>
                                 </table><br><br>
@@ -186,8 +186,8 @@
                                             <td class="text-start">
                                                 <span class="fw-medium">Renta por pagar</span>
                                             </td>
-                                            <td>$340.00</td>
-                                            <td>$340.00</td>
+                                            <td><input input type="number" value=""></td>
+                                            <td><input input type="number" value=""></td>
                                         </tr>
                                         <tr>
                                             <td class="text-start">
@@ -221,8 +221,8 @@
                                             <td class="text-start">
                                                 <span class="fw-medium">Total a pagar</span>
                                             </td>
-                                            <td style="font-weight: bold;">183</td>
-                                            <td style="font-weight: bold;">183</td>
+                                            <td><input type="number" style="font-weight: bold;" value=""></td>
+                                            <td><input type="number" style="font-weight: bold;" value=""></td>
                                         </tr>
                                     </tbody>
                                 </table><br><br><br>

@@ -17,6 +17,7 @@ use App\Http\Controllers\TipoCambioController;
 use App\Http\Controllers\ConsultaTipoCambioController;
 use App\Http\Controllers\GetPostController;
 use App\Http\Controllers\LiquidacionesController;
+use App\Http\Controllers\DetallesLiquidacionesController;
 
 use Illuminate\Support\Facades\Route;
 // Ruta para la página de inicio
@@ -118,6 +119,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     //liquidaciones
 
     Route::resource('liquidaciones', LiquidacionesController::class);
+    Route::resource('detalles', DetallesLiquidacionesController::class);
 
 
 
