@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\compras;
 use App\Models\AsignarUsuario;
 use Illuminate\Support\Facades\DB;
+use \Illuminate\Support\Facades\Http;
 
 class EmpresaController extends Controller
 {
@@ -21,17 +22,7 @@ class EmpresaController extends Controller
         return view('empresa.index', compact('empresas', 'users', 'personas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
+    
     public function store(Request $request)
     {
         $empresa = new Empresa;
@@ -43,9 +34,7 @@ class EmpresaController extends Controller
         return response()->json(['success' => true, 'message' => 'Empresa registrada con éxito']);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+ 
     public function edit($id)
     {
         $empresa = Empresa::findOrFail($id);

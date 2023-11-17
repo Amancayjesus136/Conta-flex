@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+
 <div class="col-12 col-md-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
             <h4 class="mb-sm-0">Mantenimientos de Compañias</h4>
@@ -14,6 +15,9 @@
                     <div class="nav nav-pills flex-column nav-pills-tab custom-verti-nav-pills text-center" role="tablist" aria-orientation="vertical">
                         <button type="button" data-bs-toggle="modal" data-bs-target="#agregarModal" class="btn btn-info" id="custom-v-pills-home-tab" data-bs-toggle="pill" href="#custom-v-pills-home" role="tab" aria-controls="custom-v-pills-home" aria-selected="true">
                             <i class="ri-home-4-line d-block fs-20 mb-1"></i> Crear
+                        </button>
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#" class="nav-link" id="custom-v-pills-messages-tab" data-bs-toggle="pill" href="#custom-v-pills-messages" role="tab" aria-controls="custom-v-pills-messages" aria-selected="false">
+                        <i class="ri-search-line d-block fs-20 mb-1"></i> Consultar
                         </button>
                         <button type="button" data-bs-toggle="modal" data-bs-target="#asignarModal" class="nav-link" id="custom-v-pills-profile-tab" data-bs-toggle="pill" href="#custom-v-pills-profile" role="tab" aria-controls="custom-v-pills-profile" aria-selected="false">
                             <i class="ri-user-2-line d-block fs-20 mb-1"></i> Asignar
@@ -273,6 +277,5 @@
         });
     });
 </script>
-
 
 @endsection
