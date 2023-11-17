@@ -77,8 +77,16 @@
                                             <td class="text-start">
                                                 <span class="fw-medium">Base Imponible</span>
                                             </td>
-                                            <td><input input type="number" value=""></td>
-                                            <td><input input type="number" value=""></td>
+                                            <td><select class="form-select" id="factura_numero" name="factura_numero" required>
+                                                    <option value="" disabled selected>Selecciona compras</option>
+                                                    <option value="001">001</option>
+                                                </select>
+                                            </td>
+                                            <td><select class="form-select" id="factura_numero" name="factura_numero" required>
+                                                    <option value="" disabled selected>Selecciona ventas</option>
+                                                    <option value="001">001</option>
+                                                </select>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th scope="row">02</th>
@@ -93,24 +101,24 @@
                                             <td class="text-start">
                                                 <span class="fw-medium">Nueva base compras</span>
                                             </td>
-                                            <td><input input type="number" value=""></td>
-                                            <td><input input type="number" value=""></td>
+                                            <td><input type="number" class="form-control" id="fecha_comprobante" name="fecha_comprobante" required></td>
+                                            <td><input type="number" class="form-control" id="fecha_comprobante" name="fecha_comprobante" required></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">04</th>
                                             <td class="text-start">
                                                 <span class="fw-medium">IGV</span>
                                             </td>
-                                            <td><input input type="number" value=""></td>
-                                            <td><input input type="number" value=""></td>
+                                            <td><input type="number" class="form-control" id="fecha_comprobante" name="fecha_comprobante" required></td>
+                                            <td><input type="number" class="form-control" id="fecha_comprobante" name="fecha_comprobante" required></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">05</th>
                                             <td class="text-start">
                                                 <span class="fw-medium">IGV por Pagar</span>
                                             </td>
-                                            <td><input input type="number" value=""></td>
-                                            <td><input input type="number" value=""></td>
+                                            <td><input type="number" class="form-control" id="fecha_comprobante" name="fecha_comprobante" required></td>
+                                            <td><input type="number" class="form-control" id="fecha_comprobante" name="fecha_comprobante" required></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">06</th>
@@ -157,11 +165,11 @@
                                     <tbody id="products-list">
                                         <tr>
                                             <td>Base Imponible</td>
-                                            <td><input input type="number" value=""></td>
+                                            <td><input type="number" class="form-control" id="fecha_comprobante" name="fecha_comprobante" required></td>
                                         </tr>
                                         <tr>
                                             <td>Total renta por pagar</td>
-                                            <td><input input type="number" value=""></td>
+                                            <td><input type="number" class="form-control" id="fecha_comprobante" name="fecha_comprobante" required></td>
                                         </tr>
                                     </tbody>
                                 </table><br><br>
@@ -186,8 +194,8 @@
                                             <td class="text-start">
                                                 <span class="fw-medium">Renta por pagar</span>
                                             </td>
-                                            <td><input input type="number" value=""></td>
-                                            <td><input input type="number" value=""></td>
+                                            <td><input type="number" class="form-control" id="fecha_comprobante" name="fecha_comprobante" required></td>
+                                            <td><input type="number" class="form-control" id="fecha_comprobante" name="fecha_comprobante" required></td>
                                         </tr>
                                         <tr>
                                             <td class="text-start">
@@ -221,8 +229,8 @@
                                             <td class="text-start">
                                                 <span class="fw-medium">Total a pagar</span>
                                             </td>
-                                            <td><input type="number" style="font-weight: bold;" value=""></td>
-                                            <td><input type="number" style="font-weight: bold;" value=""></td>
+                                            <td><input style="font-weight: bold;" type="number" class="form-control" id="fecha_comprobante" name="fecha_comprobante" required></td>
+                                            <td><input style="font-weight: bold;" type="number" class="form-control" id="fecha_comprobante" name="fecha_comprobante" required></td>
                                         </tr>
                                     </tbody>
                                 </table><br><br><br>

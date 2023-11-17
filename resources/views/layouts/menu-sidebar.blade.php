@@ -255,6 +255,21 @@
     </div>
 </li>
 
+<li class="nav-item">
+    <a class="nav-link menu-link" href="#" data-bs-toggle="collapse" data-bs-target="#sidebarModuloLiquidaciones" aria-expanded="false" aria-controls="sidebarModuloLiquidaciones">
+        <i class="fas fa-money-check"></i><span data-key="t-Configuración">Liquidaciones</span>
+    </a>
+    <div class="collapse menu-dropdown" id="sidebarModuloLiquidaciones">
+        <ul class="nav nav-sm flex-column">
+            <li class="nav-item">
+                <a href="{{ route('detalles.index') }}" class="nav-link" data-key="t-Suscripción">
+                    <i class="fas fa-calculator"></i> Calcular
+                </a>
+            </li>
+        </ul>
+    </div>
+</li>
+
         </div>
     </div>
 
