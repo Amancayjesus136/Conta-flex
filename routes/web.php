@@ -16,6 +16,7 @@ use App\Http\Controllers\TazaIgvController;
 use App\Http\Controllers\TipoCambioController;
 use App\Http\Controllers\ConsultaTipoCambioController;
 use App\Http\Controllers\GetPostController;
+use App\Http\Controllers\LiquidacionesController;
 
 use Illuminate\Support\Facades\Route;
 // Ruta para la página de inicio
@@ -112,6 +113,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
     Route::post('/guardar-venta', [VentaController::class, 'store'])->name('guardar_venta');
+
+
+    //liquidaciones
+
+    Route::resource('liquidaciones', LiquidacionesController::class);
+
 
 
 
