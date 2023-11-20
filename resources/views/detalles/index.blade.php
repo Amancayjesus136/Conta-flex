@@ -231,7 +231,7 @@
                             <div class="mt-3">
                                 <h6 class="text-muted text-uppercase fw-semibold mb-3">Detalles finales:</h6>
                                 <p class="text-muted mb-1">Sistema: <span class="fw-medium" id="payment-method">ContaFlex</span></p>
-                                <p class="text-muted mb-1">Propietario: <span class="fw-medium" id="card-holder-name">Jesús Amancay</span></p>
+                                <p class="text-muted mb-1">Propietario: <span class="fw-medium" id="card-holder-name">{{ Auth::user()->name }}</span></p>
                                 <p class="text-muted">Cantidad total: <span class="fw-medium" id="">$</span><span id="card-total-amount"><td><strong>{{ round($sumBase * 1.5 / 100) }}</strong></td></span></p>
                             </div>
                             
