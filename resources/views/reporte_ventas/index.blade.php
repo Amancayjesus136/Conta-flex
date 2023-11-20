@@ -10,15 +10,9 @@
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
             <div class="form-group">
-                <select class="form-select" id="opciones" onchange="redirectToURL(this)">
-                    <option value="">Descargar..</option>
-                    <option value="{{ route('reporte_ventas.index', ['export' => 1]) }}">
-                        <span><i class="fas fa-file-excel"></i></span> Excel
-                    </option>
-                    <option value="#">
-                        <span><i class="fas fa-file-excel"></i></span> PDF
-                    </option>
-                </select>
+                <a href="{{ route('reporte_ventas.index', ['export' => 1]) }}" class="btn btn-success btn-sm">
+                    <i class="fas fa-file-excel"></i>  Excel
+                </a>
             </div>
 
 
