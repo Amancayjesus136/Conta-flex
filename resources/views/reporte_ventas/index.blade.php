@@ -46,27 +46,32 @@
             <div class="card-body">
                 <div class="live-preview">
                     <div class="table-responsive table-card">
-                        <table class="table align-middle table-nowrap table-striped-columns mb-0">
-                            <thead class="table-light">
-                                <tr>
+                    <table class="table align-middle table-nowrap table-striped-columns mb-0">
+                        <thead class="table-light">
+                            <tr>
                                 <th scope="col">#</th>
-                                    <th scope="col">Moneda</th>
-                                    <th scope="col">T. Cambio</th>
-                                    <th scope="col">F. Comprobante</th>
-                                    <th scope="col">RUC</th>
-                                    <th scope="col">Proveedor</th>
-                                    <th scope="col">Documento</th>
-                                    <th scope="col">F. Numero</th>
-                                    <th scope="col">F. Emision</th>
-                                    <th scope="col">F. Venta</th>
-                                    <th scope="col">Base</th>
-                                    <th scope="col">IGV</th>
-                                    <th scope="col">Total</th>
-                                    <th scope="col" style="width: 150px;">Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                                <th scope="col">Moneda</th>
+                                <th scope="col">T. Cambio</th>
+                                <th scope="col">F. Comprobante</th>
+                                <th scope="col">RUC</th>
+                                <th scope="col">Proveedor</th>
+                                <th scope="col">Documento</th>
+                                <th scope="col">F. Numero</th>
+                                <th scope="col">F. Emision</th>
+                                <th scope="col">F. Venta</th>
+                                <th scope="col">Base</th>
+                                <th scope="col">IGV</th>
+                                <th scope="col">Total</th>
+                                <th scope="col" style="width: 150px;">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
                             @if ($reporteventas && count($reporteventas) > 0)
+                                @php
+                                    $sumBase = 0;
+                                    $sumIGV = 0;
+                                    $sumTotal = 0;
+                                @endphp
                                 @foreach($reporteventas as $index => $reporteventa)
                                     <tr>
                                         <td>{{ ($reporteventas->currentPage() - 1) * $reporteventas->perPage() + $index + 1 }}</td>
@@ -91,31 +96,29 @@
                                             </a>
                                         </td>
                                     </tr>
+                                    @php
+                                        $sumBase += $reporteventa->base_disponible;
+                                        $sumIGV += $reporteventa->IGV;
+                                        $sumTotal += $reporteventa->total;
+                                    @endphp
                                 @endforeach
-                                @else
+                            @else
                                 <tr>
                                     <td class="text-center" colspan="14">No se encontraron ventas</td>
                                 </tr>
-                                @endif
-                            </tbody>
-                            <tfoot class="table-light">
-                                <td colsan="4">Total</td>
+                            @endif
+                        </tbody>
+                        <tfoot class="table-light">
+                            <tr>
+                                <td colspan="10">Total</td>
+                                <td>${{ $sumBase }}</td>
+                                <td>${{ $sumIGV }}</td>
+                                <td>${{ $sumTotal }}</td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>$940</td>
-                                <td>$940</td>
-                                <td>$940</td>
-                                <td></td>
-                                <td></td>
-                            </tfoot>
-                        </table>
+                            </tr>
+                        </tfoot>
+                    </table>
+
                     </div>
                 </div>
             </div>

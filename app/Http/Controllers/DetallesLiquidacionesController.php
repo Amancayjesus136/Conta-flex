@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\ventas;
+use App\Models\Compras;
+
 
 class DetallesLiquidacionesController extends Controller
 {
@@ -12,7 +15,11 @@ class DetallesLiquidacionesController extends Controller
      */
     public function index()
     {
-        return view('detalles.index');
+        $reporteventas = Ventas::all();
+        $reportecompras = Compras::all();
+        $sumBase = $reporteventas->sum('base_disponible');
+        $sumBase2 = $reportecompras->sum('base_disponible');
+        return view('detalles.index', compact('reporteventas', 'reportecompras', 'sumBase', 'sumBase2'));
     }
 
     /**

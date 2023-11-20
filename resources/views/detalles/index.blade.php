@@ -77,14 +77,16 @@
                                             <td class="text-start">
                                                 <span class="fw-medium">Base Imponible</span>
                                             </td>
-                                            <td><select class="form-select" id="factura_numero" name="factura_numero" required>
+                                            <td>
+                                                <select class="form-select" id="factura_numero" name="factura_numero" required>
                                                     <option value="" disabled selected>Selecciona compras</option>
-                                                    <option value="001">001</option>
+                                                    <option value="{{ $sumBase2 }}">{{ $sumBase2 }}</option>
                                                 </select>
                                             </td>
-                                            <td><select class="form-select" id="factura_numero" name="factura_numero" required>
+                                            <td>
+                                                <select class="form-select" id="factura_numero" name="factura_numero" required>
                                                     <option value="" disabled selected>Selecciona ventas</option>
-                                                    <option value="001">001</option>
+                                                    <option value="{{ $sumBase }}">{{ $sumBase }}</option>
                                                 </select>
                                             </td>
                                         </tr>

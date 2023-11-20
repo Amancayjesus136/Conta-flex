@@ -67,6 +67,11 @@
                     </thead>
                     <tbody>
                     @if ($reportescompras && count($reportescompras) > 0)
+                        @php
+                            $sumBase2 = 0;
+                            $sumIGV = 0;
+                            $sumTotal = 0;
+                        @endphp
                         @foreach($reportescompras as $index => $reportecompra)
                             <tr>
                                 <td>{{ ($reportescompras->currentPage() - 1) * $reportescompras->perPage() + $index + 1 }}</td>
@@ -91,6 +96,11 @@
                                     </a>
                                 </td>
                             </tr>
+                            @php
+                                $sumBase2 += $reportecompra->base_disponible;
+                                $sumIGV += $reportecompra->IGV;
+                                $sumTotal += $reportecompra->total;
+                            @endphp
                         @endforeach
                     @else
                         <tr>
@@ -98,23 +108,15 @@
                         </tr>
                     @endif
                     </tbody>
-                    <tfoot class="table-light">
-                                <td colsan="4">Total</td>
+                        <tfoot class="table-light">
+                            <tr>
+                                <td colspan="10">Total</td>
+                                <td>${{ $sumBase2 }}</td>
+                                <td>${{ $sumIGV }}</td>
+                                <td>${{ $sumTotal }}</td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>$940</td>
-                                <td>$940</td>
-                                <td>$940</td>
-                                <td></td>
-                                <td></td>
-                            </tfoot>
+                            </tr>
+                        </tfoot>
                 </table>
             </div>
         </div>
