@@ -69,7 +69,7 @@
                     @if ($reportescompras && count($reportescompras) > 0)
                         @php
                             $sumBase2 = 0;
-                            $sumIGV = 0;
+                            $sumIGV2 = 0;
                             $sumTotal = 0;
                         @endphp
                         @foreach($reportescompras as $index => $reportecompra)
@@ -98,7 +98,7 @@
                             </tr>
                             @php
                                 $sumBase2 += $reportecompra->base_disponible;
-                                $sumIGV += $reportecompra->IGV;
+                                $sumIGV2 += $reportecompra->IGV;
                                 $sumTotal += $reportecompra->total;
                             @endphp
                         @endforeach
@@ -112,7 +112,7 @@
                             <tr>
                                 <td colspan="10">Total</td>
                                 <td>${{ $sumBase2 }}</td>
-                                <td>${{ $sumIGV }}</td>
+                                <td>${{ $sumIGV2 }}</td>
                                 <td>${{ $sumTotal }}</td>
                                 <td></td>
                             </tr>

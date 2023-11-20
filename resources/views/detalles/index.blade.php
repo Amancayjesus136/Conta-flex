@@ -101,16 +101,16 @@
                                             <td class="text-start">
                                                 <span class="fw-medium">IGV</span>
                                             </td>
-                                            <td><input type="number" class="form-control" id="fecha_comprobante" name="fecha_comprobante" required></td>
-                                            <td><input type="number" class="form-control" id="fecha_comprobante" name="fecha_comprobante" required></td>
+                                            <td>{{ ($sumIGV2) }}</td>
+                                            <td>{{ ($sumIGV) }}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">05</th>
                                             <td class="text-start">
                                                 <span class="fw-medium">IGV por Pagar</span>
                                             </td>
-                                            <td><input type="number" class="form-control" id="fecha_comprobante" name="fecha_comprobante" required></td>
-                                            <td><input type="number" class="form-control" id="fecha_comprobante" name="fecha_comprobante" required></td>
+                                                <td>{{ abs(round($sumIGV2 - $sumIGV)) }}</td>
+                                            <td></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">06</th>
@@ -157,11 +157,11 @@
                                     <tbody id="products-list">
                                         <tr>
                                             <td>Base Imponible</td>
-                                            <td><input type="number" class="form-control" id="fecha_comprobante" name="fecha_comprobante" required></td>
+                                            <td>{{ round($sumBase) }}</td>
                                         </tr>
                                         <tr>
                                             <td>Total renta por pagar</td>
-                                            <td><input type="number" class="form-control" id="fecha_comprobante" name="fecha_comprobante" required></td>
+                                            <td>{{ round($sumBase * 1.5 / 100) }}</td>
                                         </tr>
                                     </tbody>
                                 </table><br><br>
@@ -170,8 +170,8 @@
                                     <thead>
                                         <tr class="table-active">
                                             <th scope="col"></th>
-                                            <th scope="col">Compras</th>
-                                            <th scope="col">Ventas</th>
+                                            <th scope="col">Modifica</th>
+                                            <th scope="col">Original</th>
                                         </tr>
                                     </thead>
                                     <tbody id="products-list">
@@ -186,8 +186,8 @@
                                             <td class="text-start">
                                                 <span class="fw-medium">Renta por pagar</span>
                                             </td>
-                                            <td><input type="number" class="form-control" id="fecha_comprobante" name="fecha_comprobante" required></td>
-                                            <td><input type="number" class="form-control" id="fecha_comprobante" name="fecha_comprobante" required></td>
+                                            <td>{{ round($sumBase * 1.5 / 100) }}</td>
+                                            <td>{{ round($sumBase * 1.5 / 100) }}</td>
                                         </tr>
                                         <tr>
                                             <td class="text-start">
@@ -221,8 +221,8 @@
                                             <td class="text-start">
                                                 <span class="fw-medium">Total a pagar</span>
                                             </td>
-                                            <td><input style="font-weight: bold;" type="number" class="form-control" id="fecha_comprobante" name="fecha_comprobante" required></td>
-                                            <td><input style="font-weight: bold;" type="number" class="form-control" id="fecha_comprobante" name="fecha_comprobante" required></td>
+                                            <td><strong>{{ round($sumBase * 1.5 / 100) }}</strong></td>
+                                            <td><strong>{{ round($sumBase * 1.5 / 100) }}</strong></td>
                                         </tr>
                                     </tbody>
                                 </table><br><br><br>
@@ -232,7 +232,7 @@
                                 <h6 class="text-muted text-uppercase fw-semibold mb-3">Detalles finales:</h6>
                                 <p class="text-muted mb-1">Sistema: <span class="fw-medium" id="payment-method">ContaFlex</span></p>
                                 <p class="text-muted mb-1">Propietario: <span class="fw-medium" id="card-holder-name">Jesús Amancay</span></p>
-                                <p class="text-muted">Cantidad total: <span class="fw-medium" id="">$</span><span id="card-total-amount">755.96</span></p>
+                                <p class="text-muted">Cantidad total: <span class="fw-medium" id="">$</span><span id="card-total-amount"><td><strong>{{ round($sumBase * 1.5 / 100) }}</strong></td></span></p>
                             </div>
                             
                             <div class="hstack gap-2 justify-content-end d-print-none mt-4">

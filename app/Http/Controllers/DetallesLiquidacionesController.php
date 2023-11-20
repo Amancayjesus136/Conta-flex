@@ -19,7 +19,9 @@ class DetallesLiquidacionesController extends Controller
         $reportecompras = Compras::all();
         $sumBase = $reporteventas->sum('base_disponible');
         $sumBase2 = $reportecompras->sum('base_disponible');
-        return view('detalles.index', compact('reporteventas', 'reportecompras', 'sumBase', 'sumBase2'));
+        $sumIGV = $reporteventas->sum('IGV');
+        $sumIGV2 = $reportecompras->sum('IGV');
+        return view('detalles.index', compact('reporteventas', 'reportecompras', 'sumBase', 'sumBase2', 'sumIGV', 'sumIGV2'));
     }
 
     /**
