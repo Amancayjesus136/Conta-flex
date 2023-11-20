@@ -21,10 +21,9 @@
                                     </div>
                                 </div>
                                 <div class="flex-shrink-0 mt-sm-0 mt-3">
-                                    <h6><span class="text-muted fw-normal">Legal Registration No:</span><span id="legal-register-no">987654</span></h6>
-                                    <h6><span class="text-muted fw-normal">Email:</span><span id="email">velzon@themesbrand.com</span></h6>
-                                    <h6><span class="text-muted fw-normal">Website:</span> <a href="https://themesbrand.com/" class="link-primary" target="_blank" id="website">www.themesbrand.com</a></h6>
-                                    <h6 class="mb-0"><span class="text-muted fw-normal">Contact No: </span><span id="contact-no"> +(01) 234 6789</span></h6>
+                                    <h6><span class="text-muted fw-normal">Legal Registration N°:</span><span id="legal-register-no">987654</span></h6>
+                                    <h6><span class="text-muted fw-normal">Email:</span><span id="email">{{ Auth::user()->email }}</span></h6>
+                                    <h6><span class="text-muted fw-normal">Website:</span> <a href="#" class="link-primary" target="_blank" id="website">www.contaFlex.pe</a></h6>
                                 </div>
                             </div>
                         </div>
