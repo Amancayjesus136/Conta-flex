@@ -77,18 +77,8 @@
                                             <td class="text-start">
                                                 <span class="fw-medium">Base Imponible</span>
                                             </td>
-                                            <td>
-                                                <select class="form-select" id="factura_numero" name="factura_numero" required>
-                                                    <option value="" disabled selected>Selecciona compras</option>
-                                                    <option value="{{ $sumBase2 }}">{{ $sumBase2 }}</option>
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <select class="form-select" id="factura_numero" name="factura_numero" required>
-                                                    <option value="" disabled selected>Selecciona ventas</option>
-                                                    <option value="{{ $sumBase }}">{{ $sumBase }}</option>
-                                                </select>
-                                            </td>
+                                            <td>{{ number_format($sumBase2, 2, '.', '') }}</td>
+                                            <td>{{ number_format($sumBase, 2, '.', '') }}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">02</th>
@@ -103,8 +93,8 @@
                                             <td class="text-start">
                                                 <span class="fw-medium">Nueva base compras</span>
                                             </td>
-                                            <td><input type="number" class="form-control" id="fecha_comprobante" name="fecha_comprobante" required></td>
-                                            <td><input type="number" class="form-control" id="fecha_comprobante" name="fecha_comprobante" required></td>
+                                            <td>{{ round($sumBase2) }}</td>
+                                            <td>{{ round($sumBase) }}</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">04</th>
