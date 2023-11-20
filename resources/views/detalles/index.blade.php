@@ -236,7 +236,6 @@
                             
                             <div class="hstack gap-2 justify-content-end d-print-none mt-4">
                                 <a href="javascript:window.print()" class="btn btn-success"><i class="ri-printer-line align-bottom me-1"></i> Print</a>
-                                <a href="javascript:void(0);" class="btn btn-primary"><i class="ri-download-2-line align-bottom me-1"></i> Download</a>
                             </div>
                         </div>
                         <!--end card-body-->
