@@ -16,13 +16,16 @@
 </div>
 <!-- cabecera -->
 
+<!-- alerta agregar registro -->
 @if(session('success'))
     <div id="successAlert" class="alert alert-success alert-dismissible bg-success text-white alert-label-icon fade show" role="alert">
         <i class="ri-notification-off-line label-icon"></i><strong>Éxito</strong> - Compras registrado correctamente
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 @endif
+<!-- alerta agregar registro -->
 
+<!-- formulario para enviar -->
 <div class="container mt-5">
     <div class="card shadow mx-auto">
         <div class="card-body">
@@ -172,6 +175,7 @@
         </div>
     </div>
 </div>
+<!-- formulario para enviar -->
 
 <!-- Modal pra extraer proveedores-->
 <div class="modal fade" id="agregarModal" tabindex="-1" aria-labelledby="crearModalLabel" aria-hidden="true">
