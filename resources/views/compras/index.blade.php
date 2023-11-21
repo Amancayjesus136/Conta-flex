@@ -89,11 +89,7 @@
                     <div class="col-4">
                         <div class="col-md-12">
                             <label for="factura_numero">Factura Numero: <span class="required">*</span></label>
-                            <select class="form-select" id="factura_numero" name="factura_numero" required>
-                                <option value="" disabled selected>Selecciona tipo factura</option>
-                                <option value="001">001</option>
-                                <option value="005">005</option>
-                            </select>
+                            <input type="any" class="form-control" id="factura_numero" name="factura_numero" required>
                             <div class="invalid-feedback">Registro de documento de formulario no válido</div><br>
                         </div>
                     </div>
