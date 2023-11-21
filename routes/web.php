@@ -127,6 +127,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
 
+    //comentado api
+
+    // Route::post('/guardarventas', [VentasController::class, 'store'])->name('getpost.guardarventas');
+    // Route::get('getpostventas', [VentasController::class, 'consultarRuc'])->name('getpostventas.consultarRuc');
+
+
+
+
+
 
 
 

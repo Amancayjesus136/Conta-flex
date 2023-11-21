@@ -230,8 +230,8 @@
     // Función para validar el formulario
     function validarFormulario() {
         var codCompra = document.getElementsByName('cod_compra')[0].value;
-        var tipoCambio = document.getElementById('tipo_cambio').value;
-
+        var tipoCambio = .getElementById('tipo_cambio').value;
+document
         if (codCompra === "") {
             document.getElementById('codCompraError').style.display = 'block';
         } else {
