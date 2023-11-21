@@ -169,7 +169,7 @@
                                     <thead>
                                         <tr class="table-active">
                                             <th scope="col"></th>
-                                            <th scope="col">Modifica</th>
+                                            <th scope="col">Modificado</th>
                                             <th scope="col">Original</th>
                                         </tr>
                                     </thead>
@@ -178,8 +178,8 @@
                                             <td class="text-start">
                                                 <span class="fw-medium">IGV por Pagar</span>
                                             </td>
-                                            <td>0</td>
-                                            <td>0</td>
+                                            <td>{{ abs(round($sumIGV2 - $sumIGV)) }}</td>
+                                            <td>{{ abs(round($sumIGV2 - $sumIGV)) }}</td>
                                         </tr>
                                         <tr>
                                             <td class="text-start">
