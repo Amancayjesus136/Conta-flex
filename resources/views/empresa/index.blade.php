@@ -8,99 +8,150 @@
         </div>
     </div>
 <div class="container">
-    <div class="row">
-        <div class="col-lg-2">
-            <div class="card">
-                <div class="card-body">
-                    <div class="nav nav-pills flex-column nav-pills-tab custom-verti-nav-pills text-center" role="tablist" aria-orientation="vertical">
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#agregarModal" class="btn btn-info" id="custom-v-pills-home-tab" data-bs-toggle="pill" href="#custom-v-pills-home" role="tab" aria-controls="custom-v-pills-home" aria-selected="true">
-                            <i class="ri-home-4-line d-block fs-20 mb-1"></i> Crear
-                        </button>
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#" class="nav-link" id="custom-v-pills-messages-tab" data-bs-toggle="pill" href="#custom-v-pills-messages" role="tab" aria-controls="custom-v-pills-messages" aria-selected="false">
-                        <i class="ri-search-line d-block fs-20 mb-1"></i> Consultar
-                        </button>
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#asignarModal" class="nav-link" id="custom-v-pills-profile-tab" data-bs-toggle="pill" href="#custom-v-pills-profile" role="tab" aria-controls="custom-v-pills-profile" aria-selected="false">
-                            <i class="ri-user-2-line d-block fs-20 mb-1"></i> Asignar
-                        </button>
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#listadoEmpresasModal" class="nav-link" id="custom-v-pills-messages-tab" data-bs-toggle="pill" href="#custom-v-pills-messages" role="tab" aria-controls="custom-v-pills-messages" aria-selected="false">
-                            <i class="ri-file-list-3-line d-block fs-20 mb-1"></i> Usuarios
-                        </button>
-                    </div>
-                </div>
-            </div>
+  <div class="row">
+    <div class="col-lg-2">
+      <div class="card">
+        <div class="card-body">
+          <div class="nav nav-pills flex-column nav-pills-tab custom-verti-nav-pills text-center" role="tablist" aria-orientation="vertical">
+              <button type="button" data-bs-toggle="modal" data-bs-target="#agregarModal" class="btn btn-info" id="custom-v-pills-home-tab" data-bs-toggle="pill" href="#custom-v-pills-home" role="tab" aria-controls="custom-v-pills-home" aria-selected="true">
+                  <i class="ri-home-4-line d-block fs-20 mb-1"></i> Crear
+              </button>
+              <button type="button" data-bs-toggle="modal" data-bs-target="#" class="nav-link" id="custom-v-pills-messages-tab" data-bs-toggle="pill" href="#custom-v-pills-messages" role="tab" aria-controls="custom-v-pills-messages" aria-selected="false">
+              <i class="ri-search-line d-block fs-20 mb-1"></i> Consultar
+              </button>
+              <button type="button" data-bs-toggle="modal" data-bs-target="#asignarModal" class="nav-link" id="custom-v-pills-profile-tab" data-bs-toggle="pill" href="#custom-v-pills-profile" role="tab" aria-controls="custom-v-pills-profile" aria-selected="false">
+                  <i class="ri-user-2-line d-block fs-20 mb-1"></i> Asignar
+              </button>
+              <button type="button" data-bs-toggle="modal" data-bs-target="#listadoEmpresasModal" class="nav-link" id="custom-v-pills-messages-tab" data-bs-toggle="pill" href="#custom-v-pills-messages" role="tab" aria-controls="custom-v-pills-messages" aria-selected="false">
+                  <i class="ri-file-list-3-line d-block fs-20 mb-1"></i> Usuarios
+              </button>
+          </div>
         </div>
+      </div>
+    </div>
 
-        <div class="col-lg-10">
-            <div class="card">
-                <div class="card-body">
-                    <div class="table-responsive">
-                    <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Compañia</th>
-                                    <th scope="col">Nombre de la Empresa</th>
-                                    <th scope="col">Plan de Cuentas</th>
-                                    <th scope="col">Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @php
-                                    $contador = 1;
-                                @endphp
-                                @foreach ($empresas as $empresa)
-                                <tr>
-                                    <td>{{ $contador }}</td>
-                                    <td>{{ $empresa->nombre_empresa }}</td>
-                                    <td>{{ str_pad($contador, 4, '0', STR_PAD_LEFT) }}</td>
-                                    <td>
-                                        <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarEmpresaModal{{ $empresa->id }}">
-                                            <i class="fas fa-edit"></i> Editar
-                                        </a>
-                                        <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarEmpresaModal{{ $empresa->id }}">
-                                            <i class="fas fa-trash-alt"></i> Eliminar
-                                        </a>
-                                    </td>
-                                </tr>
-                                @php
-                                    $contador++;
-                                @endphp
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div> 
+    <div class="col-lg-10">
+      <div class="card">
+        <div class="card-body">
+          <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+                <tr>
+                  <th scope="col">Compañia</th>
+                  <th scope="col">Nombre de la Empresa</th>
+                  <th scope="col">Plan de Cuentas</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @php
+                    $contador = 1;
+                @endphp
+                @foreach ($empresas as $empresa)
+                <tr>
+                  <td>{{ $contador }}</td>
+                  <td>{{ $empresa->nombre_empresa }}</td>
+                  <td>{{ str_pad($contador, 4, '0', STR_PAD_LEFT) }}</td>
+                  <td>
+                      <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarEmpresaModal{{ $empresa->id }}">
+                          <i class="fas fa-edit"></i> Editar
+                      </a>
+                      <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarEmpresaModal{{ $empresa->id }}">
+                          <i class="fas fa-trash-alt"></i> Eliminar
+                      </a>
+                  </td>
+                </tr>
+                @php
+                    $contador++;
+                @endphp
+                @endforeach
+            </tbody>
+          </table>
+          </div>
+        </div>
+      </div>
     </div> 
+  </div> 
 </div>
 
-<!-- Modal de Agregar -->
-<div class="modal fade" id="agregarModal" tabindex="-1" aria-labelledby="agregarModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="agregarModalLabel">Agregar Empresa</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form method="POST" action="{{ route('empresa.store') }}" id="agregar-form">
-                    @csrf
-                    <div class="mb-3">
-                        <label for="nombre_empresa" class="form-label">Nombre de la Empresa</label>
-                        <input type="text" class="form-control" id="nombre_empresa" name="nombre_empresa" required>
+<!-- ESPACIO PARA CONSULTA RUC -->
+
+
+<div class="container-fluid vh-100 d-flex align-items-center">
+    <div class="card shadow mx-auto">
+        <div class="card-header bg-lg text-black">
+            <h2 class="text-center mb-0">Consulta de DNI</h2>
+        </div>
+        <div class="card-body">
+            <form action="#" method="get">
+                @csrf
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="dni" id="dni" required placeholder="Ingrese el DNI">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary">Consultar</button>
                     </div>
-                    <!-- <div class="mb-3">
-                        <label for="plan_cuentas" class="forkm-label">Plan de Cuentas</label>
-                        <input type="text" class="form-control" id="plan_cuentas" name="plan_cuentas" required>
-                    </div> -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+
+                <h3 class="text-center mb-4">Resultado:</h3>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <tr>
+                                <th class="bg-white text-black">Número de DNI</th>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th class="bg-white text-black">Nombre</th>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th class="bg-white text-black">Apellido Paterno</th>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th class="bg-white text-black">Apellido Materno</th>
+                                <td></td>
+                            </tr>
+                        </table>
                     </div>
-                </form>
-            </div>
+
+            <div class="text-center">
+                    <a href="#" class="btn btn-primary">Regresar</a>
+                </div>
+            </form>
         </div>
     </div>
+</div>
+
+
+<!-- ESPACIO PARA CONSULTA RUC -->
+
+<!-- Modal de Agregar/Consultar empresa -->
+<div class="modal fade" id="agregarModal" tabindex="-1" aria-labelledby="agregarModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="agregarModalLabel">Agregar Empresa</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="{{ route('empresa.store') }}" id="agregar-form">
+          @csrf
+          <div class="mb-3">
+              <label for="nombre_empresa" class="form-label">Nombre de la Empresa</label>
+              <input type="text" class="form-control" id="nombre_empresa" name="nombre_empresa" required>
+          </div>
+          <!-- <div class="mb-3">
+              <label for="plan_cuentas" class="forkm-label">Plan de Cuentas</label>
+              <input type="text" class="form-control" id="plan_cuentas" name="plan_cuentas" required>
+          </div> -->
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="submit" class="btn btn-primary">Guardar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Modal de Asignar -->
