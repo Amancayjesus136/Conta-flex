@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\Empresa;
 use App\Models\User;
 use App\Models\compras;
+use App\Models\Empresaruc;
 use App\Models\AsignarUsuario;
 use Illuminate\Support\Facades\DB;
 use \Illuminate\Support\Facades\Http;
@@ -19,9 +20,9 @@ class EmpresaController extends Controller
         $users = User::all();
         $empresas = Empresa::all();
         $personas = AsignarUsuario::all();
-        return view('empresa.index', compact('empresas', 'users', 'personas'));
+        $rucs = Empresaruc::all();
+        return view('empresa.index', compact('empresas', 'users', 'personas', 'rucs'));
     }
-
     
     public function store(Request $request)
     {

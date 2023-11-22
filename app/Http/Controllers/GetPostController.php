@@ -4,14 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Empresaruc;
 use Illuminate\Support\Facades\Http;
-use App\Models\Prueba;
-use App\Models\compras;
 
 
 
 class GetPostController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
         return view('getpost.index');
@@ -35,26 +37,56 @@ class GetPostController extends Controller
         return view('getpost.index', compact('data'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
 
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
-        compras::create([
-            'cod_compra' => $request->input('cod_compra'),
-            'tipo_cambio' => $request->input('tipo_cambio'),
-            'fecha_comprobante' => $request->input('fecha_comprobante'),
+        Empresaruc::create([
             'ruc' => $request->input('ruc'),
             'nombre' => $request->input('nombre'),
-            'documento' => $request->input('documento'),
-            'factura_numero' => $request->input('factura_numero'),
-            'fecha_emision' => $request->input('fecha_emision'),
-            'fecha_compra' => $request->input('fecha_compra'),
-            'consulta' => $request->input('consulta'),
-            'base_disponible' => $request->input('base_disponible'),
-            'IGV' => $request->input('IGV'),
-            'total' => $request->input('total'),
         ]);
 
-        return redirect()->back()->with('success', 'Registro almacenado correctamente');
+        return redirect()->back()->with('success', 'actualizado exitosamente');
     }
-    
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
+    }
 }

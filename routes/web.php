@@ -18,6 +18,7 @@ use App\Http\Controllers\GetPostController;
 use App\Http\Controllers\LiquidacionesController;
 use App\Http\Controllers\DetallesLiquidacionesController;
 use App\Http\Controllers\RucEmpresaController;
+use App\Http\Controllers\ConsultationController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -109,10 +110,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/guardarventas', [VentasController::class, 'store'])->name('getpost.guardarventas');
     Route::post('/guardarcompras', [ComprasController::class, 'store'])->name('getpost.guardar');
 
+    Route::resource('consultation', GetPostController::class);
+    Route::get('getpost', [GetPostController::class, 'consultarRuc'])->name('getpost.consultarRuc2');
+    Route::post('/guardar', [GetPostController::class, 'store'])->name('getpost.guardar2');
+
+
 
     Route::get('tipo', [ConsultaTipoCambioController::class, 'consultatipocambio'])->name('tipo.consultartipo');
     Route::post('/guardartipo', [ConsultaTipoCambioController::class, 'store'])->name('tipo.guardar');
-
 
     Route::post('/guardar-venta', [VentaController::class, 'store'])->name('guardar_venta');
 
@@ -123,45 +128,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('detalles', DetallesLiquidacionesController::class);
 
     Route::resource('ruc', RucEmpresaController::class);
-
-
-
-
-    //comentado api
-
-    // Route::post('/guardarventas', [VentasController::class, 'store'])->name('getpost.guardarventas');
-    // Route::get('getpostventas', [VentasController::class, 'consultarRuc'])->name('getpostventas.consultarRuc');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // REPORTES
-
-
-
-
-
-
-
-
-
-
-
 
 });
 // Ruta para la autenticación

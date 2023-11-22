@@ -16,9 +16,10 @@
               <button type="button" data-bs-toggle="modal" data-bs-target="#agregarModal" class="btn btn-info" id="custom-v-pills-home-tab" data-bs-toggle="pill" href="#custom-v-pills-home" role="tab" aria-controls="custom-v-pills-home" aria-selected="true">
                   <i class="ri-home-4-line d-block fs-20 mb-1"></i> Crear
               </button>
-              <button type="button" data-bs-toggle="modal" data-bs-target="#" class="nav-link" id="custom-v-pills-messages-tab" data-bs-toggle="pill" href="#custom-v-pills-messages" role="tab" aria-controls="custom-v-pills-messages" aria-selected="false">
-              <i class="ri-search-line d-block fs-20 mb-1"></i> Consultar
-              </button>
+              <a href="{{ route('consultation.index') }}" class="nav-link" id="custom-v-pills-messages-tab" role="tab" aria-controls="custom-v-pills-messages" aria-selected="false">
+                    <i class="ri-search-line d-block fs-20 mb-1"></i> Consultar
+                </a>
+
               <button type="button" data-bs-toggle="modal" data-bs-target="#asignarModal" class="nav-link" id="custom-v-pills-profile-tab" data-bs-toggle="pill" href="#custom-v-pills-profile" role="tab" aria-controls="custom-v-pills-profile" aria-selected="false">
                   <i class="ri-user-2-line d-block fs-20 mb-1"></i> Asignar
               </button>
@@ -74,57 +75,6 @@
   </div> 
 </div>
 
-<!-- ESPACIO PARA CONSULTA RUC -->
-
-
-<div class="container-fluid vh-100 d-flex align-items-center">
-    <div class="card shadow mx-auto">
-        <div class="card-header bg-lg text-black">
-            <h2 class="text-center mb-0">Consulta de DNI</h2>
-        </div>
-        <div class="card-body">
-            <form action="#" method="get">
-                @csrf
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="dni" id="dni" required placeholder="Ingrese el DNI">
-                    <div class="input-group-append">
-                        <button type="submit" class="btn btn-primary">Consultar</button>
-                    </div>
-                </div>
-
-                <h3 class="text-center mb-4">Resultado:</h3>
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-hover">
-                            <tr>
-                                <th class="bg-white text-black">Número de DNI</th>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th class="bg-white text-black">Nombre</th>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th class="bg-white text-black">Apellido Paterno</th>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th class="bg-white text-black">Apellido Materno</th>
-                                <td></td>
-                            </tr>
-                        </table>
-                    </div>
-
-            <div class="text-center">
-                    <a href="#" class="btn btn-primary">Regresar</a>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-
-<!-- ESPACIO PARA CONSULTA RUC -->
-
 <!-- Modal de Agregar/Consultar empresa -->
 <div class="modal fade" id="agregarModal" tabindex="-1" aria-labelledby="agregarModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -137,9 +87,14 @@
         <form method="POST" action="{{ route('empresa.store') }}" id="agregar-form">
           @csrf
           <div class="mb-3">
-              <label for="nombre_empresa" class="form-label">Nombre de la Empresa</label>
-              <input type="text" class="form-control" id="nombre_empresa" name="nombre_empresa" required>
-          </div>
+            <label for="nombre_empresa" class="form-label">Selecciona la empresa</label>
+            <select class="form-select" id="nombre_empresa" name="nombre_empresa" required>
+            <option value="" disabled selected>Selecciona un usuario</option>
+                @foreach ($rucs as $ruc)
+                    <option value="{{ $ruc->nombre }}">{{ $ruc->nombre }}</option>
+                @endforeach
+            </select>
+        </div>
           <!-- <div class="mb-3">
               <label for="plan_cuentas" class="forkm-label">Plan de Cuentas</label>
               <input type="text" class="form-control" id="plan_cuentas" name="plan_cuentas" required>
