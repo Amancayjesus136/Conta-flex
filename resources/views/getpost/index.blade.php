@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0">Compras</h4>
+            <h4 class="mb-sm-0">CONSULTA EMPRESA</h4>
         </div>
     </div>
 </div>
@@ -26,7 +26,6 @@
                     <div class="col-6">
                         <div style="margin-top: 28px;" class="form-group">
                             <button type="button" class="btn btn-primary" onclick="consultarRuc()">Consultar <i class="las la-search"></i></button>
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#agregarModal" class="btn btn-info"><i class="fas fa-cloud-download-alt"></i> Traer Proovedor</button><br><br><br>
                         </div>
                     </div>
                 </div>
@@ -52,7 +51,11 @@
                 <input type="hidden" name="ruc" id="ruc_guardar">
                 <input type="hidden" name="nombre" id="nombre_guardar">
                 </div>
-                <button style="margin-top: 10px;" type="button" class="btn btn-primary" onclick="guardar()">Guardar</button>
+                <div class="row justify-content-end mb-4">
+                    <div class="col-2">
+                        <button type="button" class="btn btn-info" onclick="guardar()">Guardar</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

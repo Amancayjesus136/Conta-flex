@@ -89,7 +89,7 @@
           <div class="mb-3">
             <label for="nombre_empresa" class="form-label">Selecciona la empresa</label>
             <select class="form-select" id="nombre_empresa" name="nombre_empresa" required>
-            <option value="" disabled selected>Selecciona un usuario</option>
+            <option value="" disabled selected>Selecciona..</option>
                 @foreach ($rucs as $ruc)
                     <option value="{{ $ruc->nombre }}">{{ $ruc->nombre }}</option>
                 @endforeach
