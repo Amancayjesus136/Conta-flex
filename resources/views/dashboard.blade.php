@@ -2,6 +2,13 @@
 
 
 @section('content')
+
+
+@php
+    $personas = DB::table('users')->get(); 
+
+@endphp
+
 <div class="row">
                         <div class="col-lg-12">
                             <div class="card mt-n4 mx-n4">
@@ -180,7 +187,7 @@
 
                                             <div class="card">
                                                 <div class="card-header align-items-center d-flex border-bottom-dashed">
-                                                    <h4 class="card-title mb-0 flex-grow-1">Members</h4>
+                                                    <h4 class="card-title mb-0 flex-grow-1">Usuarios registrados</h4>
                                                     <div class="flex-shrink-0">
                                                         <button type="button" class="btn btn-soft-danger btn-sm" data-bs-toggle="modal" data-bs-target="#inviteMembersModal"><i class="ri-share-line me-1 align-bottom"></i> Invite Member</button>
                                                     </div>
@@ -189,153 +196,19 @@
                                                 <div class="card-body">
                                                     <div data-simplebar style="height: 235px;" class="mx-n3 px-3">
                                                         <div class="vstack gap-3">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="avatar-xs flex-shrink-0 me-3">
-                                                                    <img src="assets/images/users/avatar-2.jpg" alt="" class="img-fluid rounded-circle">
-                                                                </div>
-                                                                <div class="flex-grow-1">
-                                                                    <h5 class="fs-13 mb-0"><a href="#" class="text-body d-block">Nancy Martino</a></h5>
-                                                                </div>
-                                                                <div class="flex-shrink-0">
-                                                                    <div class="d-flex align-items-center gap-1">
-                                                                        <button type="button" class="btn btn-light btn-sm">Message</button>
-                                                                        <div class="dropdown">
-                                                                            <button class="btn btn-icon btn-sm fs-16 text-muted dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                                <i class="ri-more-fill"></i>
-                                                                            </button>
-                                                                            <ul class="dropdown-menu">
-                                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-eye-fill text-muted me-2 align-bottom"></i>View</a></li>
-                                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-star-fill text-muted me-2 align-bottom"></i>Favourite</a></li>
-                                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-delete-bin-5-fill text-muted me-2 align-bottom"></i>Delete</a></li>
-                                                                            </ul>
+                                                            @foreach ($personas as $persona)
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="flex-grow-1">
+                                                                        <h5 class="fs-13 mb-0"><a href="#" class="text-body d-block">{{ $persona->name }}</a></h5>
+                                                                    </div>
+                                                                    <div class="flex-shrink-0">
+                                                                        <div class="d-flex align-items-center gap-1">
+                                                                            <button type="button" class="btn btn-light btn-sm">Message</button>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <!-- end member item -->
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="avatar-xs flex-shrink-0 me-3">
-                                                                    <div class="avatar-title bg-soft-danger text-danger rounded-circle">
-                                                                        HB
-                                                                    </div>
-                                                                </div>
-                                                                <div class="flex-grow-1">
-                                                                    <h5 class="fs-13 mb-0"><a href="#" class="text-body d-block">Henry Baird</a></h5>
-                                                                </div>
-                                                                <div class="flex-shrink-0">
-                                                                    <div class="d-flex align-items-center gap-1">
-                                                                        <button type="button" class="btn btn-light btn-sm">Message</button>
-                                                                        <div class="dropdown">
-                                                                            <button class="btn btn-icon btn-sm fs-16 text-muted dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                                <i class="ri-more-fill"></i>
-                                                                            </button>
-                                                                            <ul class="dropdown-menu">
-                                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-eye-fill text-muted me-2 align-bottom"></i>View</a></li>
-                                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-star-fill text-muted me-2 align-bottom"></i>Favourite</a></li>
-                                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-delete-bin-5-fill text-muted me-2 align-bottom"></i>Delete</a></li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <!-- end member item -->
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="avatar-xs flex-shrink-0 me-3">
-                                                                    <img src="assets/images/users/avatar-3.jpg" alt="" class="img-fluid rounded-circle">
-                                                                </div>
-                                                                <div class="flex-grow-1">
-                                                                    <h5 class="fs-13 mb-0"><a href="#" class="text-body d-block">Frank Hook</a></h5>
-                                                                </div>
-                                                                <div class="flex-shrink-0">
-                                                                    <div class="d-flex align-items-center gap-1">
-                                                                        <button type="button" class="btn btn-light btn-sm">Message</button>
-                                                                        <div class="dropdown">
-                                                                            <button class="btn btn-icon btn-sm fs-16 text-muted dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                                <i class="ri-more-fill"></i>
-                                                                            </button>
-                                                                            <ul class="dropdown-menu">
-                                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-eye-fill text-muted me-2 align-bottom"></i>View</a></li>
-                                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-star-fill text-muted me-2 align-bottom"></i>Favourite</a></li>
-                                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-delete-bin-5-fill text-muted me-2 align-bottom"></i>Delete</a></li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <!-- end member item -->
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="avatar-xs flex-shrink-0 me-3">
-                                                                    <img src="assets/images/users/avatar-4.jpg" alt="" class="img-fluid rounded-circle">
-                                                                </div>
-                                                                <div class="flex-grow-1">
-                                                                    <h5 class="fs-13 mb-0"><a href="#" class="text-body d-block">Jennifer Carter</a></h5>
-                                                                </div>
-                                                                <div class="flex-shrink-0">
-                                                                    <div class="d-flex align-items-center gap-1">
-                                                                        <button type="button" class="btn btn-light btn-sm">Message</button>
-                                                                        <div class="dropdown">
-                                                                            <button class="btn btn-icon btn-sm fs-16 text-muted dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                                <i class="ri-more-fill"></i>
-                                                                            </button>
-                                                                            <ul class="dropdown-menu">
-                                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-eye-fill text-muted me-2 align-bottom"></i>View</a></li>
-                                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-star-fill text-muted me-2 align-bottom"></i>Favourite</a></li>
-                                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-delete-bin-5-fill text-muted me-2 align-bottom"></i>Delete</a></li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <!-- end member item -->
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="avatar-xs flex-shrink-0 me-3">
-                                                                    <div class="avatar-title bg-soft-success text-success rounded-circle">
-                                                                        AC
-                                                                    </div>
-                                                                </div>
-                                                                <div class="flex-grow-1">
-                                                                    <h5 class="fs-13 mb-0"><a href="#" class="text-body d-block">Alexis Clarke</a></h5>
-                                                                </div>
-                                                                <div class="flex-shrink-0">
-                                                                    <div class="d-flex align-items-center gap-1">
-                                                                        <button type="button" class="btn btn-light btn-sm">Message</button>
-                                                                        <div class="dropdown">
-                                                                            <button class="btn btn-icon btn-sm fs-16 text-muted dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                                <i class="ri-more-fill"></i>
-                                                                            </button>
-                                                                            <ul class="dropdown-menu">
-                                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-eye-fill text-muted me-2 align-bottom"></i>View</a></li>
-                                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-star-fill text-muted me-2 align-bottom"></i>Favourite</a></li>
-                                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-delete-bin-5-fill text-muted me-2 align-bottom"></i>Delete</a></li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <!-- end member item -->
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="avatar-xs flex-shrink-0 me-3">
-                                                                    <img src="assets/images/users/avatar-7.jpg" alt="" class="img-fluid rounded-circle">
-                                                                </div>
-                                                                <div class="flex-grow-1">
-                                                                    <h5 class="fs-13 mb-0"><a href="#" class="text-body d-block">Joseph Parker</a></h5>
-                                                                </div>
-                                                                <div class="flex-shrink-0">
-                                                                    <div class="d-flex align-items-center gap-1">
-                                                                        <button type="button" class="btn btn-light btn-sm">Message</button>
-                                                                        <div class="dropdown">
-                                                                            <button class="btn btn-icon btn-sm fs-16 text-muted dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                                <i class="ri-more-fill"></i>
-                                                                            </button>
-                                                                            <ul class="dropdown-menu">
-                                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-eye-fill text-muted me-2 align-bottom"></i>View</a></li>
-                                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-star-fill text-muted me-2 align-bottom"></i>Favourite</a></li>
-                                                                                <li><a class="dropdown-item" href="javascript:void(0);"><i class="ri-delete-bin-5-fill text-muted me-2 align-bottom"></i>Delete</a></li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                            @endforeach
+                                                            
                                                             <!-- end member item -->
                                                         </div>
                                                         <!-- end list -->

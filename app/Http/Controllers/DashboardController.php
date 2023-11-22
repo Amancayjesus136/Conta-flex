@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\compras;
+use App\Models\User;
 
 
 class DashboardController extends Controller
@@ -14,11 +15,9 @@ class DashboardController extends Controller
      */
     public function index()
 {
-    // Obtén el conteo total de registros en la tabla compras
     $totalCompras = compras::count();
-
-    // Pasa el total de compras a la vista
-    return view('dashboard', compact('totalCompras'));
+    $personas = User::all();
+    return view('dashboard', compact('totalCompras', 'personas'));
 }
 
     /**
