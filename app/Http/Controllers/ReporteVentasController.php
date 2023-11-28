@@ -17,7 +17,6 @@ class ReporteVentasController extends Controller
 {
     $reporteventas = ventas::query();
 
-    // Aplicar búsqueda si se proporciona un término de búsqueda
     if (!empty($request->get('s'))) {
         $term = $request->get('s');
         $reporteventas = $reporteventas->where(function ($query) use ($term) {
@@ -37,7 +36,7 @@ class ReporteVentasController extends Controller
         });
     }
 
-    $porPagina = 10; // Número de registros por página
+    $porPagina = 10; 
         $reporteventas = $reporteventas->paginate($porPagina);
 
         if ($request->has('export')) {
