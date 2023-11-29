@@ -92,7 +92,7 @@
                                     <td>{{ $reportecompra->fecha_compra }}</td>
                                     <td>
                                         <!-- Nueva lógica basada en el valor de $reportecompra->consulta -->
-                                        @if($reportecompra->consulta == 2)
+                                        @if($reportecompra->consulta == 2 && $reportecompra->cod_compra != 'Soles')
                                             @php
                                                 $baseCalculada = $reportecompra->base_disponible * $reportecompra->tipo_cambio;
                                                 $sumBase2 += $baseCalculada;
@@ -101,7 +101,7 @@
                                                 $total3 += round($baseCalculada + ($baseCalculada * 0.18), 2);
                                             @endphp
                                             {{ $reportecompra->base_disponible }}
-                                        @elseif($reportecompra->consulta == 1)
+                                        @elseif($reportecompra->consulta == 1 && $reportecompra->cod_compra != 'Soles')
                                             @php
                                                 $baseCalculada = $reportecompra->total * $reportecompra->tipo_cambio / 1.18;
                                                 $sumBase2 += $baseCalculada;
@@ -120,9 +120,9 @@
                                             @endphp
                                         @endif
                                     </td>
-
                                     <td>{{ $reportecompra->IGV }}</td>
                                     <td>{{ $reportecompra->total }}</td>
+
                                     <td>
                                         <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal{{ $reportecompra->id }}">
                                             <i class="fas fa-edit"></i> Editar
