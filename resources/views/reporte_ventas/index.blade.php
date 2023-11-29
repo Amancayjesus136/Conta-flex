@@ -21,7 +21,6 @@
                 <h4 class="card-title mb-0 flex-grow-1"></h4>
                 <form method="GET" class="listado-busqueda">
                     <input type="text" placeholder="Ingrese su búsqueda" name="s" class="form-control input-sm"
-                        value="<?php if (!empty($_GET['s'])) echo $_GET['s']; ?>" />
                     <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
                 </form>
                 <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#agregarModal">

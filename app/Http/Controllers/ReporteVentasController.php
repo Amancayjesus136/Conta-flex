@@ -40,7 +40,8 @@ class ReporteVentasController extends Controller
         $reporteventas = $reporteventas->paginate($porPagina);
 
         if ($request->has('export')) {
-            return Excel::download(new VentasExport, 'ventas.xlsx');
+            
+            // return Excel::download(new VentasExport, 'ventas.xlsx');
         }
 
         return view('reporte_ventas.index', compact('reporteventas'));
