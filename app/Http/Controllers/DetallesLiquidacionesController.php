@@ -4,12 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\ventas;
+use App\Models\Ventas; 
 use App\Models\Compras;
+use App\Models\Total;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\LiquidacionesExport;
-
-
 
 class DetallesLiquidacionesController extends Controller
 {
@@ -24,8 +23,8 @@ class DetallesLiquidacionesController extends Controller
         $sumBase2 = $reportecompras->sum('base_disponible');
         $sumIGV = $reporteventas->sum('IGV');
         $sumIGV2 = $reportecompras->sum('IGV');
-        return view('detalles.index', compact('reporteventas', 'reportecompras', 'sumBase', 'sumBase2', 'sumIGV', 'sumIGV2'));
+        $total1 = Total::pluck('total1')->first();
+
+        return view('detalles.index', compact('reporteventas', 'reportecompras', 'sumBase', 'sumBase2', 'sumIGV', 'sumIGV2', 'total1'));
     }
-
-
 }

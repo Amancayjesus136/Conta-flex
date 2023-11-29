@@ -76,7 +76,7 @@
                                             <td class="text-start">
                                                 <span class="fw-medium">Base Imponible</span>
                                             </td>
-                                            <td>{{ number_format($sumBase2, 2, '.', '') }}</td>
+                                            <td>{{ number_format($total1, 2, '.', '') }}</td>
                                             <td>{{ number_format($sumBase, 2, '.', '') }}</td>
                                         </tr>
                                         <tr>

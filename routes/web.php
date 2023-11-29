@@ -90,6 +90,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Contabilidad
     Route::match( ['get', 'post'],'compras', [ComprasController::class, 'index'])->name('compras.index');
     Route::post('/compras', [ComprasController::class, 'store'])->name('compras.store');
+    Route::post('/compras', [ComprasController::class, 'store2'])->name('compras.store2');
     Route::resource('ventas', VentasController::class);
     Route::post('/asignar', [AsignarController::class, 'store'])->name('asignar.store');
     Route::get('listado', [ListadoUsuarioController::class, 'index'])->name('listado.index');

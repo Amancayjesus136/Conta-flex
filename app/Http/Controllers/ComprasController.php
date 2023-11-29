@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\compras;
+use App\Models\Total;
 use Illuminate\Support\Facades\Http;
 
 
@@ -52,6 +53,18 @@ class ComprasController extends Controller
         ]);
 
         return redirect()->route('compras.index')->with('success', 'Compra almacenada correctamente');
+    }
+
+    public function store2(Request $request)
+    {
+        Total::create([
+            'total1' => $request->input('total1'),
+            'total2' => $request->input('total2'),
+            'total3' => $request->input('total3'),
+        ]);
+
+        return redirect()->back()->with('success', 'actualizado exitosamente');
+
     }
 
 }

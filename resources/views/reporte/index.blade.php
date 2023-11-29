@@ -150,6 +150,17 @@
                             <td>${{ $total2 }}</td>
                             <td>${{ $total3 }}</td>
                         </tr>
+                        <tr>
+                            <td colspan="14">
+                                <form method="POST" action="{{ route('compras.store2') }}">
+                                    @csrf
+                                    <input type="hidden" name="total1" value="{{ $total1 }}">
+                                    <input type="hidden" name="total2" value="{{ $total2 }}">
+                                    <input type="hidden" name="total3" value="{{ $total3 }}">
+                                    <button type="submit" class="btn btn-primary">Enviar a Liquidaciones</button>
+                                </form>
+                            </td>
+                        </tr>
                     </tfoot>
                 </table>
             </div>
@@ -159,6 +170,11 @@
 </div>
 </div>
 <!-- listado -->
+
+@php
+    session(['total1' => $total1, 'total2' => $total2, 'total3' => $total3]);
+@endphp
+
 
 
 
