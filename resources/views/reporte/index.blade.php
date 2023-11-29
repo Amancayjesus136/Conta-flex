@@ -99,7 +99,7 @@
                                                 $baseCalculada = $reportecompra->total * $reportecompra->tipo_cambio;
                                                 $sumBase2 += $baseCalculada;
                                             @endphp    
-                                            {{ $baseCalculada }}
+                                            {{ $reportecompra->base_disponible }}
                                         @else
                                             {{ $reportecompra->base_disponible }}
                                             @php
