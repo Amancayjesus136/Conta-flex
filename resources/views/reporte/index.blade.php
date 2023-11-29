@@ -76,6 +76,7 @@
                                 $total2 = 0;
                                 $total3 = 0;
                             @endphp
+                            
 
                             @foreach($reportescompras as $index => $reportecompra)
                                 <tr>
@@ -144,23 +145,29 @@
                         @endif
                     </tbody>
                     <tfoot class="table-light">
-                        <tr>
-                            <td colspan="11">Total</td>
-                            <td>${{ $total1 }}</td>
-                            <td>${{ $total2 }}</td>
-                            <td>${{ $total3 }}</td>
-                        </tr>
-                        <tr>
-                            <td colspan="14">
-                                <form method="POST" action="{{ route('compras.store2') }}">
-                                    @csrf
-                                    <input type="hidden" name="total1" value="{{ $total1 }}">
-                                    <input type="hidden" name="total2" value="{{ $total2 }}">
-                                    <input type="hidden" name="total3" value="{{ $total3 }}">
-                                    <button type="submit" class="btn btn-primary">Enviar a Liquidaciones</button>
-                                </form>
-                            </td>
-                        </tr>
+                        @if ($reportescompras && count($reportescompras) > 0)
+                            <tr>
+                                <td colspan="11">Total</td>
+                                <td>${{ number_format($total1, 2, '.', '') }}</td>
+                                <td>${{ number_format($total2, 2, '.', '') }}</td>
+                                <td>${{ number_format($total3, 2, '.', '') }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="14">
+                                    <form method="POST" action="{{ route('compras.store2') }}">
+                                        @csrf
+                                        <input type="hidden" name="total1" value="{{ $total1 }}">
+                                        <input type="hidden" name="total2" value="{{ $total2 }}">
+                                        <input type="hidden" name="total3" value="{{ $total3 }}">
+                                        <button type="submit" class="btn btn-primary">Enviar a Liquidaciones</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @else
+                            <tr>
+                                <td class="text-center" colspan="14"></td>
+                            </tr>
+                        @endif
                     </tfoot>
                 </table>
             </div>
@@ -171,9 +178,6 @@
 </div>
 <!-- listado -->
 
-@php
-    session(['total1' => $total1, 'total2' => $total2, 'total3' => $total3]);
-@endphp
 
 
 

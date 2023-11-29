@@ -102,16 +102,30 @@
                             @endif
                         </tbody>
                         <tfoot class="table-light">
-                            <tr>
-                                <td colspan="10">Total</td>
-                                <td>${{ $sumBase }}</td>
-                                <td>${{ $sumIGV }}</td>
-                                <td>${{ $sumTotal }}</td>
-                                <td></td>
-                            </tr>
+                            @if ($reporteventas && count($reporteventas) > 0)
+                                <tr>
+                                    <td colspan="10">Total</td>
+                                    <td>${{ number_format($sumBase, 2, '.', '') }}</td>
+                                    <td>${{ number_format($sumIGV, 2, '.', '') }}</td>
+                                    <td>${{ number_format($sumTotal, 2, '.', '') }}</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="14">
+                                        <form method="POST" action="{{ route('compras.store2') }}">
+                                            @csrf
+                                            <!-- Aquí puedes incluir tus inputs ocultos si los necesitas -->
+                                            <button type="submit" class="btn btn-primary">Enviar a Liquidaciones</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @else
+                                <tr>
+                                    <td class="text-center" colspan="14"></td>
+                                </tr>
+                            @endif
                         </tfoot>
                     </table>
-
                     </div>
                 </div>
             </div>
