@@ -138,21 +138,21 @@
                                 @if($reportecompra->consulta == 2)
                                     ${{ $sumBase2 }}
                                 @elseif($reportecompra->consulta == 1)
-                                    ${{ round($reportecompra->total * $reportecompra->tipo_cambio, 2) }}
+                                    ${{ round($reportecompra->total * $reportecompra->tipo_cambio / 1.18, 2) }}
                                 @endif
                             </td>
                             <td>
                                 @if($reportecompra->consulta == 2)
                                     ${{ round($sumBase2 * 0.18, 2) }}
                                 @elseif($reportecompra->consulta == 1)
-                                    ${{ round($reportecompra->total * $reportecompra->tipo_cambio * 0.18, 2) }}
+                                    ${{ round($reportecompra->total * $reportecompra->tipo_cambio / 1.18 * 0.18, 2) }}
                                 @endif
                             </td>
                             <td>
                                 @if($reportecompra->consulta == 2)
                                     ${{ round($sumBase2 + ($sumBase2 * 0.18), 2) }}
                                 @elseif($reportecompra->consulta == 1)
-                                    ${{ round($reportecompra->total * $reportecompra->tipo_cambio + ($reportecompra->total * $reportecompra->tipo_cambio * 0.18), 2) }}
+                                    ${{ round($reportecompra->total * $reportecompra->tipo_cambio, 2) }}
                                 @endif
                             </td>
                         </tr>
