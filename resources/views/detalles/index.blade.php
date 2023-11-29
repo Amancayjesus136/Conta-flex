@@ -92,7 +92,7 @@
                                             <td class="text-start">
                                                 <span class="fw-medium">Nueva base compras</span>
                                             </td>
-                                            <td>{{ round($sumBase2) }}</td>
+                                            <td>{{ round($total1) }}</td>
                                             <td>{{ round($sumBase) }}</td>
                                         </tr>
                                         <tr>
@@ -100,7 +100,7 @@
                                             <td class="text-start">
                                                 <span class="fw-medium">IGV</span>
                                             </td>
-                                            <td>{{ ($sumIGV2) }}</td>
+                                            <td>{{ ($total2) }}</td>
                                             <td>{{ ($sumIGV) }}</td>
                                         </tr>
                                         <tr>
@@ -108,7 +108,7 @@
                                             <td class="text-start">
                                                 <span class="fw-medium">IGV por Pagar</span>
                                             </td>
-                                                <td>{{ abs(round($sumIGV2 - $sumIGV)) }}</td>
+                                                <td>{{ abs(round($total2 - $sumIGV)) }}</td>
                                             <td></td>
                                         </tr>
                                         <tr>
@@ -178,8 +178,8 @@
                                             <td class="text-start">
                                                 <span class="fw-medium">IGV por Pagar</span>
                                             </td>
-                                            <td>{{ abs(round($sumIGV2 - $sumIGV)) }}</td>
-                                            <td>{{ abs(round($sumIGV2 - $sumIGV)) }}</td>
+                                            <td>{{ abs(round($total2 - $sumIGV)) }}</td>
+                                            <td>{{ abs(round($total2 - $sumIGV)) }}</td>
                                         </tr>
                                         <tr>
                                             <td class="text-start">
