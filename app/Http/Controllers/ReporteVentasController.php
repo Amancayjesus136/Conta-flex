@@ -41,7 +41,7 @@ class ReporteVentasController extends Controller
 
         if ($request->has('export')) {
             
-            // return Excel::download(new VentasExport, 'ventas.xlsx');
+            return Excel::download(new VentasExport, 'ventas.xlsx');
         }
 
         return view('reporte_ventas.index', compact('reporteventas'));
