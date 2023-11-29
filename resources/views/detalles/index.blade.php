@@ -30,21 +30,7 @@
                         <!--end card-header-->
                     </div><!--end col-->
                     <div class="col-lg-12">
-                        <div class="card-body p-4">
-                            <div class="row g-3">
-                                <div class="col-lg-3 col-6">
-                                    <p class="text-muted mb-2 text-uppercase fw-semibold">RENTA</p>
-                                    <h5 class="fs-14 mb-0"><span id="invoice-no">2018</span></h5>
-                                </div>
-
-                                <div class="col-lg-3 col-6">
-                                    <p class="text-muted mb-2 text-uppercase fw-semibold">Porcentaje</p>
-                                    <h5 class="fs-14 mb-0"><span id="total-amount">0.0150</span></h5>
-                                </div>
-                                <!--end col-->
-                            </div>
-                            <!--end row-->
-                        </div>
+                       
                         <!--end card-body-->
                     </div><!--end col-->
                     <div class="col-lg-12">
