@@ -50,6 +50,7 @@
                     <thead class="table-light">
                         <tr>
                             <th scope="col">#</th>
+                            <th scope="col">Tipo</th>
                             <th scope="col">Cod</th>
                             <th scope="col">T. Cambio</th>
                             <th scope="col">F. Comprobante</th>
@@ -66,88 +67,75 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @if ($reportescompras && count($reportescompras) > 0)
-                        @php
-                            $sumBase2 = 0;
-                            $sumIGV2 = 0;
-                            $sumTotal = 0;
-                        @endphp
-                        @foreach($reportescompras as $index => $reportecompra)
-                            <tr>
-                                <td>{{ ($reportescompras->currentPage() - 1) * $reportescompras->perPage() + $index + 1 }}</td>
-                                <td>{{ $reportecompra->cod_compra }}</td>
-                                <td>{{ $reportecompra->tipo_cambio }}</td>
-                                <td>{{ $reportecompra->fecha_comprobante }}</td>
-                                <td>{{ $reportecompra->ruc }}</td>
-                                <td>{{ $reportecompra->nombre }}</td>
-                                <td>{{ $reportecompra->documento }}</td>
-                                <td>{{ $reportecompra->factura_numero }}</td>
-                                <td>{{ $reportecompra->fecha_emision }}</td>
-                                <td>{{ $reportecompra->fecha_compra }}</td>
-                                <td>{{ $reportecompra->base_disponible }}</td>
-                                <td>{{ $reportecompra->IGV }}</td>
-                                <td>{{ $reportecompra->total }}</td>
-                                <td>
-                                    <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal{{ $reportecompra->id }}">
-                                        <i class="fas fa-edit"></i> Editar
-                                    </a>
-                                    <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarTragoModal{{ $reportecompra->id }}">
-                                        <i class="fas fa-trash-alt"></i> Eliminar
-                                    </a>
-                                </td>
-                            </tr>
+                        @if ($reportescompras && count($reportescompras) > 0)
                             @php
-                                $sumBase2 += $reportecompra->base_disponible;
-                                $sumIGV2 += $reportecompra->IGV;
-                                $sumTotal += $reportecompra->total;
+                                $sumBase2 = 0;
+                                $sumIGV2 = 0;
+                                $sumTotal = 0;
                             @endphp
-                        @endforeach
-                    @else
-                        <tr>
-                            <td class="text-center" colspan="14">No se encontraron compras</td>
-                        </tr>
-                    @endif
-                    </tbody>
-                        <tfoot class="table-light">
+                            @foreach($reportescompras as $index => $reportecompra)
+                                <tr>
+                                    <td>{{ ($reportescompras->currentPage() - 1) * $reportescompras->perPage() + $index + 1 }}</td>
+                                    <td>{{ $reportecompra->consulta }}</td>
+                                    <td>{{ $reportecompra->cod_compra }}</td>
+                                    <td>{{ $reportecompra->tipo_cambio }}</td>
+                                    <td>{{ $reportecompra->fecha_comprobante }}</td>
+                                    <td>{{ $reportecompra->ruc }}</td>
+                                    <td>{{ $reportecompra->nombre }}</td>
+                                    <td>{{ $reportecompra->documento }}</td>
+                                    <td>{{ $reportecompra->factura_numero }}</td>
+                                    <td>{{ $reportecompra->fecha_emision }}</td>
+                                    <td>{{ $reportecompra->fecha_compra }}</td>
+                                    <td>
+                                        <!-- Nueva lógica basada en el valor de $reportecompra->consulta -->
+                                        @if($reportecompra->consulta == 2)
+                                            @php
+                                                $baseCalculada = $reportecompra->base_disponible * $reportecompra->tipo_cambio;
+                                                $sumBase2 += $baseCalculada;
+                                            @endphp
+                                            {{ $reportecompra->base_disponible }}
+                                        @else
+                                            {{ $reportecompra->base_disponible }}
+                                            @php
+                                                $sumBase2 += $reportecompra->base_disponible;
+                                            @endphp
+                                        @endif
+                                    </td>
+                                    <td>{{ $reportecompra->IGV }}</td>
+                                    <td>{{ $reportecompra->total }}</td>
+                                    <td>
+                                        <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal{{ $reportecompra->id }}">
+                                            <i class="fas fa-edit"></i> Editar
+                                        </a>
+                                        <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#eliminarTragoModal{{ $reportecompra->id }}">
+                                            <i class="fas fa-trash-alt"></i> Eliminar
+                                        </a>
+                                    </td>
+                                </tr>
+                                @php
+                                    $sumIGV2 += $reportecompra->IGV;
+                                    $sumTotal += $reportecompra->total;
+                                @endphp
+                            @endforeach
+                        @else
                             <tr>
-                                <td colspan="10">Total</td>
-                                <td>${{ $sumBase2 }}</td>
-                                <td>${{ $sumIGV2 }}</td>
-                                <td>${{ $sumTotal }}</td>
-                                <td></td>
+                                <td class="text-center" colspan="14">No se encontraron compras</td>
                             </tr>
-                        </tfoot>
+                        @endif
+                    </tbody>
+                    <tfoot class="table-light">
+                        <tr>
+                            <td colspan="11">Total</td>
+                            <td>${{ $sumBase2 }}</td>
+                            <td>${{ $sumBase2 * 0.18 }}</td> 
+                            <td>${{ $sumBase2 + ($sumBase2 * 0.18) }}</td> 
+                            <td></td>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>
     </div>
-    <!-- pagination  -->
-    <div style="margin-top: 20px; margin-bottom: 20px" class="d-flex justify-content-between">
-        <p style="margin-left: 50px" class="text-start">Mostrando {{ $reportescompras->firstItem() }} a {{ $reportescompras->lastItem() }} de {{ $reportescompras->total() }} resultados</p>
-
-        <div style="margin-right: 50px" class="pagination-container">
-            <ul class="pagination">
-                @if ($reportescompras->onFirstPage())
-                    <li class="page-item disabled"><span class="page-link">Anterior</span></li>
-                @else
-                    <li class="page-item"><a class="page-link" href="{{ $reportescompras->previousPageUrl() }}">Anterior</a></li>
-                @endif
-
-                @for ($i = 1; $i <= $reportescompras->lastPage(); $i++)
-                    <li class="page-item {{ $i == $reportescompras->currentPage() ? 'active' : '' }}">
-                        <a class="page-link" href="{{ $reportescompras->url($i) }}">{{ $i }}</a>
-                    </li>
-                @endfor
-
-                @if ($reportescompras->hasMorePages())
-                    <li class="page-item"><a class="page-link" href="{{ $reportescompras->nextPageUrl() }}">Siguiente</a></li>
-                @else
-                    <li class="page-item disabled"><span class="page-link">Siguiente</span></li>
-                @endif
-            </ul>
-        </div>
-    </div>
-    <!-- pagination  -->
 </div>
 </div>
 </div>
@@ -547,4 +535,6 @@
         document.getElementById("total").value = total.toFixed(2);
     }
 </script>
+
+
 @endsection
