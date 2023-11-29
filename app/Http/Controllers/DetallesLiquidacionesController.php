@@ -23,7 +23,7 @@ class DetallesLiquidacionesController extends Controller
         $sumBase2 = $reportecompras->sum('base_disponible');
         $sumIGV = $reporteventas->sum('IGV');
         $sumIGV2 = $reportecompras->sum('IGV');
-        $total1 = Total::pluck('total1')->first();
+        $total1 = Total::latest()->pluck('total1')->first();
 
         return view('detalles.index', compact('reporteventas', 'reportecompras', 'sumBase', 'sumBase2', 'sumIGV', 'sumIGV2', 'total1'));
     }
