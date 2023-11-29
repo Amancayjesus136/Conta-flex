@@ -72,7 +72,11 @@
                                 $sumBase2 = 0;
                                 $sumIGV2 = 0;
                                 $sumTotal = 0;
+                                $total1 = 0;
+                                $total2 = 0;
+                                $total3 = 0;
                             @endphp
+
                             @foreach($reportescompras as $index => $reportecompra)
                                 <tr>
                                     <td>{{ ($reportescompras->currentPage() - 1) * $reportescompras->perPage() + $index + 1 }}</td>
@@ -92,22 +96,30 @@
                                             @php
                                                 $baseCalculada = $reportecompra->base_disponible * $reportecompra->tipo_cambio;
                                                 $sumBase2 += $baseCalculada;
+                                                $total1 += $baseCalculada;
+                                                $total2 += round($baseCalculada * 0.18, 2);
+                                                $total3 += round($baseCalculada + ($baseCalculada * 0.18), 2);
                                             @endphp
                                             {{ $reportecompra->base_disponible }}
                                         @elseif($reportecompra->consulta == 1)
                                             @php
-                                                $baseCalculada = $reportecompra->total * $reportecompra->tipo_cambio;
+                                                $baseCalculada = $reportecompra->total * $reportecompra->tipo_cambio / 1.18;
                                                 $sumBase2 += $baseCalculada;
+                                                $total1 += round($reportecompra->total * $reportecompra->tipo_cambio / 1.18, 2);
+                                                $total2 += round($baseCalculada * 0.18, 2);
+                                                $total3 += round($baseCalculada + ($baseCalculada * 0.18), 2);
                                             @endphp    
                                             {{ $reportecompra->base_disponible }}
                                         @else
                                             {{ $reportecompra->base_disponible }}
                                             @php
                                                 $sumBase2 += $reportecompra->base_disponible;
+                                                $total1 += $reportecompra->base_disponible;
+                                                $total2 += round($reportecompra->base_disponible * 0.18, 2);
+                                                $total3 += round($reportecompra->base_disponible + ($reportecompra->base_disponible * 0.18), 2);
                                             @endphp
                                         @endif
                                     </td>
-
 
                                     <td>{{ $reportecompra->IGV }}</td>
                                     <td>{{ $reportecompra->total }}</td>
@@ -134,27 +146,9 @@
                     <tfoot class="table-light">
                         <tr>
                             <td colspan="11">Total</td>
-                            <td>
-                                @if($reportecompra->consulta == 2)
-                                    ${{ $sumBase2 }}
-                                @elseif($reportecompra->consulta == 1)
-                                    ${{ round($reportecompra->total * $reportecompra->tipo_cambio / 1.18, 2) }}
-                                @endif
-                            </td>
-                            <td>
-                                @if($reportecompra->consulta == 2)
-                                    ${{ round($sumBase2 * 0.18, 2) }}
-                                @elseif($reportecompra->consulta == 1)
-                                    ${{ round($reportecompra->total * $reportecompra->tipo_cambio / 1.18 * 0.18, 2) }}
-                                @endif
-                            </td>
-                            <td>
-                                @if($reportecompra->consulta == 2)
-                                    ${{ round($sumBase2 + ($sumBase2 * 0.18), 2) }}
-                                @elseif($reportecompra->consulta == 1)
-                                    ${{ round($reportecompra->total * $reportecompra->tipo_cambio, 2) }}
-                                @endif
-                            </td>
+                            <td>${{ $total1 }}</td>
+                            <td>${{ $total2 }}</td>
+                            <td>${{ $total3 }}</td>
                         </tr>
                     </tfoot>
                 </table>
