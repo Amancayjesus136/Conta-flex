@@ -214,7 +214,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="tipo_compra">Tipo de Compra</label>
-                                                <input type="number" class="form-control" name="tipo_compra" id="tipo_compra" value="{{ $tipocambio->tipo_compra }}" required placeholder="Ingrese el Documento">
+                                                <input type="text" class="form-control" name="tipo_compra" id="tipo_compra" value="{{ $tipocambio->tipo_compra }}" required placeholder="Ingrese el Documento">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
