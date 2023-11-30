@@ -206,8 +206,19 @@
                                             <td class="text-start">
                                                 <span class="fw-medium">Total a pagar</span>
                                             </td>
-                                            <td><strong>{{ round($sumBase * 1.5 / 100) }}</strong></td>
-                                            <td><strong>{{ round($sumBase * 1.5 / 100) }}</strong></td>
+                                            <td>
+                                                {{
+                                                    abs(round($total2 - $sumIGV)) +
+                                                    round($sumBase * 1.5 / 100)
+                                                }}
+                                            </td>
+                                            
+                                            <td>
+                                                {{
+                                                    abs(round($total2 - $sumIGV)) +
+                                                    round($sumBase * 1.5 / 100)
+                                                }}
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table><br><br><br>
